@@ -25,12 +25,20 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function Add($recordId, $firstName, $lastName)
+        public function Add($studentId, $careerId, $firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active)
         {
             $student = new Student();
-            $student->setRecordId($recordId);
-            $student->setfirstName($firstName);
+            $student->setStudentId($studentId);
+            $student->setCareerId($careerId);
+            $student->setFirstName($firstName);
             $student->setLastName($lastName);
+            $student->setDni($dni);
+            $student->setFileNumber($fileNumber);
+            $student->setGender($gender);
+            $student->setBirthDate($birthDate);
+            $student->setEmail($email);
+            $student->setPhoneNumber($phoneNumber);
+            $student->setActive($active);
 
             $this->studentDAO->Add($student);
 
