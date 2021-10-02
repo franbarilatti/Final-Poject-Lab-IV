@@ -1,9 +1,7 @@
 <?php
     namespace Models;
 
-    use Models\User as User;
-
-    class Student extends User{
+    class Student{
         private $studentId;
         private $careerId;
         private $firstName;

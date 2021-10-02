@@ -1,9 +1,9 @@
 <?php
     namespace Models;
 
-    use Models\User as User;
 
-    class Business extends User{
+
+    class Business{
         private $businessId;
         private $businessName;
         private $employesQuantity;

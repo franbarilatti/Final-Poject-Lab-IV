@@ -1,9 +1,8 @@
 <?php
     namespace Models;
 
-    use Models\User as User;
 
-    class Admin extends User{
+    class Admin{
         private $adminId;
 
         public function __construct()
