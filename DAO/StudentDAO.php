@@ -4,9 +4,21 @@
     use DAO\IStudentDAO as IStudentDAO;
     use Models\Student as Student;
 
-    class StudentDAO implements IStudentDAO
-    {
+    class StudentDAO implements IStudentDAO{
+    
         private $studentList = array();
+        private $ch;
+        private $url;
+        private $header;
+
+        public function __construct(){
+            $this->ch = curl_init();
+            $this->url = "https://utn-students-api.herokuapp.com/api/Student";
+            $this->header = array("x-api-key: 4f3bceed-50ba-4461-a910-518598664c08");
+            curl_setopt($this->ch,CURLOPT_URL,$this->url);
+            curl_setopt($this->ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($this->ch,CURLOPT_HTTPHEADER,$this->header);
+        }
 
         public function Add(Student $student)
         {
@@ -52,13 +64,13 @@
 
         private function RetrieveData()
         {
+            $resp = curl_exec($this->ch);
             $this->studentList = array();
+            $arrayToDecode = json_decode($resp, true);
 
-            if(file_exists('Data/students.json'))
+            if($resp != null)
             {
-                $jsonContent = file_get_contents('Data/students.json');
-
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+                $arrayToDecode = json_decode($resp, true);
 
                 foreach($arrayToDecode as $valuesArray)
                 {
@@ -79,5 +91,5 @@
                 }
             }
         }
-    }
+}
 ?>
