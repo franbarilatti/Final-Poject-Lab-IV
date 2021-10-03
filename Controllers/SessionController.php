@@ -4,8 +4,9 @@
     use DAO\StudentDAO as StudentDAO;
     use Models\Student as Student;
     use Controllers\HomeController as HomeController;
+use EmptyIterator;
 
-     class SessionController{
+class SessionController{
 
 
         public function Login(){
@@ -15,6 +16,10 @@
             if($_GET){
                 $email = $_GET["email"];
                 $i = 0;
+                if($email == "admin@admin.com"){
+                    $_SESSION["admin"];
+                    header("location../Views/admin-main.php");
+                }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
                     $i++;
                 }

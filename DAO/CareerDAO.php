@@ -40,12 +40,6 @@
         {
             $arrayToEncode = array();
 
-            /*
-                $careerId
-$description
-$active
-            */
-
             foreach($this->careerList as $career)
             {
                 $valuesArray["careerId"] = $career->getCareerId();

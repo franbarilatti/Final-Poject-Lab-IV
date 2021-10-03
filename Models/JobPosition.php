@@ -2,6 +2,7 @@
     namespace Models;
 
     class JobPosition{
+        private $jobPositionId;
         private $title;
         private $description;
         private $active;
@@ -12,6 +13,10 @@
         }
 
         ////////// GETTERS METHODS //////////
+        public function getJobPositionId()
+        {
+                return $this->jobPositionId;
+        }
         
         public function getDescription()
         {
@@ -31,6 +36,13 @@
         }
 
         ////////// SETTERS METHODS //////////
+
+        public function setJobPositionId($jobPositionId)
+        {
+                $this->jobPositionId = $jobPositionId;
+
+                return $this;
+        }
         
         public function setTitle($title)
         {
@@ -53,6 +65,7 @@
                 $this->active = $active;
 
                 return $this;
-        }
+        } 
+        
     }
 ?>
