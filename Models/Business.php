@@ -51,6 +51,12 @@
 
         ////////// SETTERS METHODS //////////
 
+        public function setBusinessId($businessId)
+        {
+                $this->businessId = $businessId;
+
+                return $this;
+        }
  
         public function setBusinessName($businessName)
         {
@@ -90,8 +96,7 @@
 
                 return $this;
         }
-
-    
+ 
         
     }
 ?>
