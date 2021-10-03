@@ -5,20 +5,23 @@
     use Models\Student as Student;
     use Controllers\HomeController as HomeController;
 use EmptyIterator;
+use Models\Admin;
 
 class SessionController{
 
 
         public function Login(){
-            $email;
+            $email = "";
             $studenRepo = new StudentDAO();
             $studentList = $studenRepo->GetAll();
             if($_GET){
                 $email = $_GET["email"];
                 $i = 0;
                 if($email == "admin@admin.com"){
-                    $_SESSION["admin"];
-                    header("location../Views/admin-main.php");
+                    /*$loggedAdmin = new Admin();
+                    $_SESSION["admin"] = $loggedAdmin;*/
+                    header("location:../Views/admin-main.php");
+                    echo "Entra al if pero se le canta no mandarte al location";
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
                     $i++;
