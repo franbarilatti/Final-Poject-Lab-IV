@@ -10,15 +10,16 @@ class SessionController{
 
 
         public function Login(){
-            $email;
+            $email= "";
             $studenRepo = new StudentDAO();
             $studentList = $studenRepo->GetAll();
             if($_GET){
                 $email = $_GET["email"];
                 $i = 0;
                 if($email == "admin@admin.com"){
-                    $_SESSION["admin"];
-                    header("location../Views/admin-main.php");
+                   // $_SESSION["admin"];
+                   header("location: ../Views/admin-main.php");
+                   
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
                     $i++;
@@ -39,10 +40,10 @@ class SessionController{
                     $_SESSION["student"] = $student;
 
                     header("location: ../Views/studentMain.php");
-                }else{
+                }/*else{
                     $homeController = new HomeController();
                     $homeController->Index("mail o contraseña incorrectas");
-                }
+                }*/
             }
         }
     }
