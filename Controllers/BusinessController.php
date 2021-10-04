@@ -25,16 +25,13 @@
             require_once(VIEWS_PATH."business-list.php");
         }
 
-        public function Add($businessId,$businessName,$employesQuantity,$postulationList,$businessInfo,$jobPositionList)
+        public function Add($businessId,$businessName,$employesQuantity,$businessInfo)
         {
             $business = new Business();
             $business->setBusinessId($businessId);
             $business->setBusinessName($businessName);
             $business->setEmployesQuantity($employesQuantity);
-            $business->setPostulationList($postulationList);
             $business->setBusinessInfo($businessInfo);
-            $business->setJobPositionList($jobPositionList);
-
             $this->businessDAO->Add($business);
 
             $this->ShowAddView();

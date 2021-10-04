@@ -11,7 +11,10 @@
         private $businessInfo;
         private $jobPositionList;
 
-        public function __construct(){}         
+        public function __construct(){
+                $this->postulationList = null;
+                $this->jobPositionList = null;
+        }         
     
         ////////// GETTERS METHODS //////////
         

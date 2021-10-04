@@ -9,12 +9,12 @@
                     <div class="row">                         
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Legajo</label>
+                                   <label for="">Email</label>
                                    <input type="email" name="email" value="" class="form-control">
                               </div>
                          </div>
                          
-                    <button type="submit" name="button" class="btn btn-dark ml-auto d-block">Agregar</button>
+                    <button type="submit" name="button" class="btn btn-dark ml-auto d-block">Ingresar</button>
                </form>
           </div>
      </section>
