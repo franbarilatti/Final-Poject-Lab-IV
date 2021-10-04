@@ -17,7 +17,6 @@
             require_once(VIEWS_PATH."admin-main.php");
         }
 
-        
 
         /*public function Add($businessName,$employesQuantity,$businessInfo)
         {

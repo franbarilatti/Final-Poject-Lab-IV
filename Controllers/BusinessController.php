@@ -34,6 +34,13 @@
             }
         }
 
+        public function DeleteBusiness($businessId){
+            $this->businessDAO->delete($businessId);
+            echo "<script> if(confirm('La empresa ha sido eliminada'));";
+            echo "</script>";
+            $this->ShowListView();
+        }
+
         public function Add($businessName,$employesQuantity,$businessInfo)
         {
             $business = new Business();

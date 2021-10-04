@@ -22,6 +22,9 @@
                                              <td><?php echo $business->getBusinessName(); ?></td>
                                              <td><?php echo $business->getEmployesQuantity(); ?></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
+                                             <td>
+                                                  <a href="<?php FRONT_ROOT ?>Business/Delete" class="btn btn-danger" value = "<?php echo $business->getBusinessId(); ?>">Eliminar</a>
+                                             </td>
                                         </tr>
                                    <?php
                               }

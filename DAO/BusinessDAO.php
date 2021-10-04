@@ -17,6 +17,18 @@
             $this->SaveData();
         }
 
+        public function delete($businessId){
+            $this->RetrieveData();
+            $newList = array();
+            foreach($this->businessList as $business){
+                if($business->getBusinessId() != $businessId){
+                    array_push($newList,$business);
+                }
+            }
+            $this->businessList = $newList;
+            $this->SaveData();
+        }
+
         public function GetAll()
         {
             $this->RetrieveData();

@@ -6,6 +6,7 @@
     interface IBusinessDAO{
         function Add(Business $business);
         function GetAll();
+        function delete($businessId);
     }
 
 ?>
