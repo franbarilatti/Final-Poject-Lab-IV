@@ -17,7 +17,7 @@
             $this->SaveData();
         }
 
-        public function delete($businessId){
+        public function Delete($businessId){
             $this->RetrieveData();
             $newList = array();
             foreach($this->businessList as $business){
@@ -34,6 +34,21 @@
             $this->RetrieveData();
 
             return $this->businessList;
+        }
+
+        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo)
+        {
+            $this->RetrieveData();
+            foreach($this->businessList as $business){
+                if($business->getBusinessId() == $businessId){
+                    $this->Delete($businessId);
+                    $business->setBusinessName($businessName);
+                    $business->setEmployesQuantity($employesQuantity);
+                    $business->setBusinessInfo($businessInfo);
+                    array_push($this->businessList,$business);
+                }
+            }
+            $this->SaveData();
         }
 
         private function SaveData()

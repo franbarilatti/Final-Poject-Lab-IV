@@ -6,7 +6,8 @@
     interface IBusinessDAO{
         function Add(Business $business);
         function GetAll();
-        function delete($businessId);
+        function Delete($businessId);
+        function Modify($businessId,$businessName,$employesQuantity,$businessInfo);
     }
 
 ?>

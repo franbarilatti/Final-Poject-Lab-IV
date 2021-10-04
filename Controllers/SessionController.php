@@ -18,7 +18,7 @@ class SessionController{
                 $i = 0;
                 if($email == "admin@admin.com"){
                    // $_SESSION["admin"];
-                   header("location: ../Views/admin-main.php");
+                   header("location:".FRONT_ROOT."Admin/ShowAdminMainView");
                    
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){

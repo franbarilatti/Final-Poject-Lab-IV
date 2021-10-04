@@ -35,7 +35,14 @@
         }
 
         public function DeleteBusiness($businessId){
-            $this->businessDAO->delete($businessId);
+            $this->businessDAO->Delete($businessId);
+            echo "<script> if(confirm('La empresa ha sido eliminada'));";
+            echo "</script>";
+            $this->ShowListView();
+        }
+
+        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo){
+            $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
             echo "<script> if(confirm('La empresa ha sido eliminada'));";
             echo "</script>";
             $this->ShowListView();
