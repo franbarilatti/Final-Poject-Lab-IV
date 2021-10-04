@@ -1,7 +1,5 @@
 <?php 
     namespace Views;
-	require_once "../Config/Autoload.php";
-	require_once "../Config/Config.php";
     require_once("header.php");
     use Config\Autoload as Autoload;
 
@@ -24,35 +22,23 @@
     <title><?php echo $student->getFirstName();?></title>
 </head>
 <body>
-    <table class="table bg-light-alpha">
-                    <thead>
-                         <th>Id de estudiante</th>
-                         <th>Id de carrera</th>
-                         <th>Nombre</th>
-                         <th>Apellido</th>
-                         <th>DNI</th>
-                         <th>Numero de legajo</th>
-                         <th>Genero</th>
-                         <th>Fecha de nacimiento</th>
-                         <th>Email</th>
-                         <th>Telefono</th>
-                         <th>Actividad</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><?php echo $student->getStudentId(); ?></td>
-                            <td><?php echo $student->getCareerId(); ?></td>
-                            <td><?php echo $student->getFirstName(); ?></td>
-                            <td><?php echo $student->getLastName(); ?></td>
-                            <td><?php echo $student->getDni(); ?></td>
-                            <td><?php echo $student->getFileNumber(); ?></td>
-                            <td><?php echo $student->getGender(); ?></td>
-                            <td><?php echo $student->getBirthDate(); ?></td>
-                            <td><?php echo $student->getEmail(); ?></td>
-                            <td><?php echo $student->getPhoneNumber(); ?></td>
-                            <td><?php echo $student->getActive(); ?></td>
-                        </tr>
-                    </tbody>
-               </table>
+    <h1>PERFIL DE <?php echo $student->getFirstName(); ?> </h1>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">  
+    <ul>
+        <li class= "nav-item">
+            <a href="<?php FRONT_ROOT ?>Home/Index">Inicio</a>
+        </li>
+        <li>
+            <a href="<?php FRONT_ROOT ?>Business/ShowListView">Ver empresas</a>
+        </li>
+        <li>
+            <a href="">Ver Postulaciones</a>
+        </li>
+    </ul>
+    </div>
+    <div class="dropdown">
+        <a href="d-flex align-items-center text-white text-decoration-none dropdown-toggle">Perfil</a>
+    </div>
+
 </body>
 </html>

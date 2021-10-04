@@ -25,6 +25,15 @@
             require_once(VIEWS_PATH."business-list.php");
         }
 
+        public function ShowOneBusiness($businessName){
+            $businessList = $this->businessDAO->GetAll();
+            foreach($businessList as $business){
+                if($business->getBusinessName() == $businessName){
+                    require_once(VIEWS_PATH."business-list.php");
+                }
+            }
+        }
+
         public function Add($businessName,$employesQuantity,$businessInfo)
         {
             $business = new Business();

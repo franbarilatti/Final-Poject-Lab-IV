@@ -10,24 +10,14 @@
 
         public function __construct()
         {
-            $this->businessDAO = new AdminDAO();
-        }
-
-        public function ShowAddView()
-        {
-            require_once(VIEWS_PATH."business-add.php");
-        }
-
-        public function ShowListView()
-        {
-            $businessList = $this->businessDAO->GetAll();
-
-            require_once(VIEWS_PATH."business-list.php");
+            $this->adminDAO = new AdminDAO();
         }
 
         public function ShowAdminMainView(){
             require_once(VIEWS_PATH."admin-main.php");
         }
+
+        
 
         /*public function Add($businessName,$employesQuantity,$businessInfo)
         {
