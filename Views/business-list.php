@@ -7,17 +7,10 @@
                <h2 class="mb-4">Listado de alumnos</h2>
                <table class="table bg-light-alpha">
                     <thead>
-                         <th>Id de estudiante</th>
-                         <th>Id de carrera</th>
+                         <th>Id Empresa</th>
                          <th>Nombre</th>
-                         <th>Apellido</th>
-                         <th>DNI</th>
-                         <th>Numero de legajo</th>
-                         <th>Genero</th>
-                         <th>Fecha de nacimiento</th>
-                         <th>Email</th>
-                         <th>Telefono</th>
-                         <th>Actividad</th>
+                         <th>Cantidad Emplados</th>
+                         <th>Informacion Empresa</th>
                     </thead>
                     <tbody>
                          <?php
@@ -28,9 +21,7 @@
                                              <td><?php echo $business->getBusinessId(); ?></td>
                                              <td><?php echo $business->getBusinessName(); ?></td>
                                              <td><?php echo $business->getEmployesQuantity(); ?></td>
-                                             <td><?php echo $business->getPostulationList(); ?></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
-                                             <td><?php echo $business->getJobPositionList(); ?></td>
                                         </tr>
                                    <?php
                               }

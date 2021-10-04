@@ -12,6 +12,7 @@
         private $jobPositionList;
 
         public function __construct(){
+                $this->businessId = rand(1,1000);
                 $this->postulationList = null;
                 $this->jobPositionList = null;
         }         

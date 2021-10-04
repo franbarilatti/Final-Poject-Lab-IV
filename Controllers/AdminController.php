@@ -1,16 +1,16 @@
 <?php
     namespace Controllers;
 
-    use DAO\BusinessDAO as BusinessDAO;
-    use Models\Business as Business;
+    use DAO\AdminDAO as AdminDAO;
+    use Models\Admin as Admin;
 
-    class BusinessController
+    class AdminController
     {
-        private $businessDAO;
+        private $adminDAO;
 
         public function __construct()
         {
-            $this->businessDAO = new BusinessDAO();
+            $this->businessDAO = new AdminDAO();
         }
 
         public function ShowAddView()
@@ -25,7 +25,11 @@
             require_once(VIEWS_PATH."business-list.php");
         }
 
-        public function Add($businessName,$employesQuantity,$businessInfo)
+        public function ShowAdminMainView(){
+            require_once(VIEWS_PATH."admin-main.php");
+        }
+
+        /*public function Add($businessName,$employesQuantity,$businessInfo)
         {
             $business = new Business();
             $business->setBusinessName($businessName);
@@ -35,7 +39,7 @@
             echo "<script> if(confirm('empresa cargada con exito'));";
             echo "</script>";
             $this->ShowAddView();
-        }
+        }*/
     }
 
 ?>

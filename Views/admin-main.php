@@ -5,8 +5,6 @@ namespace Views;
     require_once "header.php";
     use Config\Autoload as Autoload;
     Autoload::Start();
-    use Controllers\BusinessController as BusinessController;
-    use Models\Business as Business;
     //session_start();
    // $admin= $_SESSION["admin"];
 ?>
@@ -30,12 +28,15 @@ namespace Views;
         <li class="nav-item">
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowAddView">Añadir Emp</a>
         </li>
+        <li class="nav-item">
+        <a class="dropdown-item" href="<?php echo FRONT_ROOT?>Business/ShowListView" >Ver empresas</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="<?php echo FRONT_ROOT?>Business/ShowListViews" >Ver empresas</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
