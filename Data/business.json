@@ -1,13 +1,5 @@
 [
     {
-        "businessId": 333,
-        "businessName": "Stark Industries",
-        "employesQuantity": "500",
-        "postulationList": null,
-        "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
-        "jobPositionList": null
-    },
-    {
         "businessId": 927,
         "businessName": "350",
         "employesQuantity": "Gringotts",
