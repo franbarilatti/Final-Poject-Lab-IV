@@ -24,13 +24,6 @@
             return $this->postulationList;
         }
 
-        /*
-            postulationId
-student
-business
-jobPosition
-active
-        */
 
         private function SaveData()
         {
