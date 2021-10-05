@@ -1,56 +1,48 @@
 [
     {
         "businessId": 927,
-        "businessName": "350",
-        "employesQuantity": "Gringotts",
+        "businessName": "Gringotts",
+        "employesQuantity": "350",
         "postulationList": null,
         "businessInfo": "Banco magico dirigido por duendes",
         "jobPositionList": null
     },
     {
         "businessId": 574,
-        "businessName": "500",
-        "employesQuantity": "Stark Industries",
+        "businessName": "Stark Industries",
+        "employesQuantity": "500",
         "postulationList": null,
         "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
         "jobPositionList": null
     },
     {
         "businessId": 997,
-        "businessName": "Abstergo",
-        "employesQuantity": "450",
+        "businessName": "450",
+        "employesQuantity": "Abstergo",
         "postulationList": null,
         "businessInfo": "Empresa que busca recolectar informacion del pasado utilizando memoria genetica",
         "jobPositionList": null
     },
     {
-        "businessId": 106,
-        "businessName": "500",
-        "employesQuantity": "Stark Industries",
-        "postulationList": null,
-        "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
-        "jobPositionList": null
-    },
-    {
         "businessId": 667,
-        "businessName": "Monsters Inc.",
-        "employesQuantity": "300",
+        "businessName": "300",
+        "employesQuantity": "Monsters Inc.",
         "postulationList": null,
         "businessInfo": "Empresa que asusta ni\u00f1os para generar la energia que utiliza Monstruopolis.",
         "jobPositionList": null
     },
     {
         "businessId": 911,
-        "businessName": "500",
-        "employesQuantity": "Stark Industries",
+        "businessName": "Stark Industries",
+        "employesQuantity": "500",
         "postulationList": null,
         "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
         "jobPositionList": null
     },
     {
         "businessId": 737,
-        "businessName": "Monsters Inc.",
-        "employesQuantity": "300",
+        "businessName": "300",
+        "employesQuantity": "Monsters Inc.",
         "postulationList": null,
         "businessInfo": "Empresa que asusta ni\u00f1os para generar la energia que utiliza Monstruopolis.",
         "jobPositionList": null
