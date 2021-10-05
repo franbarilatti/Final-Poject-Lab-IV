@@ -39,7 +39,7 @@ class SessionController{
                     $student->setActive($studentList[$i]->getActive());
                     $_SESSION["student"] = $student;
 
-                    header("location: ../Views/studentMain.php");
+                    header("location:".FRONT_ROOT."Admin/ShowStudentMain");
                 }/*else{
                     $homeController = new HomeController();
                     $homeController->Index("mail o contraseña incorrectas");

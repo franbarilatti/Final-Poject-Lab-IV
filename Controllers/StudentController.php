@@ -25,6 +25,10 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
+        public function ShowStudentMain(){
+            require_once(VIEWS_PATH."studentMain.php");
+        }
+
         public function Add($studentId, $careerId, $firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active)
         {
             $student = new Student();
