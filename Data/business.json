@@ -1,37 +1,5 @@
 [
     {
-        "businessId": 1,
-        "businessName": "Monsters Inc.",
-        "employesQuantity": "300",
-        "postulationList": null,
-        "businessInfo": "Empresa que asusta ni\u00f1os para generar la energia que utiliza Monstruopolis.",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 1,
-        "businessName": "500",
-        "employesQuantity": "Stark Industries",
-        "postulationList": null,
-        "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 106,
-        "businessName": "Stark Industries",
-        "employesQuantity": "500",
-        "postulationList": null,
-        "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 799,
-        "businessName": "300",
-        "employesQuantity": "Monsters Inc.",
-        "postulationList": null,
-        "businessInfo": "Empresa que asusta ni\u00f1os para generar la energia que utiliza Monstruopolis.",
-        "jobPositionList": null
-    },
-    {
         "businessId": 333,
         "businessName": "Stark Industries",
         "employesQuantity": "500",
@@ -45,14 +13,6 @@
         "employesQuantity": "Gringotts",
         "postulationList": null,
         "businessInfo": "Banco magico dirigido por duendes",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 785,
-        "businessName": "Stark Industries",
-        "employesQuantity": "500",
-        "postulationList": null,
-        "businessInfo": "Empresa de tecnolog\u00eda liderada por Tony Stark.",
         "jobPositionList": null
     },
     {
