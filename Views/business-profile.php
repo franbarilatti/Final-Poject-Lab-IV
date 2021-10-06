@@ -11,10 +11,12 @@
 
 ?>
 
+<nav >
+
+
+</nav>
 <main>
-    <div>
-        <h1> <?php echo $business->getBusinessName(); ?> </h1>
-    </div>
+
 
 
 
