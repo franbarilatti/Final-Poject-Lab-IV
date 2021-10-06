@@ -86,8 +86,8 @@
                 {
                     $business = new Business();
                     $business->setBusinessId($valuesArray["businessId"]);
-                    $business->setBusinessName($valuesArray["employesQuantity"]);
-                    $business->setEmployesQuantity($valuesArray["businessName"]);
+                    $business->setBusinessName($valuesArray["businessName"]);
+                    $business->setEmployesQuantity($valuesArray["employesQuantity"]);
                     $business->setPostulationList($valuesArray["postulationList"]);
                     $business->setBusinessInfo($valuesArray["businessInfo"]);
                     $business->setJobPositionList($valuesArray["jobPositionList"]);

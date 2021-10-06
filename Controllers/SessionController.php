@@ -9,17 +9,14 @@ use EmptyIterator;
 class SessionController{
 
 
-        public function Login(){
-            $email= "";
+        public function Login($email){
+            
             $studenRepo = new StudentDAO();
             $studentList = $studenRepo->GetAll();
-            if($_GET){
-                $email = $_GET["email"];
                 $i = 0;
                 if($email == "admin@admin.com"){
                    // $_SESSION["admin"];
                    header("location:".FRONT_ROOT."Admin/ShowAdminMainView");
-                   
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
                     $i++;
@@ -40,11 +37,10 @@ class SessionController{
                     $_SESSION["student"] = $student;
 
                     header("location:".FRONT_ROOT."Admin/ShowStudentMain");
-                }/*else{
+                }else{
                     $homeController = new HomeController();
                     $homeController->Index("mail o contraseña incorrectas");
-                }*/
-            }
+                }
         }
     }
 

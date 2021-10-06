@@ -31,7 +31,7 @@
                                                        </button>
                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownoptions">
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
-                                                            <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/Modify?$id=<?php echo $business->getBusinessId(); ?>">Modificar</a></li>
+                                                            <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId();?>&$businessName=<?php echo $business->getBusinessName();?>&$employesQuantity=<?php echo $business->getEmployesQuantity();?>&$businessInfo=<?php echo $business->getBusinessInfo();?>">Modificar</a></li>
                                                        </ul>
                                                   </div>
                                              </td>
@@ -41,8 +41,10 @@
                          ?>
                          </tr>
                     </tbody>
+                    
                </table>
           </div>
+          <a href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView">Volver al Main</a>
+
      </section>
 </main>
-<a href= "<?php echo FRONT_ROOT?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a> 
