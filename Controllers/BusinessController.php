@@ -47,6 +47,15 @@
             echo "</script>";
             $this->ShowListView();
         }
+        public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
+            $business = new Business();
+            $business->setBusinessId($businessId);
+            $business->setBusinessName($businessName);
+            $business->setEmployesQuantity($employesQuantity);
+            $business->setBusinessInfo($businessInfo);
+            $_SESSION["business"] = $businessId;
+            require_once(VIEWS_PATH."business-modify.php");
+        }
 
         public function Add($businessName,$employesQuantity,$businessInfo)
         {

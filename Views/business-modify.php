@@ -1,5 +1,7 @@
 <?php
-
+     use Models\Business as Business;
+     $business = new Business();
+     
 ?>
 <head>
      <title>Modificar Empresa</title>
@@ -7,8 +9,8 @@
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Modificar  <?php $business->getBusinessName();?></h2>
-               <form action="<?php echo FRONT_ROOT ?>Business/Add" method="post" class="bg-light-alpha p-5">
+               <h2 class="mb-4">Modificar  <?php $business->getBusinessName();?></h2> 
+               <form action="<?php echo FRONT_ROOT ?>Business/Modify?id=<?php $business->getBusinessId();?>" method="post" class="bg-light-alpha p-5">
                     <div class="col">                         
                          <div class="col-lg-4">
                               
