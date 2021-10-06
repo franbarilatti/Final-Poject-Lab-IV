@@ -1,6 +1,14 @@
-<?php
-    require_once('nav.php');
-?>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+     <span class="navbar-text"> Lista de empresas </span>
+     <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView "> Volver al Main</a>
+          </li>
+          <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout" >logout</a>
+          </li>
+     </ul>
+</nav>
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
@@ -32,6 +40,7 @@
                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownoptions">
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId();?>&$businessName=<?php echo $business->getBusinessName();?>&$employesQuantity=<?php echo $business->getEmployesQuantity();?>&$businessInfo=<?php echo $business->getBusinessInfo();?>">Modificar</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowAddView">Agregar Nuevo Puesto</a></li>
                                                        </ul>
                                                   </div>
                                              </td>

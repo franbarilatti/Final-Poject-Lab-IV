@@ -1,7 +1,9 @@
 <?php
     namespace Models;
 
-    class JobPosition{
+use tidy;
+
+class JobPosition{
         private $jobPositionId;
         private $title;
         private $description;
@@ -9,7 +11,8 @@
 
         public function __construct()
         {
-            
+            $this->jobPositionId = rand(1000000,9999999);
+            $this->active = true;
         }
 
         ////////// GETTERS METHODS //////////
