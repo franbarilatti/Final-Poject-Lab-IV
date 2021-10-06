@@ -3,8 +3,9 @@
 
     use DAO\IBusinessDAO as IBussinesDAO;
     use Models\Business as Business;
+use PDO;
 
-    class BusinessDAO implements IBusinessDAO
+class BusinessDAO implements IBusinessDAO
     {
         private $businessList = array();
 
@@ -49,6 +50,27 @@
                 }
             }
             $this->SaveData();
+        }
+
+        public function SearchByName($businessName){
+            $this->RetrieveData();
+            foreach($this->businessList as $business){
+                if($business->getBusinessName() == $businessName){
+                    $findedBusiness = $business;
+                }
+            }
+            return $findedBusiness;
+        }
+
+        public function SearchById($businessId){
+            $this->RetrieveData();
+            $findedBusiness = null;
+            foreach($this->businessList as $business){
+                if($business->getBusinessId() == $businessId){
+                    $findedBusiness = $business;
+                }
+            }
+            return $findedBusiness;
         }
 
         private function SaveData()

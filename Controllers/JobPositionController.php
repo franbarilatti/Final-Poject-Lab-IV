@@ -25,7 +25,7 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function ShowStudentMain(){
+        public function ShowJobPositionMain(){
             require_once(VIEWS_PATH."studentMain.php");
         }
 

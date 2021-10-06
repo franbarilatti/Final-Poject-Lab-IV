@@ -22,13 +22,13 @@
                     </thead>
                     <tbody>
                          <?php
+                            sort($businessList['businessName']);
                               foreach($businessList as $business)
                               {
                                    ?>
                                         <tr>
                                              <td><?php echo $business->getBusinessId(); ?></td>
-                                             <td>
-                                                  <a href="<?php echo FRONT_ROOT ?>Business/PressNameInList?$id"><?php echo $business->getBusinessName(); ?></a></td>
+                                             <td><?php echo $business->getBusinessName(); ?></td>
                                              <td><?php echo $business->getEmployesQuantity(); ?></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
                                              <td>

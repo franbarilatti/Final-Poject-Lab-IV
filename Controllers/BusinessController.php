@@ -13,6 +13,10 @@
             $this->businessDAO = new BusinessDAO();
         }
 
+
+        ////////////////// VIEWS METHODS //////////////////
+
+
         public function ShowAddView()
         {
             require_once(VIEWS_PATH."business-add.php");
@@ -34,19 +38,6 @@
             }
         }
 
-        public function DeleteBusiness($businessId){
-            $this->businessDAO->Delete($businessId);
-            echo "<script> if(confirm('La empresa ha sido eliminada'));";
-            echo "</script>";
-            $this->ShowListView();
-        }
-
-        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo){
-            $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
-            echo "<script> if(confirm('La empresa ha sido eliminada'));";
-            echo "</script>";
-            $this->ShowListView();
-        }
         public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
             $business = new Business();
             $business->setBusinessId($businessId);
@@ -56,6 +47,40 @@
             $_SESSION["business"] = $businessId;
             require_once(VIEWS_PATH."business-modify.php");
         }
+
+        public function ShowProfile(){
+            require_once(VIEWS_PATH."business-profile.php");
+        }
+
+
+        ////////////////// FUNCTIONAL METHODS //////////////////
+
+
+
+        public function DeleteBusiness($businessId){
+            $this->businessDAO->Delete($businessId);
+            echo "<script> if(confirm('La empresa ha sido eliminada'));";
+            echo "</script>";
+            $this->ShowListView();
+        }
+
+        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo){
+            $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
+            echo "<script> if(confirm('La empresa ha sido modificada'));";
+            echo "</script>";
+            $this->ShowListView();
+        }
+
+        public function SearchByName($businessName){
+            $_SESSION['business'] = $this->businessDAO->SearchByName($businessName);
+            $this->ShowProfile();
+        }
+
+        public function PressNameInList($id){
+            $_SESSION['business'] = $this->businessDAO->SearchById($id);
+            $this->ShowProfile();
+        }
+        
 
         public function Add($businessName,$employesQuantity,$businessInfo)
         {

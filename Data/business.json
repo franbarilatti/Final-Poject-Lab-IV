@@ -6,5 +6,45 @@
         "postulationList": null,
         "businessInfo": "Empresa lider en armamento ",
         "jobPositionList": null
+    },
+    {
+        "businessId": 24,
+        "businessName": "Monsters Inc.",
+        "employesQuantity": "350",
+        "postulationList": null,
+        "businessInfo": "Su principal rubro es asustar chicos para recolectar energia de sus gritos y asi sustentar la ciudad de Monstruopolis.",
+        "jobPositionList": null
+    },
+    {
+        "businessId": 131,
+        "businessName": "Abstergo",
+        "employesQuantity": "800",
+        "postulationList": null,
+        "businessInfo": "Empresa dirigida por templarios que busca controlar el mundo y para ello crearon el Animus, maquina que utiliza la memoria genetica, y asi viajar al pasado para descubrir donde estan los objetos de los precursores.",
+        "jobPositionList": null
+    },
+    {
+        "businessId": 825,
+        "businessName": "Gringotts",
+        "employesQuantity": "500",
+        "postulationList": null,
+        "businessInfo": "Banco del mundo magico ingles. Esta dirigido por duendes y tiene uno de los mejores sistemas de seguridad magico del mundo.",
+        "jobPositionList": null
+    },
+    {
+        "businessId": 435,
+        "businessName": "Umbrella Corp.",
+        "employesQuantity": "900",
+        "postulationList": null,
+        "businessInfo": "Empresa productora de medicamentos que se mando una macana enorme y lleno el mundo de zombies.\r\n",
+        "jobPositionList": null
+    },
+    {
+        "businessId": 741,
+        "businessName": "Capsule Corp",
+        "employesQuantity": "150",
+        "postulationList": null,
+        "businessInfo": "Empresa de tecnologia que se dedica a meter cosas enormes en diminutas capsulas.",
+        "jobPositionList": null
     }
 ]

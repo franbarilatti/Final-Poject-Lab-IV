@@ -28,7 +28,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Informacion de la empresa</label>
-                                   <input type="textarea" name="businessInfo" min= 1 value="" class="form-control" Required>
+                                   <textarea name="businessInfo" cols="30" rows="10"></textarea>
                               </div>
                          </div>
                     </div>
