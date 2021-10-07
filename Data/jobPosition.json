@@ -1,9 +1,23 @@
 [
     {
         "jobPositionId": 1,
-        "businessId": "5",
-        "title": "Seguridad",
-        "description": "Cuidar al dragon del banco",
+        "businessId": null,
+        "title": "asustador",
+        "description": "Hacer gritar a los chicos lo mas que puedas",
+        "active": true
+    },
+    {
+        "jobPositionId": 2,
+        "businessId": null,
+        "title": "tecnico de puerta",
+        "description": "Revisar que al asustador no le pase nada",
+        "active": true
+    },
+    {
+        "jobPositionId": 3,
+        "businessId": "2",
+        "title": "guardia",
+        "description": "Evitar que los asesinos entren a la compania",
         "active": true
     }
 ]

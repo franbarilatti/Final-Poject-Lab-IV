@@ -39,6 +39,18 @@
             return $this->studentList;
         }
 
+        public function GetLastId(){
+            $this->RetrieveData();
+            $idSerched = null;
+            if(empty($this->studentList)){
+                $idSerched = 1;
+            }else{
+                $lastStudent = array_pop($this->studentList);
+                $idSerched = $lastStudent->getStudentId() + 1;
+            }
+            return $idSerched;
+        }
+
         ///////////// JSON Methods /////////////
 
         private function SaveData()
@@ -77,27 +89,10 @@
             {
                 $arrayToDecode = json_decode($resp, true);
 
-                $this->businessList = $this->Mapping($arrayToDecode);
-
-                /*foreach($arrayToDecode as $valuesArray)
-                {
-                    $student = new Student();
-                    $student->setStudentId($valuesArray["studentId"]);
-                    $student->setCareerId($valuesArray["careerId"]);
-                    $student->setFirstName($valuesArray["firstName"]);
-                    $student->setLastName($valuesArray["lastName"]);
-                    $student->setDni($valuesArray["dni"]);
-                    $student->setFileNumber($valuesArray["fileNumber"]);
-                    $student->setGender($valuesArray["gender"]);
-                    $student->setBirthDate($valuesArray["birthDate"]);
-                    $student->setEmail($valuesArray["email"]);
-                    $student->setPhoneNumber($valuesArray["phoneNumber"]);
-                    $student->setActive($valuesArray["active"]);
-
-                    array_push($this->studentList, $student);
-                }*/
+                $this->studentList = $this->Mapping($arrayToDecode);
             }
         }
+        
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];

@@ -58,17 +58,25 @@
 
                 $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $postulation= new Postulation();
-                    $postulation->setPostulationId($valuesArray["postulationId"]);
-                    $postulation->setStudent($valuesArray["student"]);
-                    $postulation->setBusiness($valuesArray["business"]);
-                    $postulation->setJobPosition($valuesArray["jobPosition"]);
-                    $postulation->setActive($valuesArray["active"]);
-                    array_push($this->postulationList, $postulation);
-                }
+                $this->postulationList = $this->Mapping($arrayToDecode);
+
             }
         }
+
+        protected function Mapping($value) {
+
+			$value = is_array($value) ? $value : [];
+
+			$resp = array_map(function($p){
+				return new Postulation($p['postulationId'],
+                                    $p['student'],
+                                    $p['business'], 
+                                    $p['jobPosition'], 
+                                    $p['active']);
+			}, $value);
+
+            return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
+        }
     }
+
 ?>

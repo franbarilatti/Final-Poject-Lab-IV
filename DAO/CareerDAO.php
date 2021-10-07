@@ -69,15 +69,6 @@
                 $arrayToDecode = json_decode($resp, true);
 
                 $this->careerList = $this->Mapping($arrayToDecode);
-
-                /*foreach($arrayToDecode as $valuesArray)
-                {
-                    $career = new Career();
-                    $career->setCareerId($valuesArray["careerId"]);
-                    $career->setDescription($valuesArray["description"]);
-                    $career->setActive($valuesArray["active"]);
-                    array_push($this->careerList, $career);
-                }*/
             }
         }
 

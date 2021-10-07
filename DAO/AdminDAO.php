@@ -46,19 +46,16 @@
 
             $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
             
-            file_put_contents('Data/admin
-            .json', $jsonContent);
+            file_put_contents('Data/admin.json', $jsonContent);
         }
 
         private function RetrieveData()
         {
             $this->adminList = array();
 
-            if(file_exists('Data/admin
-            .json'))
+            if(file_exists('Data/admin.json'))
             {
-                $jsonContent = file_get_contents('Data/admin
-                .json');
+                $jsonContent = file_get_contents('Data/admin.json');
 
                 $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 

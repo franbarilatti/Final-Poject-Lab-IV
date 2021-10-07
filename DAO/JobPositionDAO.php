@@ -36,7 +36,17 @@
             return $findedList;
         }
 
-
+        public function GetLastId(){
+            $this->RetrieveData();
+            $idSerched = null;
+            if(empty($this->jobPositionList)){
+                $idSerched = 1;
+            }else{
+                $lastJobPosition = array_pop($this->jobPositionList);
+                $idSerched = $lastJobPosition->getJobPositionId() + 1;
+            }
+            return $idSerched;
+        }
 
         ///////////// JSON Methods /////////////
 
@@ -71,16 +81,6 @@
                 $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 
                 $this->jobPositionList = $this->Mapping($arrayToDecode);
-                /*foreach($arrayToDecode as $valuesArray)
-                {
-                    $jobPosition = new JobPosition();
-                    $jobPosition->setJobPositionId($valuesArray["jobPositionId"]);
-                    $jobPosition->setBusinessId($valuesArray["businesId"]);
-                    $jobPosition->setTitle($valuesArray["title"]);
-                    $jobPosition->setDescription($valuesArray["description"]);
-                    $jobPosition->setActive($valuesArray["active"]);
-                    array_push($this->jobPositionList, $jobPosition);
-                }*/
             }
         }
 

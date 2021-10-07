@@ -27,14 +27,8 @@
 
         public function Add($idBusiness,$title,$description)
         {   
-            $jobPositionList = $this->JobPositionDAO->GetAll();
-            $lastJobPosition = array_pop($jobPositionList);
-            $jobPositionId = $lastJobPosition->getStudentId() + 1;
+            $jobPositionId = $this->jobPositionDAO->GetLastId();
             $jobPosition = new JobPosition($jobPositionId,$idBusiness,$title,$description,true);
-            $jobPosition->setJobPositionId(count($this->jobPositionDAO->GetAll())+1);
-            $jobPosition->setBusinessId($idBusiness);
-            $jobPosition->setTitle($title);
-            $jobPosition->setDescription($description);
 
             $this->jobPositionDAO->Add($jobPosition);
             $this->ShowAddView($idBusiness);

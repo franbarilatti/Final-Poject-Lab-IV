@@ -53,6 +53,18 @@ class BusinessDAO implements IBusinessDAO
             $this->SaveData();
         }
 
+        public function GetLastId(){
+            $this->RetrieveData();
+            $idSerched = null;
+            if(empty($this->businessList)){
+                $idSerched = 1;
+            }else{
+                $lastBusiness = array_pop($this->businessList);
+                $idSerched = $lastBusiness->getBusinessId() + 1;
+            }
+            return $idSerched;
+        }
+
         public function SearchByName($businessName){
             $this->RetrieveData();
             foreach($this->businessList as $business){
@@ -104,17 +116,6 @@ class BusinessDAO implements IBusinessDAO
                 $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 
                 $this->businessList = $this->Mapping($arrayToDecode);
-
-                /*foreach($arrayToDecode as $valuesArray)
-                {
-                    $business = new Business();
-                    $business->setBusinessId($valuesArray["businessId"]);
-                    $business->setBusinessName($valuesArray["businessName"]);
-                    $business->setEmployesQuantity($valuesArray["employesQuantity"]);
-                    $business->setBusinessInfo($valuesArray["businessInfo"]);
-
-                    array_push($this->businessList, $business);
-                }*/
             }
         }
 
