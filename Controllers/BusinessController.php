@@ -44,7 +44,7 @@
             $business->setBusinessName($businessName);
             $business->setEmployesQuantity($employesQuantity);
             $business->setBusinessInfo($businessInfo);
-            $_SESSION["business"] = $businessId;
+            $_SESSION["business"] = $business;
             require_once(VIEWS_PATH."business-modify.php");
         }
 

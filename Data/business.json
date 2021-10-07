@@ -1,8 +1,8 @@
 [
     {
-        "businessId": 1,
+        "businessId": "1",
         "businessName": "Stark Industries",
-        "employesQuantity": "654",
+        "employesQuantity": "123",
         "postulationList": null,
         "businessInfo": "Empresa con la mejor tecnologia en armamento dirigida por Tony Stark (Iron-Man).",
         "jobPositionList": null

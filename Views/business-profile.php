@@ -8,6 +8,7 @@
     use Models\Business as Business;
 
     $business = $_SESSION['business'];
+    echo var_dump($business);
 
 ?>
 
