@@ -8,7 +8,7 @@
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4">Agregar Nueva Oferta</h2>
-               <form action="<?php echo FRONT_ROOT ?>JobPosition/Add?$idBusiness=<?php echo $idBusiness;?>" method="post" class="bg-light-alpha p-5">
+               <form action="<?php echo FRONT_ROOT ?>JobPosition/Add" method="post" class="bg-light-alpha p-5">
                     <div class="col">                         
                          <div class="col-lg-4">
                               
@@ -16,6 +16,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Titulo</label>
+                                   <input type="hidden" name="idBusiness" value="<?php echo $idBusiness;?>">
                                    <input type="text" name="title" value="" class="form-control" Required>
                               </div>
                          </div>

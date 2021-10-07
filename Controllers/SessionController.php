@@ -42,7 +42,10 @@ class SessionController{
                     $homeController->Index("mail o contraseña incorrectas");
                 }
         }
-    }
 
+        public function Logout(){
+            require_once(FRONT_ROOT."index.php");
+        }   
+    }
 
 ?>
