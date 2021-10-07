@@ -14,9 +14,29 @@
         private $phoneNumber;
         private $active;
 
-        public function __construct()
+        public function __construct($studentId,
+                        $careerId,
+                        $firstName,
+                        $lastName,
+                        $dni,
+                        $fileNumber,
+                        $gender,
+                        $birthDate,
+                        $email,
+                        $phoneNumber,
+                        $active)
         {
-            
+                $this->studentId =$studentId;
+                $this->careerId =$careerId;
+                $this->firstName =$firstName;
+                $this->lastName =$lastName;
+                $this->dni =$dni;
+                $this->fileNumber =$fileNumber;
+                $this->gender =$gender;
+                $this->birthDate =$birthDate;
+                $this->email =$email;
+                $this->phoneNumber =$phoneNumber;
+                $this->active =$active;
         }
 
         ////////// GETTERS METHODS //////////

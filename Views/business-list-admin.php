@@ -1,16 +1,3 @@
-<?php
-    require_once("Config/Autoload.php");
-    use Config\Autoload as Autoload;
-
-    Autoload::Start();
-
-    use DAO\BusinessDAO as BusinessDAO;
-
-    $repository = new BusinessDAO;
-
-    $businessList = $repository->GetAll();
-
-?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">

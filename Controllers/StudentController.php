@@ -29,21 +29,13 @@
             require_once(VIEWS_PATH."studentMain.php");
         }
 
-        public function Add($careerId, $firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active)
+        public function Add($careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active)
         {
-            $student = new Student();
-            $student->setStudentId(count($this->studentDAO->GetAll())+1);
-            $student->setCareerId($careerId);
-            $student->setFirstName($firstName);
-            $student->setLastName($lastName);
-            $student->setDni($dni);
-            $student->setFileNumber($fileNumber);
-            $student->setGender($gender);
-            $student->setBirthDate($birthDate);
-            $student->setEmail($email);
-            $student->setPhoneNumber($phoneNumber);
-            $student->setActive($active);
 
+            $studentList = $this->studentDAO->GetAll();
+            $lastStudent = array_pop($studentList);
+            $studentId = $lastStudent->getStudentId() + 1;
+            $student = new Student($studentId,$careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active);
             $this->studentDAO->Add($student);
 
             $this->ShowAddView();

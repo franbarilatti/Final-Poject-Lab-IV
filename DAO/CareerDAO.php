@@ -20,6 +20,8 @@
             curl_setopt($this->ch,CURLOPT_HTTPHEADER,$this->header);
         }
 
+        ///////////// Functional Methods /////////////
+
         public function Add(Career $career)
         {
             $this->RetrieveData();
@@ -35,6 +37,8 @@
 
             return $this->careerList;
         }
+
+        ///////////// JSON Methods /////////////
 
         private function SaveData()
         {
@@ -64,15 +68,28 @@
             {
                 $arrayToDecode = json_decode($resp, true);
 
-                foreach($arrayToDecode as $valuesArray)
+                $this->careerList = $this->Mapping($arrayToDecode);
+
+                /*foreach($arrayToDecode as $valuesArray)
                 {
                     $career = new Career();
                     $career->setCareerId($valuesArray["careerId"]);
                     $career->setDescription($valuesArray["description"]);
                     $career->setActive($valuesArray["active"]);
                     array_push($this->careerList, $career);
-                }
+                }*/
             }
+        }
+
+        protected function Mapping($value) {
+
+			$value = is_array($value) ? $value : [];
+
+			$resp = array_map(function($p){
+				return new Career($p['careerId'], $p['description'], $p['active']);
+			}, $value);
+
+            return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
         }
 }
 ?>

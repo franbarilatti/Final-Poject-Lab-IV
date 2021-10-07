@@ -22,8 +22,18 @@ class SessionController{
                     $i++;
                 }
                 if($i< count($studentList)){
-                    $student = new Student();
-                    $student->setStudentId($studentList[$i]->getStudentId());
+                    $student = new Student($studentList[$i]->getStudentId(),
+                                           $studentList[$i]->getCareerId(),
+                                           $studentList[$i]->getFirstName(),
+                                           $studentList[$i]->getLastName(),
+                                           $studentList[$i]->getDni(),
+                                           $studentList[$i]->getFileNumber(),
+                                           $studentList[$i]->getGender(),
+                                           $studentList[$i]->getBirthDate(),
+                                           $studentList[$i]->getEmail(),
+                                           $studentList[$i]->getPhoneNumber(),
+                                           $studentList[$i]->getActive());
+                    /*$student->setStudentId($studentList[$i]->getStudentId());
                     $student->setCareerId($studentList[$i]->getCareerId());
                     $student->setFirstName($studentList[$i]->getFirstName());
                     $student->setLastName($studentList[$i]->getLastName());
@@ -33,7 +43,7 @@ class SessionController{
                     $student->setBirthDate($studentList[$i]->getBirthDate());
                     $student->setEmail($studentList[$i]->getEmail());
                     $student->setPhoneNumber($studentList[$i]->getPhoneNumber());
-                    $student->setActive($studentList[$i]->getActive());
+                    $student->setActive($studentList[$i]->getActive());*/
                     $_SESSION["student"] = $student;
 
                     header("location:".FRONT_ROOT."Student/ShowStudentMain");

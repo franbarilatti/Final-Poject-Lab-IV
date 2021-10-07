@@ -7,13 +7,13 @@
         private $businessId;
         private $businessName;
         private $employesQuantity;
-        private $postulationList;
         private $businessInfo;
-        private $jobPositionList;
 
-        public function __construct(){
-                $this->postulationList = null;
-                $this->jobPositionList = null;
+        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo){
+                $this->businessId =$businessId;
+                $this->businessName = $businessName;
+                $this->employesQuantity = $employesQuantity;
+                $this->businessInfo = $businessInfo;
         }         
     
         ////////// GETTERS METHODS //////////
@@ -34,23 +34,11 @@
                 return $this->employesQuantity;
         }
 
-
-        public function getPostulationList()
-        {
-                return $this->postulationList;
-        }
-
-
         public function getBusinessInfo()
         {
                 return $this->businessInfo;
         }
 
-
-        public function getJobPositionList()
-        {
-                return $this->jobPositionList;
-        }
 
         ////////// SETTERS METHODS //////////
 
@@ -76,14 +64,6 @@
                 return $this;
         }
 
-
-        public function setPostulationList($postulationList)
-        {
-                $this->postulationList = $postulationList;
-
-                return $this;
-        }
-
  
         public function setBusinessInfo($businessInfo)
         {
@@ -92,13 +72,7 @@
                 return $this;
         }
 
- 
-        public function setJobPositionList($jobPositionList)
-        {
-                $this->jobPositionList = $jobPositionList;
 
-                return $this;
-        }
  
         
     }

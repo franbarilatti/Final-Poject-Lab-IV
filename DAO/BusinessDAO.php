@@ -33,21 +33,19 @@ class BusinessDAO implements IBusinessDAO
         public function GetAll()
         {
             $this->RetrieveData();
-
             return $this->businessList;
         }
+        
+        
 
         public function Modify($businessId, $businessName, $employesQuantity, $businessInfo)
         {
             $this->RetrieveData();
-            $newBusiness = new Business();
+            
             foreach($this->businessList as $business){
                 if($business->getBusinessId() == $businessId){
                     $this->Delete($businessId);
-                    $newBusiness->setBusinessId($businessId);
-                    $newBusiness->setBusinessName($businessName);
-                    $newBusiness->setEmployesQuantity($employesQuantity);
-                    $newBusiness->setBusinessInfo($businessInfo);
+                    $newBusiness = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
                     array_push($this->businessList,$newBusiness);
                 }
             }
@@ -85,9 +83,7 @@ class BusinessDAO implements IBusinessDAO
                 $valuesArray["businessId"] = $business->getBusinessId();
                 $valuesArray["businessName"] = $business->getBusinessName();
                 $valuesArray["employesQuantity"] = $business->getEmployesQuantity();
-                $valuesArray["postulationList"] = $business->getPostulationList();
                 $valuesArray["businessInfo"] = $business->getBusinessInfo();
-                $valuesArray["jobPositionList"] = $business->getJobPositionList();
                 
                 array_push($arrayToEncode, $valuesArray);
             }
@@ -107,19 +103,36 @@ class BusinessDAO implements IBusinessDAO
 
                 $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 
-                foreach($arrayToDecode as $valuesArray)
+                $this->businessList = $this->Mapping($arrayToDecode);
+
+                /*foreach($arrayToDecode as $valuesArray)
                 {
                     $business = new Business();
                     $business->setBusinessId($valuesArray["businessId"]);
                     $business->setBusinessName($valuesArray["businessName"]);
                     $business->setEmployesQuantity($valuesArray["employesQuantity"]);
-                    $business->setPostulationList($valuesArray["postulationList"]);
                     $business->setBusinessInfo($valuesArray["businessInfo"]);
-                    $business->setJobPositionList($valuesArray["jobPositionList"]);
 
                     array_push($this->businessList, $business);
-                }
+                }*/
             }
+        }
+
+        /**
+		* Transforma el listado de usuario en
+		* objetos de la clase Usuario
+		*
+		* @param  Array $gente Listado de personas a transformar
+		*/
+		protected function Mapping($value) {
+
+			$value = is_array($value) ? $value : [];
+
+			$resp = array_map(function($p){
+				return new Business($p['businessId'], $p['businessName'], $p['employesQuantity'], $p['businessInfo']);
+			}, $value);
+
+            return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
         }
     }
 ?>

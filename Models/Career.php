@@ -6,9 +6,11 @@
         private $description;
         private $active;
 
-        public function __construct()
+        public function __construct($careerId,$description,$active)
         {
-            
+                $this->careerId = $careerId;
+                $this->description = $description;
+                $this->active = $active;
         }
 
         ////////// GETTERS METHODS //////////

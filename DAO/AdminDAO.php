@@ -7,6 +7,9 @@
     class AdminDAO implements IAdminDAO
     {
         private $adminList = array();
+        
+
+        ///////////// Functional Methods /////////////
 
         public function Add(Admin $admin)
         {
@@ -23,6 +26,9 @@
 
             return $this->adminList;
         }
+        
+
+        ///////////// JSON Methods /////////////
 
         private function SaveData()
         {

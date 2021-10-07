@@ -21,19 +21,16 @@
 
         public function ShowListViewStudent($idBusiness)
         {   
-            $finded = array();
-            foreach ($this->jobPositionDAO as $jobPosition) {
-                if ($jobPosition->getBusinessId() == $idBusiness) {
-                    array_push($finded,$jobPosition);
-                }
-            }
-            $_SESSION['finded'] = $finded;
+            $jobPositionList = $this->jobPositionDAO->FilterById($idBusiness);
             require_once(VIEWS_PATH."jobPosition-list-student.php");
         }
 
         public function Add($idBusiness,$title,$description)
-        {
-            $jobPosition = new JobPosition();
+        {   
+            $jobPositionList = $this->JobPositionDAO->GetAll();
+            $lastJobPosition = array_pop($jobPositionList);
+            $jobPositionId = $lastJobPosition->getStudentId() + 1;
+            $jobPosition = new JobPosition($jobPositionId,$idBusiness,$title,$description,true);
             $jobPosition->setJobPositionId(count($this->jobPositionDAO->GetAll())+1);
             $jobPosition->setBusinessId($idBusiness);
             $jobPosition->setTitle($title);

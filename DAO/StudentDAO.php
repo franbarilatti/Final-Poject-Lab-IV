@@ -20,6 +20,9 @@
             curl_setopt($this->ch,CURLOPT_HTTPHEADER,$this->header);
         }
 
+
+        ///////////// Functional Methods /////////////
+
         public function Add(Student $student)
         {
             $this->RetrieveData();
@@ -35,6 +38,8 @@
 
             return $this->studentList;
         }
+
+        ///////////// JSON Methods /////////////
 
         private function SaveData()
         {
@@ -72,7 +77,9 @@
             {
                 $arrayToDecode = json_decode($resp, true);
 
-                foreach($arrayToDecode as $valuesArray)
+                $this->businessList = $this->Mapping($arrayToDecode);
+
+                /*foreach($arrayToDecode as $valuesArray)
                 {
                     $student = new Student();
                     $student->setStudentId($valuesArray["studentId"]);
@@ -88,8 +95,28 @@
                     $student->setActive($valuesArray["active"]);
 
                     array_push($this->studentList, $student);
-                }
+                }*/
             }
+        }
+        protected function Mapping($value) {
+
+			$value = is_array($value) ? $value : [];
+
+			$resp = array_map(function($p){
+				return new Student($p['studentId'], 
+                                   $p['careerId'], 
+                                   $p['firstName'], 
+                                   $p['lastName'],
+                                   $p['dni'],
+                                   $p['fileNumber'],
+                                   $p['gender'],
+                                   $p['birthDate'],
+                                   $p['email'],
+                                   $p['phoneNumber'],
+                                   $p['active']);
+			}, $value);
+
+            return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
         }
 }
 ?>

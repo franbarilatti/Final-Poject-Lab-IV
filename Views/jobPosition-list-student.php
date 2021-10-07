@@ -1,9 +1,4 @@
-<?php
-    $jobPositionList = $_SESSION['finded'];
-    var_dump($_SESSION['finded']);
-
-?>
-
+<?php var_dump($jobPositionList); ?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">
@@ -18,7 +13,7 @@
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de alumnos</h2>
+               <h2 class="mb-4">Listado de ofertas</h2>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Titulo</th>
@@ -33,7 +28,7 @@
                                              <td><?php echo $jobPosition->getTitle();?></td>
                                              <td><?php echo $jobPosition->getDescription(); ?></td>
                                              <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$id=<?php echo $business->getBusinessId();?>">Ofertas</a> 
+                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$id=<?php echo $business->getBusinessId();?>">Postularse</a> 
                                              </td>
                                         </tr>
                                    <?php

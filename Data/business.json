@@ -1,34 +1,26 @@
 [
     {
-        "businessId": "1",
-        "businessName": "Stark Industries",
-        "employesQuantity": "123",
-        "postulationList": null,
-        "businessInfo": "Empresa con la mejor tecnologia en armamento dirigida por Tony Stark (Iron-Man).",
-        "jobPositionList": null
+        "businessId": 1,
+        "businessName": "Abstergo",
+        "employesQuantity": "65445",
+        "businessInfo": "sdfsfsdfsf"
+    },
+    {
+        "businessId": 1,
+        "businessName": "SHIELD",
+        "employesQuantity": "964",
+        "businessInfo": "Esta empresa protege al mundo de supervillanos usando superheroes."
     },
     {
         "businessId": 2,
+        "businessName": "Stark Industries",
+        "employesQuantity": "8989",
+        "businessInfo": "sdfsdsdfsdf"
+    },
+    {
+        "businessId": 3,
         "businessName": "Monsters Inc.",
-        "employesQuantity": "887",
-        "postulationList": null,
-        "businessInfo": "Empresa que asusta chicos para abastecer de energia a Monstruopolis.",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 4,
-        "businessName": "Abstergo",
-        "employesQuantity": "664",
-        "postulationList": null,
-        "businessInfo": "Empresa liderada por templarios que buscan controlar el mundo utilizando los objetos de los precursores.",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 5,
-        "businessName": "Gringotts",
-        "employesQuantity": "712",
-        "postulationList": null,
-        "businessInfo": "Banco del mundo magico ingles dirigido por duendes.",
-        "jobPositionList": null
+        "employesQuantity": "31231",
+        "businessInfo": "asdfdfsdfsf"
     }
 ]

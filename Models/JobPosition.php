@@ -10,10 +10,17 @@ class JobPosition{
         private $description;
         private $active;
 
-        public function __construct()
+        public function __construct($jobPositionId,
+                                    $businessId,
+                                    $title,
+                                    $description,
+                                    $active)
         {
-            $this->jobPositionId = rand(1000000,9999999);
-            $this->active = true;
+                $this->jobPositionId = $jobPositionId;
+                $this->businessId = $businessId;
+                $this->title = $title;
+                $this->description = $description;
+                $this->active = $active;
         }
 
         ////////// GETTERS METHODS //////////

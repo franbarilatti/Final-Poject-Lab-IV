@@ -24,29 +24,23 @@
 
         public function ShowListViewAdmin()
         {
+            $businessList = $this->businessDAO->GetAll();
             require_once(VIEWS_PATH."business-list-admin.php");
         }
 
         public function ShowListViewStudent()
         {
+            $businessList = $this->businessDAO->GetAll();
             require_once(VIEWS_PATH."business-list-student.php");
         }
 
         public function ShowOneBusiness($businessName){
-            $businessList = $this->businessDAO->GetAll();
-            foreach($businessList as $business){
-                if($business->getBusinessName() == $businessName){
-                    require_once(VIEWS_PATH."business-list.php");
-                }
-            }
+            $businessList = $this->businessDAO->SearchByName($businessName);
+            require_once(VIEWS_PATH."business-list.php");
         }
 
         public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
-            $business = new Business();
-            $business->setBusinessId($businessId);
-            $business->setBusinessName($businessName);
-            $business->setEmployesQuantity($employesQuantity);
-            $business->setBusinessInfo($businessInfo);
+            $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
             $_SESSION["business"] = $business;
             require_once(VIEWS_PATH."business-modify.php");
         }
@@ -86,12 +80,11 @@
         
 
         public function Add($businessName,$employesQuantity,$businessInfo)
-        {
-            $business = new Business();
-            $business->setBusinessId(count($this->businessDAO->GetAll())+1);
-            $business->setBusinessName($businessName);
-            $business->setEmployesQuantity($employesQuantity);
-            $business->setBusinessInfo($businessInfo);
+        {   
+            $businessList = $this->businessDAO->GetAll();
+            $lastBusiness = array_pop($businessList);
+            $businessId = $lastBusiness->getBusinessId() + 1;
+            $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
             $this->businessDAO->Add($business);
             echo "<script> if(confirm('empresa cargada con exito'));";
             echo "</script>";

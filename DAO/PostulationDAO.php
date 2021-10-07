@@ -8,6 +8,8 @@
     {
         private $postulationList = array();
 
+        ///////////// Functional Methods /////////////
+
         public function Add(Postulation $postulation)
         {
             $this->RetrieveData();
@@ -24,6 +26,7 @@
             return $this->postulationList;
         }
 
+        ///////////// JSON Methods /////////////
 
         private function SaveData()
         {
