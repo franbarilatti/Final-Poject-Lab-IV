@@ -15,7 +15,7 @@ class SessionController{
             $studentList = $studenRepo->GetAll();
                 $i = 0;
                 if($email == "admin@admin.com"){
-                   // $_SESSION["admin"];
+
                    header("location:".FRONT_ROOT."Admin/ShowAdminMainView");
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
@@ -36,7 +36,7 @@ class SessionController{
                     $student->setActive($studentList[$i]->getActive());
                     $_SESSION["student"] = $student;
 
-                    header("location:".FRONT_ROOT."Admin/ShowStudentMain");
+                    header("location:".FRONT_ROOT."Student/ShowStudentMain");
                 }else{
                     $homeController = new HomeController();
                     $homeController->Index("mail o contraseña incorrectas");

@@ -5,6 +5,7 @@ use tidy;
 
 class JobPosition{
         private $jobPositionId;
+        private $businessId;
         private $title;
         private $description;
         private $active;
@@ -19,6 +20,11 @@ class JobPosition{
         public function getJobPositionId()
         {
                 return $this->jobPositionId;
+        }
+
+        public function getBusinessId()
+        {
+                return $this->businessId;
         }
         
         public function getDescription()
@@ -43,6 +49,13 @@ class JobPosition{
         public function setJobPositionId($jobPositionId)
         {
                 $this->jobPositionId = $jobPositionId;
+
+                return $this;
+        }
+
+        public function setBusinessId($businessId)
+        {
+                $this->businessId = $businessId;
 
                 return $this;
         }

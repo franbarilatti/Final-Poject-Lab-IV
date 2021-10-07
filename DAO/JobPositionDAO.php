@@ -49,6 +49,7 @@ $active
             foreach($this->jobPositionList as $jobPosition)
             {
                 $valuesArray["jobPositionId"] = $jobPosition->getJobPositionId();
+                $valuesArray["businessId"] = $jobPosition->getBusinessId();
                 $valuesArray["title"] = $jobPosition->getTitle();
                 $valuesArray["description"] = $jobPosition->getDescription();
                 $valuesArray["active"] = $jobPosition->getActive();
@@ -75,6 +76,7 @@ $active
                 {
                     $jobPosition = new JobPosition();
                     $jobPosition->setJobPositionId($valuesArray["jobPositionId"]);
+                    $jobPosition->setBusinessId($valuesArray["businesId"]);
                     $jobPosition->setTitle($valuesArray["title"]);
                     $jobPosition->setDescription($valuesArray["description"]);
                     $jobPosition->setActive($valuesArray["active"]);

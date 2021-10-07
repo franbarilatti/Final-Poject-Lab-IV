@@ -29,10 +29,10 @@
             require_once(VIEWS_PATH."studentMain.php");
         }
 
-        public function Add($studentId, $careerId, $firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active)
+        public function Add($careerId, $firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,$active)
         {
             $student = new Student();
-            $student->setStudentId($studentId);
+            $student->setStudentId(count($this->studentDAO->GetAll())+1);
             $student->setCareerId($careerId);
             $student->setFirstName($firstName);
             $student->setLastName($lastName);

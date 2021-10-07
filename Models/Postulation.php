@@ -11,7 +11,6 @@
 
         public function __construct()
         {
-            $this->postulationId = rand(1000000,9999999);
             $this->active = true;
         }
 

@@ -28,7 +28,7 @@
                                         <tr>
                                              <td><?php echo $business->getBusinessId(); ?></td>
                                              <td>
-                                                  <a href="<?php echo FRONT_ROOT ?>Business/PressNameInList?$id"><?php echo $business->getBusinessName(); ?></a></td>
+                                                  <a href="<?php echo FRONT_ROOT ?>Business/ShowProfile"><?php echo $business->getBusinessName(); ?></a></td>
                                              <td><?php echo $business->getEmployesQuantity(); ?></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
                                              <td>
@@ -41,7 +41,7 @@
                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownoptions">
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId();?>&$businessName=<?php echo $business->getBusinessName();?>&$employesQuantity=<?php echo $business->getEmployesQuantity();?>&$businessInfo=<?php echo $business->getBusinessInfo();?>">Modificar</a></li>
-                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowAddView">Agregar Nuevo Puesto</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowAddView?$id=<?php echo $business->getBusinessId();?>">Agregar Nuevo Puesto</a></li>
                                                        </ul>
                                                   </div>
                                              </td>
@@ -54,7 +54,6 @@
                     
                </table>
           </div>
-          <a href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView">Volver al Main</a>
 
      </section>
 </main>

@@ -13,8 +13,9 @@
             $this->jobPositionDAO = new JobPositionDAO();
         }
 
-        public function ShowAddView()
+        public function ShowAddView($idBusiness)
         {
+            $_SESSION['idBusiness'] = $idBusiness;
             require_once(VIEWS_PATH."jobPosition-add.php");
         }
 
@@ -29,14 +30,16 @@
             require_once(VIEWS_PATH."studentMain.php");
         }
 
-        public function Add($title,$description)
+        public function Add($idBusiness,$title,$description)
         {
             $jobPosition = new JobPosition();
+            $jobPosition->setJobPositionId(count($this->jobPositionDAO->GetAll())+1);
+            $jobPosition->setBusinessId($idBusiness);
             $jobPosition->setTitle($title);
             $jobPosition->setDescription($description);
 
             $this->jobPositionDAO->Add($jobPosition);
-            $this->ShowAddView();
+            $this->ShowAddView($idBusiness);
         }
     }
 ?>

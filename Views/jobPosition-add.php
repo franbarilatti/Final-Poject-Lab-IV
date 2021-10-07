@@ -1,5 +1,5 @@
 <?php
-
+     $idBusiness = $_SESSION['idBusiness'];
 ?>
 <head>
      <title>Nueva Oferta de trabajo</title>
@@ -8,7 +8,7 @@
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4">Agregar Nueva Oferta</h2>
-               <form action="<?php echo FRONT_ROOT ?>JobPosition/Add" method="post" class="bg-light-alpha p-5">
+               <form action="<?php echo FRONT_ROOT ?>JobPosition/Add?$idBusiness=<?php echo $idBusiness;?>" method="post" class="bg-light-alpha p-5">
                     <div class="col">                         
                          <div class="col-lg-4">
                               

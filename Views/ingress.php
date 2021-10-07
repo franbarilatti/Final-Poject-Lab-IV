@@ -11,9 +11,6 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>MyJob</title>
      <style>
-          body{
-               
-          }
           .bg{
                background-image: url(Views/img/myjob.png);
                background-position: center center;

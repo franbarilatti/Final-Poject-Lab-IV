@@ -1,50 +1,34 @@
 [
     {
-        "businessId": 728,
+        "businessId": 1,
         "businessName": "Stark Industries",
-        "employesQuantity": "500",
+        "employesQuantity": "654",
         "postulationList": null,
-        "businessInfo": "Empresa lider en armamento ",
+        "businessInfo": "Empresa con la mejor tecnologia en armamento dirigida por Tony Stark (Iron-Man).",
         "jobPositionList": null
     },
     {
-        "businessId": 24,
+        "businessId": 2,
         "businessName": "Monsters Inc.",
-        "employesQuantity": "350",
+        "employesQuantity": "887",
         "postulationList": null,
-        "businessInfo": "Su principal rubro es asustar chicos para recolectar energia de sus gritos y asi sustentar la ciudad de Monstruopolis.",
+        "businessInfo": "Empresa que asusta chicos para abastecer de energia a Monstruopolis.",
         "jobPositionList": null
     },
     {
-        "businessId": 131,
+        "businessId": 4,
         "businessName": "Abstergo",
-        "employesQuantity": "800",
+        "employesQuantity": "664",
         "postulationList": null,
-        "businessInfo": "Empresa dirigida por templarios que busca controlar el mundo y para ello crearon el Animus, maquina que utiliza la memoria genetica, y asi viajar al pasado para descubrir donde estan los objetos de los precursores.",
+        "businessInfo": "Empresa liderada por templarios que buscan controlar el mundo utilizando los objetos de los precursores.",
         "jobPositionList": null
     },
     {
-        "businessId": 825,
+        "businessId": 5,
         "businessName": "Gringotts",
-        "employesQuantity": "500",
+        "employesQuantity": "712",
         "postulationList": null,
-        "businessInfo": "Banco del mundo magico ingles. Esta dirigido por duendes y tiene uno de los mejores sistemas de seguridad magico del mundo.",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 435,
-        "businessName": "Umbrella Corp.",
-        "employesQuantity": "900",
-        "postulationList": null,
-        "businessInfo": "Empresa productora de medicamentos que se mando una macana enorme y lleno el mundo de zombies.\r\n",
-        "jobPositionList": null
-    },
-    {
-        "businessId": 741,
-        "businessName": "Capsule Corp",
-        "employesQuantity": "150",
-        "postulationList": null,
-        "businessInfo": "Empresa de tecnologia que se dedica a meter cosas enormes en diminutas capsulas.",
+        "businessInfo": "Banco del mundo magico ingles dirigido por duendes.",
         "jobPositionList": null
     }
 ]

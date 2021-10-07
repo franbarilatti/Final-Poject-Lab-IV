@@ -85,6 +85,7 @@
         public function Add($businessName,$employesQuantity,$businessInfo)
         {
             $business = new Business();
+            $business->setBusinessId(count($this->businessDAO->GetAll())+1);
             $business->setBusinessName($businessName);
             $business->setEmployesQuantity($employesQuantity);
             $business->setBusinessInfo($businessInfo);
