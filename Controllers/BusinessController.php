@@ -22,11 +22,14 @@
             require_once(VIEWS_PATH."business-add.php");
         }
 
-        public function ShowListView()
+        public function ShowListViewAdmin()
         {
-            $businessList = $this->businessDAO->GetAll();
+            require_once(VIEWS_PATH."business-list-admin.php");
+        }
 
-            require_once(VIEWS_PATH."business-list.php");
+        public function ShowListViewStudent()
+        {
+            require_once(VIEWS_PATH."business-list-student.php");
         }
 
         public function ShowOneBusiness($businessName){
@@ -61,14 +64,14 @@
             $this->businessDAO->Delete($businessId);
             echo "<script> if(confirm('La empresa ha sido eliminada'));";
             echo "</script>";
-            $this->ShowListView();
+            $this->ShowListViewAdmin();
         }
 
         public function Modify($businessId, $businessName, $employesQuantity, $businessInfo){
             $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
             echo "<script> if(confirm('La empresa ha sido modificada'));";
             echo "</script>";
-            $this->ShowListView();
+            $this->ShowListViewAdmin();
         }
 
         public function SearchByName($businessName){

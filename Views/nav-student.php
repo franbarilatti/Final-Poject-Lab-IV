@@ -1,18 +1,4 @@
-<?php 
-  namespace Views;
-  require_once "header.php";
-  require_once "nav-admin.php";
-  require_once "footer.php";
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-</head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     </button>
@@ -22,11 +8,14 @@
           <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT ?>index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowAddView">Añadir Emp</a>
+          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowAddView">Ver Postulaciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business/ShowListViewAdmin" >Ver empresas</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business/ShowListViewStudent" >Ver empresas</a>
         </li>
+        <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>index.php">Logout</a>
+        </li> 
       </ul>
       <form class="d-flex"  action="<?php echo FRONT_ROOT ?>Business/SearchByName" method="post">
         <input class="form-control me-2" name="businessName" type="text" placeholder="Search" aria-label="Search">
@@ -35,7 +24,3 @@
     </div>
   </div>
 </nav>
-<body>
-    <h1>Admin</h1>
-</body>
-</html>

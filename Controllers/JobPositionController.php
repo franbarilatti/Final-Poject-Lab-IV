@@ -19,15 +19,16 @@
             require_once(VIEWS_PATH."jobPosition-add.php");
         }
 
-        public function ShowListView()
-        {
-            $jobPositionList = $this->jobPositionDAO->GetAll();
-
-            require_once(VIEWS_PATH."student-list.php");
-        }
-
-        public function ShowJobPositionMain(){
-            require_once(VIEWS_PATH."studentMain.php");
+        public function ShowListViewStudent($idBusiness)
+        {   
+            $finded = array();
+            foreach ($this->jobPositionDAO as $jobPosition) {
+                if ($jobPosition->getBusinessId() == $idBusiness) {
+                    array_push($finded,$jobPosition);
+                }
+            }
+            $_SESSION['finded'] = $finded;
+            require_once(VIEWS_PATH."jobPosition-list-student.php");
         }
 
         public function Add($idBusiness,$title,$description)
