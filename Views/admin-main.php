@@ -1,8 +1,8 @@
 <?php 
   namespace Views;
-  require_once "header.php";
+  /*require_once "header.php";
   require_once "nav-admin.php";
-  require_once "footer.php";
+  require_once "footer.php";*/
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -22,10 +22,10 @@
           <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT ?>index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowAddView">Añadir Emp</a>
+          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business?opcion=add">Añadir Emp</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business/ShowListViewAdmin" >Ver empresas</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business?opcion=list" >Ver empresas</a>
         </li>
       </ul>
       <form class="d-flex"  action="<?php echo FRONT_ROOT ?>Business/SearchByName" method="post">

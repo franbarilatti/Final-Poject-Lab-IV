@@ -16,7 +16,7 @@ class SessionController{
                 $i = 0;
                 if($email == "admin@admin.com"){
 
-                   header("location:".FRONT_ROOT."Admin/ShowAdminMainView");
+                   header("location:".FRONT_ROOT."Admin");
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
                     $i++;
@@ -54,7 +54,7 @@ class SessionController{
         }
 
         public function Logout(){
-            require_once(FRONT_ROOT."index.php");
+            header("location: ../index.php");
         }   
     }
 

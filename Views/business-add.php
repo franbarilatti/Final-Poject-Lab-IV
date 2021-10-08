@@ -33,7 +33,7 @@
                          </div>
                     </div>
                     <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>
-                    <a href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView">Volver al Main</a>
+                    <a href="<?php echo FRONT_ROOT ?>Admin">Volver al Main</a>
                </form>
           </div>
      </section>

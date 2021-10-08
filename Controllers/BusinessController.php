@@ -88,6 +88,20 @@
             echo "</script>";
             $this->ShowAddView();
         }
+        
+        public function Index($opcion){
+            if($opcion=="add"){
+                $title= "Agregar empresa";
+                require_once (VIEWS_PATH."header.php");
+                $this->ShowAddView();
+            }else{
+                $title= "Lista de empresas";
+                require_once (VIEWS_PATH."header.php");
+                $this->ShowListViewAdmin();
+            }
+            
+            //$this->ShowAdminMainView();
+        }
 
     }
 

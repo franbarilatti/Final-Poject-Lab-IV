@@ -2,7 +2,7 @@
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView "> Volver al Main</a>
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin"> Volver al Main</a>
           </li>
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout" >logout</a>
@@ -12,12 +12,12 @@
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de alumnos</h2>
+               <h2 class="mb-4">Listado de Empresas</h2>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Id Empresa</th>
                          <th>Nombre</th>
-                         <th>Cantidad Emplados</th>
+                         <th>Cantidad Empleados</th>
                          <th>Informacion Empresa</th>
                     </thead>
                     <tbody>

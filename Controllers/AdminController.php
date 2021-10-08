@@ -15,6 +15,13 @@
         public function ShowAdminMainView(){
             require_once(VIEWS_PATH."admin-main.php");
         }
+        
+        public function Index(){
+            $title= "Admin";
+            require_once (VIEWS_PATH."header.php");
+            $this->ShowAdminMainView();
+
+        }
 
     }
 
