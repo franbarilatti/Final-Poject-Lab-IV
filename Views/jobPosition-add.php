@@ -1,5 +1,6 @@
 <?php
-     $idBusiness = $_SESSION['idBusiness'];
+     require_once "header.php";
+     //$idBusiness = $_SESSION['idBusiness'];
 ?>
 <head>
      <title>Nueva Oferta de trabajo</title>
@@ -16,7 +17,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Titulo</label>
-                                   <input type="hidden" name="idBusiness" value="<?php echo $idBusiness;?>">
+                                   <input type="hidden" name="businessId" value="<?php echo $businessId;?>">
                                    <input type="text" name="title" value="" class="form-control" Required>
                               </div>
                          </div>
@@ -29,6 +30,8 @@
                     </div>
                     <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>
                     <a href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView">Volver al Main</a>
+                    <br>
+                    <a href="<?php echo FRONT_ROOT ?>Business/ShowListViewAdmin">Volver al listado</a>
                </form>
           </div>
      </section>

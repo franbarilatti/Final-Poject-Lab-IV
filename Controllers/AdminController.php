@@ -1,7 +1,7 @@
 <?php
     namespace Controllers;
 
-    use DAO\AdminDAO as AdminDAO;
+    use DAO\AdminDAO;
 
     class AdminController
     {

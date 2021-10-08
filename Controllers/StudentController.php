@@ -37,5 +37,11 @@
 
             $this->ShowAddView();
         }
+
+        public function Index(){
+            $title = "Student";
+            require_once(VIEWS_PATH."header.php");
+            $this->ShowStudentMain();
+        }
     }
 ?>

@@ -4,21 +4,21 @@
     class Postulation{
 
         private $postulationId;
-        private $student;
-        private $business;
-        private $jobPosition;
+        private $studentId;
+        private $businessId;
+        private $jobPositionId;
         private $active;
 
         public function __construct($postulationId,
-                                    $student,
-                                    $business,
-                                    $jobPosition,
+                                    $studentId,
+                                    $businessId,
+                                    $jobPositionId,
                                     $active)
         {
                 $this->postulationId =$postulationId;
-                $this->student =$student;
-                $this->business =$business;
-                $this->jobPosition =$jobPosition;
+                $this->studentId =$studentId;
+                $this->businessId =$businessId;
+                $this->jobPositionId =$jobPositionId;
                 $this->active =$active;
         }
 
@@ -32,21 +32,21 @@
         }
 
         
-        public function getStudent()
+        public function getStudentId()
         {
-                return $this->student;
+                return $this->studentId;
         }
 
         
-        public function getBusiness()
+        public function getBusinessId()
         {
-                return $this->business;
+                return $this->businessId;
         }
 
          
-        public function getJobPosition()
+        public function getJobPositionId()
         {
-                return $this->jobPosition;
+                return $this->jobPositionId;
         }
 
         public function getActive()
@@ -65,27 +65,27 @@
 
         
         
-        public function setStudent($student)
+        public function setStudentId($studentId)
         {
-                $this->student = $student;
+                $this->student = $studentId;
 
                 return $this;
         }
 
         
         
-        public function setBusiness($business)
+        public function setBusinessId($businessId)
         {
-                $this->business = $business;
+                $this->business = $businessId;
 
                 return $this;
         }
 
         
 
-        public function setJobPosition($jobPosition)
+        public function setJobPositionId($jobPositionId)
         {
-                $this->jobPosition = $jobPosition;
+                $this->jobPosition = $jobPositionId;
 
                 return $this;
         }

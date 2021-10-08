@@ -1,23 +1,23 @@
 [
     {
         "jobPositionId": 1,
-        "businessId": null,
+        "businessId": "1",
         "title": "asustador",
-        "description": "Hacer gritar a los chicos lo mas que puedas",
+        "description": "",
         "active": true
     },
     {
         "jobPositionId": 2,
-        "businessId": null,
-        "title": "tecnico de puerta",
-        "description": "Revisar que al asustador no le pase nada",
+        "businessId": "4",
+        "title": "guardia",
+        "description": "",
         "active": true
     },
     {
         "jobPositionId": 3,
-        "businessId": "2",
-        "title": "guardia",
-        "description": "Evitar que los asesinos entren a la compania",
+        "businessId": "5",
+        "title": "seguridad",
+        "description": "",
         "active": true
     }
 ]

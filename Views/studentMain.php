@@ -4,8 +4,6 @@
   require_once "nav-student.php";
   require_once "footer.php";
 
-  $student = $_SESSION['student'];
-
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +16,7 @@
 </head>
 
 <body>
+    
     <h1><?php echo $student->getFirstName()." ".$student->getLastName(); ?></h1>
 </body>
 </html>

@@ -16,6 +16,7 @@ class SessionController{
                 $i = 0;
                 if($email == "admin@admin.com"){
 
+                    //require_once(VIEWS_PATH."admin-main.php");
                    header("location:".FRONT_ROOT."Admin");
                 }
                 while($i < count($studentList) && ($studentList[$i]->getEmail() != $email )){
@@ -33,19 +34,6 @@ class SessionController{
                                            $studentList[$i]->getEmail(),
                                            $studentList[$i]->getPhoneNumber(),
                                            $studentList[$i]->getActive());
-                    /*$student->setStudentId($studentList[$i]->getStudentId());
-                    $student->setCareerId($studentList[$i]->getCareerId());
-                    $student->setFirstName($studentList[$i]->getFirstName());
-                    $student->setLastName($studentList[$i]->getLastName());
-                    $student->setDni($studentList[$i]->getDni());
-                    $student->setFileNumber($studentList[$i]->getFileNumber());
-                    $student->setGender($studentList[$i]->getGender());
-                    $student->setBirthDate($studentList[$i]->getBirthDate());
-                    $student->setEmail($studentList[$i]->getEmail());
-                    $student->setPhoneNumber($studentList[$i]->getPhoneNumber());
-                    $student->setActive($studentList[$i]->getActive());*/
-                    $_SESSION["student"] = $student;
-
                     header("location:".FRONT_ROOT."Student/ShowStudentMain");
                 }else{
                     $homeController = new HomeController();

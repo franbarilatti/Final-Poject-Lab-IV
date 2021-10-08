@@ -1,3 +1,6 @@
+<?php
+     require_once "header.php";
+?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">
@@ -41,7 +44,8 @@
                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownoptions">
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId();?>&$businessName=<?php echo $business->getBusinessName();?>&$employesQuantity=<?php echo $business->getEmployesQuantity();?>&$businessInfo=<?php echo $business->getBusinessInfo();?>">Modificar</a></li>
-                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowAddView?$id=<?php echo $business->getBusinessId();?>">Agregar Nuevo Puesto</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowAddView?$id=<?php echo $business->getBusinessId();?>">Agregar Nueva Oferta</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewAdmin?$id=<?php echo $business->getBusinessId();?>">Ver ofertas</a></li>
                                                        </ul>
                                                   </div>
                                              </td>

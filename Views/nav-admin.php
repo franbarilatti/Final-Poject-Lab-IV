@@ -4,6 +4,15 @@
      </span>
      <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT ?>index.php">Home</a>
+          </li>
+          <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business?opcion=add">Añadir Emp</a>
+          </li>
+          <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT?>Business?opcion=list" >Ver empresas</a>
+          </li>
+          <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a>
           </li>
           <li class="nav-item">

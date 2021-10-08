@@ -28,7 +28,7 @@
                                                 <a href="<?php echo FRONT_ROOT ?>Business/ShowProfile"><?php echo $business->getBusinessName(); ?></a></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
                                              <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$id=<?php echo $business->getBusinessId();?>">Ofertas</a> 
+                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$studentId=<?php echo $studentId?>&?$businessId=<?php echo $business->getBusinessId();?>">Ofertas</a> 
                                              </td>
                                         </tr>
                                    <?php

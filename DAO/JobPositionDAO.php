@@ -26,7 +26,8 @@
             return $this->jobPositionList;
         }
 
-        public function FilterById($businessId){
+        public function FilterByBusiness($businessId){
+            $this->RetrieveData();
             $findedList = array();
             foreach($this->jobPositionList as $jobPosition){
                 if($jobPosition->getBusinessId() == $businessId){
@@ -90,10 +91,10 @@
 
 			$resp = array_map(function($p){
 				return new JobPosition($p['jobPositionId'],
-                                    $p['businesId'],
-                                    $p['title'],
-                                    $p['description'], 
-                                    $p['active']);
+                                       $p['businessId'],
+                                       $p['title'],
+                                       $p['description'], 
+                                       $p['active']);
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;

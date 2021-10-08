@@ -1,9 +1,9 @@
-<?php var_dump($jobPositionList); ?>
+<?php  ?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView "> Volver al Main</a>
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student"> Volver al Main</a>
           </li>
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout" >logout</a>
@@ -23,15 +23,18 @@
                          <?php
                               foreach($jobPositionList as $jobPosition);
                               {
+                                   if($jobPosition->getActive() == true)
+                                   {
                                    ?>
                                         <tr>
                                              <td><?php echo $jobPosition->getTitle();?></td>
                                              <td><?php echo $jobPosition->getDescription(); ?></td>
                                              <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$id=<?php echo $business->getBusinessId();?>">Postularse</a> 
+                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Postulation/Add?$idStudent=<?php echo $idStudent;?>&?$idBusiness=<?php echo $jobPosition->getBusinessId();?> &?jobPositionId=<?php echo $jobPosition->getJobPositionId();?>">Postularse</a> 
                                              </td>
                                         </tr>
                                    <?php
+                                   }
                               }
                          ?>
                          </tr>

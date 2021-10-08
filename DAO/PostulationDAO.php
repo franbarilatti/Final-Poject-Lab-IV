@@ -26,6 +26,75 @@
             return $this->postulationList;
         }
 
+        public function delete($postulationId){
+            $this->RetrieveData();
+            $newList = array();
+            foreach($this->postulationList as $postulation){
+                if($postulation->getPostulationId() != $postulationId){
+                    array_push($newList,$postulation);
+                }
+            }
+            $this->postulationList = $newList;
+            $this->SaveData();
+        }
+
+
+        public function FilterById($postulationId){
+            $this->RetrieveData();
+            $findedList = array();
+            foreach($this->postulationList as $postulation){
+                if($postulation->getPostulationId() == $postulationId){
+                    array_push($findedList,$postulation);
+                }
+            }
+            return $findedList;
+        }
+
+        public function FilterByStudent($studenId){
+            $this->RetrieveData();
+            $findedList = array();
+            foreach($this->postulationList as $postulation){
+                if($postulation->getPostulationId() == $studenId){
+                    array_push($findedList,$postulation);
+                }
+            }
+        }
+
+        public function FilterByBusiness($businessId){
+            $this->RetrieveData();
+            $findedList = array();
+            foreach($this->postulationList as $postulation){
+                if($postulation->getBusinessId() == $businessId){
+                    array_push($findedList,$postulation);
+                }
+            }
+            return $findedList;
+        }
+
+        public function FilterByJobPosition($jobPositionId){
+            $this->RetrieveData();
+            $findedList = array();
+            foreach($this->postulationList as $postulation){
+                if($postulation->getPostulationId() == $jobPositionId){
+                    array_push($findedList,$postulation);
+                }
+            }
+            return $findedList;
+        }
+
+
+        public function GetLastId(){
+            $this->RetrieveData();
+            $idSerched = null;
+            if(empty($this->postulationList)){
+                $idSerched = 1;
+            }else{
+                $lastPostulation = array_pop($this->postulationList);
+                $idSerched = $lastPostulation->getJobPositionId() + 1;
+            }
+            return $idSerched;
+        }
+
         ///////////// JSON Methods /////////////
 
         private function SaveData()
@@ -35,9 +104,9 @@
             foreach($this->postulationList as $postulation)
             {
                 $valuesArray["postulationId"] = $postulation->getPostulationId();
-                $valuesArray["student"] = $postulation->getStudent();
-                $valuesArray["business"] = $postulation->getBusiness();
-                $valuesArray["jobPosition"] = $postulation->getJobPosition();
+                $valuesArray["studentId"] = $postulation->getStudentId();
+                $valuesArray["businessId"] = $postulation->getBusinessId();
+                $valuesArray["jobPositionId"] = $postulation->getJobPositionId();
                 $valuesArray["active"] = $postulation->getActive();
                 
                 array_push($arrayToEncode, $valuesArray);
@@ -69,10 +138,10 @@
 
 			$resp = array_map(function($p){
 				return new Postulation($p['postulationId'],
-                                    $p['student'],
-                                    $p['business'], 
-                                    $p['jobPosition'], 
-                                    $p['active']);
+                                       $p['studentId'],
+                                       $p['businessId'], 
+                                       $p['jobPositionId'], 
+                                       $p['active']);
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;

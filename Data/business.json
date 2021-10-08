@@ -6,12 +6,6 @@
         "businessInfo": "Empresa que asusta chicos para abastecer de energia a Monstruopolis."
     },
     {
-        "businessId": 2,
-        "businessName": "Abstergo",
-        "employesQuantity": "323",
-        "businessInfo": "Esta empresa busca controlar el mundo con los objetos de los precursores."
-    },
-    {
         "businessId": 4,
         "businessName": "Gringotts",
         "employesQuantity": "465",

@@ -13,25 +13,37 @@
             $this->jobPositionDAO = new JobPositionDAO();
         }
 
-        public function ShowAddView($idBusiness)
+        public function ShowAddView($businessId)
         {
-            $_SESSION['idBusiness'] = $idBusiness;
+            require_once (VIEWS_PATH."header.php");
+            $businessId;
             require_once(VIEWS_PATH."jobPosition-add.php");
         }
 
-        public function ShowListViewStudent($idBusiness)
+        public function ShowListViewStudent($studentId,$businessId)
         {   
-            $jobPositionList = $this->jobPositionDAO->FilterById($idBusiness);
+            require_once (VIEWS_PATH."header.php");
+            $jobPositionList = $this->jobPositionDAO->FilterByBusiness($businessId);
+            $studentId = $studentId;
             require_once(VIEWS_PATH."jobPosition-list-student.php");
         }
 
-        public function Add($idBusiness,$title,$description)
+        public function ShowListViewAdmin($businessId)
         {   
+            require_once (VIEWS_PATH."header.php");
+            $jobPositionList = $this->jobPositionDAO->FilterByBusiness($businessId);
+
+            require_once(VIEWS_PATH."jobPosition-list-admin.php");
+        }
+
+        public function Add($businessId,$title,$description)
+        {   
+            require_once (VIEWS_PATH."header.php");
             $jobPositionId = $this->jobPositionDAO->GetLastId();
-            $jobPosition = new JobPosition($jobPositionId,$idBusiness,$title,$description,true);
+            $jobPosition = new JobPosition($jobPositionId,$businessId,$title,$description,true);
 
             $this->jobPositionDAO->Add($jobPosition);
-            $this->ShowAddView($idBusiness);
+            $this->ShowAddView($businessId);
         }
     }
 ?>
