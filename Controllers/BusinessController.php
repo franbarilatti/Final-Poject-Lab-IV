@@ -32,6 +32,7 @@
         {
             $studenId = $studenId;
             $businessList = $this->businessDAO->GetAll();
+            require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-list-student.php");
         }
 

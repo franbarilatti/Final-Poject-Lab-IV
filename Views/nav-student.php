@@ -11,7 +11,7 @@
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowAddView">Ver Postulaciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business/ShowListViewStudent" >Ver empresas</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business/ShowListViewStudent?$student=<?php $student?>">Ver empresas</a>
         </li>
         <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>index.php">Logout</a>
