@@ -31,7 +31,7 @@
                                         <tr>
                                              <td><?php echo $business->getBusinessId(); ?></td>
                                              <td>
-                                                  <a href="<?php echo FRONT_ROOT ?>Business/ShowProfile"><?php echo $business->getBusinessName(); ?></a></td>
+                                                  <a href="<?php echo FRONT_ROOT ?>Business/ShowProfile?businessId=<?php echo $business->getBusinessId();?>"><?php echo $business->getBusinessName(); ?></a></td>
                                              <td><?php echo $business->getEmployesQuantity(); ?></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
                                              <td>

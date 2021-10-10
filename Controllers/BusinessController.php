@@ -47,7 +47,9 @@
             require_once(VIEWS_PATH."business-modify.php");
         }
 
-        public function ShowProfile(){
+        public function ShowProfile($businessId){
+            $business = $this->businessDAO->searchById($businessId);
+            require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-profile.php");
         }
 
@@ -71,13 +73,13 @@
         }
 
         public function SearchByName($businessName){
-            $_SESSION['business'] = $this->businessDAO->SearchByName($businessName);
-            $this->ShowProfile();
+            $business = $this->businessDAO->SearchByName($businessName);
+            $this->ShowProfile($business->getBusinessId());
         }
 
         public function PressNameInList($id){
-            $_SESSION['business'] = $this->businessDAO->SearchById($id);
-            $this->ShowProfile();
+            $business = $this->businessDAO->SearchById($id);
+            $this->ShowProfile($id);
         }
         
 
