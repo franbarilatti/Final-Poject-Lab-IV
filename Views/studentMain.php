@@ -1,6 +1,6 @@
 <?php 
   namespace Views;
-  require_once "nav-student.php";
+  
 ?>
 
 <!DOCTYPE html>

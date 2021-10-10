@@ -10,12 +10,7 @@ class JobPosition{
         private $description;
         private $active;
 
-        public function __construct($jobPositionId,
-                                    $businessId,
-                                    $title,
-                                    $description,
-                                    $active)
-        {
+        public function __construct($jobPositionId,$businessId,$title,$description, $active) {
                 $this->jobPositionId = $jobPositionId;
                 $this->businessId = $businessId;
                 $this->title = $title;

@@ -28,9 +28,9 @@
             require_once(VIEWS_PATH."business-list-admin.php");
         }
 
-        public function ShowListViewStudent($studenId)
+        public function ShowListViewStudent()
         {
-            $studenId = $studenId;
+            $student = $_SESSION["student"];
             $businessList = $this->businessDAO->GetAll();
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-list-student.php");

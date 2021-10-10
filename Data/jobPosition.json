@@ -26,5 +26,12 @@
         "title": "afsdfsdfs",
         "description": "sdfsfdsfdsf",
         "active": true
+    },
+    {
+        "jobPositionId": 5,
+        "businessId": "4",
+        "title": "pepe",
+        "description": "1234\r\n",
+        "active": true
     }
 ]

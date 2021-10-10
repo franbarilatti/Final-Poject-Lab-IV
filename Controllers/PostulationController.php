@@ -1,4 +1,5 @@
 <?php    
+    namespace Controllers;
     use DAO\PostulationDAO as PostulationDAO;
     use Models\Postulation as Postulation;
 
@@ -23,8 +24,11 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function ShowStudentMain(){
-            require_once(VIEWS_PATH."studentMain.php");
+        public function ShowPostulatiobByStudent($studentId){
+            
+            $this->postulationDAO->FilterByStudent($studentId);
+            require_once (VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."jobPosition-list-student.php");
         }
 
         public function Add($studentId,$businessId,$jobPositionId)
@@ -32,8 +36,8 @@
             $postulationId = $this->postulationDAO->GetLastId();
             $postulation = new Postulation($postulationId,$studentId,$businessId,$jobPositionId,true);
             $this->postulationDAO->Add($postulation);
+            header("location:".FRONT_ROOT."Student");
 
-            $this->ShowAddView();
         }
     }
 ?>

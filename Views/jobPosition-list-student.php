@@ -1,4 +1,8 @@
-<?php  ?>
+<?php 
+
+     echo "$studentId";
+
+?>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">
@@ -30,7 +34,7 @@
                                              <td><?php echo $jobPosition->getTitle();?></td>
                                              <td><?php echo $jobPosition->getDescription(); ?></td>
                                              <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Postulation/Add?$idStudent=<?php echo $idStudent;?>&$idBusiness=<?php echo $jobPosition->getBusinessId();?> &jobPositionId=<?php echo $jobPosition->getJobPositionId();?>">Postularse</a> 
+                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Postulation/Add?$idStudent=<?php echo $studentId;?>&$idBusiness=<?php echo $jobPosition->getBusinessId();?> &jobPositionId=<?php echo $jobPosition->getJobPositionId();?>">Postularse</a> 
                                              </td>
                                         </tr>
                                    <?php

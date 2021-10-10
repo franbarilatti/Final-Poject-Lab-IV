@@ -24,7 +24,6 @@
         {   
             require_once (VIEWS_PATH."header.php");
             $jobPositionList = $this->jobPositionDAO->FilterByBusiness($businessId);
-            $studentId = $studentId;
             require_once(VIEWS_PATH."jobPosition-list-student.php");
         }
 
@@ -38,7 +37,7 @@
 
         public function Add($businessId,$title,$description)
         {   
-            require_once (VIEWS_PATH."header.php");
+           
             $jobPositionId = $this->jobPositionDAO->GetLastId();
             $jobPosition = new JobPosition($jobPositionId,$businessId,$title,$description,true);
 

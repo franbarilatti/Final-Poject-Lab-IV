@@ -58,6 +58,7 @@
                     array_push($findedList,$postulation);
                 }
             }
+            return $findedList;
         }
 
         public function FilterByBusiness($businessId){

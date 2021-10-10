@@ -42,6 +42,7 @@
         public function Index(){
             $std = $_SESSION["student"];
             $title = "Student";
+            require_once (VIEWS_PATH."nav-student.php");
             require_once(VIEWS_PATH."header.php");
             $this->ShowStudentMain($std);
         }

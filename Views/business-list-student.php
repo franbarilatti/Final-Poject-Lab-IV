@@ -2,7 +2,7 @@
      <span class="navbar-text"> Lista de empresas </span>
      <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin/ShowAdminMainView "> Volver al Main</a>
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student "> Volver al Main</a>
           </li>
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout" >logout</a>
@@ -28,7 +28,7 @@
                                                 <a href="<?php echo FRONT_ROOT ?>Business/ShowProfile"><?php echo $business->getBusinessName(); ?></a></td>
                                              <td><?php echo $business->getBusinessInfo(); ?></td>
                                              <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$studentId=<?php echo $studentId?>&?$businessId=<?php echo $business->getBusinessId();?>">Ver ofertas</a> 
+                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewStudent?$studentId=<?php echo $student->getStudentId()?>&?$businessId=<?php echo $business->getBusinessId();?>">Ver ofertas</a> 
                                              </td>
                                         </tr>
                                    <?php
