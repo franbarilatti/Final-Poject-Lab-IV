@@ -23,7 +23,7 @@ class SessionController{
                     $i++;
                 }
                 if($i< count($studentList)){
-                    $student = new Student($studentList[$i]->getStudentId(),
+                    $std = new Student($studentList[$i]->getStudentId(),
                                            $studentList[$i]->getCareerId(),
                                            $studentList[$i]->getFirstName(),
                                            $studentList[$i]->getLastName(),
@@ -34,7 +34,8 @@ class SessionController{
                                            $studentList[$i]->getEmail(),
                                            $studentList[$i]->getPhoneNumber(),
                                            $studentList[$i]->getActive());
-                    header("location:".FRONT_ROOT."Student/ShowStudentMain");
+                    $_SESSION["student"]=$std;
+                    header("location:".FRONT_ROOT."Student");
                 }else{
                     $homeController = new HomeController();
                     $homeController->Index("mail o contraseña incorrectas");

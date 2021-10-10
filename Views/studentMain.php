@@ -1,9 +1,6 @@
 <?php 
   namespace Views;
-  require_once "header.php";
   require_once "nav-student.php";
-  require_once "footer.php";
-
 ?>
 
 <!DOCTYPE html>

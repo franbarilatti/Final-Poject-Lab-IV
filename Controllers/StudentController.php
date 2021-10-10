@@ -25,7 +25,8 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function ShowStudentMain(){
+        public function ShowStudentMain($std){
+            $student= $std;
             require_once(VIEWS_PATH."studentMain.php");
         }
 
@@ -39,9 +40,10 @@
         }
 
         public function Index(){
+            $std = $_SESSION["student"];
             $title = "Student";
             require_once(VIEWS_PATH."header.php");
-            $this->ShowStudentMain();
+            $this->ShowStudentMain($std);
         }
     }
 ?>

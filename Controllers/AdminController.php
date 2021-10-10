@@ -20,7 +20,6 @@
             $title= "Admin";
             require_once (VIEWS_PATH."header.php");
             $this->ShowAdminMainView();
-
         }
 
     }

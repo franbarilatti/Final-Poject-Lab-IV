@@ -19,5 +19,12 @@
         "title": "seguridad",
         "description": "",
         "active": true
+    },
+    {
+        "jobPositionId": 4,
+        "businessId": "1",
+        "title": "afsdfsdfs",
+        "description": "sdfsfdsfdsf",
+        "active": true
     }
 ]
