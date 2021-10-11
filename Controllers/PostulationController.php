@@ -29,9 +29,9 @@
 
         public function ShowPostulatiobByStudent($studentId){
             
-            $this->postulationDAO->FilterByStudent($studentId);
+            $postulationList = $this->postulationDAO->FilterByStudent($studentId);
             require_once (VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."jobPosition-list-student.php");
+            require_once(VIEWS_PATH."student-postulation.php");
         }
 
         ////////////////// FUNCTIONAL METHODS //////////////////

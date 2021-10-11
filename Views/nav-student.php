@@ -1,9 +1,8 @@
 
 <?php 
   $studentId = $std->getStudentId();
-  echo $studentId;
-?>
 
+?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
