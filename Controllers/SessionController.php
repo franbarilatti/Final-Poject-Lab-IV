@@ -9,6 +9,8 @@ use EmptyIterator;
 class SessionController{
 
 
+        ////////////////// FUNCTIONAL METHODS //////////////////
+
         public function Login($email){
             
             $studenRepo = new StudentDAO();

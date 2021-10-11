@@ -12,15 +12,18 @@
             $this->postulationDAO = new PostulationDAO();
         }
 
+        ////////////////// VIEWS METHODS //////////////////
+
         public function ShowAddView()
         {
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-add.php");
         }
 
         public function ShowListView()
         {
             $postulationList = $this->postulationDAO->GetAll();
-
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-list.php");
         }
 
@@ -31,6 +34,8 @@
             require_once(VIEWS_PATH."jobPosition-list-student.php");
         }
 
+        ////////////////// FUNCTIONAL METHODS //////////////////
+
         public function Add($studentId,$businessId,$jobPositionId)
         {
             $postulationId = $this->postulationDAO->GetLastId();
@@ -38,6 +43,11 @@
             $this->postulationDAO->Add($postulation);
             header("location:".FRONT_ROOT."Student");
 
+        }
+
+        public function Index(){
+            $title = "Lista de Postulaciones";
+            $this->ShowListView();
         }
     }
 ?>

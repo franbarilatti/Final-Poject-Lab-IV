@@ -24,8 +24,7 @@
 <body>
      <div class="container w-75 bg-primary mt-5 rounded shadow">
           <div class="row aling-items-stretch">
-               <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6">  
-               </div>
+               <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6"></div>
                <div class="col bg-withe p-5 rounded-end">
           
                     <h2 class="fw-bold text-center py-5">Bienvenidos a MyJob</h2>

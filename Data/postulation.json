@@ -26,5 +26,12 @@
         "businessId": "4 ",
         "jobPositionId": "5",
         "active": true
+    },
+    {
+        "postulationId": 6,
+        "studentId": "11",
+        "businessId": "1 ",
+        "jobPositionId": "4",
+        "active": true
     }
 ]

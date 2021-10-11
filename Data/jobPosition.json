@@ -33,5 +33,12 @@
         "title": "pepe",
         "description": "1234\r\n",
         "active": true
+    },
+    {
+        "jobPositionId": 6,
+        "businessId": "6",
+        "title": "Cirujano Residente",
+        "description": "Se busca cirujano residente recien graduado y si tiene autismo mejor",
+        "active": true
     }
 ]
