@@ -13,22 +13,28 @@
             $this->studentDAO = new StudentDAO();
         }
 
+        ////////////////// VIEWS METHODS //////////////////
+
         public function ShowAddView()
         {
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-add.php");
         }
 
         public function ShowListView()
         {
             $studentList = $this->studentDAO->GetAll();
-
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-list.php");
         }
 
         public function ShowStudentMain($std){
             $student= $std;
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."studentMain.php");
         }
+
+        ////////////////// FUNCTIONAL METHODS //////////////////
 
         public function Add($careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber)
         {
@@ -41,7 +47,7 @@
 
         public function Index(){
             $std = $_SESSION["student"];
-            $title = "Student";
+            $title = $std->getFirstName();
             require_once (VIEWS_PATH."nav-student.php");
             require_once(VIEWS_PATH."header.php");
             $this->ShowStudentMain($std);

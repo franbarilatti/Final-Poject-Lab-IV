@@ -16,5 +16,11 @@
         "businessName": "Umbrella Corp.",
         "employesQuantity": "2124",
         "businessInfo": "Empresa que lleno el mundo de zombies"
+    },
+    {
+        "businessId": 6,
+        "businessName": "Hospital San Jose St. Bonaventure",
+        "employesQuantity": "200",
+        "businessInfo": "Hospital de San Jose donde pasan cosas heavys todos los dias"
     }
 ]

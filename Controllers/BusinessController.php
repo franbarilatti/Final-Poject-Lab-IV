@@ -19,12 +19,14 @@
 
         public function ShowAddView()
         {
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-add.php");
         }
 
         public function ShowListViewAdmin()
         {
             $businessList = $this->businessDAO->GetAll();
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-list-admin.php");
         }
 
@@ -44,6 +46,7 @@
         public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
             $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
             $_SESSION["business"] = $business;
+            require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-modify.php");
         }
 
@@ -85,6 +88,7 @@
 
         public function Add($businessName,$employesQuantity,$businessInfo)
         {   
+
             $businessId = $this->businessDAO->GetLastId();
             $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
             $this->businessDAO->Add($business);

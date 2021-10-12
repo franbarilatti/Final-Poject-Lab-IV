@@ -26,5 +26,12 @@
         "title": "Contador",
         "description": "Contabilizacion del dinero magico que ingresa y egresa del banco.\r\nrequisitos: ser un duende (Excluyente)",
         "active": true
+    },
+    {
+        "jobPositionId": 6,
+        "businessId": "6",
+        "title": "Cirujano Residente",
+        "description": "Se busca cirujano residente recien graduado y si tiene autismo mejor",
+        "active": true
     }
 ]

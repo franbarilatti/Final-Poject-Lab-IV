@@ -13,6 +13,8 @@
             $this->jobPositionDAO = new JobPositionDAO();
         }
 
+        ////////////////// VIEWS METHODS //////////////////
+
         public function ShowAddView($businessId)
         {
             require_once (VIEWS_PATH."header.php");
@@ -35,9 +37,11 @@
             require_once(VIEWS_PATH."jobPosition-list-admin.php");
         }
 
+        ////////////////// FUNCTIONAL METHODS //////////////////
+
         public function Add($businessId,$title,$description)
         {   
-           
+            require_once (VIEWS_PATH."header.php");
             $jobPositionId = $this->jobPositionDAO->GetLastId();
             $jobPosition = new JobPosition($jobPositionId,$businessId,$title,$description,true);
 
