@@ -2,36 +2,29 @@
     {
         "jobPositionId": 1,
         "businessId": "1",
-        "title": "asustador",
-        "description": "",
+        "title": "Asustador",
+        "description": "Recolectar energia por medio de los gritos de ni\u00f1os peque\u00f1os",
         "active": true
     },
     {
         "jobPositionId": 2,
-        "businessId": "4",
-        "title": "guardia",
-        "description": "",
+        "businessId": "1",
+        "title": "Acompa\u00f1ante de asustador",
+        "description": "Soporte logistico para asustadores.",
         "active": true
     },
     {
         "jobPositionId": 3,
-        "businessId": "5",
-        "title": "seguridad",
-        "description": "",
+        "businessId": "4",
+        "title": "Guardia",
+        "description": "Vigilar al dragon que resguarda las bobedas",
         "active": true
     },
     {
         "jobPositionId": 4,
-        "businessId": "1",
-        "title": "afsdfsdfs",
-        "description": "sdfsfdsfdsf",
-        "active": true
-    },
-    {
-        "jobPositionId": 5,
         "businessId": "4",
-        "title": "pepe",
-        "description": "1234\r\n",
+        "title": "Contador",
+        "description": "Contabilizacion del dinero magico que ingresa y egresa del banco.\r\nrequisitos: ser un duende (Excluyente)",
         "active": true
     }
 ]

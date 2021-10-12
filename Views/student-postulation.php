@@ -1,8 +1,8 @@
 <?php 
     namespace Views;
     use DAO\jobPositionDAO as jobPositionDAO;
-
-
+    $jobPositionDao = new jobPositionDAO();
+    $jobPositionList = $jobPositionDao->GetAll(); 
 ?>
 
 
@@ -11,7 +11,7 @@
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de ofertas</h2>
+               <h2 class="mb-4">Mis Postulaciones</h2>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Titulo</th>
@@ -19,20 +19,20 @@
                     </thead>
                     <tbody>
                          <?php
-                              foreach($postulationList as $postulation);
+                              foreach($postulationList as $postulation)
                               {
-                                   if($postulation->getActive() == true)
-                                   {
+                                
+                                  foreach($jobPositionList as $jobPosition){
+
+                                      if($postulation->getJobPositionId() == $jobPosition->getJobPositionId()){
                                    ?>
                                         <tr>
                                              <td><?php echo $jobPosition->getTitle();?></td>
                                              <td><?php echo $jobPosition->getDescription(); ?></td>
-                                             <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Postulation/Add?$idStudent=<?php echo $studentId;?>&$idBusiness=<?php echo $jobPosition->getBusinessId();?> &jobPositionId=<?php echo $jobPosition->getJobPositionId();?>">Postularse</a> 
-                                             </td>
                                         </tr>
-                                   <?php
-                                   }
+                                   <?php  
+                                      }
+                                  }
                               }
                          ?>
                          </tr>
