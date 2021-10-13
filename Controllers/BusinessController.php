@@ -45,7 +45,6 @@
 
         public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
             $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-            $_SESSION["business"] = $business;
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-modify.php");
         }

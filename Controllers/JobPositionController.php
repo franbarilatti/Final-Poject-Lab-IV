@@ -37,6 +37,12 @@
             require_once(VIEWS_PATH."jobPosition-list-admin.php");
         }
 
+        public function ShowModifyView($jobPositionId){
+            $finded = $this->jobPositionDAO->SearchById($jobPositionId);
+            require_once (VIEWS_PATH."header.php");
+            require_once (VIEWS_PATH."jobPosition-modify.php");
+        }
+
         ////////////////// FUNCTIONAL METHODS //////////////////
 
         public function Add($businessId,$title,$description)
@@ -47,6 +53,18 @@
 
             $this->jobPositionDAO->Add($jobPosition);
             $this->ShowAddView($businessId);
+        }
+
+        public function Delete($jobPositionId){
+            $finded = $this->jobPositionDAO->SearchById($jobPositionId);
+            $this->jobPositionDAO->Delete($jobPositionId);
+            $this->ShowListViewAdmin($jobPositionId);
+        }
+
+        public function Modify($jobPositionId, $businessId, $title, $description){
+            $finded = $this->jobPositionDAO->SearchById($jobPositionId);
+            $this->jobPositionDAO->Modify($jobPositionId, $businessId, $title, $description);
+            $this->ShowListViewAdmin($jobPositionId);
         }
     }
 ?>

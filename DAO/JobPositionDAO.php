@@ -49,6 +49,45 @@
             return $idSerched;
         }
 
+        public function Delete($jobPositionId){
+            $this->RetrieveData();
+            $newList = array();
+            foreach($this->jobPositionList as $jobPosition){
+                if($jobPosition->getJobPositionId() != $jobPositionId){
+                    array_push($newList,$jobPosition);
+                }
+            }
+            $this->jobPositionList = $newList;
+            $this->SaveData();
+        }
+
+
+        public function SearchById($jobPositionId){
+            $this->RetrieveData();
+            $findedjobPosition = null;
+            foreach($this->jobPositionList as $jobPosition){
+                if($jobPosition->getBusinessId() == $jobPositionId){
+                    $findedjobPosition = $jobPosition;
+                }
+            }
+            return $findedjobPosition;
+        }
+
+        public function Modify($jobPositionId, $businessId, $title, $description)
+        {
+            $this->RetrieveData();
+            
+            foreach($this->jobPositionList as $jobPosition){
+                if($jobPosition->getJobPositionId() == $jobPositionId){
+                    $this->Delete($jobPositionId);
+                    $newJobPosition = new JobPosition($jobPositionId,$businessId,$title,$description,true);
+                    array_push($this->jobPositionList,$newJobPosition);
+                }
+            }
+            sort($this->jobPositionList);
+            $this->SaveData();
+        }
+
         ///////////// JSON Methods /////////////
 
         private function SaveData()

@@ -7,13 +7,6 @@
         "active": true
     },
     {
-        "jobPositionId": 2,
-        "businessId": "1",
-        "title": "Acompa\u00f1ante de asustador",
-        "description": "Soporte logistico para asustadores.",
-        "active": true
-    },
-    {
         "jobPositionId": 3,
         "businessId": "4",
         "title": "Guardia",
@@ -28,10 +21,10 @@
         "active": true
     },
     {
-        "jobPositionId": 6,
+        "jobPositionId": "6",
         "businessId": "6",
-        "title": "Cirujano Residente",
-        "description": "Se busca cirujano residente recien graduado y si tiene autismo mejor",
+        "title": "Jefe de Cirujia",
+        "description": "Se busca cirujano experto que sepa lidiar con residentes con autismo",
         "active": true
     }
 ]
