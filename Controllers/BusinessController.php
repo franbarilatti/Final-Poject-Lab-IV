@@ -76,13 +76,13 @@
         }
 
         public function SearchByNameAdmin($businessName){
-            $businessList = $this->businessDAO->SearchByName($businessName);
-            $this->ShowListViewAdmin();
+            $business = $this->businessDAO->SearchByName($businessName);
+            $this->ShowProfile($business->getBusinessId());
         }
 
         public function SearchByNameStudent($businessName){
-            $businessList = $this->businessDAO->SearchByName($businessName);
-            $this->ShowListViewStudent();
+            $business = $this->businessDAO->SearchByName($businessName);
+            $this->ShowProfile($business->getBusinessId());
         }
 
         public function PressNameInList($id){
