@@ -25,6 +25,7 @@
 
         public function ShowListViewAdmin()
         {
+            $title = "Lista de empresas";
             $businessList = $this->businessDAO->GetAll();
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-list-admin.php");
@@ -32,6 +33,7 @@
 
         public function ShowListViewStudent()
         {
+            $title = "Lista de empresas";
             $student = $_SESSION["student"];
             $businessList = $this->businessDAO->GetAll();
             require_once(VIEWS_PATH."header.php");
@@ -45,6 +47,7 @@
 
         public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
             $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
+            $title = "Modificar $businessName";
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-modify.php");
         }

@@ -17,6 +17,7 @@
 
         public function ShowAddView($businessId)
         {
+            $title = "Agregar oferta";
             require_once (VIEWS_PATH."header.php");
             $businessId;
             require_once(VIEWS_PATH."jobPosition-add.php");
@@ -24,6 +25,7 @@
 
         public function ShowListViewStudent($studentId,$businessId)
         {   
+            $title = "Puestos vacantes";
             require_once (VIEWS_PATH."header.php");
             $jobPositionList = $this->jobPositionDAO->FilterByBusiness($businessId);
             require_once(VIEWS_PATH."jobPosition-list-student.php");
@@ -31,6 +33,7 @@
 
         public function ShowListViewAdmin($businessId)
         {   
+            $title = "Ofertas laborales";
             require_once (VIEWS_PATH."header.php");
             $jobPositionList = $this->jobPositionDAO->FilterByBusiness($businessId);
 
@@ -38,6 +41,7 @@
         }
 
         public function ShowModifyView($jobPositionId){
+            $title = "Modificar propuesta";
             $finded = $this->jobPositionDAO->SearchById($jobPositionId);
             require_once (VIEWS_PATH."header.php");
             require_once (VIEWS_PATH."jobPosition-modify.php");

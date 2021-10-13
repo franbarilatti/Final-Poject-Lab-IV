@@ -23,6 +23,7 @@
 
         public function ShowListView()
         {
+            $title = "Lista de alumnos";
             $studentList = $this->studentDAO->GetAll();
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-list.php");

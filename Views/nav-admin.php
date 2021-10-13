@@ -13,7 +13,7 @@
                <a class="nav-link" href="<?php echo FRONT_ROOT?>Business?opcion=list" >Ver empresas</a>
           </li>
           <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a>
+               <a class="nav-link" readonly href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a>
           </li>
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a>

@@ -28,6 +28,7 @@
         }
 
         public function ShowPostulatiobByStudent($studentId){
+            $title = "Mis postulaciones";
             $postulationList = $this->postulationDAO->FilterByStudent($studentId);
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-postulation.php");
