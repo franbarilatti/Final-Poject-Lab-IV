@@ -54,7 +54,7 @@
             $this->RetrieveData();
             $findedList = array();
             foreach($this->postulationList as $postulation){
-                if($postulation->getPostulationId() == $studenId){
+                if($postulation->getStudentId() == $studenId){
                     array_push($findedList,$postulation);
                 }
             }
