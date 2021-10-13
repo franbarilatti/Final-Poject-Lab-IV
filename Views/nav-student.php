@@ -22,7 +22,7 @@
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>index.php">Logout</a>
         </li> 
       </ul>
-      <form class="d-flex"  action="<?php echo FRONT_ROOT ?>Business/SearchByName" method="post">
+      <form class="d-flex"  action="<?php echo FRONT_ROOT ?>Business/SearchByNameStudent" method="post">
         <input class="form-control me-2" name="businessName" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>

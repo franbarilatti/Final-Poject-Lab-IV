@@ -3,24 +3,35 @@
         "businessId": 1,
         "businessName": "Monsters Inc.",
         "employesQuantity": "656",
-        "businessInfo": "Empresa que asusta chicos para abastecer de energia a Monstruopolis."
+        "businessInfo": "Empresa que asusta chicos para abastecer de energia a Monstruopolis.",
+        "imgList": null
     },
     {
         "businessId": 4,
         "businessName": "Gringotts",
         "employesQuantity": "465",
-        "businessInfo": "Banco magico dirigido por duendes"
+        "businessInfo": "Banco magico dirigido por duendes",
+        "imgList": null
     },
     {
         "businessId": 5,
         "businessName": "Umbrella Corp.",
         "employesQuantity": "2124",
-        "businessInfo": "Empresa que lleno el mundo de zombies"
+        "businessInfo": "Empresa que lleno el mundo de zombies",
+        "imgList": null
     },
     {
         "businessId": 6,
         "businessName": "Hospital San Jose St. Bonaventure",
         "employesQuantity": "200",
-        "businessInfo": "Hospital de San Jose donde pasan cosas heavys todos los dias"
+        "businessInfo": "Hospital de San Jose donde pasan cosas heavys todos los dias",
+        "imgList": null
+    },
+    {
+        "businessId": 7,
+        "businessName": "Abstergo",
+        "employesQuantity": "4564",
+        "businessInfo": "aasdasdsd",
+        "imgList": "pm.png"
     }
 ]

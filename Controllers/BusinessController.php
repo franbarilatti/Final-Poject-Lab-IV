@@ -75,9 +75,14 @@
             $this->ShowListViewAdmin();
         }
 
-        public function SearchByName($businessName){
-            $business = $this->businessDAO->SearchByName($businessName);
-            $this->ShowProfile($business->getBusinessId());
+        public function SearchByNameAdmin($businessName){
+            $businessList = $this->businessDAO->SearchByName($businessName);
+            $this->ShowListViewAdmin();
+        }
+
+        public function SearchByNameStudent($businessName){
+            $businessList = $this->businessDAO->SearchByName($businessName);
+            $this->ShowListViewStudent();
         }
 
         public function PressNameInList($id){
