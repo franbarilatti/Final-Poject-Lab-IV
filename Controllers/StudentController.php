@@ -37,10 +37,10 @@
 
         ////////////////// FUNCTIONAL METHODS //////////////////
 
-        public function Add($careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber)
+        public function Add($careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$password,$phoneNumber)
         {
             $studentId = $this->studentDAO->GetLastId();
-            $student = new Student($studentId,$careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$phoneNumber,true);
+            $student = new Student($studentId,$careerId,$firstName,$lastName,$dni,$fileNumber,$gender,$birthDate,$email,$password,$phoneNumber,true);
             $this->studentDAO->Add($student);
 
             $this->ShowAddView();

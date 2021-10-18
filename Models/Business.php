@@ -3,13 +3,15 @@
 
 
 
-    class Business{
+    class Business extends User{
         private $businessId;
         private $businessName;
         private $employesQuantity;
         private $businessInfo;
 
-        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo){
+        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo,$email,$password)
+        {
+                parent::__construct($email,$password);
                 $this->businessId =$businessId;
                 $this->businessName = $businessName;
                 $this->employesQuantity = $employesQuantity;

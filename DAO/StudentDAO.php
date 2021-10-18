@@ -68,6 +68,7 @@
                 $valuesArray["gender"] = $student->getGender();
                 $valuesArray["birthDate"] = $student->getBirthDate();
                 $valuesArray["email"] = $student->getEmail();
+                $valuesArray["password"] = $student->getPassword();
                 $valuesArray["phoneNumber"] = $student->getPhoneNumber();
                 $valuesArray["active"] = $student->getActive();
                 
@@ -107,6 +108,7 @@
                                    $p['gender'],
                                    $p['birthDate'],
                                    $p['email'],
+                                   $p['password'],
                                    $p['phoneNumber'],
                                    $p['active']);
 			}, $value);

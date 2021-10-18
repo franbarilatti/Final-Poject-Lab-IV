@@ -1,21 +1,37 @@
 <?php
     namespace DAO;
 
+    use \Exception as Exception;
     use DAO\IBusinessDAO as IBussinesDAO;
     use Models\Business as Business;
-use PDO;
+    use DAO\Connection as Connection;
 
 class BusinessDAO implements IBusinessDAO
     {
-        private $businessList = array();
+        private $conecction;
+        private $tablename = "business";
 
         public function Add(Business $business)
         {
-            $this->RetrieveData();
-            
-            array_push($this->businessList, $business);
+            try
+            {
+                
+                $query = "INSERT INTO".$this->tablename."(id,businessName,employeQuantity,businessInfo,email);";
 
-            $this->SaveData();
+                $parameters["id"] = $business->getBusinessId();
+                $parameters["businessName"] = $business->getBusinessName();
+                $parameters["employeQuantity"] = $business->getEmployesQuantity();
+                $parameters["businessInfo"] = $business->getBusinessInfo();
+                $parameters["email"] = $business->getEmail();
+
+                $this->conecction = Connection::GetInstance();
+
+                $this->conecction->ExecuteNonQuery($query,$parameters);
+
+            }
+            catch(Exception $ex){
+                throw $ex
+            }
         }
 
         public function Delete($businessId){
@@ -32,8 +48,20 @@ class BusinessDAO implements IBusinessDAO
 
         public function GetAll()
         {
-            $this->RetrieveData();
-            return $this->businessList;
+            try {
+                $businessList = array();
+
+                $query = "SELECT * FROM ".$this->tablename;
+                $this->conecction = Connection::GetInstance();
+
+                $result = $this->conecction->Execute($query);
+
+                foreach($result)
+
+
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
         }
         
         
@@ -86,51 +114,23 @@ class BusinessDAO implements IBusinessDAO
             return $findedBusiness;
         }
 
-        private function SaveData()
-        {
-            $arrayToEncode = array();
-
-            foreach($this->businessList as $business)
-            {
-                $valuesArray["businessId"] = $business->getBusinessId();
-                $valuesArray["businessName"] = $business->getBusinessName();
-                $valuesArray["employesQuantity"] = $business->getEmployesQuantity();
-                $valuesArray["businessInfo"] = $business->getBusinessInfo();
-                
-                array_push($arrayToEncode, $valuesArray);
-            }
-
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-            
-            file_put_contents('Data/business.json', $jsonContent);
-        }
-
-        private function RetrieveData()
-        {
-            $this->businessList = array();
-
-            if(file_exists('Data/business.json'))
-            {
-                $jsonContent = file_get_contents('Data/business.json');
-
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-
-                $this->businessList = $this->Mapping($arrayToDecode);
-            }
-        }
-
-        /**
-		* Transforma el listado de usuario en
-		* objetos de la clase Usuario
-		*
-		* @param  Array $gente Listado de personas a transformar
-		*/
-		protected function Mapping($value) {
+        protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Business($p['businessId'], $p['businessName'], $p['employesQuantity'], $p['businessInfo']);
+				return new Business($p['businessId'], 
+                                   $p['businessName'], 
+                                   $p['employesQuantity'], 
+                                   $p['businessInfo'],
+                                   $p['dni'],
+                                   $p['fileNumber'],
+                                   $p['gender'],
+                                   $p['birthDate'],
+                                   $p['email'],
+                                   $p['password'],
+                                   $p['phoneNumber'],
+                                   $p['active']);
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;

@@ -1,7 +1,7 @@
 <?php
     namespace Models;
 
-    class Student{
+    class Student extends User{
         private $studentId;
         private $careerId;
         private $firstName;
@@ -10,11 +10,11 @@
         private $fileNumber;
         private $gender;
         private $birthDate;
-        private $email;
         private $phoneNumber;
         private $active;
 
-        public function __construct($studentId,
+        public function __construct(
+                        $studentId,
                         $careerId,
                         $firstName,
                         $lastName,
@@ -23,9 +23,11 @@
                         $gender,
                         $birthDate,
                         $email,
+                        $password,
                         $phoneNumber,
                         $active)
         {
+                parent::__construct($email,$password);
                 $this->studentId =$studentId;
                 $this->careerId =$careerId;
                 $this->firstName =$firstName;
@@ -34,7 +36,6 @@
                 $this->fileNumber =$fileNumber;
                 $this->gender =$gender;
                 $this->birthDate =$birthDate;
-                $this->email =$email;
                 $this->phoneNumber =$phoneNumber;
                 $this->active =$active;
         }

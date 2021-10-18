@@ -2,15 +2,17 @@
     namespace Models;
 
 
-    class Admin{
+    class Admin extends User{
         private $adminId;
         private $firstName;
         private $lastName;
-        private $email;
 
-        public function __construct()
+        public function __construct($adminId,$firstName,$lastName,$email,$password)
         {
-            
+            parent::__construct($email,$password);
+            $this->adminId = $adminId;
+            $this->firstName = $firstName;
+            $this->lastName = $lastName;
         }
 
         ////////// GETTERS METHODS //////////
