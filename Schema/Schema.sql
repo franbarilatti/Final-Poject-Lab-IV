@@ -2,15 +2,20 @@ create database myjob;
 
 use myjob;
 
+#drop database myjob;
+
 create table users(
-	email varchar(50) primary key unique,
-    password varchar(20)
+	id int auto_increment primary key,
+	email varchar(50) not null unique,
+    password varchar(20) not null
 );
+
+select * from users;
 
 create table careers(
 	id int auto_increment primary key,
     descript varchar(200),
-    act bool
+    actve bool
 );
 
 create table students(
@@ -23,19 +28,27 @@ create table students(
     birthdate date,
     phoneNumber varchar(30),
     actve bool not null,
-    email varchar(50) not null,
+    userId int not null,
     careerId int not null,
-    constraint fk_email foreign key (email) references users (email) on delete cascade, 
+    constraint fk_userId foreign key (userId) references users (id) on delete cascade, 
     constraint fk_careerId foreign key (careerId) references careers (id)
+);
+
+create table admins(
+	id int not null auto_increment primary key,
+    firstname varchar(50) not null,
+    lastname varchar(50) not null,
+	userId int not null,
+    foreign key (userId) references users(id) on delete cascade
 );
 
 create table business(
 	id int auto_increment primary key,
-    businessName varchar(50),
+    businessName varchar(50) not null,
     employeQuantity int,
     businesInfo varchar (200),
-    email varchar(50),
-    foreign key (email) references users(email) on delete cascade
+    userId int not null,
+    constraint fk_userId foreign key (userId) references users(id) on delete cascade
 );
 
 create table jobPositions(
@@ -53,10 +66,10 @@ create table postulation(
 	studentId int not null,
     businessId int not null,
     jobPositionId int not null,
-    foreign key (studentId) references students(id),
-    foreign key	(businessId) references businesss(id),
+    foreign key (studentId) references students(studentId),
+    foreign key	(businessId) references business(id),
     foreign key (jobPositionId) references jobPositions(id)
 );
 
-
+select * from students;
 

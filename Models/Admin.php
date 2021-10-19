@@ -4,13 +4,15 @@
 
     class Admin extends User{
         private $adminId;
+        private $userId;
         private $firstName;
         private $lastName;
 
-        public function __construct($adminId,$firstName,$lastName,$email,$password)
+        public function __construct($adminId,$userId,$firstName,$lastName)
         {
-            parent::__construct($email,$password);
+        
             $this->adminId = $adminId;
+            $this->userId = $userId;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
         }
@@ -20,6 +22,11 @@
         public function getAdminId()
         {
                 return $this->adminId;
+        }
+
+        public function getUserId()
+        {
+                return $this->userId;
         }
 
         public function getFirstName()
@@ -46,6 +53,13 @@
                 return $this;
         }
 
+        public function setUserId($userId)
+        {
+                $this->userId = $userId;
+
+                return $this;
+        }
+
         public function setFirstName($firstName)
         {
                 $this->firstName = $firstName;
@@ -66,6 +80,7 @@
                 return $this;
         }
   
+       
     }
 
 

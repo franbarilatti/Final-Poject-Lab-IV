@@ -5,14 +5,15 @@
 
     class Business extends User{
         private $businessId;
+        private $userId;
         private $businessName;
         private $employesQuantity;
         private $businessInfo;
 
-        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo,$email,$password)
+        public function __construct($businessId,$userId,$businessName,$employesQuantity,$businessInfo)
         {
-                parent::__construct($email,$password);
                 $this->businessId =$businessId;
+                $this->userId = $userId;
                 $this->businessName = $businessName;
                 $this->employesQuantity = $employesQuantity;
                 $this->businessInfo = $businessInfo;
@@ -23,6 +24,11 @@
         public function getBusinessId()
         {
                 return $this->businessId;
+        }
+
+        public function getUserId()
+        {
+                return $this->userId;
         }
 
         public function getBusinessName()
@@ -50,6 +56,13 @@
 
                 return $this;
         }
+
+        public function setUserId($userId)
+        {
+                $this->userId = $userId;
+
+                return $this;
+        }
  
         public function setBusinessName($businessName)
         {
@@ -73,9 +86,6 @@
 
                 return $this;
         }
-
-
- 
         
     }
 ?>

@@ -16,26 +16,23 @@ class BusinessDAO implements IBusinessDAO
             try
             {
                 
-                $query = "INSERT INTO".$this->tablename."(id,businessName,employeQuantity,businessInfo,email);";
+                $query = "INSERT INTO".$this->tablename."(DEFAULT,businessName,employeQuantity,businessInfo,userId);";
 
-                $parameters["id"] = $business->getBusinessId();
                 $parameters["businessName"] = $business->getBusinessName();
                 $parameters["employeQuantity"] = $business->getEmployesQuantity();
                 $parameters["businessInfo"] = $business->getBusinessInfo();
-                $parameters["email"] = $business->getEmail();
-
+                $parameters["userId"] = $business->getUserId();
                 $this->conecction = Connection::GetInstance();
 
                 $this->conecction->ExecuteNonQuery($query,$parameters);
 
             }
             catch(Exception $ex){
-                throw $ex
+                throw $ex;
             }
         }
 
         public function Delete($businessId){
-            $this->RetrieveData();
             $newList = array();
             foreach($this->businessList as $business){
                 if($business->getBusinessId() != $businessId){
@@ -43,7 +40,6 @@ class BusinessDAO implements IBusinessDAO
                 }
             }
             $this->businessList = $newList;
-            $this->SaveData();
         }
 
         public function GetAll()
@@ -52,15 +48,16 @@ class BusinessDAO implements IBusinessDAO
                 $businessList = array();
 
                 $query = "SELECT * FROM ".$this->tablename;
+                $queryID = "SELECT password FROM users u ON ".$this->tablename." b WHERE u.id = b.userId";
                 $this->conecction = Connection::GetInstance();
 
                 $result = $this->conecction->Execute($query);
 
-                foreach($result)
+                $businessList = $this->Mapping($result);
 
 
-            } catch (\Throwable $th) {
-                //throw $th;
+            } catch (Exception $ex) {
+                throw $ex;
             }
         }
         
@@ -119,21 +116,14 @@ class BusinessDAO implements IBusinessDAO
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Business($p['businessId'], 
+				return new Business($p['businessId'],
+                                   $p['userId'], 
                                    $p['businessName'], 
                                    $p['employesQuantity'], 
-                                   $p['businessInfo'],
-                                   $p['dni'],
-                                   $p['fileNumber'],
-                                   $p['gender'],
-                                   $p['birthDate'],
-                                   $p['email'],
-                                   $p['password'],
-                                   $p['phoneNumber'],
-                                   $p['active']);
+                                   $p['businessInfo']);
 			}, $value);
 
-            return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
+            return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
     }
 ?>
