@@ -2,74 +2,100 @@ create database myjob;
 
 use myjob;
 
-#drop database myjob;
+drop database myjob;
 
-create table users(
-	id int auto_increment primary key,
-	email varchar(50) not null unique,
-    password varchar(20) not null
-);
 
-select * from users;
+select * from students;
 
 create table careers(
-	id int auto_increment primary key,
-    descript varchar(200),
-    actve bool
+	careerId int auto_increment primary key,
+    description varchar(200),
+    active bool
 );
 
 create table students(
 	studentId int auto_increment primary key,
-	firstname varchar(30),
-    lastname varchar(30),
-    dni int not null,
-    filenumber int(30),
-    gender char,
-    birthdate date,
-    phoneNumber varchar(30),
-    actve bool not null,
-    userId int not null,
     careerId int not null,
-    constraint fk_userId foreign key (userId) references users (id) on delete cascade, 
-    constraint fk_careerId foreign key (careerId) references careers (id)
+	firstName varchar(30) not null,
+    lastName varchar(30) not null,
+    dni int not null unique,
+    fileNumber int(30) not null unique,
+    gender char not null,
+    birthDate date not null,
+    phoneNumber varchar(30) not null unique,
+    active bool not null,
+    email varchar(30) not null unique,
+    password varchar(30) not null,
+    constraint fk_careerId foreign key (careerId) references careers (careerId)
 );
 
 create table admins(
-	id int not null auto_increment primary key,
-    firstname varchar(50) not null,
-    lastname varchar(50) not null,
-	userId int not null,
-    foreign key (userId) references users(id) on delete cascade
+	adminId int not null auto_increment primary key,
+    firstName varchar(50) not null,
+    lastName varchar(50) not null,
+    email varchar(30) not null unique,
+    password varchar(30) not null
 );
 
 create table business(
-	id int auto_increment primary key,
+	businessId int auto_increment primary key,
     businessName varchar(50) not null,
-    employeQuantity int,
-    businesInfo varchar (200),
-    userId int not null,
-    constraint fk_userId foreign key (userId) references users(id) on delete cascade
+    employesQuantity int not null,
+    businessInfo varchar (200),
+    email varchar(30) not null unique,
+    password varchar(30) not null
 );
 
 create table jobPositions(
-	id int auto_increment primary key,
-    title varchar(50),
-    descript varchar(200),
-    actve bool not null,
+	jobPositionId int auto_increment primary key,
     businessId int not null,
-    foreign key (businessId) references business(id) on delete cascade 
+    title varchar(50) not null,
+    description  varchar(200) not null,
+    active bool not null,
+    foreign key (businessId) references business (businessId)
 );
 
 create table postulation(
-	id int auto_increment primary key,
-    actve bool not null,
+	postulationId int auto_increment primary key,
 	studentId int not null,
     businessId int not null,
     jobPositionId int not null,
+    active bool not null,
     foreign key (studentId) references students(studentId),
-    foreign key	(businessId) references business(id),
-    foreign key (jobPositionId) references jobPositions(id)
+    foreign key	(businessId) references business(businessId),
+    foreign key (jobPositionId) references jobPositions(jobPositionId)
 );
 
+drop table careers;
+
 select * from students;
+
+select * from students;
+
+select * from careers;
+
+alter table careers add column nombre varchar(30) not null unique after careerId;
+
+insert into careers values 
+(default,"Ingeniería Naval","Es la rama de la ingeniería que se ocupa del diseño, planificación, proyecto y construcción de todo material flotante, como pueden ser buques, plataformas petrolíferas e incluso campos eólicos lejos de la costa.
+
+La Ingeniería Naval abarca las funciones de ingeniería incluyendo el proyecto creativo del buque y artefactos flotantes, la investigación aplicada, el desarrollo técnico en los campos de diseño y construcción y la administración de los centros de producción de material flotante (astilleros), así como también del mantenimiento y reparación de estos.",1),
+(default,"Ingeniería Pesquera","Es la rama de la ingeniería que se dedica al estudio e investigación del conjunto de actividades vinculadas a la extracción, conservación, transformación, empacado, distribución, utilización, comercialización y cultivo de especies hidrobiológicas de recursos hidrobiológicos, sean de agua dulce o marina.
+
+Se trata de una carrera totalmente abocada a la problemática alimentaria de las aguas marinas.
+
+Si estás evaluando estudiar esta disciplina tendrás muchas posibilidades de trabajo, porque las empresas requieren de especialistas, pero no hay muchos técnicos ni ingenieros pesqueros.",1),
+(default,"Técnico Superior en Interiorismo","La tecnicatura en interiorismo está orientada a la formación de profesionales capaces de Identificar los distintos tipos de problemáticas, factores de intervención y las pertinentes formas de solución técnicas/estéticas y conocer los diferentes aspectos disciplinarios que intervienen para poder formular un proyecto adecuado. Planificar y materializar proyectos de diseño interior.",1),
+(default,"Técnico Universitario en Programación","Capacitar, para trabajar en toda empresa o dependencia que aplique el sistema de procesamiento de datos. Realizar programas y aplicarlos.",1);
+
+insert into careers values 
+(default,"Técnico Universitario en Sistemas Informáticos","El vertiginoso avance tecnológico ha generado nuevas necesidades laborales y ha abierto el campo a actividades especificas que requieren diferentes niveles de capacitación.
+
+Es una realidad que los egresados del nivel polimodal tienen dificultades para insertarse laboralmente, pues desde las funciones especificas del «Mercado Laboral» hay tareas que requieren un grado de capacitación mínima.
+
+Las carreras cortas, en este contexto, se presentan como una alternativa valida frente a las demandas sociales, ya que ellas cubren el espacio existente entre el nivel medio, que no prepara laboralmente, y un titulo de grado.",1),
+(default,"Técnico Universitario en Administración","La realidad económica y productiva actual propone nuevos roles a individuos y organizaciones en un contexto de globalidad que genera diversos y cambiantes mapas de lo socio- cultural y de lo socio-económico. Teniendo en cuenta el impacto de las nuevas tecnologías en el modo y distribución del trabajo, y la tendencia a la mayor demanda de capacitación en actividades intermedias de bienes y servicios con un criterio de uniformidad de estándares laborales. Es menester proporcionar herramientas que permitan abordar este proceso de transformación en las competencias laborales relacionadas con la empleabilidad y la movilidad en el mundo del trabajo.",1),
+(default,"Técnico Universitario en Producción Textil","La carrera está orientada a la formación de Técnicos Superiores en Producción Textil con competencia, solvencia técnica y criterio comercial, acorde a las variantes del mercado y la realidad productiva, determinada por las particularidades locales y regionales que exigen un manejo estratégico de los recursos, para asegurar la sustentabilidad productiva.",1),
+(default,"Técnico Universitario en Procedimientos y Tecnologías Ambientales","Los problemas ambientales por su diversidad, constituyen un fenómeno complejo, cuya dinámica y manejo requieren de esfuerzos coordinados por parte de distintos actores sociales. Las instituciones de educación superior tienen en este sentido un compromiso importante: formar profesionales que sean capaces de realizar acciones que contribuyan a conferirle sustentabilidad a la gestión del ambiente y evitar su deterioro, garantizando el cumplimiento de la legislación y normatividad ambiental dirigidas a la sostenibilidad del desarrollo.",1);
+
 

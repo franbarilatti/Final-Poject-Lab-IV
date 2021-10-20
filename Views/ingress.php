@@ -34,11 +34,16 @@
                               <label for="email" class="form-label"> Email </label>
                               <input type="email" name="email" class="form-control">
                          </div>
+                         <div class="mb-4">
+                              <label for="password" class="form-label"> Constraseña </label>
+                              <input type="password" name="password" class="form-control">
+                         </div>
 
                          <div class="d-grid">
                               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                          </div>
-
+                         <br>
+                         <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Student/ShowAddView">Crear usuario</a>
                     </form>
                </div>
                

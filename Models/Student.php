@@ -1,10 +1,9 @@
 <?php
     namespace Models;
 
-    class Student{
+    class Student extends user{
         private $studentId;
         private $careerId;
-        private $userId;
         private $firstName;
         private $lastName;
         private $dni;
@@ -17,7 +16,6 @@
         public function __construct(
                         $studentId,
                         $careerId,
-                        $userId,
                         $firstName,
                         $lastName,
                         $dni,
@@ -25,7 +23,9 @@
                         $gender,
                         $birthDate,
                         $phoneNumber,
-                        $active)
+                        $active,
+                        $email,
+                        $password)
         {
                 $this->studentId =$studentId;
                 $this->careerId =$careerId;
@@ -37,6 +37,7 @@
                 $this->birthDate =$birthDate;
                 $this->phoneNumber =$phoneNumber;
                 $this->active =$active;
+                parent::__construct($email,$password);
         }
 
         ////////// GETTERS METHODS //////////

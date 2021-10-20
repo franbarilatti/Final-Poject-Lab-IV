@@ -4,17 +4,17 @@
 
     class Admin extends User{
         private $adminId;
-        private $userId;
         private $firstName;
         private $lastName;
 
-        public function __construct($adminId,$userId,$firstName,$lastName)
+        public function __construct($adminId,$userId,$firstName,$lastName,$email,$password)
         {
         
             $this->adminId = $adminId;
             $this->userId = $userId;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
+            parent::__construct($email,$password);
         }
 
         ////////// GETTERS METHODS //////////

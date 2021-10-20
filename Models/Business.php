@@ -5,18 +5,17 @@
 
     class Business extends User{
         private $businessId;
-        private $userId;
         private $businessName;
         private $employesQuantity;
         private $businessInfo;
 
-        public function __construct($businessId,$userId,$businessName,$employesQuantity,$businessInfo)
+        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo,$email,$password)
         {
                 $this->businessId =$businessId;
-                $this->userId = $userId;
                 $this->businessName = $businessName;
                 $this->employesQuantity = $employesQuantity;
                 $this->businessInfo = $businessInfo;
+                parent::__construct($email,$password);
         }         
     
         ////////// GETTERS METHODS //////////

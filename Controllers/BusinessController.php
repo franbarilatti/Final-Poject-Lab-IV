@@ -99,8 +99,6 @@
             $businessId = $this->businessDAO->GetLastId();
             $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
             $this->businessDAO->Add($business);
-            echo "<script> if(confirm('empresa cargada con exito'));";
-            echo "</script>";
             $this->ShowAddView();
         }
         
