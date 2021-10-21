@@ -1,7 +1,8 @@
 <?php
     namespace Models;
 
-    class Student extends user{
+    class Student{
+        private $userId;
         private $studentId;
         private $careerId;
         private $firstName;
@@ -14,6 +15,7 @@
         private $active;
 
         public function __construct(
+                        $userId,
                         $studentId,
                         $careerId,
                         $firstName,
@@ -24,9 +26,9 @@
                         $birthDate,
                         $phoneNumber,
                         $active,
-                        $email,
-                        $password)
+                        )
         {
+                $this->userId = $userId;
                 $this->studentId =$studentId;
                 $this->careerId =$careerId;
                 $this->firstName =$firstName;
@@ -37,10 +39,13 @@
                 $this->birthDate =$birthDate;
                 $this->phoneNumber =$phoneNumber;
                 $this->active =$active;
-                parent::__construct($email,$password);
         }
 
         ////////// GETTERS METHODS //////////
+        public function getUserId()
+        {
+                return $this->userId;
+        }
 
         public function getStudentId()
         {
@@ -50,11 +55,6 @@
         public function getCareerId()
         {
                 return $this->careerId;
-        }
-
-        public function getUserId()
-        {
-                return $this->userId;
         }
 
         public function getFirstName()
@@ -95,18 +95,16 @@
         public function getActive(){
             return $this->active;
         }
-
-        public function getEmail()
-        {
-            return $this->email;
-        }
-        public function getPassword()
-        {
-            return $this->password;
-        }
                         
 
         ////////// SETTERS METHODS //////////
+
+        public function setUserId($userId)
+        {
+                $this->userId = $userId;
+
+                return $this;
+        }
  
         public function setStudentId($studentId)
         {
@@ -118,13 +116,6 @@
         public function setCareerId($careerId)
         {
                 $this->careerId = $careerId;
-
-                return $this;
-        }
-
-        public function setUserId($userId)
-        {
-                $this->userId = $userId;
 
                 return $this;
         }
@@ -185,19 +176,9 @@
 
                 return $this;
         }
-        public function setEmail($email)
-        {
-                $this->email = $email;
 
-                return $this;
-        }
- 
-        public function setPassword($password)
-        {
-                $this->password = $password;
-
-                return $this;
-        }
+        
+        
     }
     
     

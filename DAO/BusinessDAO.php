@@ -6,40 +6,57 @@
     use Models\Business as Business;
     use DAO\Connection as Connection;
 
-class BusinessDAO implements IBusinessDAO
+    class BusinessDAO implements IBusinessDAO
     {
-        private $conecction;
-        private $tablename = "business";
+        private $connection;
+        private $tableName = "business";
 
         public function Add(Business $business)
         {
             try
             {
+                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = ".$business->getBusinessName();
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($validation);
+
+                if(isset($result)){
+                    return "El nombre de esta empresa ya se encuentra registrado";
+                }else{
+                    $query = "INSERT INTO".$this->tableName." (businessId,businessName,employeQuantity,businessInfo,userId) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo,:userId);";
+
+                    $parameters["businessName"] = $business->getBusinessName();
+                    $parameters["employeQuantity"] = $business->getEmployesQuantity();
+                    $parameters["businessInfo"] = $business->getBusinessInfo();
+                    $parameters["userId"] = $business->getUserId();
+                    $this->connection = Connection::GetInstance();
+
+                    $this->connection->ExecuteNonQuery($query,$parameters);
+
+                    return "Empresa agregada con exito";
+                }
                 
-                $query = "INSERT INTO".$this->tablename."(DEFAULT,businessName,employeQuantity,businessInfo,userId);";
-
-                $parameters["businessName"] = $business->getBusinessName();
-                $parameters["employeQuantity"] = $business->getEmployesQuantity();
-                $parameters["businessInfo"] = $business->getBusinessInfo();
-                $parameters["userId"] = $business->getUserId();
-                $this->conecction = Connection::GetInstance();
-
-                $this->conecction->ExecuteNonQuery($query,$parameters);
 
             }
             catch(Exception $ex){
-                throw $ex;
+                throw $ex = "Hubo un error al ingresar la empresa";
             }
         }
 
         public function Delete($businessId){
-            $newList = array();
-            foreach($this->businessList as $business){
-                if($business->getBusinessId() != $businessId){
-                    array_push($newList,$business);
-                }
+            try{
+
+                $query = "DELETE FROM ".$this->tableName." WHERE businessId = :businessId";
+                
+                $parameters['businessId'] = $businessId;
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+
+                return "Empresa eliminada con exito!";
+
             }
-            $this->businessList = $newList;
+            catch(Exception $ex){
+                throw $ex = "La empresa no ha podido ser eliminada";
+            }
         }
 
         public function GetAll()
@@ -47,15 +64,13 @@ class BusinessDAO implements IBusinessDAO
             try {
                 $businessList = array();
 
-                $query = "SELECT * FROM ".$this->tablename;
-                $queryID = "SELECT password FROM users u ON ".$this->tablename." b WHERE u.id = b.userId";
-                $this->conecction = Connection::GetInstance();
+                $query = "SELECT * FROM ".$this->tableName;
+                $this->connection = Connection::GetInstance();
 
-                $result = $this->conecction->Execute($query);
-
+                $result = $this->connection->Execute($query);
                 $businessList = $this->Mapping($result);
 
-
+                return $businessList;
             } catch (Exception $ex) {
                 throw $ex;
             }
@@ -65,40 +80,48 @@ class BusinessDAO implements IBusinessDAO
 
         public function Modify($businessId, $businessName, $employesQuantity, $businessInfo)
         {
+            try{
+                $query = "UPDATE ".$this->tableName." SET businessName = :businessName SET employesQuantity = :employesQuantity SET businessInfo =  :businesInfo WHERE businessId = ".$businessId;
+                $this->connection = Connection::GetInstance();
+                $parameters["businessName"] = $businessName;
+                $parameters["employeQuantity"] = $employesQuantity;
+                $parameters["businessInfo"] = $businessInfo;
+                
+                $this->connection->ExecuteNonQuery($query,$parameters);
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
             
         }
 
-        public function GetLastId(){
-            $this->RetrieveData();
-            $idSerched = null;
-            if(empty($this->businessList)){
-                $idSerched = 1;
-            }else{
-                $lastBusiness = array_pop($this->businessList);
-                $idSerched = $lastBusiness->getBusinessId() + 1;
-            }
-            return $idSerched;
-        }
 
         public function SearchByName($businessName){
-            $this->RetrieveData();
-            foreach($this->businessList as $business){
-                if($business->getBusinessName() == $businessName){
-                    $findedBusiness = $business;
-                }
+            try{
+                $query = "SELECT * FROM business b WHERE b.businessName = ".$businessName;
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query);
+                $finded = $this->Mapping($result);
+                return $finded;
             }
-            return $findedBusiness;
+            catch(Exception $ex){
+                throw $ex;
+            }
         }
 
         public function SearchById($businessId){
-            $this->RetrieveData();
-            $findedBusiness = null;
-            foreach($this->businessList as $business){
-                if($business->getBusinessId() == $businessId){
-                    $findedBusiness = $business;
-                }
+            try{
+                $query = "SELECT * FROM business b WHERE b.businessName = ".$businessId;
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query);
+                $finded = $this->Mapping($result);
+                return $finded;
             }
-            return $findedBusiness;
+            catch(Exception $ex){
+                throw $ex;
+            }
         }
 
         protected function Mapping($value) {
@@ -106,14 +129,15 @@ class BusinessDAO implements IBusinessDAO
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Business($p['businessId'],
+				return new Business(
                                    $p['userId'], 
+                                   $p['businessId'], 
                                    $p['businessName'], 
                                    $p['employesQuantity'], 
-                                   $p['businessInfo']);
+                                   $p['businessInfo'],
+                                   $p['active']);
 			}, $value);
 
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
     }
-?>

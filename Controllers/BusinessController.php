@@ -2,7 +2,9 @@
     namespace Controllers;
 
     use DAO\BusinessDAO as BusinessDAO;
-    use Models\Business as Business;
+    use Exception;
+use Models\Alert;
+use Models\Business as Business;
 
     class BusinessController
     {
@@ -64,9 +66,14 @@
 
 
         public function DeleteBusiness($businessId){
-            $this->businessDAO->Delete($businessId);
-            echo "<script> if(confirm('La empresa ha sido eliminada'));";
-            echo "</script>";
+            $alert = new Alert();
+
+            try{
+                $this->businessDAO->Delete($businessId);
+            }catch(Exception $ex){
+
+            }
+            
             $this->ShowListViewAdmin();
         }
 

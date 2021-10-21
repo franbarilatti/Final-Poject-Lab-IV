@@ -3,18 +3,18 @@
 
 
     class Admin extends User{
+        private $userId;
         private $adminId;
         private $firstName;
         private $lastName;
 
-        public function __construct($adminId,$userId,$firstName,$lastName,$email,$password)
+        public function __construct($userId,$adminId,$firstName,$lastName)
         {
         
             $this->adminId = $adminId;
             $this->userId = $userId;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
-            parent::__construct($email,$password);
         }
 
         ////////// GETTERS METHODS //////////
@@ -39,14 +39,6 @@
                 return $this->lastName;
         }
  
-        public function getEmail()
-        {
-                return $this->email;
-        }
-        public function getPassword()
-        {
-                return $this->password;
-        }
 
         ////////// SETTERS METHODS //////////
 
@@ -77,19 +69,6 @@
                 return $this;
         }
  
-        public function setEmail($email)
-        {
-                $this->email = $email;
-
-                return $this;
-        }
-
-        public function setPassword($password)
-        {
-                $this->password = $password;
-
-                return $this;
-        }
     }
 
 

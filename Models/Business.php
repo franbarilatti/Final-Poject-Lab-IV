@@ -3,19 +3,22 @@
 
 
 
-    class Business extends User{
+    class Business{
+        private $userId;
         private $businessId;
         private $businessName;
         private $employesQuantity;
         private $businessInfo;
+        private $active;
 
-        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo,$email,$password)
+        public function __construct($userId,$businessId,$businessName,$employesQuantity,$businessInfo,$active)
         {
+                $this->userId = $userId;
                 $this->businessId =$businessId;
                 $this->businessName = $businessName;
                 $this->employesQuantity = $employesQuantity;
                 $this->businessInfo = $businessInfo;
-                parent::__construct($email,$password);
+                $this->active = $active;
         }         
     
         ////////// GETTERS METHODS //////////
@@ -45,13 +48,10 @@
         {
                 return $this->businessInfo;
         }
-        public function getEmail()
+
+        public function getActive()
         {
-                return $this->email;
-        }
-        public function getPassword()
-        {
-                return $this->password;
+                return $this->active;
         }
 
         ////////// SETTERS METHODS //////////
@@ -92,21 +92,13 @@
 
                 return $this;
         }
-
-        public function setEmail($email)
-        {
-                $this->email = $email;
-
-                return $this;
-        }
         
-        public function setPassword($password)
+        public function setActive($active)
         {
-                $this->password = $password;
+                $this->active = $active;
 
                 return $this;
         }
 
-        
     }
 ?>

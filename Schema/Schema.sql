@@ -5,7 +5,14 @@ use myjob;
 #drop database myjob;
 
 
-select * from students;
+#select * from students;
+
+create table users(
+	id int auto_increment primary key,
+    email varchar(50) not null,
+    password varchar(16) not null,
+    role varchar(10) not null
+);
 
 create table careers(
 	careerId int auto_increment primary key,
@@ -24,17 +31,18 @@ create table students(
     birthDate date not null,
     phoneNumber varchar(30) not null unique,
     active bool not null,
-    email varchar(30) not null unique,
-    password varchar(30) not null,
+    userId int not null,
+    constraint fk_userId foreign key (userId) references users (id),
     constraint fk_careerId foreign key (careerId) references careers (careerId)
+    
 );
 
 create table admins(
 	adminId int not null auto_increment primary key,
     firstName varchar(50) not null,
     lastName varchar(50) not null,
-    email varchar(30) not null unique,
-    password varchar(30) not null
+    userId int not null,
+    foreign key (userId) references users (id)
 );
 
 create table business(
@@ -42,8 +50,8 @@ create table business(
     businessName varchar(50) not null,
     employesQuantity int not null,
     businessInfo varchar (200),
-    email varchar(30) not null unique,
-    password varchar(30) not null
+    userId int not null,
+	foreign key (userId) references users (id)
 );
 
 create table jobPositions(
@@ -53,6 +61,16 @@ create table jobPositions(
     description  varchar(200) not null,
     active bool not null,
     foreign key (businessId) references business (businessId)
+);
+
+create table jobOffer(
+	jobOfferId int auto_increment primary key,
+	title varchar(50),
+	description varchar(500),
+	postingDate date,
+	expiryDate date,
+    businessId int not null,
+	foreign key (businessId) references business (businessId)
 );
 
 create table postulation(
