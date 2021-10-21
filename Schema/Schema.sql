@@ -2,7 +2,7 @@ create database myjob;
 
 use myjob;
 
-drop database myjob;
+#drop database myjob;
 
 
 select * from students;
