@@ -3,6 +3,8 @@
 
     use DAO\IStudentDAO as IStudentDAO;
     use Models\Student as Student;
+    use \Exception as Exception;
+    use DAO\Connection as Connection;
 
     class StudentDAO implements IStudentDAO{
     
@@ -10,6 +12,8 @@
         private $ch;
         private $url;
         private $header;
+        private $conecction;
+        private $tableName = "students";
 
         public function __construct(){
             $this->ch = curl_init();
@@ -25,11 +29,7 @@
 
         public function Add(Student $student)
         {
-            $this->RetrieveData();
-            
-            array_push($this->studentList, $student);
-
-            $this->SaveData();
+            $query = "INSERT INTO".$this->tableName."(DEFAULT,studentId,1,firstName,lastName,dni,fileNumber,gender,birthDate,phoneNumber,active,email,password)"
         }
 
         public function GetAll()
