@@ -65,17 +65,7 @@ class BusinessDAO implements IBusinessDAO
 
         public function Modify($businessId, $businessName, $employesQuantity, $businessInfo)
         {
-            $this->RetrieveData();
             
-            foreach($this->businessList as $business){
-                if($business->getBusinessId() == $businessId){
-                    $this->Delete($businessId);
-                    $newBusiness = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-                    array_push($this->businessList,$newBusiness);
-                }
-            }
-            sort($this->businessList);
-            $this->SaveData();
         }
 
         public function GetLastId(){

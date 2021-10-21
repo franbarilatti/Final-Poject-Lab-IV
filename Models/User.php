@@ -1,7 +1,7 @@
 <?php
     namespace Models;
 
-    class User{
+    abstract class User{
         
         private $email;
         private $password;
@@ -16,31 +16,20 @@
         ////////// GETTERS METHODS //////////
 
 
-        public function getPassword()
-        {
-            return $this->password;
-        }
+        abstract public function getPassword();
 
 
-        public function getEmail()
-        {
-            return $this->email;
-        }
+
+        abstract public function getEmail();
+       
 
         ////////// SETTERS METHODS //////////
    
 
-        public function setPassword($password)
-        {
-            $this->password = $password;
-            return $this;
-        }
+        abstract public function setPassword($password);
 
-        public function setEmail($email)
-        {
-            $this->email = $email;
-            return $this;
-        }
+        abstract public function setEmail($email);
+
 
     }
 
