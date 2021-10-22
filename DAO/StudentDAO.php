@@ -3,6 +3,8 @@
 
     use DAO\IStudentDAO as IStudentDAO;
     use Models\Student as Student;
+    use \Exception as Exception;
+    use DAO\Connection as Connection;
 
     class StudentDAO implements IStudentDAO{
     
@@ -10,6 +12,8 @@
         private $ch;
         private $url;
         private $header;
+        private $conecction;
+        private $tableName = "students";
 
         public function __construct(){
             $this->ch = curl_init();
@@ -25,11 +29,28 @@
 
         public function Add(Student $student)
         {
-            $this->RetrieveData();
+            try
+            {
+                $query = "INSERT INTO".$this->tableName."(DEFAULT,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,phoneNumber,active,email,password);";
+                $parameters["careerId"] = $student->getCareerId();
+                $parameters["firstName"] = $student->getFirstName();
+                $parameters["lastName"] = $student->getLastName();
+                $parameters["dni"] = $student->getDni();
+                $parameters["fileNumber"] = $student->getFileNumber();
+                $parameters["gender"] = $student->getGender();
+                $parameters["birthDate"] = $student->getBirthDate();
+                $parameters["phoneNumber"] = $student->getPhoneNumber();
+                $parameters["active"] = $student->getActive();
+                $parameters["email"] = $student->getEmail();
+                $parameters["password"] = $student->getPassword();
+                $this->conecction = Connection::GetInstance();
+                $this->conecction->ExecuteNonQuery($query,$parameters);
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
             
-            array_push($this->studentList, $student);
-
-            $this->SaveData();
         }
 
         public function GetAll()

@@ -38,6 +38,18 @@
                                    <label for="">Fecha nacimiento</label> <br>
                                    <input type="date" name="birthDate" min="<?php echo time();?>" >
                               </div>
+                              <div class="form-group">
+                                   <label for="">Numero de Telefono</label> <br>
+                                   <input type="text" name="phoneNumber">
+                              </div>
+                              <div class="form-group">
+                                   <label for="">Email</label> <br>
+                                   <input type="email" name="email">
+                              </div>
+                              <div class="form-group">
+                                   <label for="">Constraseña</label> <br>
+                                   <input type="password" name="password">
+                              </div>
                          </div>
                     </div>
                     <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>
