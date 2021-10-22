@@ -143,8 +143,6 @@ class BusinessController
 
         public function Add($userId,$email,$password,$role,$businessId,$businessName,$employesQuantity,$businessInfo)
         {   
-            
-
             try{                
                 $user = new User($userId,$email,$password,$role);
                 $this->userDAO->Add($user);
