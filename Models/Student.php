@@ -82,11 +82,6 @@
                 return $this->birthDate;
         }
 
-        public function getEmail()
-        {
-                return $this->email;
-        }
-
         public function getPhoneNumber()
         {
                 return $this->phoneNumber;
@@ -95,6 +90,16 @@
         public function getActive(){
             return $this->active;
         }
+
+        public function getEmail()
+        {
+            return $this->email;
+        }
+        public function getPassword()
+        {
+            return $this->password;
+        }
+                        
 
         ////////// SETTERS METHODS //////////
  
@@ -160,13 +165,7 @@
 
                 return $this;
         }
- 
-        public function setEmail($email)
-        {
-                $this->email = $email;
 
-                return $this;
-        }
  
         public function setPhoneNumber($phoneNumber)
         {
@@ -181,7 +180,19 @@
 
                 return $this;
         }
-         
+        public function setEmail($email)
+        {
+                $this->email = $email;
+
+                return $this;
+        }
+ 
+        public function setPassword($password)
+        {
+                $this->password = $password;
+
+                return $this;
+        }
     }
     
     
