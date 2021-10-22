@@ -14,7 +14,7 @@
         public function Add(User $user)
         {
             try{
-                $query = "INSERT INTO ".$this->tableName." (userId,email,password,role) VALUES (DEFAULT,:email,:password,:role);";
+                $query = "INSERT INTO ".$this->tableName." (id,email,password,role) VALUES (DEFAULT,:email,:password,:role);";
 
                 $parameters['email'] = $user->getEmail();
                 $parameters['password'] = $user->getEmail();
@@ -46,6 +46,23 @@
             }
             catch(Exception $ex){
                 throw $ex;
+            }
+        }
+
+        public function LastRegister(){
+            try{
+                $query = "SELECT TOP 1 * FROM ".$this->tableName." ORDER BY id DESC";
+
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Excecute($query);
+
+                $lastUser = $this->Mapping($result);
+
+                return $lastUser;
+            }
+            catch(Exception $ex){
+                throw $ex = "No se a podido tomar el ultimo registro";
             }
         }
 
