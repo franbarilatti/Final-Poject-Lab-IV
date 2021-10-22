@@ -27,3 +27,7 @@ body {
      width: 500px;
      border: 2px solid rgba(0, 0, 0, 0.2);
 }
+
+.primary{
+     background-color: rebeccapurple;
+}

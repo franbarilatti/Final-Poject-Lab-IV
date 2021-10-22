@@ -1,36 +1,77 @@
 <?php
     namespace Models;
 
-    abstract class User{
+    class User{
         
+        private $userId;
         private $email;
         private $password;
+        private $role;
 
-        public function __construct($email, $password)
+        public function __construct($userId,$email,$password,$role)
         {
-
+            $this->userId =$userId;
             $this->email = $email;
             $this->password = $password;
+            $this->$role = $role;
         }
 
         ////////// GETTERS METHODS //////////
+ 
+        public function getUserId()
+        {
+                return $this->userId;
+        }
 
+        public function getEmail()
+        {
+                return $this->email;
+        }
+ 
+        public function getPassword()
+        {
+                return $this->password;
+        }
 
-        abstract public function getPassword();
+        public function getRole()
+        {
+                return $this->role;
+        }
 
-
-
-        abstract public function getEmail();
+  
        
 
         ////////// SETTERS METHODS //////////
+
+        public function setRole($role)
+        {
+                $this->role = $role;
+
+                return $this;
+        }
+
+ 
+        public function setPassword($password)
+        {
+                $this->password = $password;
+
+                return $this;
+        }
+
+        public function setEmail($email)
+        {
+                $this->email = $email;
+
+                return $this;
+        }
+
+        public function setUserId($userId)
+        {
+                $this->userId = $userId;
+
+                return $this;
+        }
    
-
-        abstract public function setPassword($password);
-
-        abstract public function setEmail($email);
-
-
     }
 
 ?>

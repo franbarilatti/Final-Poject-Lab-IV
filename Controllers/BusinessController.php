@@ -2,15 +2,23 @@
     namespace Controllers;
 
     use DAO\BusinessDAO as BusinessDAO;
+    use DAO\UserDAO;
+    use Exception;
+    use Models\Alert;
     use Models\Business as Business;
+use Models\User;
 
-    class BusinessController
+class BusinessController
     {
         private $businessDAO;
+        private $userDAO;
+        private $alert;
 
         public function __construct()
         {
             $this->businessDAO = new BusinessDAO();
+            $this->userDAO = new UserDAO();
+            $this->alert = new Alert();
         }
 
 
@@ -25,37 +33,61 @@
 
         public function ShowListViewAdmin()
         {
-            $title = "Lista de empresas";
-            $businessList = $this->businessDAO->GetAll();
-            require_once (VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."business-list-admin.php");
+            try{
+                $title = "Lista de empresas";
+                $businessList = $this->businessDAO->GetAll();
+                require_once (VIEWS_PATH."header.php");
+                require_once(VIEWS_PATH."business-list-admin.php");
+            }catch(Exception $ex){
+                throw $ex;
+            }
         }
 
         public function ShowListViewStudent()
         {
-            $title = "Lista de empresas";
-            $student = $_SESSION["student"];
-            $businessList = $this->businessDAO->GetAll();
-            require_once(VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."business-list-student.php");
+            try{
+                $title = "Lista de empresas";
+                $student = $_SESSION["student"];
+                $businessList = $this->businessDAO->GetAll();
+                require_once(VIEWS_PATH."header.php");
+                require_once(VIEWS_PATH."business-list-student.php");
+            }catch(Exception $ex){
+                throw $ex;
+            }
         }
 
         public function ShowOneBusiness($businessName){
-            $businessList = $this->businessDAO->SearchByName($businessName);
-            require_once(VIEWS_PATH."business-list.php");
+            try{
+                $businessList = $this->businessDAO->SearchByName($businessName);
+                require_once(VIEWS_PATH."business-list.php");
+            }catch(Exception $ex){
+                throw $ex;
+            }
         }
 
         public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
-            $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-            $title = "Modificar $businessName";
-            require_once (VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."business-modify.php");
+            try{
+                $business = $this->businessDAO->SearchById($businessId);
+                $title = "Modificar ".$business->getBusinessName();
+                require_once (VIEWS_PATH."header.php");
+                require_once(VIEWS_PATH."business-modify.php");
+            }catch(Exception $ex){
+                throw $ex;
+            }finally{
+                $this->ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo);
+            }
+            
         }
 
         public function ShowProfile($businessId){
-            $business = $this->businessDAO->searchById($businessId);
-            require_once(VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."business-profile.php");
+            try{
+                $business = $this->businessDAO->searchById($businessId);
+                require_once(VIEWS_PATH."header.php");
+                require_once(VIEWS_PATH."business-profile.php");
+            }catch(Exception $ex){
+                throw $ex;
+            }
+            
         }
 
 
@@ -64,17 +96,33 @@
 
 
         public function DeleteBusiness($businessId){
-            $this->businessDAO->Delete($businessId);
-            echo "<script> if(confirm('La empresa ha sido eliminada'));";
-            echo "</script>";
-            $this->ShowListViewAdmin();
+            
+
+            try{
+                $this->businessDAO->Delete($businessId);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Empresa dada de baja con exito");
+            }catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+            }finally{
+                $this->ShowListViewAdmin();
+            }
+                    
         }
 
         public function Modify($businessId, $businessName, $employesQuantity, $businessInfo){
-            $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
-            echo "<script> if(confirm('La empresa ha sido modificada'));";
-            echo "</script>";
-            $this->ShowListViewAdmin();
+            try{
+                $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Empresa modificada con exito");
+            }catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+            }finally{
+                $this->ShowListViewAdmin();
+            }
+            
         }
 
         public function SearchByNameAdmin($businessName){
@@ -93,13 +141,30 @@
         }
         
 
-        public function Add($businessName,$employesQuantity,$businessInfo)
+        public function Add($userId,$email,$password,$role,$businessId,$businessName,$employesQuantity,$businessInfo)
         {   
+            
 
-            $businessId = $this->businessDAO->GetLastId();
-            $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-            $this->businessDAO->Add($business);
-            $this->ShowAddView();
+            try{                
+                $user = new User($userId,$email,$password,$role);
+                $this->userDAO->Add($user);
+
+                $lastUser = $this->userDAO->LastRegister();
+
+                $business = new Business($lastUser->getUserId,$businessId,$businessName,$employesQuantity,$businessInfo,false);
+                $this->businessDAO->Add($business);
+                
+                $this->alert->setType("success");
+                $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
+            }
+            catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+            }
+            finally{
+                $this->ShowAddView();
+            }
+            
         }
         
         public function Index($opcion){
