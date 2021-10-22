@@ -29,7 +29,28 @@
 
         public function Add(Student $student)
         {
-            $query = "INSERT INTO".$this->tableName."(DEFAULT,studentId,1,firstName,lastName,dni,fileNumber,gender,birthDate,phoneNumber,active,email,password)"
+            try
+            {
+                $query = "INSERT INTO".$this->tableName."(DEFAULT,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,phoneNumber,active,email,password);";
+                $parameters["careerId"] = $student->getCareerId();
+                $parameters["firstName"] = $student->getFirstName();
+                $parameters["lastName"] = $student->getLastName();
+                $parameters["dni"] = $student->getDni();
+                $parameters["fileNumber"] = $student->getFileNumber();
+                $parameters["gender"] = $student->getGender();
+                $parameters["birthDate"] = $student->getBirthDate();
+                $parameters["phoneNumber"] = $student->getPhoneNumber();
+                $parameters["active"] = $student->getActive();
+                $parameters["email"] = $student->getEmail();
+                $parameters["password"] = $student->getPassword();
+                $this->conecction = Connection::GetInstance();
+                $this->conecction->ExecuteNonQuery($query,$parameters);
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+            
         }
 
         public function GetAll()

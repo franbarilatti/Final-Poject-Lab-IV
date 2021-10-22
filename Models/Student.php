@@ -19,7 +19,7 @@
                         $firstName,
                         $lastName,
                         $dni,
-                        $fileNumber,
+                        
                         $gender,
                         $birthDate,
                         $phoneNumber,
@@ -32,11 +32,11 @@
                 $this->firstName =$firstName;
                 $this->lastName =$lastName;
                 $this->dni =$dni;
-                $this->fileNumber =$fileNumber;
+                $this->fileNumber = rand(10,99) . "-" . rand(100,999) . "-". rand(1000,9999);
                 $this->gender =$gender;
                 $this->birthDate =$birthDate;
                 $this->phoneNumber =$phoneNumber;
-                $this->active =$active;
+                $this->active = true;
                 parent::__construct($email,$password);
         }
 
@@ -50,11 +50,6 @@
         public function getCareerId()
         {
                 return $this->careerId;
-        }
-
-        public function getUserId()
-        {
-                return $this->userId;
         }
 
         public function getFirstName()
