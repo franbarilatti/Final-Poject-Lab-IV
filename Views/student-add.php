@@ -1,5 +1,5 @@
 <?php
-
+     echo $role;
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">

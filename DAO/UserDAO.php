@@ -18,7 +18,7 @@
 
                 $parameters['email'] = $user->getEmail();
                 $parameters['password'] = $user->getEmail();
-                $parameters['role'] = $user->getEmail();
+                $parameters['role'] = $user->getRole();
 
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);

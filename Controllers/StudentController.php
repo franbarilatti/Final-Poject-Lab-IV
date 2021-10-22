@@ -15,7 +15,7 @@
 
         ////////////////// VIEWS METHODS //////////////////
 
-        public function ShowAddView()
+        public function ShowAddView($role)
         {
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-add.php");

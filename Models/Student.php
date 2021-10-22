@@ -38,12 +38,8 @@
                 $this->gender =$gender;
                 $this->birthDate =$birthDate;
                 $this->phoneNumber =$phoneNumber;
-<<<<<<< HEAD
                 $this->active = true;
                 parent::__construct($email,$password);
-=======
-                $this->active =$active;
->>>>>>> franco
         }
 
         ////////// GETTERS METHODS //////////
