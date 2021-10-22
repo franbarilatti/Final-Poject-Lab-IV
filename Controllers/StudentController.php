@@ -2,16 +2,25 @@
     namespace Controllers;
 
     use DAO\StudentDAO as StudentDAO;
+    use DAO\UserDAO;
+use Exception;
+use Models\Alert;
     use Models\Student as Student;
+use Models\User;
 
-    class StudentController
+class StudentController
     {
         private $studentDAO;
+        private $userDAO;
+        private $alert;
 
         public function __construct()
         {
-            $this->studentDAO = new StudentDAO();
+            $this->businessDAO = new StudentDAO();
+            $this->userDAO = new UserDAO();
+            $this->alert = new Alert();
         }
+
 
         ////////////////// VIEWS METHODS //////////////////
 
@@ -37,13 +46,27 @@
 
         ////////////////// FUNCTIONAL METHODS //////////////////
 
-        public function Add($careerId,$firstName,$lastName,$dni,$gender,$birthDate,$email,$password,$phoneNumber)
+        public function Add($userId,$email,$password,$role,$studentId,$careerId,$firstName,$lastName,$dni,$gender,$birthDate,$phoneNumber,$active)
         {
-            $studentId = $this->studentDAO->GetLastId();
-            $student = new Student($studentId,$careerId,$firstName,$lastName,$dni,$gender,$birthDate,$email,$password,$phoneNumber);
-            $this->studentDAO->Add($student);
+            try{                
+                $user = new User($userId,$email,$password,$role);
+                $this->userDAO->Add($user);
 
-            $this->ShowAddView();
+                $lastUser = $this->userDAO->LastRegister();
+
+                $student = new Student($lastUser->getUserId(),$studentId,$careerId,$firstName,$lastName,$dni,$gender,$birthDate,$phoneNumber,true);
+                $this->studentDAO->Add($student);
+                
+                $this->alert->setType("success");
+                $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
+            }
+            catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+            }
+            finally{
+                $this->ShowAddView();
+            }
         }
 
         public function Index(){

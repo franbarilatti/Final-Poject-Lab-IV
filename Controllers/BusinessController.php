@@ -149,7 +149,7 @@ class BusinessController
 
                 $lastUser = $this->userDAO->LastRegister();
 
-                $business = new Business($lastUser->getUserId,$businessId,$businessName,$employesQuantity,$businessInfo,false);
+                $business = new Business($lastUser->getUserId(),$businessId,$businessName,$employesQuantity,$businessInfo,false);
                 $this->businessDAO->Add($business);
                 
                 $this->alert->setType("success");

@@ -22,8 +22,9 @@
                 if(isset($result)){
                     return "El nombre de esta empresa ya se encuentra registrado";
                 }else{
-                    $query = "INSERT INTO".$this->tableName." (businessId,businessName,employeQuantity,businessInfo,userId) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo,:userId);";
+                    $query = "INSERT INTO".$this->tableName." (businessId,businessName,employeQuantity,businessInfo,userId) VALUES (:businessId,:businessName,:employeQuantity,:businessInfo,:userId);";
 
+                    $parameters["businessId"] = $business->getBusinessId();
                     $parameters["businessName"] = $business->getBusinessName();
                     $parameters["employeQuantity"] = $business->getEmployesQuantity();
                     $parameters["businessInfo"] = $business->getBusinessInfo();

@@ -21,7 +21,6 @@
                         $firstName,
                         $lastName,
                         $dni,
-                        
                         $gender,
                         $birthDate,
                         $phoneNumber,
@@ -39,7 +38,6 @@
                 $this->birthDate =$birthDate;
                 $this->phoneNumber =$phoneNumber;
                 $this->active = true;
-                parent::__construct($email,$password);
         }
 
         ////////// GETTERS METHODS //////////
