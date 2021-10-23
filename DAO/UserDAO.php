@@ -66,6 +66,23 @@
             }
         }
 
+        public function SearchByEmail($email){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE email = :email";
+
+                $parameters['email'] = $email;
+                
+                $this->connection = Connection::GetInstance();
+
+                $findedUser = $this->connection->Excecute($query,$parameters);
+
+                return $findedUser;
+            }
+            catch(Exception $ex){
+                throw $ex = "Email ingresado no encontrado. Por favor verifique que se encuentre bien escrito";
+            }
+        }
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
