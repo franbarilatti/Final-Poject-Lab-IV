@@ -1,66 +1,57 @@
 <?php
     namespace DAO;
 
-    use Models\Student as Student;
+    use DAO\ICareerDAO as ICareerDAO;
+    use Models\Career as Career;
 
-
-    class StudentAPI{
+    class CareerAPI{
     
-        private $studentList = array();
+        private $careerList = array();
         private $ch;
         private $url;
         private $header;
-        
 
         public function __construct(){
             $this->ch = curl_init();
-            $this->url = "https://utn-students-api.herokuapp.com/api/Student";
+            $this->url = "https://utn-students-api.herokuapp.com/api/Career";
             $this->header = array("x-api-key: 4f3bceed-50ba-4461-a910-518598664c08");
             curl_setopt($this->ch,CURLOPT_URL,$this->url);
             curl_setopt($this->ch,CURLOPT_RETURNTRANSFER,true);
             curl_setopt($this->ch,CURLOPT_HTTPHEADER,$this->header);
         }
 
-
         ///////////// Functional Methods /////////////
 
-        public function GetAll(){
+        public function GetAll()
+        {
             $this->RetrieveData();
-            return $this->studentList;
+
+            return $this->careerList;
         }
+
+        ///////////// JSON Methods /////////////
+
 
         private function RetrieveData()
         {
             $resp = curl_exec($this->ch);
-            $this->studentList = array();
+            $this->careerList = array();
             $arrayToDecode = json_decode($resp, true);
 
             if($resp != null)
             {
                 $arrayToDecode = json_decode($resp, true);
 
-                $this->studentList = $this->Mapping($arrayToDecode);
+                $this->careerList = $this->Mapping($arrayToDecode);
             }
         }
-        
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Student($p['userId'],
-                                   $p['studentId'], 
-                                   $p['careerId'], 
-                                   $p['firstName'], 
-                                   $p['lastName'],
-                                   $p['dni'],
-                                   $p['fileNumber'],
-                                   $p['gender'],
-                                   $p['birthDate'],
-                                   $p['email'],
-                                   $p['password'],
-                                   $p['phoneNumber'],
-                                   $p['active']);
+				return new Career($p['careerId'], $p['description'], $p['active']);
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
