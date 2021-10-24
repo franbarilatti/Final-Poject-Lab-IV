@@ -43,7 +43,8 @@
                               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                          </div>
                          <br>
-                         <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>User/UserAdd?$role=student">Crear usuario</a>
+                         <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>User/UserAdd?$role=student">Registrarse como alumno</a>
+                         <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>User/UserAdd?$role=business">Registrarse como empresa</a>
                     </form>
                </div>
                
