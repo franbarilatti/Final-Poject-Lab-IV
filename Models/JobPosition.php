@@ -5,15 +5,13 @@ use tidy;
 
 class JobPosition{
         private $jobPositionId;
-        private $businessId;
-        private $title;
+        private $careerId;
         private $description;
         private $active;
 
-        public function __construct($jobPositionId,$businessId,$title,$description, $active) {
+        public function __construct($jobPositionId,$careerId,$description, $active) {
                 $this->jobPositionId = $jobPositionId;
-                $this->businessId = $businessId;
-                $this->title = $title;
+                $this->careerId = $careerId;
                 $this->description = $description;
                 $this->active = $active;
         }
@@ -24,22 +22,16 @@ class JobPosition{
                 return $this->jobPositionId;
         }
 
-        public function getBusinessId()
+        public function getCareerId()
         {
-                return $this->businessId;
+                return $this->careerId;
         }
+
         
         public function getDescription()
         {
                 return $this->description;
         }
-
-        
-        public function getTitle()
-        {
-                return $this->title;
-        }
-
          
         public function getActive()
         {
@@ -55,20 +47,12 @@ class JobPosition{
                 return $this;
         }
 
-        public function setBusinessId($businessId)
+        public function setCareerId($careerId)
         {
-                $this->businessId = $businessId;
+                $this->careerId = $careerId;
 
                 return $this;
         }
-        
-        public function setTitle($title)
-        {
-                $this->title = $title;
-
-                return $this;
-        }
-
         
         public function setDescription($description)
         {
@@ -84,6 +68,6 @@ class JobPosition{
 
                 return $this;
         } 
-        
+                
     }
 ?>

@@ -2,7 +2,7 @@ create database myjob;
 
 use myjob;
 
-#drop database myjob;
+drop database myjob;
 
 
 #select * from students;
@@ -49,18 +49,15 @@ create table business(
 	businessId int auto_increment primary key,
     businessName varchar(50) not null,
     employesQuantity int not null,
-    businessInfo varchar (200),
-    userId int not null,
-	foreign key (userId) references users (id)
+    businessInfo varchar (200)
 );
 
 create table jobPositions(
 	jobPositionId int auto_increment primary key,
-    businessId int not null,
-    title varchar(50) not null,
+    careerId int not null,
     description  varchar(200) not null,
     active bool not null,
-    foreign key (businessId) references business (businessId)
+    foreign key (careerId) references careers (careerId)
 );
 
 create table jobOffer(
@@ -70,7 +67,11 @@ create table jobOffer(
 	postingDate date,
 	expiryDate date,
     businessId int not null,
-	foreign key (businessId) references business (businessId)
+    careerId int not null,
+    jobPositionId int not null,
+	foreign key (businessId) references business (businessId),
+    foreign key (careerId) references careers (careerId),
+    foreign key (jobPositionId) references jobPositions(jobPositionId)
 );
 
 create table postulation(
@@ -85,7 +86,7 @@ create table postulation(
 );
 
 
-drop table careers;
+drop table jobOffer;
 
 select * from students;
 
@@ -93,9 +94,12 @@ select * from students;
 
 select * from careers;
 
-alter table careers add column nombre varchar(30) not null unique after careerId;
+alter table jobPositions change businessId careerId int not null;
 
-insert into careers values 
+alter table jobPositions add constraint fk_careerId foreign key(careerId) references careers (careerId);
+
+
+
 (default,"Ingeniería Naval","Es la rama de la ingeniería que se ocupa del diseño, planificación, proyecto y construcción de todo material flotante, como pueden ser buques, plataformas petrolíferas e incluso campos eólicos lejos de la costa.
 
 La Ingeniería Naval abarca las funciones de ingeniería incluyendo el proyecto creativo del buque y artefactos flotantes, la investigación aplicada, el desarrollo técnico en los campos de diseño y construcción y la administración de los centros de producción de material flotante (astilleros), así como también del mantenimiento y reparación de estos.",1),

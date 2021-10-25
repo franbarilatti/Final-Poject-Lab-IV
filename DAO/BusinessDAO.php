@@ -22,7 +22,8 @@
                 if(isset($result)){
                     return "El nombre de esta empresa ya se encuentra registrado";
                 }else{
-                    $query = "INSERT INTO".$this->tableName." (businessId,businessName,employeQuantity,businessInfo,userId) VALUES (:businessId,:businessName,:employeQuantity,:businessInfo,:userId);";
+                    $query = "INSERT INTO".$this->tableName." (businessId,businessName,employeQuantity,businessInfo,userId)
+                              VALUES (:businessId,:businessName,:employeQuantity,:businessInfo,:userId);";
 
                     $parameters["businessId"] = $business->getBusinessId();
                     $parameters["businessName"] = $business->getBusinessName();
@@ -82,11 +83,16 @@
         public function Modify($businessId, $businessName, $employesQuantity, $businessInfo)
         {
             try{
-                $query = "UPDATE ".$this->tableName." SET businessName = :businessName SET employesQuantity = :employesQuantity SET businessInfo =  :businesInfo WHERE businessId = ".$businessId;
+                $query = "UPDATE ".$this->tableName.
+                         " SET businessName = :businessName
+                           SET employesQuantity = :employesQuantity
+                           SET businessInfo =  :businesInfo
+                           WHERE businessId = :businessId";
                 $this->connection = Connection::GetInstance();
                 $parameters["businessName"] = $businessName;
                 $parameters["employeQuantity"] = $employesQuantity;
                 $parameters["businessInfo"] = $businessInfo;
+                $parameters["businessId"] = $businessId;
                 
                 $this->connection->ExecuteNonQuery($query,$parameters);
             }
@@ -99,10 +105,13 @@
 
         public function SearchByName($businessName){
             try{
-                $query = "SELECT * FROM business b WHERE b.businessName = ".$businessName;
+                $query = "SELECT * FROM business b WHERE b.businessName = :businessName";
+                
+                $parameters['businessName'] = $businessName;
+
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->Execute($query);
+                $result = $this->connection->Execute($query,$parameters);
                 $finded = $this->Mapping($result);
                 return $finded;
             }
@@ -113,10 +122,13 @@
 
         public function SearchById($businessId){
             try{
-                $query = "SELECT * FROM business b WHERE b.businessName = ".$businessId;
+                $query = "SELECT * FROM business b WHERE b.businessId = :businessId";
+
+                $parameters['businessId'] = $businessId;
+
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->Execute($query);
+                $result = $this->connection->Execute($query,$parameters);
                 $finded = $this->Mapping($result);
                 return $finded;
             }

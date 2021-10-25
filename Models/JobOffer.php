@@ -4,15 +4,19 @@
     class JobOffer{
 
         private $businessId;
+        private $careerId;
+        private $jobPositionId;
         private $jobOfferId;
         private $title;
         private $description;
         private $postingDate;
         private $expiryDate;
          
-        public function __construct($businessId,$jobOfferId,$title,$description,$postingDate,$expiryDate)
+        public function __construct($businessId,$careerId,$jobPositionId,$jobOfferId,$title,$description,$postingDate,$expiryDate)
         {
             $this->businessId = $businessId;
+            $this->careerId = $careerId;
+            $this->jobPositionId = $jobPositionId;
             $this->jobOfferId = $jobOfferId;
             $this->title = $title;
             $this->description = $description;
@@ -26,6 +30,16 @@
         public function getBusinessId()
         {
                 return $this->businessId;
+        }
+
+        public function getCareerId()
+        {
+                return $this->careerId;
+        }
+
+        public function getJobPositionId()
+        {
+                return $this->jobPositionId;
         }
  
         public function getJobOfferId()
@@ -64,6 +78,20 @@
                 return $this;
         }
 
+        public function setCareerId($careerId)
+        {
+                $this->careerId = $careerId;
+
+                return $this;
+        }
+
+ 
+        public function setJobPositionId($jobPositionId)
+        {
+                $this->jobPositionId = $jobPositionId;
+
+                return $this;
+        }
         
         public function setJobOfferId($jobOfferId)
         {
@@ -103,6 +131,8 @@
 
                 return $this;
         }
+ 
+
     }
 
 
