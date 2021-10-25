@@ -95,8 +95,6 @@
 
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
+
     }
-
-
-
 ?>

@@ -12,7 +12,7 @@
         <div class="image"></div>
         <div class="frm">
             <h1>Registro</h1>
-            <form action="<?php echo FRONT_ROOT ?>User/Add" method="post">
+            <form action="<?php echo FRONT_ROOT ?>User/RegisterControl" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" name= "email" placeholder="Ingrese un email">

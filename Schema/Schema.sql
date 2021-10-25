@@ -101,7 +101,7 @@ alter table jobPositions change businessId careerId int not null;
 alter table jobPositions add constraint fk_careerId foreign key(careerId) references careers (careerId);
 
 
-
+insert into careers values 
 (default,"Ingeniería Naval","Es la rama de la ingeniería que se ocupa del diseño, planificación, proyecto y construcción de todo material flotante, como pueden ser buques, plataformas petrolíferas e incluso campos eólicos lejos de la costa.
 
 La Ingeniería Naval abarca las funciones de ingeniería incluyendo el proyecto creativo del buque y artefactos flotantes, la investigación aplicada, el desarrollo técnico en los campos de diseño y construcción y la administración de los centros de producción de material flotante (astilleros), así como también del mantenimiento y reparación de estos.",1),
@@ -124,6 +124,5 @@ Las carreras cortas, en este contexto, se presentan como una alternativa valida 
 (default,"Técnico Universitario en Procedimientos y Tecnologías Ambientales","Los problemas ambientales por su diversidad, constituyen un fenómeno complejo, cuya dinámica y manejo requieren de esfuerzos coordinados por parte de distintos actores sociales. Las instituciones de educación superior tienen en este sentido un compromiso importante: formar profesionales que sean capaces de realizar acciones que contribuyan a conferirle sustentabilidad a la gestión del ambiente y evitar su deterioro, garantizando el cumplimiento de la legislación y normatividad ambiental dirigidas a la sostenibilidad del desarrollo.",1);
 
 select * from users;
-delete from users
-where id=1;
-
+delete  from users;
+drop table users;

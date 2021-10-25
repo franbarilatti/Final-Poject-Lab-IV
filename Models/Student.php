@@ -2,7 +2,7 @@
     namespace Models;
 
     class Student{
-        private $userId;
+
         private $studentId;
         private $careerId;
         private $firstName;
@@ -11,31 +11,35 @@
         private $fileNumber;
         private $gender;
         private $birthDate;
+        private $email;
         private $phoneNumber;
         private $active;
 
         public function __construct(
-                        $userId,
+
                         $studentId,
                         $careerId,
                         $firstName,
                         $lastName,
                         $dni,
+                        $fileNumber,
                         $gender,
                         $birthDate,
+                        $email,
                         $phoneNumber,
                         $active,
                         )
         {
-                $this->userId = $userId;
+
                 $this->studentId =$studentId;
                 $this->careerId =$careerId;
                 $this->firstName =$firstName;
                 $this->lastName =$lastName;
                 $this->dni =$dni;
-                $this->fileNumber = rand(10,99) . "-" . rand(100,999) . "-". rand(1000,9999);
+                $this->fileNumber = $fileNumber;
                 $this->gender =$gender;
                 $this->birthDate =$birthDate;
+                $this->email = $email;
                 $this->phoneNumber =$phoneNumber;
                 $this->active = true;
         }
@@ -85,6 +89,13 @@
         {
                 return $this->birthDate;
         }
+
+        
+        public function getEmail()
+        {
+                return $this->email;
+        }
+
 
         public function getPhoneNumber()
         {
@@ -177,7 +188,13 @@
         }
 
         
-        
+
+        public function setEmail($email)
+        {
+                $this->email = $email;
+
+                return $this;
+        }
     }
     
     
