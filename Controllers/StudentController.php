@@ -71,7 +71,7 @@ class StudentController
                 $this->alert->setMessage($ex->getMessage());
             }
             finally{
-                $this->ShowAddView($role);
+                $this->ShowAddView();
             }
         }
 

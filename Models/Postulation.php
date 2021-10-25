@@ -6,15 +6,15 @@
         private $postulationId;
         private $studentId;
         private $businessId;
-        private $jobPositionId;
+        private $jobOfferId;
         private $active;
 
-        public function __construct($postulationId, $studentId, $businessId, $jobPositionId, $active)
+        public function __construct($postulationId, $studentId, $businessId, $jobOfferId, $active)
         {
                 $this->postulationId =$postulationId;
                 $this->studentId =$studentId;
                 $this->businessId =$businessId;
-                $this->jobPositionId =$jobPositionId;
+                $this->jobOfferId =$jobOfferId;
                 $this->active =$active;
         }
 
@@ -40,9 +40,9 @@
         }
 
          
-        public function getJobPositionId()
+        public function getJobOfferId()
         {
-                return $this->jobPositionId;
+                return $this->jobOfferId;
         }
 
         public function getActive()
@@ -79,9 +79,9 @@
 
         
 
-        public function setJobPositionId($jobPositionId)
+        public function setJobOfferId($jobOfferId)
         {
-                $this->jobPosition = $jobPositionId;
+                $this->jobOfferId = $jobOfferId;
 
                 return $this;
         }
