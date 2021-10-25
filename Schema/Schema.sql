@@ -84,6 +84,7 @@ create table postulation(
     foreign key (jobPositionId) references jobPositions(jobPositionId)
 );
 
+
 drop table careers;
 
 select * from students;

@@ -11,7 +11,8 @@ class StudentDAO implements IStudentDAO{
 
         public function Add(Student $student){
             try{
-                $query = "INSERT INTO ".$this->tableName." (studentId,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,phoneNumber,active,userId) VALUES (:studentId,:careerId,:firstName,:lastName,:dni,:fileNumber,:gender,:birthDate,:phoneNumber,:active,:userId)";
+                $query = "INSERT INTO ".$this->tableName." (studentId,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,phoneNumber,active,userId) 
+                          VALUES (:studentId,:careerId,:firstName,:lastName,:dni,:fileNumber,:gender,:birthDate,:phoneNumber,:active,:userId)";
 
                 $parameters['studentId'] = $student->getStudentId();
                 $parameters['careerId'] = $student->getCareerId();
@@ -51,7 +52,7 @@ class StudentDAO implements IStudentDAO{
 
                 return $studentList;
             } catch (Exception $ex) {
-                throw $ex;
+                throw $ex = "No se pudo cargar la lista";
             }
         }
             

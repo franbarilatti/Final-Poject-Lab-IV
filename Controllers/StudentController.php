@@ -16,7 +16,7 @@ class StudentController
 
         public function __construct()
         {
-            $this->businessDAO = new StudentDAO();
+            $this->studentDAO = new StudentDAO();
             $this->userDAO = new UserDAO();
             $this->alert = new Alert();
         }
@@ -24,7 +24,7 @@ class StudentController
 
         ////////////////// VIEWS METHODS //////////////////
 
-        public function ShowAddView($role)
+        public function ShowAddView()
         {
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-add.php");
@@ -32,10 +32,16 @@ class StudentController
 
         public function ShowListView()
         {
-            $title = "Lista de alumnos";
-            $studentList = $this->studentDAO->GetAll();
-            require_once (VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."student-list.php");
+            try{
+                $title = "Lista de alumnos";
+                $studentList = $this->studentDAO->GetAll();
+                require_once (VIEWS_PATH."header.php");
+                require_once(VIEWS_PATH."student-list.php");
+            }
+            catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+            }
         }
 
         public function ShowStudentMain($std){

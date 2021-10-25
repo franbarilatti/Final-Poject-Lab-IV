@@ -1,76 +1,53 @@
 <?php
     namespace DAO;
 
-    use DAO\ICareerDAO as ICareerDAO;
-    use Models\Career as Career;
+use Exception;
+use Models\Career as Career;
 
     class CareerDAO implements ICareerDAO{
-    
-        private $careerList = array();
-        private $ch;
-        private $url;
-        private $header;
 
-        public function __construct(){
-            $this->ch = curl_init();
-            $this->url = "https://utn-students-api.herokuapp.com/api/Career";
-            $this->header = array("x-api-key: 4f3bceed-50ba-4461-a910-518598664c08");
-            curl_setopt($this->ch,CURLOPT_URL,$this->url);
-            curl_setopt($this->ch,CURLOPT_RETURNTRANSFER,true);
-            curl_setopt($this->ch,CURLOPT_HTTPHEADER,$this->header);
-        }
-
-        ///////////// Functional Methods /////////////
-
-        public function Add(Career $career)
-        {
-            $this->RetrieveData();
-            
-            array_push($this->careerList, $career);
-
-            $this->SaveData();
-        }
+        private $connection;
+        private $tableName = "careers";
 
         public function GetAll()
         {
-            $this->RetrieveData();
+            try {
+                $careerList = array();
 
-            return $this->careerList;
+                $query = "SELECT * FROM ".$this->tableName;
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query);
+                $careerList = $this->Mapping($result);
+
+                return $careerList;
+            } catch (Exception $ex) {
+                throw $ex = "No se pudo cargar la lista";
+            }
         }
 
-        ///////////// JSON Methods /////////////
-
-        private function SaveData()
+        public function Add(Career $career)
         {
-            $arrayToEncode = array();
-
-            foreach($this->careerList as $career)
-            {
-                $valuesArray["careerId"] = $career->getCareerId();
-                $valuesArray["description"] = $career->getDescription();
-                $valuesArray["active"] = $career->getActive();
+            try{
+                $query = "INSERT INTO ".$this->tableName." (careerId,description,active)
+                          VALUES (:careerId,:description,:active)";
                 
-                array_push($arrayToEncode, $valuesArray);
+                $parameters['careerId'] = $career->getCareerId();
+                $parameters['description'] = $career->getDescription();
+                $parameters['active'] = $career->getActive();
+
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExcecuteNonQuery($query,$parameters);
+
+                return "Carrera ingresada con exito";
             }
-
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-            
-            file_put_contents('Data/career.json', $jsonContent);
-        }
-
-        private function RetrieveData()
-        {
-            $resp = curl_exec($this->ch);
-            $this->careerList = array();
-            $arrayToDecode = json_decode($resp, true);
-
-            if($resp != null)
-            {
-                $arrayToDecode = json_decode($resp, true);
-
-                $this->careerList = $this->Mapping($arrayToDecode);
+            catch(Exception $ex){
+                throw $ex = "Hubo un error al ingresar la carrera";
             }
         }
+
+
 
         protected function Mapping($value) {
 
@@ -82,5 +59,9 @@
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
         }
-}
+    }
+
+
+
+
 ?>
