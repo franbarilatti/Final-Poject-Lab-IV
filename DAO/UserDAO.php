@@ -13,11 +13,10 @@
 
         public function Add(User $user)
         {
-            try{
+           try{
                 $query = "INSERT INTO ".$this->tableName." (id,email,password,role) VALUES (DEFAULT,:email,:password,:role);";
-
                 $parameters['email'] = $user->getEmail();
-                $parameters['password'] = $user->getEmail();
+                $parameters['password'] = $user->getPassword();
                 $parameters['role'] = $user->getRole();
 
                 $this->connection = Connection::GetInstance();

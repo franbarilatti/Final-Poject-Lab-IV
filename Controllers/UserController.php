@@ -9,16 +9,35 @@
     class UserController{
 
         private $userDAO;
-        private $alert;
 
         public function __construct(){
             $this->userDAO = new UserDAO();
-            $this->alert = new Alert();
         }
 
-        public function UserAdd($role){
+        public function ShowUserAddView($role, Alert $alert= null){
+            //echo var_dump($alert);
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."user-add.php");
+        }
+
+
+        public function Add($email, $password, $role){
+                
+                try{
+                    $alert = new Alert("","");
+                    $user = new User;
+                    $user->setEmail($email);
+                    $user->setPassword($password);
+                    $user->setRole($role);
+                    $this->userDAO->Add($user);
+                }catch(Exception $ex){
+                   
+                    $alert->setType("danger");
+                    $alert->setMessage("Error al cargar el usuario");
+                }finally{
+                    $this->ShowUserAddView($role,$alert);
+                }
+                
         }
 
         public function Index(){

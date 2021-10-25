@@ -8,12 +8,9 @@
         private $password;
         private $role;
 
-        public function __construct($userId,$email,$password,$role)
+        public function __construct()
         {
-            $this->userId =$userId;
-            $this->email = $email;
-            $this->password = $password;
-            $this->$role = $role;
+
         }
 
         ////////// GETTERS METHODS //////////

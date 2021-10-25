@@ -1,5 +1,5 @@
 <?php
-
+     
 ?>
 <head>
      <title>Nueva Empresa</title>

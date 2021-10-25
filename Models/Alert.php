@@ -5,6 +5,10 @@
         private $message;
         private $type;
 
+        public function __construct($type, $message){
+                $this->type= $type;
+                $this->message= $message;
+        }
 
         ////////// GETTERS METHODS //////////
 
