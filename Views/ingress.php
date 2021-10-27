@@ -21,6 +21,9 @@
      </style>
 </head>
 <body>
+
+     <!-- NAVBAR -->
+
      <div class="conteiner-fluid">
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
@@ -53,6 +56,8 @@
      </nav>
      </div>
      
+     <!-- LOGIN -->
+
      <div class="container w-75 bg-primary mt-5 rounded shadow">
           <div class="row aling-items-stretch">
                <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6"></div>
@@ -74,14 +79,14 @@
                               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                          </div>
                          <br>
-                         <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>User/ShowUserAddView?$role=student">Registrarse</a>
+                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">Registrarse</button>
+                         <!-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register" href="// echo FRONT_ROOT?Register">Registrarse</a> -->
 
                     </form>
                </div>
                
           </div>
      </div>
-
 </body>
 </html>
 

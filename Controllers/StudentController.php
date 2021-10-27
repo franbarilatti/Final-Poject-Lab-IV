@@ -18,13 +18,13 @@ class StudentController
         {
             $this->studentDAO = new StudentDAO();
             $this->userDAO = new UserDAO();
-            $this->alert = new Alert();
+            $this->alert = new Alert("","");
         }
 
 
         ////////////////// VIEWS METHODS //////////////////
 
-        public function ShowAddView()
+        public function ShowAddView($validUser)
         {
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."student-add.php");
@@ -52,7 +52,7 @@ class StudentController
 
         ////////////////// FUNCTIONAL METHODS //////////////////
 
-        public function Add($userId,$email,$password,$role,$studentId,$careerId,$firstName,$lastName,$dni,$gender,$birthDate,$phoneNumber,$active)
+        public function Add($userId,$email,$password,$role,$studentId,$careerId,$firstName,$lastName,$dni,$filenumber,$gender,$birthDate,$phoneNumber,$active)
         {
             try{                
                 $user = new User($userId,$email,$password,$role);
@@ -60,18 +60,24 @@ class StudentController
 
                 $lastUser = $this->userDAO->LastRegister();
 
-                $student = new Student($lastUser->getUserId(),$studentId,$careerId,$firstName,$lastName,$dni,$gender,$birthDate,$phoneNumber,true);
-                $this->studentDAO->Add($student);
+                $validUser = $this->userDAO->SearchByEmail($email);
+
+                if(!isset($validUser)){
+                    $student = new Student($lastUser->getUserId(),$studentId,$careerId,$firstName,$lastName,$dni,$filenumber,$gender,$birthDate,$phoneNumber,$active);
+                    $this->studentDAO->Add($student);
+                    
+                    $this->alert->setType("success");
+                    $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
+                }
+
                 
-                $this->alert->setType("success");
-                $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
             }
             catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage($ex->getMessage());
             }
             finally{
-                $this->ShowAddView();
+                $this->ShowAddView($user);
             }
         }
 
