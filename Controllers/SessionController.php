@@ -14,7 +14,6 @@ class SessionController{
         $userRepository = new UserDAO();
         try{
             $user = $userRepository->searchByEmail($email);
-            var_dump($user);
              $passValidation = $user->getPassword();
              $roleValidation = $user->getRole();
              if($passValidation === $password){

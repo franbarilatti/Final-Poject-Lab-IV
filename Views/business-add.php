@@ -16,6 +16,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Nombre</label>
+                                   <input type="hidden" name="businessId" value="DEFAULT">
                                    <input type="text" name="businessName" value="" class="form-control" Required>
                               </div>
                          </div>

@@ -141,15 +141,11 @@ class BusinessController
         }
         
 
-        public function Add($userId,$email,$password,$role,$businessId,$businessName,$employesQuantity,$businessInfo)
+        public function Add($businessId,$businessName,$employesQuantity,$businessInfo)
         {   
             try{                
-                $user = new User($userId,$email,$password,$role);
-                $this->userDAO->Add($user);
-
-                $lastUser = $this->userDAO->LastRegister();
-
-                $business = new Business($lastUser->getUserId(),$businessId,$businessName,$employesQuantity,$businessInfo,false);
+                
+                $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
                 $this->businessDAO->Add($business);
                 
                 $this->alert->setType("success");
