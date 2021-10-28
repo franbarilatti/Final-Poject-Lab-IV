@@ -26,12 +26,10 @@
         
         public function Add($email, $password, $role){
             $alert = new Alert("","");
-            $user = new User;
+            
             try{
                     
-                $user->setEmail($email);
-                $user->setPassword($password);
-                $user->setRole($role);
+                $user = new User($email,$password,$role);
                 $this->userDAO->Add($user);
                 $alert->setType("success");
                 $alert->setMessage("Usuario creado correctamente");

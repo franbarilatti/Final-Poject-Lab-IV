@@ -12,16 +12,21 @@ class SessionController{
 
     public function Login($email,$password){
         $userRepository = new UserDAO();
+        echo "mail del post= $email <br>";
+        echo " contra del post= $password<br>";
         try{
             $user = $userRepository->searchByEmail($email);
             $passValidation = $user->getPassword();
            $roleValidation = $user->getRole();
-            if($passValidation === $password){
+           echo "mail del user= ".$user->getEmail() ."<br>";
+           echo "contra del user= ".$user->getPassword() ."<br>";
+            if($passValidation == $password){
                 switch ($roleValidation) {
                     case 'admin':
                         require_once(VIEWS_PATH."admin-main.php");
                         break;
                     case 'student':
+                        echo "hola";
                         require_once(VIEWS_PATH."studentMain.php");
                         break;
                     case 'business':
