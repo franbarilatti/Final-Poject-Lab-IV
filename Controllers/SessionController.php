@@ -12,22 +12,16 @@ class SessionController{
 
     public function Login($email,$password){
         $userRepository = new UserDAO();
-        echo "mail del post= $email <br>";
-        echo " contra del post= $password<br>";
         try{
             $user = $userRepository->searchByEmail($email);
-<<<<<<< HEAD
             $passValidation = $user->getPassword();
            $roleValidation = $user->getRole();
-           echo "mail del user= ".$user->getEmail() ."<br>";
-           echo "contra del user= ".$user->getPassword() ."<br>";
             if($passValidation == $password){
                 switch ($roleValidation) {
                     case 'admin':
                         require_once(VIEWS_PATH."admin-main.php");
                         break;
                     case 'student':
-                        echo "hola";
                         require_once(VIEWS_PATH."studentMain.php");
                         break;
                     case 'business':
@@ -41,27 +35,6 @@ class SessionController{
                 $homeController = new HomeController();
                 $homeController->Index("mail o contraseña incorrectas");
             }
-=======
-            var_dump($user);
-             $passValidation = $user->getPassword();
-             $roleValidation = $user->getRole();
-             if($passValidation === $password){
-                 switch ($roleValidation) {
-                     case 'admin':
-                         require_once(VIEWS_PATH."admin-main.php");
-                         break;
-                     case 'student':
-                         require_once(VIEWS_PATH."studentMain.php");
-                         break;
-                     default:
-                         echo "Entrando al default";
-                         break;
-                 }
-             }else{
-                 $homeController = new HomeController();
-                 $homeController->Index("mail o contraseña incorrectas");
-             }
->>>>>>> origin/main
 
         }
         catch(Exception $ex){

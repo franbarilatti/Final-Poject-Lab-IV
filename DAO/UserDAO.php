@@ -73,10 +73,8 @@
                 
                 $this->connection = Connection::GetInstance();
 
-                $result =  $this->connection->Execute($query,$parameters);
-
-                $findedUser = $this->Mapping($result);
-
+                $result= $this->connection->Execute($query,$parameters);
+                $findedUser= $this->Mapping($result);
                 return $findedUser;
             }
             catch(Exception $ex){
@@ -89,9 +87,11 @@
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new User($p['email'],
+				$user = new User($p['email'],
                                 $p['password'],
                                 $p['role']);
+                $user->setUserId($p['id']);
+                return $user;
 			}, $value);
 
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
