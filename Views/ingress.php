@@ -65,7 +65,7 @@
           
                     <h2 class="fw-bold text-center py-5">Bienvenidos a MyJob</h2>
 
-                    <form action="<?php echo FRONT_ROOT ?>Session/Login">
+                    <form action="<?php echo FRONT_ROOT ?>Session/Login" method= "post">
                          <div class="mb-4">
                               <label for="email" class="form-label"> Email </label>
                               <input type="email" name="email" class="form-control">

@@ -11,11 +11,11 @@
 class SessionController{
 
     public function Login($email,$password){
-        $userRepository = new UserDAO;
+        $userRepository = new UserDAO();
         try{
             $user = $userRepository->searchByEmail($email);
             $passValidation = $user->getPassword();
-            $roleValidation = $user->getRole();
+           $roleValidation = $user->getRole();
             if($passValidation === $password){
                 switch ($roleValidation) {
                     case 'admin':
