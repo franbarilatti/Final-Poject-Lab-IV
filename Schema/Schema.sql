@@ -1,10 +1,10 @@
-create database myjob;
+#create database myjob;
 
-use myjob;
+#use myjob;
 
-drop database myjob;
+#drop database myjob;
 
-drop table users;
+#drop table users;
 
 #select * from students;
 
@@ -24,6 +24,7 @@ create table careers(
 
 create table students(
 	studentId int auto_increment primary key,
+    userId int not null,
     careerId int not null,
 	firstName varchar(30) not null,
     lastName varchar(30) not null,
@@ -33,10 +34,8 @@ create table students(
     birthDate date not null,
     phoneNumber varchar(30) not null unique,
     active bool not null,
-    userId int not null,
     constraint fk_userId foreign key (userId) references users (id),
     constraint fk_careerId foreign key (careerId) references careers (careerId)
-    
 );
 
 create table admins(
@@ -123,6 +122,6 @@ Las carreras cortas, en este contexto, se presentan como una alternativa valida 
 (default,"Técnico Universitario en Producción Textil","La carrera está orientada a la formación de Técnicos Superiores en Producción Textil con competencia, solvencia técnica y criterio comercial, acorde a las variantes del mercado y la realidad productiva, determinada por las particularidades locales y regionales que exigen un manejo estratégico de los recursos, para asegurar la sustentabilidad productiva.",1),
 (default,"Técnico Universitario en Procedimientos y Tecnologías Ambientales","Los problemas ambientales por su diversidad, constituyen un fenómeno complejo, cuya dinámica y manejo requieren de esfuerzos coordinados por parte de distintos actores sociales. Las instituciones de educación superior tienen en este sentido un compromiso importante: formar profesionales que sean capaces de realizar acciones que contribuyan a conferirle sustentabilidad a la gestión del ambiente y evitar su deterioro, garantizando el cumplimiento de la legislación y normatividad ambiental dirigidas a la sostenibilidad del desarrollo.",1);
 
+select * from careers;
 select * from users;
-delete  from users;
 drop table users;
