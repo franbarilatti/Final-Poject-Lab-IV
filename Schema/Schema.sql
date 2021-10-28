@@ -89,7 +89,7 @@ create table postulation(
 
 drop table jobOffer;
 
-select * from students;
+select * from users;
 
 select * from students;
 

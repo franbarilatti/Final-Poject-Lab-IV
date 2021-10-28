@@ -54,7 +54,7 @@
 
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->Excecute($query);
+                $result = $this->connection->Execute($query);
 
                 $lastUser = $this->Mapping($result);
 
@@ -73,7 +73,7 @@
                 
                 $this->connection = Connection::GetInstance();
 
-                $findedUser = $this->connection->Excecute($query,$parameters);
+                $findedUser = $this->connection->Execute($query,$parameters);
 
                 return $findedUser;
             }

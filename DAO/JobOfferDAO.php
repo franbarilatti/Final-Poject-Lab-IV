@@ -60,9 +60,9 @@ use Models\JobOffer as JobOffer;
         {
             try{
                 $query = "UPDATE ".$this->tableName.
-                         " SET title = :title
-                           SET description = :description
-                           SET expirateDate =  :expirateDate
+                         " SET title = :title,
+                           description = :description,
+                           expirateDate =  :expirateDate
                            WHERE jobOfferId = :jobOfferId";
                 $this->connection = Connection::GetInstance();
                 $parameters["title"] = $title;

@@ -84,9 +84,9 @@
         {
             try{
                 $query = "UPDATE ".$this->tableName.
-                         " SET businessName = :businessName
-                           SET employesQuantity = :employesQuantity
-                           SET businessInfo =  :businesInfo
+                         " SET businessName = :businessName,
+                           employesQuantity = :employesQuantity,
+                           businessInfo =  :businesInfo
                            WHERE businessId = :businessId";
                 $this->connection = Connection::GetInstance();
                 $parameters["businessName"] = $businessName;

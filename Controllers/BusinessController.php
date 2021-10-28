@@ -18,7 +18,7 @@ class BusinessController
         {
             $this->businessDAO = new BusinessDAO();
             $this->userDAO = new UserDAO();
-            $this->alert = new Alert();
+            $this->alert = new Alert("","");
         }
 
 

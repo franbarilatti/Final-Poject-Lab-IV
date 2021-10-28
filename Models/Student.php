@@ -2,7 +2,7 @@
     namespace Models;
 
     class Student{
-
+        private $userId;
         private $studentId;
         private $careerId;
         private $firstName;
@@ -16,7 +16,7 @@
         private $active;
 
         public function __construct(
-
+                        $userId,
                         $studentId,
                         $careerId,
                         $firstName,
@@ -25,12 +25,11 @@
                         $fileNumber,
                         $gender,
                         $birthDate,
-                        $email,
                         $phoneNumber,
                         $active,
                         )
         {
-
+                $this->userId = $userId;
                 $this->studentId =$studentId;
                 $this->careerId =$careerId;
                 $this->firstName =$firstName;
@@ -39,7 +38,6 @@
                 $this->fileNumber = $fileNumber;
                 $this->gender =$gender;
                 $this->birthDate =$birthDate;
-                $this->email = $email;
                 $this->phoneNumber =$phoneNumber;
                 $this->active = true;
         }
@@ -88,12 +86,6 @@
         public function getBirthDate()
         {
                 return $this->birthDate;
-        }
-
-        
-        public function getEmail()
-        {
-                return $this->email;
         }
 
 
