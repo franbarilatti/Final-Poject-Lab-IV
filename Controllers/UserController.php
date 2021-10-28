@@ -27,9 +27,8 @@
         public function Add($email, $password, $role){
             $alert = new Alert("","");
             
+            $user = new User($email, $password, $role);
             try{
-                    
-                $user = new User($email,$password,$role);
                 $this->userDAO->Add($user);
                 $alert->setType("success");
                 $alert->setMessage("Usuario creado correctamente");
@@ -39,7 +38,7 @@
                     $alert->setMessage("Error al cargar el usuario");
                 }finally{
                     $this->ShowUserAddView($alert);
-            }  
+                }  
         }
 
 
@@ -48,6 +47,7 @@
         public function Index(){
             require_once(VIEWS_PATH."header.php");
         }
+
 
     }
 ?>

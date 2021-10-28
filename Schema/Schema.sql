@@ -51,8 +51,10 @@ create table business(
 	businessId int auto_increment primary key,
     businessName varchar(50) not null,
     employesQuantity int not null,
-    businessInfo varchar (200)
+    businessInfo varchar (1000)
 );
+
+
 
 create table jobPositions(
 	jobPositionId int auto_increment primary key,
@@ -88,11 +90,12 @@ create table postulation(
 );
 
 
+
 drop table jobOffer;
 
 select * from users;
 
-select * from students;
+select * from admins;
 
 select * from careers;
 

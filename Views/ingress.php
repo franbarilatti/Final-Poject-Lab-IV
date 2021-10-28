@@ -1,7 +1,4 @@
 
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +54,8 @@
      </div>
      
      <!-- LOGIN -->
+
+     <div><?php  ?></div>
 
      <div class="container w-75 bg-primary mt-5 rounded shadow">
           <div class="row aling-items-stretch">

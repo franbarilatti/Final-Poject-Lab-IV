@@ -142,13 +142,10 @@
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Business(
-                                   $p['userId'], 
-                                   $p['businessId'], 
+				return new Business($p['businessId'], 
                                    $p['businessName'], 
                                    $p['employesQuantity'], 
-                                   $p['businessInfo'],
-                                   $p['active']);
+                                   $p['businessInfo']);
 			}, $value);
 
             return $resp = count($resp) > 1 ? $resp : $resp['0'];

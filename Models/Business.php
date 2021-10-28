@@ -4,21 +4,18 @@
 
 
     class Business{
-        private $userId;
         private $businessId;
         private $businessName;
         private $employesQuantity;
         private $businessInfo;
-        private $active;
+        
 
-        public function __construct($userId,$businessId,$businessName,$employesQuantity,$businessInfo,$active)
+        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo)
         {
-                $this->userId = $userId;
                 $this->businessId =$businessId;
                 $this->businessName = $businessName;
                 $this->employesQuantity = $employesQuantity;
                 $this->businessInfo = $businessInfo;
-                $this->active = $active;
         }         
     
         ////////// GETTERS METHODS //////////

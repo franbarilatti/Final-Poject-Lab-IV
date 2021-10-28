@@ -14,27 +14,24 @@ class SessionController{
         $userRepository = new UserDAO();
         try{
             $user = $userRepository->searchByEmail($email);
-            $passValidation = $user->getPassword();
-           $roleValidation = $user->getRole();
-            if($passValidation == $password){
-                switch ($roleValidation) {
-                    case 'admin':
-                        require_once(VIEWS_PATH."admin-main.php");
-                        break;
-                    case 'student':
-                        require_once(VIEWS_PATH."studentMain.php");
-                        break;
-                    case 'business':
-                        require_once(VIEWS_PATH."business-main.php");
-                        break;
-                    default:
-                        # code...
-                        break;
-                }
-            }else{
-                $homeController = new HomeController();
-                $homeController->Index("mail o contraseña incorrectas");
-            }
+             $passValidation = $user->getPassword();
+             $roleValidation = $user->getRole();
+             if($passValidation === $password){
+                 switch ($roleValidation) {
+                     case 'admin':
+                         require_once(VIEWS_PATH."admin-main.php");
+                         break;
+                     case 'student':
+                         require_once(VIEWS_PATH."studentMain.php");
+                         break;
+                     default:
+                         echo "Entrando al default";
+                         break;
+                 }
+             }else{
+                 $homeController = new HomeController();
+                 $homeController->Index("mail o contraseña incorrectas");
+             }
 
         }
         catch(Exception $ex){
