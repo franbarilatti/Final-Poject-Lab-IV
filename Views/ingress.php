@@ -79,9 +79,7 @@
                               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                          </div>
                          <br>
-                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">Registrarse</button>
-                         <!-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register" href="// echo FRONT_ROOT?Register">Registrarse</a> -->
-
+                         <a class= "btn btn-primary" href="<?php echo FRONT_ROOT?>User/ShowUserAddView">Registrar usuario</a>
                     </form>
                </div>
                

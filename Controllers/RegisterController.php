@@ -28,14 +28,17 @@ class RegisterController{
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-
                 $validUser = $this->userDAO->SearchByEmail($email);
-                if(isset($validUser)){
+                if($validUser !=null){
                     $this->alert->setType("danger");
                     $this->alert->setMessage("Email ya registrado");
+                }elseif(!$this->CheckEmailWhitAPI($email)){
+                    $this->alert->setType("danger");
+                    $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
                 }else{
                     $this->userController->Add($email, $password, $role);
-                    $this->studentController->ShowAddView($validUser);
+                    $this->alert->setType("success");
+                    $this->alert->setMessage("Email registrado correctamente");
                 }
 
             }catch(Exception $ex){
@@ -44,6 +47,14 @@ class RegisterController{
                 $this->userController->ShowUserAddView($this->alert) ;
             }finally{
                 $this->userController->ShowUserAddView($this->alert) ;
+            }
+        }
+
+        public function CheckEmailWhitAPI($email){
+            if($this->studentController->SearchInAPIByEmail($email)){
+                return true;
+            }else{
+                return false;
             }
         }
 

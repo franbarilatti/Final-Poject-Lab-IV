@@ -3,14 +3,16 @@
 
     use DAO\StudentDAO as StudentDAO;
     use DAO\UserDAO;
-use Exception;
-use Models\Alert;
+    use DAO\StudentAPI as StudentAPI;
+    use Exception;
+    use Models\Alert;
     use Models\Student as Student;
-use Models\User;
+    use Models\User;
 
 class StudentController
     {
         private $studentDAO;
+        private $studentAPI;
         private $userDAO;
         private $alert;
 
@@ -18,6 +20,7 @@ class StudentController
         {
             $this->studentDAO = new StudentDAO();
             $this->userDAO = new UserDAO();
+            $this->studentAPI = new StudentAPI;
             $this->alert = new Alert("","");
         }
 
@@ -69,8 +72,6 @@ class StudentController
                     $this->alert->setType("success");
                     $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
                 }
-
-                
             }
             catch(Exception $ex){
                 $this->alert->setType("danger");
@@ -79,6 +80,10 @@ class StudentController
             finally{
                 $this->ShowAddView($user);
             }
+        }
+
+        public function SearchInAPIByEmail($email){
+            return $this->studentAPI->SearchByEmail($email);
         }
 
         public function Index(){

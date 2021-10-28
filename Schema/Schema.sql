@@ -1,8 +1,8 @@
-#create database myjob;
+create database myjob;
 
-#use myjob;
+use myjob;
 
-#drop database myjob;
+drop database myjob;
 
 #drop table users;
 
@@ -24,7 +24,7 @@ create table careers(
 
 create table students(
 	studentId int auto_increment primary key,
-    userId int not null,
+    userId int,
     careerId int not null,
 	firstName varchar(30) not null,
     lastName varchar(30) not null,
@@ -32,6 +32,7 @@ create table students(
     fileNumber int(30) not null unique,
     gender char not null,
     birthDate date not null,
+    email varchar(50) not null unique,
     phoneNumber varchar(30) not null unique,
     active bool not null,
     constraint fk_userId foreign key (userId) references users (id),
@@ -125,3 +126,4 @@ Las carreras cortas, en este contexto, se presentan como una alternativa valida 
 select * from careers;
 select * from users;
 drop table users;
+select * from students;

@@ -42,6 +42,19 @@
                 $this->studentList = $this->Mapping($arrayToDecode);
             }
         }
+
+        public function SearchByEmail($email){
+            $this->RetrieveData();
+            $i=0;
+            while($i<count($this->studentList) && $this->studentList[$i]->getEmail()!=$email){
+                $i++;
+            }
+            if($i < count($this->studentList)){
+                return $this->studentList[$i];
+            }else{
+                return null;
+            }
+        }
         
         protected function Mapping($value) {
 
