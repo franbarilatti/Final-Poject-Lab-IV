@@ -8,9 +8,8 @@
         private $password;
         private $role;
 
-        public function __construct($userId,$email,$password,$role)
+        public function __construct($email,$password,$role)
         {
-                $this->userId = $userId;
                 $this->email = $email;
                 $this->password = $password;
                 $this->role = $role;
