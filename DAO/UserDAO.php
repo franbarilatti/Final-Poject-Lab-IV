@@ -73,8 +73,10 @@
                 
                 $this->connection = Connection::GetInstance();
 
-                $result= $this->connection->Execute($query,$parameters);
-                $findedUser= $this->Mapping($result);
+                $result =  $this->connection->Execute($query,$parameters);
+
+                $findedUser = $this->Mapping($result);
+
                 return $findedUser;
             }
             catch(Exception $ex){

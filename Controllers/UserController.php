@@ -39,7 +39,7 @@
                     $alert->setMessage("Error al cargar el usuario");
                 }finally{
                     $this->ShowUserAddView($alert);
-                }  
+            }  
         }
 
 
@@ -48,7 +48,6 @@
         public function Index(){
             require_once(VIEWS_PATH."header.php");
         }
-
 
     }
 ?>
