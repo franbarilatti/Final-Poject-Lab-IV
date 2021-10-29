@@ -1,5 +1,10 @@
 <?php
-     
+    use Models\Alert as Alert;
+
+     if ($alert==null){
+          $alert = new Alert(" "," ");
+     }
+     echo $alert->getMessage();
 ?>
 <head>
      <title>Nueva Empresa</title>

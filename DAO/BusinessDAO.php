@@ -15,27 +15,20 @@
         {
             try
             {
-                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = :businesName";
+                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = businessName";
                 $parameters['businessName'] = $business->getBusinessName();
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($validation);
-
-                if(isset($result)){
+                var_dump($result);
+                if($result != null){
                     return "El nombre de esta empresa ya se encuentra registrado";
                 }else{
-                    $query = "INSERT INTO".$this->tableName." (businessId,businessName,employeQuantity,businessInfo,userId)
-                              VALUES (:businessId,:businessName,:employeQuantity,:businessInfo,:userId);";
-
-                    $parameters["businessId"] = $business->getBusinessId();
+                    $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo);";
                     $parameters["businessName"] = $business->getBusinessName();
                     $parameters["employeQuantity"] = $business->getEmployesQuantity();
                     $parameters["businessInfo"] = $business->getBusinessInfo();
-                    $parameters["userId"] = $business->getUserId();
                     $this->connection = Connection::GetInstance();
-
                     $this->connection->ExecuteNonQuery($query,$parameters);
-
-                    return "Empresa agregada con exito";
                 }
                 
 
@@ -148,7 +141,6 @@
                                    $p['employesQuantity'], 
                                    $p['businessInfo']);
 			}, $value);
-
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
     }
