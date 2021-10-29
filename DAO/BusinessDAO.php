@@ -15,7 +15,8 @@
         {
             try
             {
-                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = ".$business->getBusinessName();
+                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = :businesName";
+                $parameters['businessName'] = $business->getBusinessName();
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($validation);
 
@@ -40,7 +41,7 @@
 
             }
             catch(Exception $ex){
-                throw $ex = "Hubo un error al ingresar la empresa";
+                throw $ex;
             }
         }
 
