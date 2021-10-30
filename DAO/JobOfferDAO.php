@@ -18,7 +18,6 @@ use Models\JobOffer as JobOffer;
                 
                 $query = "INSERT INTO ".$this->tableName." (businessId,careerId,jobPositionId,jobOfferId,title,description,postingDate,expiryDate)
                           VALUES (:businessId,:careerId,:jobPositionId,:jobOfferId,:title,:description,:postingDate,:expiryDate)";
-
                 $parameters['businessId'] = $jobOffer->getBusinessId();
                 $parameters['careerId'] = $jobOffer->getCareerId();
                 $parameters['jobPositionId'] = $jobOffer->getJobPositionId();

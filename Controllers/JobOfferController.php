@@ -7,7 +7,7 @@
 
     use DAO\JobOfferDAO as JobOfferDAO;
     use DAO\JobPositionDAO as JobPositionDAO;
-    
+    use DAO\JobPositionAPI as JobPositionAPI;
 
 
 

@@ -21,7 +21,6 @@
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($validation);
                 if($result != null){
-              
                     return $result;
                 }else{
                     $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo);";
