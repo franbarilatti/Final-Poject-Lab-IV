@@ -14,17 +14,15 @@
         public function Add(Business $business)
         {
             $businessName = $business->getBusinessName();
-            
             try
             {
                 $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = '$businessName'";
                 $parameters['businessName'] = $business->getBusinessName();
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($validation);
-                echo "Resultado <br>";
-                var_dump($result);
                 if($result != null){
-                    return "El nombre de esta empresa ya se encuentra registrado";
+              
+                    return $result;
                 }else{
                     $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo);";
                     $parameters["businessName"] = $business->getBusinessName();
@@ -32,8 +30,8 @@
                     $parameters["businessInfo"] = $business->getBusinessInfo();
                     $this->connection = Connection::GetInstance();
                     $this->connection->ExecuteNonQuery($query,$parameters);
+                    return null;
                 }
-                
 
             }
             catch(Exception $ex){

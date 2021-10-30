@@ -151,9 +151,15 @@ class BusinessController
 
                 
                 $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-                $this->businessDAO->Add($business);
-                $this->alert->setType("success");
-                $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
+                $control= $this->businessDAO->Add($business);
+                if(!$control){
+                    $this->alert->setType("success");
+                    $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
+                }else{
+                    $this->alert->setType("danger");
+                    $this->alert->setMessage("La empresa ya se encuentra registrada");
+                }
+                
             }
             catch(Exception $ex){
                 
