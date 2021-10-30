@@ -1,7 +1,6 @@
 <?php 
     namespace Views;
     use Models\Alert as Alert;
-    //echo var_dump($alert);
     if ($alert==null){
      $alert = new Alert(" "," ");
     }

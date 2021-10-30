@@ -130,3 +130,4 @@ select * from careers;
 select * from users;
 drop table users;
 select * from students;
+select * from business;

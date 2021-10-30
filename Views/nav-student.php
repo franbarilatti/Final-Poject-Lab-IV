@@ -1,6 +1,6 @@
 
 <?php 
-  $studentId = $std->getStudentId();
+  //$studentId = $std->getStudentId();
 
 ?>
 

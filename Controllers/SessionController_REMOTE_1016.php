@@ -13,25 +13,16 @@ class SessionController{
     public function Login($email,$password){
         $userRepository = new UserDAO();
         try{
-            if($email == "admin@admin.com"){
-                header("location:".FRONT_ROOT."Admin");
-                }
             $user = $userRepository->searchByEmail($email);
-
              $passValidation = $user->getPassword();
              $roleValidation = $user->getRole();
              if($passValidation === $password){
-
-            $passValidation = $user->getPassword();
-            $roleValidation = $user->getRole();
-            if($passValidation === $password){
-
                  switch ($roleValidation) {
                      case 'admin':
                          require_once(VIEWS_PATH."admin-main.php");
                          break;
                      case 'student':
-                         header("location:".FRONT_ROOT."Student");
+                         require_once(VIEWS_PATH."studentMain.php");
                          break;
                      default:
                          echo "Entrando al default";
