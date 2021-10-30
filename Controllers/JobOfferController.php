@@ -7,8 +7,47 @@
 
     use DAO\JobOfferDAO as JobOfferDAO;
     use DAO\JobPositionDAO as JobPositionDAO;
-    
+use Models\Alert;
 
+class JobOfferController{
+
+        private $alert;
+        private $jobOfferDAO;
+
+        public function __construct()
+        {
+            $this->alert = new Alert("","");
+            $this->jobOfferDAO = new JobOfferDAO();
+        }
+
+        ////////// VIEWS FUNCTION ///////// 
+
+        public function AddView(){
+
+        }
+
+
+        ////////// FUNCTIONAL FUNCTION /////////
+        public function Add($businessId,$careerId,$jobPositionId,$jobOfferId,$title,$description,$postingDate,$expiryDate){
+            
+            $jobOffer = new JobOffer($businessId,$careerId,$jobPositionId,$jobOfferId,$title,$description,$postingDate,$expiryDate);
+
+            try{
+
+
+
+            }catch{
+
+            }
+
+
+        }
+
+        public function Modify(){
+
+        }
+
+    }
 
 
 ?>
