@@ -15,15 +15,16 @@ class SessionController{
         try{
             if($email == "admin@admin.com"){
                 header("location:".FRONT_ROOT."Admin");
-                }
+            }
             $user = $userRepository->searchByEmail($email);
-
-             $passValidation = $user->getPassword();
-             $roleValidation = $user->getRole();
-             if($passValidation === $password){
 
             $passValidation = $user->getPassword();
             $roleValidation = $user->getRole();
+        
+            if($passValidation === $password){
+                $passValidation = $user->getPassword();
+                $roleValidation = $user->getRole();
+            }
             if($passValidation === $password){
 
                  switch ($roleValidation) {
@@ -42,9 +43,8 @@ class SessionController{
                  $homeController->Index("mail o contraseña incorrectas");
              }
 
-        }
-        catch(Exception $ex){
-           throw $ex;
+        }catch(Exception $ex){
+            throw $ex;
         }
     }
 }
