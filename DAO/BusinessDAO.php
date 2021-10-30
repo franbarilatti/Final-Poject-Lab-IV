@@ -13,12 +13,15 @@
 
         public function Add(Business $business)
         {
+            $businessName = $business->getBusinessName();
+            
             try
             {
-                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = businessName";
+                $validation = "SELECT businessName FROM ".$this->tableName." WHERE businessName = '$businessName'";
                 $parameters['businessName'] = $business->getBusinessName();
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($validation);
+                echo "Resultado <br>";
                 var_dump($result);
                 if($result != null){
                     return "El nombre de esta empresa ya se encuentra registrado";
