@@ -4,7 +4,7 @@
     use DAO\BusinessDAO as BusinessDAO;
     use DAO\UserDAO;
     use Exception;
-    use Models\Alert as Alert;
+    use Models\Alert;
     use Models\Business as Business;
 use Models\User;
 
@@ -25,7 +25,7 @@ class BusinessController
         ////////////////// VIEWS METHODS //////////////////
 
 
-        public function ShowAddView(Alert $alert=null)
+        public function ShowAddView()
         {
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."business-add.php");
@@ -144,25 +144,21 @@ class BusinessController
         public function Add($businessId,$businessName,$employesQuantity,$businessInfo)
         {   
             try{                
-
                 
                 $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
                 $this->businessDAO->Add($business);
-
                 
-                $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-                $this->businessDAO->Add($business);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Empresa agregada con exito! Espere validacion de un Administrador");
             }
             catch(Exception $ex){
-                
                 $this->alert->setType("danger");
                 $this->alert->setMessage($ex->getMessage());
             }
             finally{
-                $this->ShowAddView($this->alert);
+                $this->ShowAddView();
             }
+            
         }
         
         public function Index($opcion){

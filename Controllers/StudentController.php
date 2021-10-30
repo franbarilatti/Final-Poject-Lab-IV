@@ -49,6 +49,7 @@ class StudentController
 
         public function ShowStudentMain($std){
             $student= $std;
+            require_once(VIEWS_PATH."nav-student.php");
             require_once (VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."studentMain.php");
         }
@@ -87,8 +88,8 @@ class StudentController
         }
 
         public function Index(){
-            $std = $_SESSION["student"];
-            $title = $std->getFirstName();
+            //$std = $_SESSION["student"];
+            //$title = $std->getFirstName();
             require_once (VIEWS_PATH."nav-student.php");
             require_once(VIEWS_PATH."header.php");
             $this->ShowStudentMain($std);

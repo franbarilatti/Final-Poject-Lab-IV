@@ -144,11 +144,6 @@ class BusinessController
         public function Add($businessId,$businessName,$employesQuantity,$businessInfo)
         {   
             try{                
-
-                
-                $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-                $this->businessDAO->Add($business);
-
                 
                 $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
                 $this->businessDAO->Add($business);
