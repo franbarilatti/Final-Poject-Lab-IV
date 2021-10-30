@@ -24,7 +24,7 @@ class RegisterController{
         }
 
 
-        public function Register($email, $password, $role){
+        public function Register($email){
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
@@ -36,7 +36,8 @@ class RegisterController{
                     $this->alert->setType("danger");
                     $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
                 }else{
-                    $this->userController->Add($email, $password, $role);
+                    $user = $this->userDAO->SearchByEmail($email);
+                    $this->studentController->RegisterForm($email,$user);
                     $this->alert->setType("success");
                     $this->alert->setMessage("Email registrado correctamente");
                 }
@@ -44,9 +45,7 @@ class RegisterController{
             }catch(Exception $ex){
                 $this->alert->settype("danger");
                 $this->alert->setMessage($ex->getMessage());
-                $this->userController->ShowUserAddView($this->alert) ;
-            }finally{
-                $this->userController->ShowUserAddView($this->alert) ;
+                $this->studentController->RegisterView($this->alert) ;
             }
         }
 
