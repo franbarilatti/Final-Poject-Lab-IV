@@ -17,9 +17,15 @@ class SessionController{
                 header("location:".FRONT_ROOT."Admin");
                 }
             $user = $userRepository->searchByEmail($email);
+
+             $passValidation = $user->getPassword();
+             $roleValidation = $user->getRole();
+             if($passValidation === $password){
+
             $passValidation = $user->getPassword();
             $roleValidation = $user->getRole();
             if($passValidation === $password){
+
                  switch ($roleValidation) {
                      case 'admin':
                          require_once(VIEWS_PATH."admin-main.php");
