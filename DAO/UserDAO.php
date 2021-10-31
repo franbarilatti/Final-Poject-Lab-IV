@@ -94,7 +94,7 @@
                                 $p['role']);
 			}, $value);
 
-            return $resp = count($resp) > 1 ? $resp : $resp['0'];
+            return $resp /*= count($resp) > 1 ? $resp : $resp['0']*/;
         }
 
     }

@@ -40,8 +40,6 @@
                     $this->ShowUserAddView($alert);
                 }  
         }
-
-
         
 
         public function Index(){

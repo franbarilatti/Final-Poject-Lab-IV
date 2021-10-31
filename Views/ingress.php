@@ -78,7 +78,7 @@
                               <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                          </div>
                          <br>
-                         <a class= "btn btn-primary" href="<?php echo FRONT_ROOT?>User/ShowUserAddView">Registrar usuario</a>
+                         <a class= "btn btn-primary" href="<?php echo FRONT_ROOT?>Student/RegisterView">Registrar usuario</a>
                     </form>
                </div>
                

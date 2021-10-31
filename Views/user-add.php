@@ -1,9 +1,12 @@
-<?php 
-    namespace Views;
-    use Models\Alert as Alert;
-    if ($alert==null){
-     $alert = new Alert(" "," ");
-    }
+<?php
+
+namespace Views;
+
+use Models\Alert as Alert;
+
+if ($alert == null) {
+    $alert = new Alert(" ", " ");
+}
 ?>
 
 <body>
@@ -14,18 +17,13 @@
             <form action="<?php echo FRONT_ROOT ?>Register/Register" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" name= "email" placeholder="Ingrese un email">
-                </div>
-                <div class="form-group">
-                    <label >Constraseña:</label>
-                    <input type="password" class="form-control" name= "password" placeholder="Ingrese una password">
+                    <input type="email" class="form-control" name="email" placeholder="Ingrese un email">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-warning btn-lg">Registrarse</button>
                 </div>
-                <input type="hidden" name= "role"  value= "student">
             </form>
-        <div class= "alert alert-<?php echo $alert->getType()?>"><?php echo $alert->getMessage()?></div>
+            <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
         </div>
     </div>
 </body>

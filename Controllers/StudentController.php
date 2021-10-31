@@ -33,6 +33,17 @@ class StudentController
             require_once(VIEWS_PATH."student-add.php");
         }
 
+        public function RegisterView(Alert $alert = null){
+            require_once (VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."user-add.php");
+        }
+
+        public function RegisterForm($email,$user){
+            $student = $this->SearchInAPIByEmail($email);
+            require_once (VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."student-register.php");
+        }
+
         public function ShowListView()
         {
             try{
