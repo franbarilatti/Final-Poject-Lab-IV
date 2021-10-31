@@ -570,6 +570,11 @@ progress {
   margin-right: 0.5rem;
 }
 
+.jobPositionList{
+  width: 350px;
+  margin-left: 100px;
+}
+
 .initialism {
   font-size: 0.875em;
   text-transform: uppercase;
@@ -2118,6 +2123,26 @@ progress {
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+
+.table-fixed tbody{
+  height: 230px;
+  overflow-y: auto;
+  width: 350px;
+}
+
+.table-fixed thead, 
+.table-fixed tbody, 
+.table-fixed td, 
+.table-fixed th{
+  display: block;
+}
+
+.table-fixed tbody td,
+.table-fixed thead >tr > th{
+  float: left;
+  border-bottom-width: 0;
 }
 
 @media (max-width: 575.98px) {
@@ -7350,6 +7375,7 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
+  margin-left: 25px;
   margin-bottom: 1.5rem !important;
 }
 

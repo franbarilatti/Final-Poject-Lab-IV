@@ -9,11 +9,10 @@ class JobPosition{
         private $description;
         private $active;
 
-        public function __construct($jobPositionId,$careerId,$description, $active) {
+        public function __construct($jobPositionId,$careerId,$description) {
                 $this->jobPositionId = $jobPositionId;
                 $this->careerId = $careerId;
                 $this->description = $description;
-                $this->active = $active;
         }
 
         ////////// GETTERS METHODS //////////

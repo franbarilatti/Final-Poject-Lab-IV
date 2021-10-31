@@ -48,19 +48,9 @@
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new JobPosition($p['userId'],
-                                   $p['studentId'], 
+				return new JobPosition($p['jobPositionId'],
                                    $p['careerId'], 
-                                   $p['firstName'], 
-                                   $p['lastName'],
-                                   $p['dni'],
-                                   $p['fileNumber'],
-                                   $p['gender'],
-                                   $p['birthDate'],
-                                   $p['email'],
-                                   $p['password'],
-                                   $p['phoneNumber'],
-                                   $p['active']);
+                                   $p['description']);
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
