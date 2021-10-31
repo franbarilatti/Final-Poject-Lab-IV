@@ -6,13 +6,8 @@
     use Models\Student as Student;
     use DAO\JobOfferDAO as JobOfferDAO;
     use DAO\JobPositionDAO as JobPositionDAO;
-<<<<<<< HEAD
     use DAO\JobPositionAPI as JobPositionAPI;
     use Models\Alert as Alert;
-=======
-use Exception;
-use Models\Alert;
->>>>>>> origin/main
 
 class JobOfferController{
 
@@ -46,11 +41,7 @@ class JobOfferController{
                 
 
 
-<<<<<<< HEAD
             }catch(Exeption $ex){
-=======
-            }catch(Exception $ex){
->>>>>>> origin/main
 
             }
         }
