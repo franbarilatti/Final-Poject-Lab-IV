@@ -41,11 +41,12 @@ class RegisterController{
                     $this->alert->setType("success");
                     $this->alert->setMessage("Email registrado correctamente");
                 }
-
             }catch(Exception $ex){
                 $this->alert->settype("danger");
                 $this->alert->setMessage($ex->getMessage());
                 $this->studentController->RegisterView($this->alert) ;
+            }finally{
+                $this->Index();
             }
         }
 

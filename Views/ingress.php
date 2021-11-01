@@ -51,40 +51,8 @@
                
            </div>
           </div>
-     </nav>
-     </div>
-     
-     <!-- LOGIN -->
-
-     <div><?php  ?></div>
-
-     <div class="container w-75 bg-primary mt-5 rounded shadow">
-          <div class="row aling-items-stretch">
-               <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6"></div>
-               <div class="col bg-withe p-5 rounded-end">
-          
-                    <h2 class="fw-bold text-center py-5">Bienvenidos a MyJob</h2>
-
-                    <form action="<?php echo FRONT_ROOT ?>Session/Login" method= "post">
-                         <div class="mb-4">
-                              <label for="email" class="form-label"> Email </label>
-                              <input type="email" name="email" class="form-control">
-                         </div>
-                         <div class="mb-4">
-                              <label for="password" class="form-label"> Constraseña </label>
-                              <input type="password" name="password" class="form-control">
-                         </div>
-
-                         <div class="d-grid">
-                              <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
-                         </div>
-                         <br>
-                         <a class= "btn btn-primary" href="<?php echo FRONT_ROOT?>Student/RegisterView">Registrar usuario</a>
-                    </form>
-               </div>
-               
-          </div>
-     </div>
-</body>
-</html>
-
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

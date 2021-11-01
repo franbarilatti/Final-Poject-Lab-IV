@@ -3,7 +3,7 @@
 
     class HomeController
     {
-        public function Index($message = "")
+        public function Index()
         {
             $title="My job Login";
             require_once(VIEWS_PATH."header.php");

@@ -80,7 +80,7 @@
                 return $findedUser[0];
             }
             catch(Exception $ex){
-                throw $ex = "Email ingresado no encontrado. Por favor verifique que se encuentre bien escrito";
+                throw $ex;
             }
         }
 
