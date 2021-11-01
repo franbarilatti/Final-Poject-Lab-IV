@@ -93,11 +93,11 @@ create table postulation(
 
 drop table jobOffer;
 
-select * from users;
+select * from students;
 
 select * from admins;
 
-select * from careers;
+select * from users;
 
 alter table jobPositions change businessId careerId int not null;
 

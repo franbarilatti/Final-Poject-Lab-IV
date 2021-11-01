@@ -58,10 +58,10 @@
 
                 $lastUser = $this->Mapping($result);
 
-                return $lastUser;
+                return $lastUser[0];
             }
             catch(Exception $ex){
-                throw $ex = "No se a podido tomar el ultimo registro";
+                throw $ex;
             }
         }
 

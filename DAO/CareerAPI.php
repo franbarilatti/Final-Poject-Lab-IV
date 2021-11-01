@@ -46,6 +46,19 @@
             }
         }
 
+        public function SearchByID($id){
+            $this->RetrieveData();
+            $i=0;
+            while($i<count($this->careerList) && $this->careerList[$i]->getCareerId()!=$id){
+                $i++;
+            }
+            if($i < count($this->careerList)){
+                return $this->careerList[$i];
+            }else{
+                return null;
+            }
+        }
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];

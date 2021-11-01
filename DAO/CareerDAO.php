@@ -47,7 +47,24 @@ use Models\Career as Career;
             }
         }
 
+        public function SearchById($id){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE id = :id";
 
+                $parameters['id'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $result =  $this->connection->Execute($query,$parameters);
+
+                $career = $this->Mapping($result);
+
+                return $career;
+            }
+            catch(Exception $ex){
+                throw $ex = "Email ingresado no encontrado. Por favor verifique que se encuentre bien escrito";
+            }
+        }
 
         protected function Mapping($value) {
 

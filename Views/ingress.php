@@ -9,6 +9,7 @@
      <style>
           .bg{
                background-image: url(Views/img/myjob.png);
+               background-repeat: no-repeat;
                background-position: center center;
 
           }
