@@ -109,4 +109,4 @@ select * from students;
 select * from business;
 select * from joboffer;
 select * from jobpositions;
-drop table joboffer;
+#drop table joboffer;
