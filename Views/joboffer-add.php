@@ -14,10 +14,12 @@
                                              <td><?php echo $jobPosition->getDescription();?></td>
                                              <input type="hidden" name="carrerId" value="<?php echo$jobPosition->getCareerId(); ?>">
                                         </tr>
+                                        
                                    <?php
                                    
                               }
                          ?>
+                         <button type="submit" class="btn btn-primary">submit</button>
                          </tr>
                     </tbody>
                     

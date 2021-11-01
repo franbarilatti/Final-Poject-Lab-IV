@@ -7,7 +7,8 @@
     use DAO\JobOfferDAO as JobOfferDAO;
     use DAO\JobPositionDAO as JobPositionDAO;
     use DAO\JobPositionAPI as JobPositionAPI;
-    use Models\Alert as Alert;
+use Exception;
+use Models\Alert as Alert;
 
 class JobOfferController{
 
@@ -41,7 +42,7 @@ class JobOfferController{
                 
 
 
-            }catch(Exeption $ex){
+            }catch(Exception $ex){
 
             }
         }

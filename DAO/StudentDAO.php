@@ -82,6 +82,8 @@ class StudentDAO implements IStudentDAO{
                                    $p['active']);
 			}, $value);
 
+            var_dump($resp);
+
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
 
