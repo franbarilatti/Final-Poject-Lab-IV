@@ -14,7 +14,7 @@
         public function Add(User $user)
         {
            try{
-                $query = "INSERT INTO ".$this->tableName." (id,email,password,role) VALUES (DEFAULT,:email,:password,:role);";
+                $query = "INSERT INTO ".$this->tableName." (email,password,role) VALUES (:email,:password,:role);";
                 $parameters['email'] = $user->getEmail();
                 $parameters['password'] = $user->getPassword();
                 $parameters['role'] = $user->getRole();
@@ -77,19 +77,23 @@
 
                 $findedUser = $this->Mapping($result);
 
-                return $findedUser;
+                var_dump($findedUser);
+
+                return $findedUser[0];
             }
             catch(Exception $ex){
                 throw $ex = "Email ingresado no encontrado. Por favor verifique que se encuentre bien escrito";
             }
         }
 
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new User($p['email'],
+				return new User($p['userId'],
+                                $p['email'],
                                 $p['password'],
                                 $p['role']);
 			}, $value);

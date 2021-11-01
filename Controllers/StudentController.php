@@ -86,14 +86,21 @@ class StudentController
 
                 $lastUser = $this->userDAO->LastRegister();
 
+                var_dump($lastUser);
+
                 $validUser = $this->userDAO->SearchByEmail($email);
 
+                var_dump($validUser);
+
                 if (!isset($validUser)) {
+                    echo "El usuario fue validado";
                     $student = new Student($lastUser->getUserId(), $studentId, $careerId, $firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $phoneNumber, true);
+                    var_dump($student);
                     $this->studentDAO->Add($student);
                     $this->alert->setType("success");
                     $this->alert->setMessage("Registro exitoso. Bienvenido!");
                 } else {
+                    echo "El usuario no fue validado";
                     $this->alert->setType("danger");
                     $this->alert->setMessage("Su email no se encuentra registrado como un alumno de la UTN. por favor vuelva a intentar");
                 }
