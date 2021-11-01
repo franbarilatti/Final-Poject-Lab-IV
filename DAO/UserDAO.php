@@ -92,7 +92,7 @@
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new User($p['userId'],
+				return new User($p['id'],
                                 $p['email'],
                                 $p['password'],
                                 $p['role']);

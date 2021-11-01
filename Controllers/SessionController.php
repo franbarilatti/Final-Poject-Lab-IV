@@ -24,8 +24,8 @@ class SessionController{
             echo empty($user);
             if(!empty($user)){
                 echo "loro";
-                $passValidation = $user[0]->getPassword();
-                $roleValidation = $user[0]->getRole();
+                $passValidation = $user->getPassword();
+                $roleValidation = $user->getRole();
                 if($passValidation === $password){
                     switch ($roleValidation) {
                         case 'admin':
