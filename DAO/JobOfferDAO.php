@@ -1,8 +1,8 @@
 <?php
     namespace DAO;
-
-use Exception;
-use Models\JobOffer as JobOffer;
+    use Exception;
+    use Models\JobOffer as JobOffer;
+    use DAO\CareerDAO as CareerDAO;
 
     class JobOfferDAO implements IJobOfferDAO{
 
@@ -14,14 +14,14 @@ use Models\JobOffer as JobOffer;
 
         public function Add(JobOffer $jobOffer)
         {
+            $careerDAO = new CareerDAO();
             try{
                 
                 $query = "INSERT INTO ".$this->tableName." (businessId,careerId,jobPositionId,jobOfferId,title,description,postingDate,expiryDate)
-                          VALUES (:businessId,:careerId,:jobPositionId,:jobOfferId,:title,:description,:postingDate,:expiryDate)";
+                          VALUES (:businessId,:careerId,:jobPositionId,DEFAULT,:title,:description,:postingDate,:expiryDate)";
                 $parameters['businessId'] = $jobOffer->getBusinessId();
                 $parameters['careerId'] = $jobOffer->getCareerId();
                 $parameters['jobPositionId'] = $jobOffer->getJobPositionId();
-                $parameters['jobOfferId'] = $jobOffer->getJobOfferId();
                 $parameters['title'] = $jobOffer->getTitle();
                 $parameters['description'] = $jobOffer->getDescription();
                 $parameters['postingDate'] = $jobOffer->getPostingDate();
@@ -29,11 +29,8 @@ use Models\JobOffer as JobOffer;
 
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);
-
-                return "Se a agregado una nueva oferta de trabajo con exito";
-
             }catch(Exception $ex){
-                throw $ex = "Hubo un error al ingresar la oferta de trabajo";
+                throw $ex;
             }
         }
 

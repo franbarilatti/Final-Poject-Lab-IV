@@ -164,6 +164,8 @@ class BusinessController
                 $this->ShowAddView($this->alert);
             }
         }
+
+        
         
         public function Index($opcion){
             if($opcion=="add"){

@@ -6,9 +6,10 @@
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
               <img
-                src="https://i.pinimg.com/564x/86/8a/a6/868aa646a4ca4f2b250a37dc4060ac96.jpg"
+                src="https://spitecnologias.com/wp-content/uploads/equipos-informaticos.jpg"
                 alt="login form"
-                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+                width="347" height="600"
+                
               />
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">

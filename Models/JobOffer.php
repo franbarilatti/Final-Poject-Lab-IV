@@ -12,12 +12,12 @@
         private $postingDate;
         private $expiryDate;
          
-        public function __construct($businessId,$careerId,$jobPositionId,$jobOfferId,$title,$description,$postingDate,$expiryDate)
+        public function __construct($businessId,$careerId,$jobPositionId, $title,$description,$postingDate,$expiryDate)
         {
             $this->businessId = $businessId;
             $this->careerId = $careerId;
             $this->jobPositionId = $jobPositionId;
-            $this->jobOfferId = $jobOfferId;
+
             $this->title = $title;
             $this->description = $description;
             $this->postingDate = $postingDate;
