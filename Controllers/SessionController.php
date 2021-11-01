@@ -16,14 +16,9 @@ class SessionController{
         $userRepository = new UserDAO();
         $homeController = new HomeController();
         try{
-            if($email == "admin@admin.com"){
-                header("location:".FRONT_ROOT."Admin");
-            }
             $user = $userRepository->searchByEmail($email);
-            var_dump($user);
-            echo empty($user);
             if(!empty($user)){
-                echo "loro";
+
                 $passValidation = $user->getPassword();
                 $roleValidation = $user->getRole();
                 if($passValidation === $password){
@@ -42,7 +37,7 @@ class SessionController{
                 header("location:".FRONT_ROOT."index.php");
                 }
             }else{
-                echo "gato";
+
                 header("location:".FRONT_ROOT."index.php");
             }
         }catch(Exception $ex){

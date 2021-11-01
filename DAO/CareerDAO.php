@@ -1,8 +1,8 @@
 <?php
     namespace DAO;
-
-use Exception;
-use Models\Career as Career;
+    use Exception;
+    use Models\Career as Career;
+    use DAO\CareerAPI as CareerAPI;
 
     class CareerDAO implements ICareerDAO{
 
@@ -65,6 +65,8 @@ use Models\Career as Career;
                 throw $ex = "Email ingresado no encontrado. Por favor verifique que se encuentre bien escrito";
             }
         }
+
+     
 
         protected function Mapping($value) {
 

@@ -24,9 +24,9 @@ class JobOfferController{
 
         ////////// VIEWS FUNCTION ///////// 
 
-        public function AddView(){
+        public function AddView($businessId,Alert $alert=null){
             $jobPositionList = $this->jobPositionAPI->GetAll();
-            var_dump($jobPositionList);
+
             require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-add.php");
@@ -34,16 +34,18 @@ class JobOfferController{
 
 
         ////////// FUNCTIONAL FUNCTION /////////
-        public function Add($businessId,$careerId,$jobPositionId,$jobOfferId,$title,$description,$postingDate,$expiryDate){
+        public function Add($businessId,$careerId,$jobPositionId,$title,$description,$postingDate,$expiryDate){
             
-            $jobOffer = new JobOffer($businessId,$careerId,$jobPositionId,$jobOfferId,$title,$description,$postingDate,$expiryDate);
             try{
-
-                
-
+                $jobOffer = new JobOffer($businessId,$careerId,$jobPositionId,$title,$description,$postingDate,$expiryDate);
+                    $this->jobOfferDAO->Add($jobOffer);
+                    $this->alert->setType("success");
+                    $this->alert->setMessage("Oferta cargada con exito");
 
             }catch(Exeption $ex){
 
+            }finally{
+                $this->AddView($businessId,$this->alert);
             }
         }
 

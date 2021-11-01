@@ -1,8 +1,6 @@
 <?php 
   namespace Views;
-  /*require_once "header.php";
-  require_once "nav-admin.php";
-  require_once "footer.php";*/
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,7 @@
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business?opcion=add">Añadir Emp</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business?opcion=list" >Ver empresas</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT?>Business/ShowListViewAdmin" >Ver empresas</a>
         </li>
       </ul>
       <form class="d-flex"  action="<?php echo FRONT_ROOT ?>Business/SearchByNameAdmin" method="post">
