@@ -14,7 +14,7 @@
         public function Add(User $user)
         {
            try{
-                $query = "INSERT INTO ".$this->tableName." (id,email,password,role) VALUES (DEFAULT,:email,:password,:role);";
+                $query = "INSERT INTO ".$this->tableName." (email,password,role) VALUES (:email,:password,:role);";
                 $parameters['email'] = $user->getEmail();
                 $parameters['password'] = $user->getPassword();
                 $parameters['role'] = $user->getRole();
@@ -58,10 +58,10 @@
 
                 $lastUser = $this->Mapping($result);
 
-                return $lastUser;
+                return $lastUser[0];
             }
             catch(Exception $ex){
-                throw $ex = "No se a podido tomar el ultimo registro";
+                throw $ex;
             }
         }
 
@@ -77,19 +77,23 @@
 
                 $findedUser = $this->Mapping($result);
 
-                return $findedUser;
+                var_dump($findedUser);
+
+                return $findedUser[0];
             }
             catch(Exception $ex){
                 throw $ex;
             }
         }
 
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new User($p['email'],
+				return new User($p['userId'],
+                                $p['email'],
                                 $p['password'],
                                 $p['role']);
 			}, $value);
