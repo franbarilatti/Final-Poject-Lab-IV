@@ -21,10 +21,10 @@ class SessionController{
 
                 $passValidation = $user->getPassword();
                 $roleValidation = $user->getRole();
-                if($passValidation === $password){
+                if($passValidation == $password){
                     switch ($roleValidation) {
                         case 'admin':
-                            require_once(VIEWS_PATH."admin-main.php");
+                            header("location:".FRONT_ROOT."Admin");
                             break;
                         case 'student':
                             header("location:".FRONT_ROOT."Student");

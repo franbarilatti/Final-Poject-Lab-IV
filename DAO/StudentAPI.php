@@ -29,6 +29,10 @@
             return $this->studentList;
         }
 
+        private function SaveData(){
+            
+        }
+
         private function RetrieveData()
         {
             $resp = curl_exec($this->ch);

@@ -9,7 +9,7 @@
 
         public function __construct()
         {
-            $this->adminDAO = new AdminDAO();
+            $this->adminDAO = new AdminDAO;
         }
 
         ////////////////// VIEWS METHODS //////////////////
