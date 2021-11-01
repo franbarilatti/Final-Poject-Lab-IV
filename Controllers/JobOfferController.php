@@ -26,7 +26,8 @@ class JobOfferController{
 
         public function AddView(){
             $jobPositionList = $this->jobPositionAPI->GetAll();
-            require_once(VIEWS_PATH."nav-student.php");
+            var_dump($jobPositionList);
+            require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-add.php");
         }

@@ -33,7 +33,7 @@
                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton1">
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                             <li role="presentation"><a href= "<?php echo FRONT_ROOT?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId();?>&$businessName=<?php echo $business->getBusinessName();?>&$employesQuantity=<?php echo $business->getEmployesQuantity();?>&$businessInfo=<?php echo $business->getBusinessInfo();?>">Modificar</a></li>
-                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobOffer/AddView?>">Agregar Nueva Oferta</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobOffer/AddView">Agregar Nueva Oferta</a></li>
                                                             <li role="presentation"> <a href="<?php echo FRONT_ROOT?>JobPosition/ShowListViewAdmin?$id=<?php echo $business->getBusinessId();?>">Ver ofertas</a></li>
                                                        </ul>
                                                   </div>

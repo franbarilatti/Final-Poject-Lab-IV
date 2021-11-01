@@ -7,42 +7,44 @@
     use DAO\UserDAO;
     use EmptyIterator;
     use Exception;
+    use Models\Alert as Alert;
 
 class SessionController{
 
     public function Login($email,$password){
+        $alert = new Alert("",""); 
         $userRepository = new UserDAO();
+        $homeController = new HomeController();
         try{
             if($email == "admin@admin.com"){
                 header("location:".FRONT_ROOT."Admin");
             }
             $user = $userRepository->searchByEmail($email);
-
-            $passValidation = $user->getPassword();
-            $roleValidation = $user->getRole();
-        
-            if($passValidation === $password){
-                $passValidation = $user->getPassword();
-                $roleValidation = $user->getRole();
+            var_dump($user);
+            echo empty($user);
+            if(!empty($user)){
+                echo "loro";
+                $passValidation = $user[0]->getPassword();
+                $roleValidation = $user[0]->getRole();
+                if($passValidation === $password){
+                    switch ($roleValidation) {
+                        case 'admin':
+                            require_once(VIEWS_PATH."admin-main.php");
+                            break;
+                        case 'student':
+                            header("location:".FRONT_ROOT."Student");
+                            break;
+                        default:
+                            echo "Entrando al default";
+                            break;
+                    }
+                }else{
+                header("location:".FRONT_ROOT."index.php");
+                }
+            }else{
+                echo "gato";
+                header("location:".FRONT_ROOT."index.php");
             }
-            if($passValidation === $password){
-
-                 switch ($roleValidation) {
-                     case 'admin':
-                         require_once(VIEWS_PATH."admin-main.php");
-                         break;
-                     case 'student':
-                         header("location:".FRONT_ROOT."Student");
-                         break;
-                     default:
-                         echo "Entrando al default";
-                         break;
-                 }
-             }else{
-                 $homeController = new HomeController();
-                 $homeController->Index("mail o contraseña incorrectas");
-             }
-
         }catch(Exception $ex){
             throw $ex;
         }

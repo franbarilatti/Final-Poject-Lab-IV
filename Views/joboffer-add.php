@@ -1,3 +1,5 @@
+<?php var_dump($jobPositionList); ?>
+
 <main class="py-5">
      <section id="listado" class="mb-5">
      <h2 class="mb-4">Agregar Oferta</h2>
@@ -20,7 +22,6 @@
                          ?>
                          </tr>
                     </tbody>
-                    
                </table>
           </div>
 
