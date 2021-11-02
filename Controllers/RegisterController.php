@@ -28,7 +28,8 @@ class RegisterController{
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-                if($this->userDAO->isInDataBase($email) && !$studentApi->ValidateStudent($email)){
+          
+                if($this->userDAO->isInDataBase($email) || $studentApi->ValidateStudent($email)){
                     $this->alert->setType("danger");
                     $this->alert->setMessage("No es posible registrar este email");
                 }elseif(!$this->CheckEmailWhitAPI($email)){
@@ -46,7 +47,6 @@ class RegisterController{
                     $_SESSION["alert"] = $this->alert;
                     $_SESSION["email"] = $email;
                     
-                    echo "email de session ". $_SESSION['email'];
                     header("location:".FRONT_ROOT."Student/RegisterForm");
                 }else{
                      $this->Index();

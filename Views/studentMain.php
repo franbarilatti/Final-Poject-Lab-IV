@@ -1,5 +1,7 @@
 <?php 
   namespace Views;
+  echo $_SESSION["alert"];
+  var_dump ($_SESSION["user"]);
 ?>
 
 <!DOCTYPE html>

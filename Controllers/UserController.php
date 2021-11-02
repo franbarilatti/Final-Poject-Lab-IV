@@ -33,16 +33,17 @@
                     $user = new User($userId, $email, $hashPassword, $role);
                     $this->userDAO->Add($user);
                     $alert->setType("success");
-                    $alert->setMessage("Usuario creado correctamente");
+                    $alert->setMessage("Su usuario creado correctamente");
                 }catch(Exception $ex){
                     $alert->setType("danger");
                     $alert->setMessage($ex->getMessage());
                 }finally{
-                    $this->ShowUserAddView($alert);
+                    $_SESSION["user"]= $this->studentAPI->SearchInAPIByEmail($email);
+                    $_SESSION["alert"]=$alert;
+                    header("location:".VIEWS_PATH."studentMain.php");
                 }  
         }
         
-
         public function Index(){
             require_once(VIEWS_PATH."header.php");
         }

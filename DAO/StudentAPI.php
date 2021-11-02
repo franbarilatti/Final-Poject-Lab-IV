@@ -108,6 +108,7 @@ use Models\Student as Student;
 
         public function GetActiveStudents(){
             $validList = array();
+            $this->RetrieveData();
             foreach($this->studentList as $student){
                 if($student->getActive() == true){
                     array_push($validList,$student);
@@ -127,17 +128,16 @@ use Models\Student as Student;
         }
 
         public function ValidateStudent($email){
-            $validList = $this->GetActiveStudents();
-            foreach($this->studentList as $student){
-                if($student->getEmail() == $email){
-                    if($student->getActive() == true){
-                        return true;
-                    }else{
-                        return false;
-                    }
-                }else{
-                    return false;
-                }
+            $validList = $this->GetActiveStudents();            
+            $i=0;
+            while($i<count($validList) && $validList[$i]->getEmail()!=$email){
+            
+                $i++;
+            }
+            if($i<=count($validList)){
+                return true;
+            }else{
+                return false;
             }
         }
 
