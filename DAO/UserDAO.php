@@ -96,7 +96,7 @@
 
                 $result =  $this->connection->Execute($query,$parameters);
 
-                if(isset($result)){
+                if($result){
                     return true;
                 }else{
                     return false;

@@ -28,9 +28,9 @@ class RegisterController{
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-                if(!$this->userDAO->isInDataBase($email)){
+                if($this->userDAO->isInDataBase($email) && !$studentApi->ValidateStudent($email)){
                     $this->alert->setType("danger");
-                    $this->alert->setMessage("Email ya registrado");
+                    $this->alert->setMessage("No es posible registrar este email");
                 }elseif(!$this->CheckEmailWhitAPI($email)){
                     $this->alert->setType("danger");
                     $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
