@@ -46,9 +46,7 @@ class StudentController
     public function RegisterForm()
     {
         $email = $_SESSION["email"];
-        echo $email;
         $student = $this->SearchInAPIByEmail($email);
-        $user = $this->userDAO->SearchByEmail($email);
         $career = $this->careerAPI->SearchById($student->getCareerId());
         require_once(VIEWS_PATH . "header.php");
         require_once(VIEWS_PATH . "student-register.php");
@@ -67,9 +65,8 @@ class StudentController
         }
     }
 
-    public function ShowStudentMain($std)
+    public function ShowStudentMain()
     {
-        $student = $std;
         require_once(VIEWS_PATH . "nav-student.php");
         require_once(VIEWS_PATH . "header.php");
         require_once(VIEWS_PATH . "studentMain.php");
@@ -77,65 +74,16 @@ class StudentController
 
     ////////////////// FUNCTIONAL METHODS //////////////////
 
-    public function Add($firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $email, $phoneNumber, $password, $validation, $careerId, $userId, $role, $studentId)
-    {
-        try {
-            if ($this->validatePasswords($password, $validation)) {
-                $user = new User($userId, $email, $password, $role);
-                $this->userDAO->Add($user);
-
-                $lastUser = $this->userDAO->LastRegister();
-
-
-                $validUser = $this->userDAO->SearchByEmail($email);
-
-                var_dump($validUser);
-
-                if (!isset($validUser)) {
-                    echo "El usuario fue validado";
-                    $student = new Student($lastUser->getUserId(), $studentId, $careerId, $firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $phoneNumber, true);
-                    var_dump($student);
-                    $this->studentDAO->Add($student);
-                    $this->alert->setType("success");
-                    $this->alert->setMessage("Registro exitoso. Bienvenido!");
-                } else {
-                    echo "El usuario no fue validado";
-                    $this->alert->setType("danger");
-                    $this->alert->setMessage("Su email no se encuentra registrado como un alumno de la UTN. por favor vuelva a intentar");
-                }
-            } else {
-                $this->alert->setType("danger");
-                $this->alert->setMessage("Las contraseñas no coinciden");
-            }
-        } catch (Exception $ex) {
-            $this->alert->setType("danger");
-            $this->alert->setMessage($ex->getMessage());
-        } finally {
-            $this->ShowStudentMain($student);
-        }
-    }
 
     public function SearchInAPIByEmail($email)
     {
         return $this->studentAPI->SearchByEmail($email);
     }
 
-    public function validatePasswords($pswrd1, $pswrd2)
-    {
-        if ($pswrd1 == $pswrd2) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 
     public function Index()
     {
-        //$std = $_SESSION["student"];
-        //$title = $std->getFirstName();
-        require_once(VIEWS_PATH . "nav-student.php");
-        require_once(VIEWS_PATH . "header.php");
-        $this->ShowStudentMain($std);
+        $this->ShowStudentMain();
     }
 }

@@ -2,8 +2,8 @@
     namespace DAO;
 
     use DAO\IAdminDAO as IAdminDAO;
-use Exception;
-use Models\Admin as Admin;
+    use Exception;
+    use Models\Admin as Admin;
 
     class AdminDAO implements IAdminDAO
     {
@@ -47,6 +47,27 @@ use Models\Admin as Admin;
 
                 return $adminList;
             } catch (Exception $ex) {
+                throw $ex;
+            }
+        }
+
+        public function isInDataBase($email){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE email = :email";
+
+                $parameters['email'] = $email;
+                
+                $this->connection = Connection::GetInstance();
+
+                $result =  $this->connection->Execute($query,$parameters);
+
+                if(isset($result)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            catch(Exception $ex){
                 throw $ex;
             }
         }

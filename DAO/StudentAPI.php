@@ -116,7 +116,7 @@ use Models\Student as Student;
             return $validList;
         }
         
-        public function ValidateStudent($email){
+        public function SearchByStudent($email){
             $validList = $this->GetActiveStudents();
             foreach($this->studentList as $student){
                 if($student->getEmail() == $email){
@@ -126,7 +126,21 @@ use Models\Student as Student;
             return $findedStudent;
         }
 
-        
+        public function ValidateStudent($email){
+            $validList = $this->GetActiveStudents();
+            foreach($this->studentList as $student){
+                if($student->getEmail() == $email){
+                    if($student->getActive() == true){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+            }
+        }
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];

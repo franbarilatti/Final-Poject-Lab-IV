@@ -2,7 +2,6 @@
     namespace Models;
 
     class Student{
-        private $userId;
         private $studentId;
         private $careerId;
         private $firstName;
@@ -43,10 +42,7 @@
         }
 
         ////////// GETTERS METHODS //////////
-        public function getUserId()
-        {
-                return $this->userId;
-        }
+
 
         public function getStudentId()
         {
@@ -105,12 +101,6 @@
 
         ////////// SETTERS METHODS //////////
 
-        public function setUserId($userId)
-        {
-                $this->userId = $userId;
-
-                return $this;
-        }
  
         public function setStudentId($studentId)
         {
@@ -191,6 +181,7 @@
 
                 return $this;
         }
+
 
     }
     

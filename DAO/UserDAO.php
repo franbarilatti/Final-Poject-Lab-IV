@@ -77,6 +77,8 @@
 
                 $findedUser = $this->Mapping($result);
 
+                var_dump($findedUser);
+
                 return $findedUser[0];
             }
             catch(Exception $ex){
@@ -84,6 +86,26 @@
             }
         }
 
+        public function isInDataBase($email){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE email = :email";
+
+                $parameters['email'] = $email;
+                
+                $this->connection = Connection::GetInstance();
+
+                $result =  $this->connection->Execute($query,$parameters);
+
+                if(isset($result)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        }
 
         protected function Mapping($value) {
 

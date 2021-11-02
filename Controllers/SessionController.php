@@ -21,7 +21,7 @@ class SessionController{
 
                 $passValidation = $user->getPassword();
                 $roleValidation = $user->getRole();
-                if($passValidation == $password){
+                if(password_verify($password,$user->getPassword())){
                     switch ($roleValidation) {
                         case 'admin':
                             header("location:".FRONT_ROOT."Admin");
@@ -92,11 +92,6 @@ class SessionController{
         //         }
         // }
 
-<<<<<<< HEAD
-        //  
-=======
-      
->>>>>>> origin/main
 
 
 ?>

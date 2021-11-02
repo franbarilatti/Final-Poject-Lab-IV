@@ -25,12 +25,10 @@ class RegisterController{
 
 
         public function Register($email){
-            echo $email;
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-                $validUser = $this->userDAO->SearchByEmail($email);
-                if($validUser !=null){
+                if(!$this->userDAO->isInDataBase($email)){
                     $this->alert->setType("danger");
                     $this->alert->setMessage("Email ya registrado");
                 }elseif(!$this->CheckEmailWhitAPI($email)){
@@ -47,7 +45,7 @@ class RegisterController{
                 if($this->alert->getType()=="success"){
                     $_SESSION["alert"] = $this->alert;
                     $_SESSION["email"] = $email;
-                    echo "$email <br>";
+                    
                     echo "email de session ". $_SESSION['email'];
                     header("location:".FRONT_ROOT."Student/RegisterForm");
                 }else{

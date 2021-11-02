@@ -6,7 +6,7 @@
 </div>
 
 
-<form action="<?php echo FRONT_ROOT ?>Student/Add" class="was-validated">
+<form action="<?php echo FRONT_ROOT ?>User/Add" class="was-validated">
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="firstName" class="form-label">firstName:</label>
@@ -44,7 +44,7 @@
         </div>
         <div class="col-3">
             <label for="birthDate" class="form-label">birthDate:</label>
-            <input type="datatime" class="form-control mb-5 lg" placeholder="<?php echo $student->getBirthDate() ?>" value="<?php echo date("d/m/y", strtotime($user->getBirthDate())) ?>" readonly name="birthDate">
+            <input type="datatime" class="form-control mb-5 lg" placeholder="<?php echo $student->getBirthDate() ?>" value="<?php echo date("d/m/y", strtotime($student->getBirthDate())) ?>" readonly name="birthDate">
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
