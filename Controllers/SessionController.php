@@ -44,7 +44,13 @@ class SessionController{
             throw $ex;
         }
     }
+    
+    public function Logout(){
+        header("location: ../index.php");
+     }
 }
+
+    
 
 
         ////////////////// FUNCTIONAL METHODS //////////////////
@@ -85,9 +91,7 @@ class SessionController{
         //         }
         // }
 
-        // public function Logout(){
-        //     header("location: ../index.php");
-        // }   
+      
 
 
 ?>

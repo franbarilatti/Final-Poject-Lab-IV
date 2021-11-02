@@ -103,10 +103,9 @@ use Models\Student as Student;
             }catch(Exception $ex){
                 throw $ex;
             }
-    
         }
 
-        
+
         public function GetActiveStudents(){
             $validList = array();
             foreach($this->studentList as $student){

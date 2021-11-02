@@ -6,7 +6,7 @@
 <!-- NAVBAR -->
 
 <nav class="navbar navbar-dark sticky-top" style="background-color: #095373;">
-  <div class="container-fluid d-flex justify-content-around">
+  <div class="container-fluid d-flex">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +34,7 @@
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
     <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="#">
-      <img src="logo.png" style="max-height: 60px;">
+      <img src="<?php echo IMG_PATH ?>logo.png" style="max-height: 60px;">
     </a>
   </div>
 </header>
