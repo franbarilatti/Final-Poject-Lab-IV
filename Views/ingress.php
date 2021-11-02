@@ -24,7 +24,7 @@
 
      <!-- NAVBAR -->
 
-     <nav class="navbar navbar-dark navbar-static-top" style="background-color: #095373;">
+     <nav class="navbar navbar-dark sticky-top" style="background-color: #095373;">
           <div class="container-fluid d-flex justify-content-around">
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>

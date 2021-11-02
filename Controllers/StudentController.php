@@ -48,7 +48,6 @@ class StudentController
         $student = $this->SearchInAPIByEmail($email);
         $user = $this->userDAO->SearchByEmail($email);
         $career = $this->careerAPI->SearchById($student->getCareerId());
-        echo "Id del estudiante:  " . $student->getStudentId();
         require_once(VIEWS_PATH . "header.php");
         require_once(VIEWS_PATH . "student-register.php");
     }
@@ -76,45 +75,41 @@ class StudentController
 
     ////////////////// FUNCTIONAL METHODS //////////////////
 
-    public function Add($firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $email, $phoneNumber, $password, $validation, $careerId, $userId, $role, $studentId)
-    {
-        try {
-            if ($this->validatePasswords($password, $validation)) {
-                $user = new User($userId, $email, $password, $role);
-                var_dump($user);
-                $this->userDAO->Add($user);
+    // public function Add($firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $email, $phoneNumber, $password, $validation, $careerId, $userId, $role, $studentId)
+    // {
+    //     try {
+    //         if ($this->validatePasswords($password, $validation)) {
+    //             $user = new User($userId, $email, $password, $role);
+    //             var_dump($user);
+    //             $this->userDAO->Add($user);
 
-                $lastUser = $this->userDAO->LastRegister();
+    //             $lastUser = $this->userDAO->LastRegister();
 
-                var_dump($lastUser);
+    //             $validUser = $this->userDAO->SearchByEmail($email);
 
-                $validUser = $this->userDAO->SearchByEmail($email);
-
-                var_dump($validUser);
-
-                if (!isset($validUser)) {
-                    echo "El usuario fue validado";
-                    $student = new Student($lastUser->getUserId(), $studentId, $careerId, $firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $phoneNumber, true);
-                    var_dump($student);
-                    $this->studentDAO->Add($student);
-                    $this->alert->setType("success");
-                    $this->alert->setMessage("Registro exitoso. Bienvenido!");
-                } else {
-                    echo "El usuario no fue validado";
-                    $this->alert->setType("danger");
-                    $this->alert->setMessage("Su email no se encuentra registrado como un alumno de la UTN. por favor vuelva a intentar");
-                }
-            } else {
-                $this->alert->setType("danger");
-                $this->alert->setMessage("Las contraseñas no coinciden");
-            }
-        } catch (Exception $ex) {
-            $this->alert->setType("danger");
-            $this->alert->setMessage($ex->getMessage());
-        } finally {
-            require_once(VIEWS_PATH . "student-profile.php");
-        }
-    }
+    //             if (!isset($validUser)) {
+    //                 echo "El usuario fue validado";
+    //                 $student = new Student($lastUser->getUserId(), $studentId, $careerId, $firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $phoneNumber, true);
+    //                 var_dump($student);
+    //                 $this->studentDAO->Add($student);
+    //                 $this->alert->setType("success");
+    //                 $this->alert->setMessage("Registro exitoso. Bienvenido!");
+    //             } else {
+    //                 echo "El usuario no fue validado";
+    //                 $this->alert->setType("danger");
+    //                 $this->alert->setMessage("Su email no se encuentra registrado como un alumno de la UTN. por favor vuelva a intentar");
+    //             }
+    //         } else {
+    //             $this->alert->setType("danger");
+    //             $this->alert->setMessage("Las contraseñas no coinciden");
+    //         }
+    //     } catch (Exception $ex) {
+    //         $this->alert->setType("danger");
+    //         $this->alert->setMessage($ex->getMessage());
+    //     } finally {
+    //         require_once(VIEWS_PATH . "student-profile.php");
+    //     }
+    // }
 
     public function SearchInAPIByEmail($email)
     {

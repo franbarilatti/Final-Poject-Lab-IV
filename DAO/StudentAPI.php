@@ -7,7 +7,7 @@ use Models\Student as Student;
 
     class StudentAPI{
     
-        private $studentAPI = array();
+        private $studentList = array();
         private $ch;
         private $url;
         private $header;
@@ -105,6 +105,28 @@ use Models\Student as Student;
             }
     
         }
+
+        
+        public function GetActiveStudents(){
+            $validList = array();
+            foreach($this->studentList as $student){
+                if($student->getActive() == true){
+                    array_push($validList,$student);
+                }
+            }
+            return $validList;
+        }
+        
+        public function ValidateStudent($email){
+            $validList = $this->GetActiveStudents();
+            foreach($this->studentList as $student){
+                if($student->getEmail() == $email){
+                    $findedStudent = $student;
+                }
+            }
+            return $findedStudent;
+        }
+
         
         protected function Mapping($value) {
 
