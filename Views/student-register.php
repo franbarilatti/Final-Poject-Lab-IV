@@ -44,7 +44,7 @@
         </div>
         <div class="col-3">
             <label for="birthDate" class="form-label">birthDate:</label>
-            <input type="datatime" class="form-control mb-5 lg" placeholder="<?php echo $student->getBirthDate() ?>" value="<?php echo $student->getBirthDate() ?>" readonly name="birthDate">
+            <input type="datatime" class="form-control mb-5 lg" placeholder="<?php echo $student->getBirthDate() ?>" value="<?php echo date("d/m/y", strtotime($user->getBirthDate())) ?>" readonly name="birthDate">
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>

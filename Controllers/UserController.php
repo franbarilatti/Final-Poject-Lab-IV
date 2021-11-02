@@ -29,6 +29,8 @@
             
             $hashPassword = password_hash($password,PASSWORD_DEFAULT);
 
+            var_dump($hashPassword);
+
             $user = new User($userId, $email, $hashPassword, $role);
             try{
                 $this->userDAO->Add($user);
