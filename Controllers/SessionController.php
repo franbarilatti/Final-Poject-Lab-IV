@@ -44,18 +44,11 @@ class SessionController{
             throw $ex;
         }
     }
-<<<<<<< HEAD
 
     public function Logout(){
             session_destroy();
              header("location:".FRONT_ROOT."index.php");
          }  
-=======
-    
-    public function Logout(){
-        header("location: ../index.php");
-     }
->>>>>>> origin/main
 }
 
     

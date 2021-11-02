@@ -7,7 +7,7 @@
     class JobOfferDAO implements IJobOfferDAO{
 
         private $connection;
-        private $tableName = "jobOffer";
+        private $tableName = "joboffer";
 
 
 
@@ -17,16 +17,14 @@
             $careerDAO = new CareerDAO();
             try{
                 
-                $query = "INSERT INTO ".$this->tableName." (businessId,careerId,jobPositionId,jobOfferId,title,description,postingDate,expiryDate)
-                          VALUES (:businessId,:careerId,:jobPositionId,DEFAULT,:title,:description,:postingDate,:expiryDate)";
-                $parameters['businessId'] = $jobOffer->getBusinessId();
-                $parameters['careerId'] = $jobOffer->getCareerId();
-                $parameters['jobPositionId'] = $jobOffer->getJobPositionId();
+                $query = "INSERT INTO ".$this->tableName." VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId)";
                 $parameters['title'] = $jobOffer->getTitle();
                 $parameters['description'] = $jobOffer->getDescription();
                 $parameters['postingDate'] = $jobOffer->getPostingDate();
                 $parameters['expiryDate'] = $jobOffer->getExpiryDate();
-
+                $parameters['businessId'] = $jobOffer->getBusinessId();
+                $parameters['careerId'] = $jobOffer->getCareerId();
+                $parameters['jobPositionId'] = $jobOffer->getJobPositionId();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);
             }catch(Exception $ex){
@@ -36,19 +34,19 @@
 
         public function Delete($jobOfferId)
         {
+            echo $jobOfferId;
             try{
 
-                $query = "DELETE FROM ".$this->tableName." WHERE jobOfferId = :jobOfferId";
+                $query = "DELETE FROM ". $this->tableName." WHERE jobOfferId = '1'";
                 
                 $parameters['jobOfferId'] = $jobOfferId;
 
+                echo $parameters['jobOfferId'];
                 $this->connection->ExecuteNonQuery($query,$parameters);
-
-                return "Oferta de trabajo eliminada con exito!";
 
             }
             catch(Exception $ex){
-                throw $ex = "La oferta de trabajo no ha podido ser eliminada";
+                throw $ex;
             }
         }
 
@@ -185,17 +183,18 @@
 
             $resp = array_map(function($p){
             return new JobOffer(
-                               $p['businessId'], 
-                               $p['careerId'], 
-                               $p['jobPositionId'], 
-                               $p['jobOfferId'], 
-                               $p['title'], 
-                               $p['description'], 
-                               $p['postingDate'],
-                               $p['expiryDate']);
+                                $p['jobOfferId'], 
+                                $p['title'], 
+                                $p['description'], 
+                                $p['postingDate'],
+                                $p['expiryDate'],
+                                $p['businessId'], 
+                                $p['careerId'], 
+                                $p['jobPositionId']);
+                               
             }, $value);
 
-            return $resp = count($resp) > 1 ? $resp : $resp['0'];
+            return $resp;
         }
     }
     

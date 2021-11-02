@@ -13,6 +13,7 @@
      <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
                <div class="jobPositionList">   
                     <form action="<?php echo FRONT_ROOT?>JobOffer/Add" method="post">   
+                         <input type="hidden" name="jobOfferId" value="DEFAULT">
                          <input type="hidden" name="businessId" value="<?php echo $businessId?>">
                          <div>
                               <label for="">Titulo de la oferta</label><br>

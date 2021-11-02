@@ -32,7 +32,7 @@ class JobOfferController{
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-add.php");
         }
-        public function ShowListView(){
+        public function ShowListView(Alert $alert=null){
             $jobOfferList = $this->jobOfferDAO->GetAll();
             
             require_once(VIEWS_PATH."nav-admin.php");
@@ -42,18 +42,31 @@ class JobOfferController{
 
 
         ////////// FUNCTIONAL FUNCTION /////////
-        public function Add($businessId,$careerId,$jobPositionId,$title,$description,$postingDate,$expiryDate){
+        public function Add($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId){
             
             try{
-                $jobOffer = new JobOffer($businessId,$careerId,$jobPositionId,$title,$description,$postingDate,$expiryDate);
-                    $this->jobOfferDAO->Add($jobOffer);
-                    $this->alert->setType("success");
-                    $this->alert->setMessage("Oferta cargada con exito");
+                $jobOffer = new JobOffer($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId);
+                $this->jobOfferDAO->Add($jobOffer);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Oferta cargada con exito");
 
             }catch(Exception $ex){
-
+                $this->alert->setType("danger");
+                $this->alert->setMessage("Error al cagar la oferta");
             }finally{
                 $this->AddView($businessId,$this->alert);
+            }
+        }
+        public function Delete($jobOfferId){
+            try{
+                $this->jobOfferDAO->Delete($jobOfferId);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Oferta eliminada con exito");
+            }catch(Exception $ex ){
+                $this->alert->setType("danger");
+                $this->alert->setMessage("Error al eliminar la oferta");
+            }finally{
+                $this->ShowListView($this->alert);
             }
         }
 
