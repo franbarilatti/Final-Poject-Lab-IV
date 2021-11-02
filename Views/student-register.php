@@ -67,7 +67,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="password" class="form-label">password:</label>
-            <input type="password" class="form-control mb-5 lg" placeholder="Enter email" name="password" required>
+            <input type="password" class="form-control mb-5 lg" placeholder="Enter password" name="password" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>

@@ -43,12 +43,13 @@ class StudentController
         require_once(VIEWS_PATH . "user-add.php");
     }
 
-    public function RegisterForm($email,Alert $alert = null)
+    public function RegisterForm()
     {
+        $email = $_SESSION["email"];
+        echo $email;
         $student = $this->SearchInAPIByEmail($email);
         $user = $this->userDAO->SearchByEmail($email);
         $career = $this->careerAPI->SearchById($student->getCareerId());
-        echo "Id del estudiante:  " . $student->getStudentId();
         require_once(VIEWS_PATH . "header.php");
         require_once(VIEWS_PATH . "student-register.php");
     }
@@ -81,12 +82,10 @@ class StudentController
         try {
             if ($this->validatePasswords($password, $validation)) {
                 $user = new User($userId, $email, $password, $role);
-                var_dump($user);
                 $this->userDAO->Add($user);
 
                 $lastUser = $this->userDAO->LastRegister();
 
-                var_dump($lastUser);
 
                 $validUser = $this->userDAO->SearchByEmail($email);
 
@@ -112,7 +111,7 @@ class StudentController
             $this->alert->setType("danger");
             $this->alert->setMessage($ex->getMessage());
         } finally {
-            require_once(VIEWS_PATH . "student-profile.php");
+            $this->ShowStudentMain($student);
         }
     }
 

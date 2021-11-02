@@ -14,7 +14,7 @@ if ($alert == null) {
         <div class="image"></div>
         <div class="frm">
             <h1>Registro</h1>
-            <form action="<?php echo FRONT_ROOT ?>Student/RegisterForm" method="post">
+            <form action="<?php echo FRONT_ROOT ?>Register/Register" method="post">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" name="email" placeholder="Ingrese un email">

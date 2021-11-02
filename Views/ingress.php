@@ -67,7 +67,7 @@
                          <div class="card" style="border-radius: 1rem;">
                               <div class="row g-0">
                                    <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                        <img src="https://i.pinimg.com/564x/86/8a/a6/868aa646a4ca4f2b250a37dc4060ac96.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                        <img src="https://i.pinimg.com/originals/e1/93/72/e193727169c55d15375258eb6e591cb3.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                                    </div>
                                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                         <div class="card-body p-4 p-lg-5 text-black">
@@ -97,7 +97,6 @@
                                                   <a class="small text-muted" href="#!">Forgot password?</a>
                                                   <p class="mb-5 pb-lg-2" style="color: #393f81;">No tienes una cuenta? <a href="<?php echo FRONT_ROOT ?>Register" style="color: #393f81;">Crea una aqui</a></p>
                                              </form>
-
                                         </div>
                                    </div>
 

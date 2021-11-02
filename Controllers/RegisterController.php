@@ -25,6 +25,7 @@ class RegisterController{
 
 
         public function Register($email){
+            echo $email;
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
@@ -36,17 +37,22 @@ class RegisterController{
                     $this->alert->setType("danger");
                     $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
                 }else{
-                    $user = $this->userDAO->SearchByEmail($email);
-                    $this->studentController->RegisterForm($email,$user);
                     $this->alert->setType("success");
                     $this->alert->setMessage("Email registrado correctamente");
                 }
             }catch(Exception $ex){
                 $this->alert->settype("danger");
                 $this->alert->setMessage($ex->getMessage());
-                $this->studentController->RegisterView($this->alert) ;
             }finally{
-                $this->Index();
+                if($this->alert->getType()=="success"){
+                    $_SESSION["alert"] = $this->alert;
+                    $_SESSION["email"] = $email;
+                    echo "$email <br>";
+                    echo "email de session ". $_SESSION['email'];
+                    header("location:".FRONT_ROOT."Student/RegisterForm");
+                }else{
+                     $this->Index();
+                }
             }
         }
 

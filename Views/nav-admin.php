@@ -44,7 +44,7 @@
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Ofertas de Trabajo</a>
                          <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseJobPosition">Actualizar Base de Datos</a></li>
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Lista de Ofertas</a></li>
                               <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
                          </ul>
                     </li>

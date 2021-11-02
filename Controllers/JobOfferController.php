@@ -32,6 +32,13 @@ class JobOfferController{
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-add.php");
         }
+        public function ShowListView(){
+            $jobOfferList = $this->jobOfferDAO->GetAll();
+            
+            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."joboffer-list.php");
+        }
 
 
         ////////// FUNCTIONAL FUNCTION /////////
