@@ -28,7 +28,7 @@ class RegisterController{
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-                if(!$this->userDAO->isInDataBase($email)){
+                if($this->userDAO->isInDataBase($email)){
                     $this->alert->setType("danger");
                     $this->alert->setMessage("Email ya registrado");
                 }elseif(!$this->CheckEmailWhitAPI($email)){
