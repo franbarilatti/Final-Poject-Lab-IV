@@ -1,7 +1,8 @@
 <?php
     namespace DAO;
 
-    use Models\JobPosition as JobPosition;
+use Exception;
+use Models\JobPosition as JobPosition;
 
 
     class JobPositionAPI{
@@ -29,6 +30,45 @@
             return $this->jobPositionList;
         }
 
+        public function UpdateDB(){
+            $this->DeleteJSON();
+            $this->RetrieveData();
+            $this->SaveData();
+        }
+        private function SaveData(){
+            
+            $arrayToEncode = array();
+
+            foreach($this->jobPositionList as $jobPosition)
+            {
+                $valuesArray["jobPositionId"] = $jobPosition->getJobPositionId();
+                $valuesArray["careerId"] = $jobPosition->getCareerId();
+                $valuesArray["description"] = $jobPosition->getDescription();
+                
+                
+                array_push($arrayToEncode, $valuesArray);
+            }
+
+            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+            
+            file_put_contents('Data/jobPositions.json', $jsonContent);
+
+        }
+        public function DeleteJSON(){
+            try{
+                $fileContent = file_get_contents('Data/jobPositions.json');
+                $jsonContent = json_decode($fileContent,true);
+                if(!empty($jsonContent)){
+                    for($i = 0; $i < count($jsonContent);$i++){
+                        unset($jsonContent[$i]);
+                    }
+                }
+            }catch(Exception $ex){
+                throw $ex;
+            }
+    
+        }
+
         private function RetrieveData()
         {
             $resp = curl_exec($this->ch);
@@ -42,6 +82,8 @@
                 $this->jobPositionList = $this->Mapping($arrayToDecode);
             }
         }
+
+
         
         protected function Mapping($value) {
 
@@ -56,4 +98,3 @@
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
         }
 }
-?>

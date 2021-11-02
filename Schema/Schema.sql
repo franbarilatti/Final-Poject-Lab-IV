@@ -95,7 +95,7 @@ drop table jobOffer;
 
 select * from business;
 
-select * from jobOffer;
+select * from users;
 
 select * from admins;
 

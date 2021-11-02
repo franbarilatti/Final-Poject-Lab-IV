@@ -1,12 +1,13 @@
 <?php
     namespace DAO;
 
-    use Models\Student as Student;
+use Exception;
+use Models\Student as Student;
 
 
     class StudentAPI{
     
-        private $studentList = array();
+        private $studentAPI = array();
         private $ch;
         private $url;
         private $header;
@@ -24,6 +25,12 @@
 
         ///////////// Functional Methods /////////////
 
+        public function UpdateDB(){
+            $this->DeleteJSON();
+            $this->RetrieveData();
+            $this->SaveData();
+        }
+
         public function GetAll(){
             $this->RetrieveData();
             return $this->studentList;
@@ -31,7 +38,31 @@
 
         private function SaveData(){
             
+            $arrayToEncode = array();
+
+            foreach($this->studentList as $student)
+            {
+                $valuesArray["studentId"] = $student->getStudentId();
+                $valuesArray["careerId"] = $student->getCareerId();
+                $valuesArray["firstName"] = $student->getFirstName();
+                $valuesArray["lastName"] = $student->getLastName();
+                $valuesArray["dni"] = $student->getDni();
+                $valuesArray["fileNumber"] = $student->getFileNumber();
+                $valuesArray["gender"] = $student->getGender();
+                $valuesArray["birthDate"] = $student->getBirthDate();
+                $valuesArray["email"] = $student->getEmail();
+                $valuesArray["phoneNumber"] = $student->getPhoneNumber();
+                $valuesArray["active"] = $student->getActive();
+                
+                array_push($arrayToEncode, $valuesArray);
+            }
+
+            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+            
+            file_put_contents('Data/students.json', $jsonContent);
+
         }
+
 
         private function RetrieveData()
         {
@@ -58,6 +89,21 @@
             }else{
                 return null;
             }
+        }
+
+        public function DeleteJSON(){
+            try{
+                $fileContent = file_get_contents('Data/students.json');
+                $jsonContent = json_decode($fileContent,true);
+                if(!empty($jsonContent)){
+                    for($i = 0; $i < count($jsonContent);$i++){
+                        unset($jsonContent[$i]);
+                    }
+                }
+            }catch(Exception $ex){
+                throw $ex;
+            }
+    
         }
         
         protected function Mapping($value) {

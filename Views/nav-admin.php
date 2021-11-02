@@ -1,6 +1,6 @@
 <!-- NAVBAR -->
 
-<nav class="navbar navbar-dark" style="background-color: #095373;">
+<nav class="navbar navbar-dark navbar-fixed-top" style="background-color: #095373;">
      <div class="container-fluid d-flex justify-content-around">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                <span class="navbar-toggler-icon"></span>
@@ -11,17 +11,50 @@
                     <li class="nav-item">
                          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business?opcion=add">Añadir Emp</a>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Empresas</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Business/ShowAddView">Añadir Empresas</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Business/ShowListViewAdmin">Listar Empresas</a></li>
+                         </ul>
                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business?opcion=list">Ver empresas</a>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Estudiantes</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseStudent">Actualizar Base de Datos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
+                         </ul>
                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" readonly href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Carreras</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseCareer">Actualizar Base de Datos</a></li>
+                         </ul>
                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Puestos de Trabajo</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseCareer">Actualizar Base de Datos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
+                         </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Ofertas de Trabajo</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseJobPosition">Actualizar Base de Datos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
+                         </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Postulaciones</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseStudent">Actualizar Base de Datos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
+                         </ul>
                     </li>
                     <li class="nav-item">
                          <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT ?>index.php">Logout</a>

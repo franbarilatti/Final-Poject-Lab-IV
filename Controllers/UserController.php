@@ -24,10 +24,12 @@
 
 
         
-        public function Add($email, $password, $role){
+        public function Add($userId, $email, $password, $role){
             $alert = new Alert("","");
             
-            $user = new User($email, $password, $role);
+            $hashPassword = password_hash($password,PASSWORD_DEFAULT);
+
+            $user = new User($userId, $email, $hashPassword, $role);
             try{
                 $this->userDAO->Add($user);
                 $alert->setType("success");

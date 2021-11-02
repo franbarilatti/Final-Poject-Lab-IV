@@ -57,7 +57,7 @@ class StudentController
     {
         try {
             $title = "Lista de alumnos";
-            $studentList = $this->studentDAO->GetAll();
+            $studentList = $this->studentAPI->GetAll();
             require_once(VIEWS_PATH . "header.php");
             require_once(VIEWS_PATH . "student-list.php");
         } catch (Exception $ex) {
@@ -129,6 +129,7 @@ class StudentController
             return false;
         }
     }
+
 
     public function Index()
     {

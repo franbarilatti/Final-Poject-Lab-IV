@@ -2,7 +2,8 @@
     namespace DAO;
 
     use DAO\ICareerDAO as ICareerDAO;
-    use Models\Career as Career;
+use Exception;
+use Models\Career as Career;
 
     class CareerAPI{
     
@@ -29,8 +30,33 @@
             return $this->careerList;
         }
 
+        public function UpdateDB(){
+            $this->DeleteJSON();
+            $this->RetrieveData();
+            $this->SaveData();
+        }
+
         ///////////// JSON Methods /////////////
 
+        private function SaveData(){
+            
+            $arrayToEncode = array();
+
+            foreach($this->careerList as $career)
+            {
+                $valuesArray["careerId"] = $career->getCareerId();
+                $valuesArray["description"] = $career->getDescription();
+                $valuesArray["active"] = $career->getActive();
+                
+                
+                array_push($arrayToEncode, $valuesArray);
+            }
+
+            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+            
+            file_put_contents('Data/careers.json', $jsonContent);
+
+        }
 
         private function RetrieveData()
         {
@@ -57,6 +83,21 @@
             }else{
                 return null;
             }
+        }
+
+        public function DeleteJSON(){
+            try{
+                $fileContent = file_get_contents('Data/careers.json');
+                $jsonContent = json_decode($fileContent,true);
+                if(!empty($jsonContent)){
+                    for($i = 0; $i < count($jsonContent);$i++){
+                        unset($jsonContent[$i]);
+                    }
+                }
+            }catch(Exception $ex){
+                throw $ex;
+            }
+    
         }
 
         protected function Mapping($value) {

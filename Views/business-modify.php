@@ -30,7 +30,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Informacion de la empresa</label>
-                                   <textarea name="businessInfo" min= 1 value="<?php echo $business->getBusinessInfo(); ?>" class="form-control" Required cols="30" rows="10"> <?php </textarea>
+                                   <textarea name="businessInfo" min= 1 value="<?php echo $business->getBusinessInfo(); ?>" class="form-control" Required cols="30" rows="10"> </textarea>
                               </div>
                          </div>
                     </div>
