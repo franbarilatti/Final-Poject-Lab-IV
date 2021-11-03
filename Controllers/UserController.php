@@ -32,14 +32,13 @@
             $alert = new Alert("","");
             
             if($password == $validation){
-                $hashPassword = password_hash($password,PASSWORD_DEFAULT);
+                
 
             if(!$this->userDAO->isInDataBase($email)){
-                $user = new User($userId, $email, $hashPassword, $role);
+                $user = new User($userId, $email, $password, $role);
 
                 try{
-                    $hashPassword = password_hash($password,PASSWORD_DEFAULT);
-                    $user = new User($userId, $email, $hashPassword, $role);
+                    $user = new User($userId, $email, $password, $role);
                     $this->userDAO->Add($user);
                     $alert->setType("success");
                     $alert->setMessage("Su usuario creado correctamente");
@@ -47,7 +46,7 @@
                     $alert->setType("danger");
                     $alert->setMessage($ex->getMessage());
                 }finally{
-                    $_SESSION["user"]= $this->studentAPI->SearchInAPIByEmail($email);
+                    $_SESSION["user"]= $this->studentAPI->SearchByEmail($email);
                     $_SESSION["alert"]=$alert;
                     header("location:".VIEWS_PATH."studentMain.php");
                 }  

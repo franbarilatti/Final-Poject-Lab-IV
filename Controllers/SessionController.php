@@ -17,9 +17,10 @@ class SessionController{
         $homeController = new HomeController();
         try{
             $user = $userRepository->searchByEmail($email);
+            var_dump($user);
             if(!empty($user)){
                 $roleValidation = $user->getRole();
-                if(password_verify($password,$user->getPassword())){
+                if($password == $user->getPassword()){
                     switch ($roleValidation) {
                         case 'admin':
                             header("location:".FRONT_ROOT."Admin");
