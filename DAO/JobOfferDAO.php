@@ -3,11 +3,12 @@
     use Exception;
     use Models\JobOffer as JobOffer;
     use DAO\CareerDAO as CareerDAO;
+    use DAO\Connection as Connection;
 
     class JobOfferDAO implements IJobOfferDAO{
 
         private $connection;
-        private $tableName = "joboffer";
+        private $tableName = "jobOffer";
 
 
 
@@ -17,7 +18,7 @@
             $careerDAO = new CareerDAO();
             try{
                 
-                $query = "INSERT INTO ".$this->tableName." VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId)";
+                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId)";
                 $parameters['title'] = $jobOffer->getTitle();
                 $parameters['description'] = $jobOffer->getDescription();
                 $parameters['postingDate'] = $jobOffer->getPostingDate();
@@ -34,14 +35,13 @@
 
         public function Delete($jobOfferId)
         {
-            echo $jobOfferId;
             try{
 
-                $query = "DELETE FROM ". $this->tableName." WHERE jobOfferId = '1'";
-                
-                $parameters['jobOfferId'] = $jobOfferId;
+                $query = "DELETE FROM ". $this->tableName. "  WHERE jobOfferId = :jobOfferId";
 
-                echo $parameters['jobOfferId'];
+                $parameters["jobOfferId"] = $jobOfferId;
+
+                $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);
 
             }
@@ -50,18 +50,18 @@
             }
         }
 
-        public function Modify($jobOfferId,$title,$description,$expirateDate)
-        {
+        public function Modify($jobOfferId,$title,$description,$expiryDate)
+        { 
             try{
                 $query = "UPDATE ".$this->tableName.
                          " SET title = :title,
                            description = :description,
-                           expirateDate =  :expirateDate
+                           expiryDate =  :expiryDate
                            WHERE jobOfferId = :jobOfferId";
                 $this->connection = Connection::GetInstance();
                 $parameters["title"] = $title;
                 $parameters["description"] = $description;
-                $parameters["expirateDate"] = $expirateDate;
+                $parameters["expiryDate"] = $expiryDate;
                 $parameters["jobOfferId"] = $jobOfferId;
                 
                 $this->connection->ExecuteNonQuery($query,$parameters);
@@ -91,13 +91,13 @@
 
         public function SearchById($jobOfferId){
             try{
-                $query = "SELECT * FROM ".$this->tableName." j WHERE j.jobOfferId = :jobOfferId";
+                $query = "SELECT * FROM ". $this->tableName. "  WHERE jobOfferId = :jobOfferId";
 
                 $parameters['jobOfferId'] = $jobOfferId;
 
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->Execute($query);
+                $result = $this->connection->Execute($query,$parameters);
                 $finded = $this->Mapping($result);
                 return $finded;
             }

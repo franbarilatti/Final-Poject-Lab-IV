@@ -15,7 +15,29 @@ create table users(
     role varchar(10) not null
 );
 
-alter table users modify password varchar(255);
+create table careers(
+	careerId int auto_increment primary key,
+    nombre varchar(30) not null unique,
+    description varchar(200),
+    active bool
+);
+
+create table students(
+	studentId int auto_increment primary key,
+    userId int,
+    careerId int not null,
+	firstName varchar(30) not null,
+    lastName varchar(30) not null,
+    dni int not null unique,
+    fileNumber int(30) not null unique,
+    gender char not null,
+    birthDate date not null,
+    email varchar(50) not null unique,
+    phoneNumber varchar(30) not null unique,
+    active bool not null,
+    constraint fk_userId foreign key (userId) references users (id),
+    constraint fk_careerId foreign key (careerId) references careers (careerId)
+);
 
 create table admins(
 	adminId int not null auto_increment primary key,
@@ -34,6 +56,14 @@ create table business(
 
 
 
+create table jobPositions(
+	jobPositionId int auto_increment primary key,
+    careerId int not null,
+    description  varchar(200) not null,
+    active bool not null,
+    foreign key (careerId) references careers (careerId)
+);
+
 create table jobOffer(
 	jobOfferId int auto_increment primary key,
 	title varchar(50),
@@ -43,9 +73,7 @@ create table jobOffer(
     businessId int not null,
     careerId int not null,
     jobPositionId int not null,
-	foreign key (businessId) references business (businessId),
-    foreign key (careerId) references careers (careerId),
-    foreign key (jobPositionId) references jobPositions(jobPositionId)
+	foreign key (businessId) references business (businessId)
 );
 
 create table postulation(
@@ -104,3 +132,5 @@ drop table users;
 select * from students;
 select * from business;
 select * from joboffer;
+
+delete from joboffer where jobOfferId = 2;

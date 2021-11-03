@@ -70,7 +70,24 @@ class JobOfferController{
             }
         }
 
-        public function Modify(){
+        public function ModifyView($jobOfferId, Alert $alert=null){
+            $jobOffer = $this->jobOfferDAO->SearchById($jobOfferId);
+            $jobPosition= $this->jobPositionAPI->SearchById($jobOffer[0]->getJobPositionId());
+            require_once(VIEWS_PATH."nav-admin.php");
+            require_once(VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."jobOffer-modify.php");
+        }
+        public function Modify($jobOfferId,$title,$description,$expiryDate){
+            try{
+                $this->jobOfferDAO->Modify($jobOfferId,$title,$description,$expiryDate);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Oferta modificada con exito");
+            }catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage("No se pudo modificar la oferta");
+            }finally{
+                $this->ModifyView($jobOfferId,$this->alert);
+            }
 
         }
 
