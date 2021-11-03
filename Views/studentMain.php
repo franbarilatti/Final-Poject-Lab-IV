@@ -1,15 +1,14 @@
 <?php 
   namespace Views;
-  echo $_SESSION["alert"];
-  var_dump ($_SESSION["userLogged"]);
+  use Models\Alert as Alert;
 
-  $alert = $_SESSION['alert'];
-  $userLogged = $_SESSION['userLogged'];
-
-  require_once(VIEWS_PATH."nav-student");
-
-
-?>
+     if ($alert == null) {
+         $alert = new Alert(" ", " ");
+     }else{
+       $alert->setType($_SESSION["alertType"]);
+       $alert->setMessage($_SESSION["alertMessage"]);
+     }
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,5 +22,6 @@
 <body>
     
     <h1><?php echo $student->getFirstName()." ".$student->getLastName(); ?></h1>
+    <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
 </body>
 </html>

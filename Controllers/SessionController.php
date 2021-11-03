@@ -1,7 +1,7 @@
 <?php 
     namespace Controllers;
 
-    use DAO\StudentDAO as StudentDAO;
+    use DAO\StudentAPI as StudentAPI;
     use Models\Student as Student;
     use Controllers\HomeController as HomeController;
     use DAO\UserDAO;
@@ -14,10 +14,12 @@ class SessionController{
     public function Login($email,$password){
         $alert = new Alert("",""); 
         $userRepository = new UserDAO();
+        $studenRepo = new StudentAPI;
+        $student = $studenRepo->SearchByEmail($email);
+        
         $homeController = new HomeController();
         try{
             $user = $userRepository->searchByEmail($email);
-            var_dump($user);
             if(!empty($user)){
                 $roleValidation = $user->getRole();
                 if($password == $user->getPassword()){
@@ -27,7 +29,11 @@ class SessionController{
                             header("location:".FRONT_ROOT."Admin");
                             break;
                         case 'student':
+                            
+                            $_SESSION["studentId"] = $student->getStudentId();
+                            
                             header("location:".FRONT_ROOT."Student");
+                            
                             break;
                         default:
                             echo "Entrando al default";

@@ -83,6 +83,7 @@ use Models\Student as Student;
             $i=0;
             while($i<count($this->studentList) && $this->studentList[$i]->getEmail()!=$email){
                 $i++;
+               
             }
             if($i < count($this->studentList)){
                 return $this->studentList[$i];

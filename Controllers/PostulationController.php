@@ -2,24 +2,24 @@
     namespace Controllers;
     use DAO\PostulationDAO as PostulationDAO;
     use Models\Postulation as Postulation;
-
+    use Exception;
+    use Models\JobOffer as JobOffer;
+    use DAO\JobOfferDAO as JobOfferDAO;
+    use Models\Alert as Alert;
     class PostulationController
     {
         private $postulationDAO;
+        private $alert;
 
         public function __construct()
         {
             $this->postulationDAO = new PostulationDAO();
+            $this->alert = new Alert("","");
         }
 
         ////////////////// VIEWS METHODS //////////////////
 
-        public function ShowAddView()
-        {
-            require_once (VIEWS_PATH."header.php");
-            require_once(VIEWS_PATH."student-add.php");
-        }
-
+    
         public function ShowListView()
         {
             $postulationList = $this->postulationDAO->GetAll();
@@ -36,13 +36,45 @@
 
         ////////////////// FUNCTIONAL METHODS //////////////////
 
-        public function Add($studentId,$businessId,$jobPositionId)
+        public function Add($businessId, $jobPositionId)
         {
-            $postulationId = $this->postulationDAO->GetLastId();
-            $postulation = new Postulation($postulationId,$studentId,$businessId,$jobPositionId,true);
-            $this->postulationDAO->Add($postulation);
-            header("location:".FRONT_ROOT."Student");
+            $studentId = $_SESSION["studentId"];
+            try{
+                $postulation = new Postulation($studentId,$businessId,$jobPositionId,true);
+                if(! $this->CheckPostulations($studentId)){
+                    $this->postulationDAO->Add($postulation);
+                    $this->alert->setType("success");
+                    $this->alert->setMessage("Se ha postulado con exito");
+                    echo "si";
+                }else{
+                    echo "putp";
+                }
+            }catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage("No se ha podido postular");
+                echo "no";
+            }finally{
+                $_SESSION["alertType"] = $this->alert->getType();
+                $_SESSION["alertMessage"] = $this->alert->getMessage();
+                header("location:".FRONT_ROOT."Student");
+            }
+            
+        }
 
+        public function CheckPostulations($studentId){
+        
+            $postulationList = $this->postulationDAO->GetAll();
+            var_dump($postulationList);
+            $i=0;
+            while($i<count($postulationList) && $postulationList[$i]->getStudentId() != $studentId){
+                echo $postulationList[$i]->getStudentId() . "<br>";
+                $i++;
+            }
+            if($i<count($postulationList)){
+                return true;
+            }else{
+                return false;
+            }
         }
 
         public function Index(){

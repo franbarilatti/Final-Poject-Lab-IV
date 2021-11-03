@@ -9,9 +9,8 @@
         private $jobOfferId;
         private $active;
 
-        public function __construct($postulationId, $studentId, $businessId, $jobOfferId, $active)
+        public function __construct( $studentId, $businessId, $jobOfferId, $active)
         {
-                $this->postulationId =$postulationId;
                 $this->studentId =$studentId;
                 $this->businessId =$businessId;
                 $this->jobOfferId =$jobOfferId;

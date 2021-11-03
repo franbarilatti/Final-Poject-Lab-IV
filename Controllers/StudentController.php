@@ -2,14 +2,14 @@
 
 namespace Controllers;
 
-use DAO\CareerAPI;
+use DAO\CareerAPI as CareerAPI;
 use DAO\StudentDAO as StudentDAO;
-use DAO\UserDAO;
+use DAO\UserDAO as UserDAO;
 use DAO\StudentAPI as StudentAPI;
 use Exception;
-use Models\Alert;
+use Models\Alert as Alert;
 use Models\Student as Student;
-use Models\User;
+use Models\User as User;
 
 class StudentController
 {
@@ -65,7 +65,7 @@ class StudentController
         }
     }
 
-    public function ShowStudentMain()
+    public function ShowStudentMain(Alert $alert=null)
     {
         require_once(VIEWS_PATH . "nav-student.php");
         require_once(VIEWS_PATH . "header.php");

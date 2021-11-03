@@ -34,8 +34,11 @@ class JobOfferController{
         }
         public function ShowListView(Alert $alert=null){
             $jobOfferList = $this->jobOfferDAO->GetAll();
-            
+            if($_SESSION['userLogged']->getRole() == "admin"){
             require_once(VIEWS_PATH."nav-admin.php");
+            }else{
+                require_once(VIEWS_PATH."nav-student.php");
+            }
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-list.php");
         }

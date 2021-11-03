@@ -11,7 +11,7 @@
     </button>
     <div>
       <span class="text-light">Estudiante</span>
-      <a class="navbar-brand" href="<?php echo VIEWS_PATH?>student-main.php"><i class="fas fa-user-graduate"></i></a>
+      <a class="navbar-brand" href="<?php echo FRONT_ROOT?>Student"><i class="fas fa-user-graduate"></i></a>
     </div>
 
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -23,11 +23,15 @@
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>Postulation/ShowPostulatiobByStudent?studentId=<?php echo $studentId; ?>">Ver Postulaciones</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver Ofertas laborales</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowListViewStudent">Ver empresas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>index.php">Logout</a>
         </li>
+        
       </ul>
     </div>
   </div>

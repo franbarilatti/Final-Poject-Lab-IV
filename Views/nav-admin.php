@@ -7,7 +7,7 @@
           </button>
           <div>
                <span class="text-light">Admin</span>
-          <a class="navbar-brand" href="<?php echo VIEWS_PATH?>admin-main.php"><i class="fas fa-user-cog"></i></a>
+          <a class="navbar-brand" href="<?php echo FRONT_ROOT?>Admin"><i class="fas fa-user-cog"></i></a>
           </div>
           
           <div class="collapse navbar-collapse" id="collapsibleNavbar">

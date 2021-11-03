@@ -3,27 +3,50 @@
 
     use DAO\IPostulationDAO as IPostulationDAO;
     use Models\Postulation as Postulation;
+    use Models\JobOffer as JobOffer;
 
     class PostulationDAO implements IPostulationDAO
     {
         private $postulationList = array();
+        private $connection;
+        private $tableName = "postulation";
+
 
         ///////////// Functional Methods /////////////
 
-        public function Add(Postulation $postulation)
+        public function Add(Postulation $Postulation)
         {
-            $this->RetrieveData();
-            
-            array_push($this->postulationList, $postulation);
-
-            $this->SaveData();
+            $careerDAO = new CareerDAO();
+            try{
+                
+                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:studentId,:businessId,:jobOfferId,:active)";
+                $parameters['studentId'] = $Postulation->getStudentId();
+                $parameters['businessId'] = $Postulation->getBusinessId();
+                $parameters['jobOfferId'] = $Postulation->getJobOfferId();
+                $parameters['active'] = $Postulation->getActive();
+           
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query,$parameters);
+            }catch(Exception $ex){
+                throw $ex;
+            }
         }
 
         public function GetAll()
         {
-            $this->RetrieveData();
+            try {
+                $postulationList = array();
 
-            return $this->postulationList;
+                $query = "SELECT * FROM ".$this->tableName;
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query);
+                $postulationList = $this->Mapping($result);
+
+                return $postulationList;
+            } catch (Exception $ex) {
+                throw $ex;
+            }
         }
 
         public function delete($postulationId){
@@ -84,64 +107,16 @@
         }
 
 
-        public function GetLastId(){
-            $this->RetrieveData();
-            $idSerched = null;
-            if(empty($this->postulationList)){
-                $idSerched = 1;
-            }else{
-                $lastPostulation = array_pop($this->postulationList);
-                $idSerched = $lastPostulation->getJobPositionId() + 1;
-            }
-            return $idSerched;
-        }
-
-        ///////////// JSON Methods /////////////
-
-        private function SaveData()
-        {
-            $arrayToEncode = array();
-
-            foreach($this->postulationList as $postulation)
-            {
-                $valuesArray["postulationId"] = $postulation->getPostulationId();
-                $valuesArray["studentId"] = $postulation->getStudentId();
-                $valuesArray["businessId"] = $postulation->getBusinessId();
-                $valuesArray["jobPositionId"] = $postulation->getJobPositionId();
-                $valuesArray["active"] = $postulation->getActive();
-                
-                array_push($arrayToEncode, $valuesArray);
-            }
-
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-            
-            file_put_contents('Data/postulation.json', $jsonContent);
-        }
-
-        private function RetrieveData()
-        {
-            $this->postulationList = array();
-
-            if(file_exists('Data/postulation.json'))
-            {
-                $jsonContent = file_get_contents('Data/postulation.json');
-
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-
-                $this->postulationList = $this->Mapping($arrayToDecode);
-
-            }
-        }
+    
 
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Postulation($p['postulationId'],
-                                       $p['studentId'],
+				return new Postulation($p['studentId'],
                                        $p['businessId'], 
-                                       $p['jobPositionId'], 
+                                       $p['jobOfferId'], 
                                        $p['active']);
 			}, $value);
 

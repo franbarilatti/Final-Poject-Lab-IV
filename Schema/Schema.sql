@@ -4,7 +4,7 @@ use myjob;
 
 drop database myjob;
 
-drop table users;
+#drop table users;
 
 #select * from students;
 
@@ -80,18 +80,16 @@ create table postulation(
 	postulationId int auto_increment primary key,
 	studentId int not null,
     businessId int not null,
-    jobPositionId int not null,
+    jobOfferId int not null,
     active bool not null,
-    foreign key (studentId) references students(studentId),
-    foreign key	(businessId) references business(businessId),
-    foreign key (jobPositionId) references jobPositions(jobPositionId)
+    foreign key	(businessId) references business(businessId)
 );
 
 
 
-drop table jobOffer;
+drop table postulation;
 
-select * from business;
+select * from postulation;
 
 select * from users;
 
@@ -128,9 +126,9 @@ insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admi
 
 select * from careers;
 select * from users;
-drop table users;
+drop table postulation;
 select * from students;
-select * from business;
 select * from joboffer;
+select * from postulation;
 
 delete from joboffer where jobOfferId = 2;
