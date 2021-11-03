@@ -78,11 +78,10 @@
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Admin($p['adminId'], 
+				return new Admin($p['userId'], 
+                                   $p['adminId'], 
                                    $p['firstName'], 
-                                   $p['lastName'], 
-                                   $p['email'],
-                                   $p['password']);
+                                   $p['lastName']);
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;

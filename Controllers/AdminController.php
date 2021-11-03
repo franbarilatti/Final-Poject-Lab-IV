@@ -43,6 +43,19 @@ class AdminController
             require_once(VIEWS_PATH."admin-register.php");
         }
 
+        public function ShowList(){
+            try {
+                $title = "Lista de admins";
+                $adminList = $this->adminDAO->GetAll();
+                require_once(VIEWS_PATH . "header.php");
+                require_once(VIEWS_PATH . "admin-list.php");
+            } catch (Exception $ex) {
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+                $this->ShowAdminMainView($this->alert);
+            }
+        }
+
         ////////////////// FUNCTIONAL METHODS //////////////////
 
         public function Add($adminId,$firstName,$lastName,$email,$password,$validation,$userId,$role){
