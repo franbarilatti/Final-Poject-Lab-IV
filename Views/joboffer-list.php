@@ -1,7 +1,7 @@
 <?php 
      namespace Views;
      use Models\Alert as Alert;
-     var_dump($jobOfferList);
+
      if ($alert == null) {
          $alert = new Alert(" ", " ");
      }
@@ -44,6 +44,7 @@
                                                        </button>
                                                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton1">
                                                                  <li role="presentation"><a href= "<?php echo FRONT_ROOT?>JobOffer/Delete?$jobOfferId=<?php echo $jobOffer->getJobOfferId(); ?>">Eliminar</a></li>
+                                                                 <li role="presentation"><a href= "<?php echo FRONT_ROOT?>JobOffer/ModifyView?$jobOfferId=<?php echo $jobOffer->getJobOfferId(); ?>">Modificar</a></li>
                                                             </ul>
                                                        </div>
                                                   </td>

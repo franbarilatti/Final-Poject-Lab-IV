@@ -83,6 +83,19 @@ use Models\JobPosition as JobPosition;
             }
         }
 
+        public function SearchById($Id){
+            $this->RetrieveData();
+            $i=0;
+            while($i<count($this->jobPositionList) && $this->jobPositionList[$i]->getJobPositionId()!=$Id){
+                $i++;
+            }
+            if($i < count($this->jobPositionList)){
+                return $this->jobPositionList[$i];
+            }else{
+                return null;
+            }
+        }
+
 
         
         protected function Mapping($value) {
