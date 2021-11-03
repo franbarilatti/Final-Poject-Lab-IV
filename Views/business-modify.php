@@ -1,5 +1,6 @@
 <?php
      require_once(VIEWS_PATH."nav-admin.php");
+     var_dump($business);
 ?>
 <head>
      <title>Modificar Empresa</title>

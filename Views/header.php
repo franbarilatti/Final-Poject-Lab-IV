@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="<?php echo CSS_PATH?>override.css">
     <link rel="stylesheet" href="<?php echo CSS_PATH?>bootstrap.css">
 
+    <!-- Font Awesome JS-->
+    <script src="https://kit.fontawesome.com/5bb458b8c8.js" crossorigin="anonymous"></script>
+
      <title> <?php echo $title ?></title>
   </head>
   <body>

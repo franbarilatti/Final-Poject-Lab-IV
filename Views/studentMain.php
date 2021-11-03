@@ -1,7 +1,10 @@
 <?php 
   namespace Views;
   echo $_SESSION["alert"];
-  var_dump ($_SESSION["user"]);
+  var_dump ($_SESSION["userLogged"]);
+
+  $alert = $_SESSION['alert'];
+  $userLogged = $_SESSION['userLogged'];
 
   require_once(VIEWS_PATH."nav-student");
 
