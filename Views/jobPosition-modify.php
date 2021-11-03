@@ -1,3 +1,6 @@
+<?php
+     require_once(VIEWS_PATH."nav-admin.php");
+?>
 <head>
      <title>Modificar Oferta de trabajo</title>
 </head>

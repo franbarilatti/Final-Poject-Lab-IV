@@ -1,6 +1,6 @@
 <?php
      use Models\Alert as Alert;
-     require_once "nav-admin.php";
+     require_once (VIEWS_PATH."nav-admin.php");
      if($alert==null){
           $alert= new Alert("","");
      }

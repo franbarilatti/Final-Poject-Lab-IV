@@ -28,7 +28,7 @@
 
 
         
-        public function Add($firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $email, $phoneNumber, $password, $validation, $careerId, $userId, $role, $studentId){
+        public function Add($email,$password, $validation,$userId, $role,){
             $alert = new Alert("","");
             
             if($password == $validation){
@@ -42,15 +42,11 @@
                     $this->userDAO->Add($user);
                     $alert->setType("success");
                     $alert->setMessage("Su usuario creado correctamente");
+                    header("location:".FRONT_ROOT."index.php");
                 }catch(Exception $ex){
                     $alert->setType("danger");
                     $alert->setMessage($ex->getMessage());
-                }finally{
-                    $_SESSION["user"]= $this->studentAPI->SearchByEmail($email);
-                    $_SESSION["alert"]=$alert;
-                    header("location:".VIEWS_PATH."studentMain.php");
                 }  
-
             }else{
                 $alert->setType("danger");
                 $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
@@ -58,7 +54,7 @@
             }
             }else{
                 $alert->setType("danger");
-                $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
+                $alert->setMessage("Las contraseñas no coinciden");
                 $this->studentController->RegisterForm($alert);
             }
             

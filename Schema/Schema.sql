@@ -4,7 +4,7 @@ use myjob;
 
 drop database myjob;
 
-#drop table users;
+drop table users;
 
 #select * from students;
 

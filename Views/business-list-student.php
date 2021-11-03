@@ -1,14 +1,6 @@
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-     <span class="navbar-text"> Lista de empresas </span>
-     <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student "> Volver al Main</a>
-          </li>
-          <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout" >logout</a>
-          </li>
-     </ul>
-</nav>
+<?php
+     require_once(VIEWS_PATH."nav-student.php");
+?>
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">

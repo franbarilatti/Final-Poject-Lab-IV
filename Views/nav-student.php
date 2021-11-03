@@ -1,5 +1,4 @@
 <?php
-//$studentId = $std->getStudentId();
 
 ?>
 
@@ -10,7 +9,11 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Logo</a>
+    <div>
+      <span class="text-light">Estudiante</span>
+      <a class="navbar-brand" href="#"><i class="fas fa-user-graduate"></i></a>
+    </div>
+
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">

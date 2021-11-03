@@ -21,6 +21,7 @@ class SessionController{
             if(!empty($user)){
                 $roleValidation = $user->getRole();
                 if($password == $user->getPassword()){
+                    $_SESSION['userLogged'] = $user;
                     switch ($roleValidation) {
                         case 'admin':
                             header("location:".FRONT_ROOT."Admin");

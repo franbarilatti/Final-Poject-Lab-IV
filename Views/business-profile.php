@@ -1,4 +1,10 @@
-
+<?php
+    if($_SESSION['userLogged']->getRole() == "student"){
+        require_once(VIEWS_PATH."nav-student.php");
+    }else{
+        require_once(VIEWS_PATH."nav-admin.php");
+    }
+?>
 <main>
     <div>
         <h1><?php echo $business->getBusinessName();?></h1>

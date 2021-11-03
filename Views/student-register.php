@@ -1,5 +1,5 @@
 <?php
-    require_once(VIEWS_PATH."nav-student.php");
+      require_once(VIEWS_PATH."nav-main.php");
 ?>
 <div class="d-flex justify-content-center">
     <h1>Formulario de registro</h1>
@@ -10,13 +10,13 @@
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="firstName" class="form-label">firstName:</label>
-            <input type="text" class="form-control mb- lg" placeholder="<?php echo $student->getFirstName() ?>" value="<?php echo $student->getFirstName() ?>" readonly name="firstName">
+            <input type="text" class="form-control mb- lg" placeholder="<?php echo $student->getFirstName() ?>" value="<?php echo $student->getFirstName() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="col-3">
             <label for="LastName" class="form-label">LastName:</label>
-            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getLastName() ?>" value="<?php echo $student->getLastName() ?>" readonly name="LastName">
+            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getLastName() ?>" value="<?php echo $student->getLastName() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
@@ -24,13 +24,13 @@
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="dni" class="form-label">dni:</label>
-            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getDni() ?>" value="<?php echo $student->getDni() ?>" readonly name="dni">
+            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getDni() ?>" value="<?php echo $student->getDni() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="col-3">
             <label for="fileNumber" class="form-label">fileNumber:</label>
-            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getFileNumber() ?>" value="<?php echo $student->getFileNumber() ?>" readonly name="fileNumber">
+            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getFileNumber() ?>" value="<?php echo $student->getFileNumber() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
@@ -38,13 +38,13 @@
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="gender" class="form-label">gender:</label>
-            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getGender() ?>" value="<?php echo $student->getGender() ?>" readonly name="gender">
+            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getGender() ?>" value="<?php echo $student->getGender() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="col-3">
             <label for="birthDate" class="form-label">birthDate:</label>
-            <input type="datatime" class="form-control mb-5 lg" placeholder="<?php echo $student->getBirthDate() ?>" value="<?php echo date("d/m/y", strtotime($student->getBirthDate())) ?>" readonly name="birthDate">
+            <input type="datatime" class="form-control mb-5 lg" placeholder="<?php echo $student->getBirthDate() ?>" value="<?php echo date("d/m/y", strtotime($student->getBirthDate())) ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="col-3">
             <label for="phoneNumber" class="form-label">phoneNumber:</label>
-            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getPhoneNumber() ?>" value="<?php echo $student->getPhoneNumber() ?>" readonly name="phoneNumber">
+            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $student->getPhoneNumber() ?>" value="<?php echo $student->getPhoneNumber() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
@@ -82,7 +82,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="careerId" class="form-label">Carrera:</label>
-            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $career->getDescription() ?>" value="<?php echo $career->getDescription() ?>" readonly name="careerId">
+            <input type="text" class="form-control mb-5 lg" placeholder="<?php echo $career->getDescription() ?>" value="<?php echo $career->getDescription() ?>" readonly>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
@@ -90,7 +90,7 @@
 
     <input type="hidden" value="DEFAULT" name="userId">
     <input type="hidden" value="student" name="role">
-    <input type="hidden" value="<?php echo $student->getStudentId() ?>" name="studentId">
+    <input type="hidden" value="<?php echo $student->getStudentId() ?>">
 
     <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">Submit</button>

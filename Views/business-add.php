@@ -5,6 +5,7 @@
           $alert = new Alert(" "," ");
      }
      echo $alert->getMessage();
+     require_once(VIEWS_PATH."nav-admin.php");
 ?>
 <head>
      <title>Nueva Empresa</title>

@@ -5,11 +5,22 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="#">Logo</a>
+          <div>
+               <span class="text-light">Admin</span>
+          <a class="navbar-brand" href="#"><i class="fas fa-user-cog"></i></a>
+          </div>
+          
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
                <ul class="navbar-nav">
                     <li class="nav-item">
                          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Admin">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Administradores</a>
+                         <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/ShowRegisterAdmin">Añadir Administrador</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/ShowList">Listar Administradoes</a></li>
+                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Empresas</a>
