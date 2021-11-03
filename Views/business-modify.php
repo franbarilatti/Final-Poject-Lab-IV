@@ -10,22 +10,22 @@ require_once(VIEWS_PATH . "nav-admin.php");
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4">Modificar <?php echo $business->getBusinessName();?></h2>
-               <form action="<?php echo FRONT_ROOT ?>Business/Add" method="post" class="bg-light-alpha p-5">
+               <form action="<?php echo FRONT_ROOT ?>Business/Modify" method="post" class="bg-light-alpha p-5">
                     <div class="col">                         
                          <div class="col-lg-4">
                               
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Nombre</label>
+                                   <label for="businessName">Nombre</label>
                                    <input type="hidden" name="businessId" value="DEFAULT">
-                                   <input type="text" name="businessName" value="" class="form-control" Required>
+                                   <input type="text" name="businessName" value="<?php echo $business->getBusinessName();?>" class="form-control" Required>
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
-                                   <label for="">Cantidad de empleados</label>
-                                   <input type="number" name="employesQuantity" min= 1 value="" class="form-control" Required>
+                                   <label for="employesQuantity">Cantidad de empleados</label>
+                                   <input type="number" name="employesQuantity" min= "1" class="form-control" Required>
                               </div>
                          </div>
                          <div class="col-lg-4">
