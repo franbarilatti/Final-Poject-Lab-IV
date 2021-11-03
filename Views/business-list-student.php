@@ -1,5 +1,6 @@
 <?php
      require_once(VIEWS_PATH."nav-student.php");
+     var_dump($businessList);
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">

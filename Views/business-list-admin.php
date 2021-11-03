@@ -34,7 +34,7 @@ require_once(VIEWS_PATH . "nav-admin.php");
                                                   <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                   <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId(); ?>">Modificar</a></li>
                                                   <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/AddView?$id=<?php echo $business->getBusinessId(); ?>">Agregar Nueva Oferta</a></li>
-                                                  <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobPosition/ShowListViewAdmin?$id=<?php echo $business->getBusinessId(); ?>">Ver ofertas</a></li>
+                                                  <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
                                              </ul>
                                         </div>
                                    </td>

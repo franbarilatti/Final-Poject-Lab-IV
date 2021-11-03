@@ -124,7 +124,7 @@ Las carreras cortas, en este contexto, se presentan como una alternativa valida 
 
 insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
 
-select * from careers;
+select * from business;
 select * from users;
 drop table postulation;
 select * from students;
