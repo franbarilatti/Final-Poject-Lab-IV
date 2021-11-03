@@ -65,7 +65,7 @@ class BusinessController
             }
         }
 
-        public function ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo){
+        public function ShowModifyView($businessId){
             try{
                 $business = $this->businessDAO->SearchById($businessId);
                 $title = "Modificar ".$business->getBusinessName();
@@ -74,7 +74,7 @@ class BusinessController
             }catch(Exception $ex){
                 throw $ex;
             }finally{
-                $this->ShowModifyView($businessId, $businessName, $employesQuantity, $businessInfo);
+                $this->ShowModifyView($businessId);
             }
             
         }

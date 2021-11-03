@@ -11,7 +11,7 @@
     </button>
     <div>
       <span class="text-light">Estudiante</span>
-      <a class="navbar-brand" href="#"><i class="fas fa-user-graduate"></i></a>
+      <a class="navbar-brand" href="<?php echo VIEWS_PATH?>student-main.php"><i class="fas fa-user-graduate"></i></a>
     </div>
 
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -36,7 +36,7 @@
 <!-- HEADER -->
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
-    <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="#">
+    <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="<?php echo VIEWS_PATH?>student-main.php">
       <img src="<?php echo IMG_PATH ?>logo.png" style="max-height: 60px;">
     </a>
   </div>

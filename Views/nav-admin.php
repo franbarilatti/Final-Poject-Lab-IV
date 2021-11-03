@@ -7,7 +7,7 @@
           </button>
           <div>
                <span class="text-light">Admin</span>
-          <a class="navbar-brand" href="#"><i class="fas fa-user-cog"></i></a>
+          <a class="navbar-brand" href="<?php echo VIEWS_PATH?>admin-main.php"><i class="fas fa-user-cog"></i></a>
           </div>
           
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -46,17 +46,14 @@
                     <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Puestos de Trabajo</a>
                          <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseCareer">Actualizar Base de Datos</a></li>
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseJobPosition">Actualizar Base de Datos</a></li>
                          </ul>
                     </li>
                     <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Ofertas de Trabajo</a>
                          <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseJobPosition">Actualizar Base de Datos</a></li>
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Lista de Ofertas</a></li>
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseJobPosition">Añadir oferta de trabajo</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Listar ofertas de trabajo</a></li>
                          </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -78,7 +75,7 @@
 <!-- HEADER -->
 <header class="py-3 mb-4 border-bottom">
      <div class="container d-flex flex-wrap justify-content-center">
-          <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="#">
+          <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="<?php echo VIEWS_PATH?>admin-main.php"">
                <img src="<?php echo IMG_PATH ?>logo.png" style="max-height: 60px;">
           </a>
      </div>
