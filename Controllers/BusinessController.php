@@ -56,6 +56,12 @@ class BusinessController
             }
         }
 
+        public function ShowSerchedList($name){
+            $businessList = $this->businessDAO->GetAll();
+            $businessList = $this->SearchByName($businessList,$name);
+            require_once(VIEWS_PATH."business-list.php");
+        }
+
         public function ShowOneBusiness($businessName){
             try{
                 $businessList = $this->businessDAO->SearchByName($businessName);
@@ -165,6 +171,17 @@ class BusinessController
             }
         }
 
+        public function SearchByName($businessList,$name){
+            $findedList = array();
+            foreach($businessList as $business)
+            {
+                if(str_contains(strtolower($business->getBusinessName()), strtolower($name)))
+                {
+                    array_push($findedList, $business);
+                }
+            }
+            return $findedList;
+        }
         
 
     }

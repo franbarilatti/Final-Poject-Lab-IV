@@ -29,7 +29,7 @@
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>Business/ShowListViewStudent">Ver empresas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo FRONT_ROOT ?>index.php">Logout</a>
+          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout">Logout</a>
         </li>
         
       </ul>
@@ -40,7 +40,7 @@
 <!-- HEADER -->
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
-    <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="<?php echo VIEWS_PATH?>student-main.php">
+    <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto" href="<?php echo FRONT_ROOT?>Student">
       <img src="<?php echo IMG_PATH ?>logo.png" style="max-height: 60px;">
     </a>
   </div>
