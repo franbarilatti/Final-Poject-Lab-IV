@@ -51,11 +51,11 @@
             }
         }
 
-        public function isInDataBase($email){
+        public function isInDataBase($id){
             try{
-                $query = "SELECT * FROM ".$this->tableName." WHERE email = :email";
+                $query = "SELECT * FROM ".$this->tableName." WHERE id = :id";
 
-                $parameters['email'] = $email;
+                $parameters['id'] = $id;
                 
                 $this->connection = Connection::GetInstance();
 

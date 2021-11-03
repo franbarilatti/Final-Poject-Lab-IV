@@ -19,6 +19,8 @@
                 $parameters['password'] = $user->getPassword();
                 $parameters['role'] = $user->getRole();
 
+                //var_dump($parameters);
+
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);
 
@@ -50,15 +52,11 @@
 
         public function LastRegister(){
             try{
-                $query = "SELECT TOP 1 * FROM ".$this->tableName." ORDER BY id DESC";
+                $userList = $this->GetAll();
 
-                $this->connection = Connection::GetInstance();
+                $lastUser = array_pop($userList);
 
-                $result = $this->connection->Execute($query);
-
-                $lastUser = $this->Mapping($result);
-
-                return $lastUser[0];
+                return $lastUser;
             }
             catch(Exception $ex){
                 throw $ex;

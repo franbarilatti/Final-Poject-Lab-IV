@@ -6,7 +6,7 @@
 </div>
 
 
-<form action="<?php echo FRONT_ROOT ?>User/Add" class="was-validated">
+<form action="<?php echo FRONT_ROOT ?>Admin/Add" class="was-validated" method="get">
     <div class="row d-flex justify-content-center">
         <div class="col-3">
             <label for="firstName" class="form-label">firstName:</label>
@@ -49,7 +49,6 @@
 
     <input type="hidden" value="DEFAULT" name="userId">
     <input type="hidden" value="admin" name="role">
-    <input type="hidden" value="<?php echo $student->getStudentId() ?>">
 
     <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">Submit</button>

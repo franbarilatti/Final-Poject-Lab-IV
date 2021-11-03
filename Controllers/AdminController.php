@@ -46,18 +46,21 @@ class AdminController
         ////////////////// FUNCTIONAL METHODS //////////////////
 
         public function Add($adminId,$firstName,$lastName,$email,$password,$validation,$userId,$role){
+            
             if($password == $validation){
                 try{
-                    if(!$this->adminDAO->isInDataBase($email)){
+                    if(!$this->userDAO->isInDataBase($email)){
                         $user = new User($userId, $email, $password, $role);
                         $this->userDAO->Add($user);
-                        $admin = new Admin($adminId,$firstName,$lastName,$this->userDAO->LastRegister());
+                        $lastUser = $this->userDAO->LastRegister();
+                        $admin = new Admin($lastUser->getUserId(),$adminId,$firstName,$lastName);
                         $this->adminDAO->Add($admin);
                         $this->alert->setType("success");
                         $this->alert->setMessage("Su usuario creado correctamente");
                         $this->ShowAdminMainView($this->alert);
 
                     }else{
+                        echo "Entre al segundo else";
                         $this->alert->setType("danger");
                         $this->alert->setMessage("Este mail ya se encuentra registrado");
                         $this->ShowRegisterAdmin($this->alert);
@@ -70,6 +73,7 @@ class AdminController
                 }
 
             }else{
+                echo "Entre al primer else";
                 $this->alert->setType("danger");
                 $this->alert->setMessage("Las contraseñas no coinciden");
                 $this->ShowRegisterAdmin($this->alert);
