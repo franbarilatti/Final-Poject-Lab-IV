@@ -28,8 +28,12 @@ class RegisterController{
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-
+<<<<<<< HEAD
                 if($this->userDAO->isInDataBase($email)){
+=======
+          
+                if($this->userDAO->isInDataBase($email) || $studentApi->ValidateStudent($email)){
+>>>>>>> main
                     $this->alert->setType("danger");
                     $this->alert->setMessage("No es posible registrar este email");
                 }elseif(!$this->CheckEmailWhitAPI($email)){

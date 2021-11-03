@@ -12,12 +12,10 @@
 
         private $userDAO;
         private $studentAPI;
-        private $studentController;
 
         public function __construct(){
             $this->userDAO = new UserDAO();
             $this->studentAPI = new StudentAPI();
-            $this->studentController = new StudentController();
         }
 
         public function ShowUserAddView(Alert $alert= null){
@@ -30,13 +28,6 @@
         
         public function Add($firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $email, $phoneNumber, $password, $validation, $careerId, $userId, $role, $studentId){
             $alert = new Alert("","");
-            
-            if($password == $validation){
-                $hashPassword = password_hash($password,PASSWORD_DEFAULT);
-
-            if(!$this->userDAO->isInDataBase($email)){
-                $user = new User($userId, $email, $hashPassword, $role);
-
                 try{
                     $hashPassword = password_hash($password,PASSWORD_DEFAULT);
                     $user = new User($userId, $email, $hashPassword, $role);
@@ -51,19 +42,6 @@
                     $_SESSION["alert"]=$alert;
                     header("location:".VIEWS_PATH."studentMain.php");
                 }  
-
-            }else{
-                $alert->setType("danger");
-                $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
-                $this->ShowUserAddView($alert);
-            }
-            }else{
-                $alert->setType("danger");
-                $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
-                $this->studentController->RegisterForm($alert);
-            }
-            
-
         }
         
         public function Index(){
@@ -72,3 +50,4 @@
 
 
     }
+?>

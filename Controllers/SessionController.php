@@ -18,8 +18,6 @@ class SessionController{
         try{
             $user = $userRepository->searchByEmail($email);
             if(!empty($user)){
-
-                $passValidation = $user->getPassword();
                 $roleValidation = $user->getRole();
                 if(password_verify($password,$user->getPassword())){
                     switch ($roleValidation) {

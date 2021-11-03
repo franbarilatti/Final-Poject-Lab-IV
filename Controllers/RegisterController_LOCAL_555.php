@@ -28,10 +28,9 @@ class RegisterController{
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
             try{
-
                 if($this->userDAO->isInDataBase($email)){
                     $this->alert->setType("danger");
-                    $this->alert->setMessage("No es posible registrar este email");
+                    $this->alert->setMessage("Email ya registrado");
                 }elseif(!$this->CheckEmailWhitAPI($email)){
                     $this->alert->setType("danger");
                     $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
@@ -47,6 +46,7 @@ class RegisterController{
                     $_SESSION["alert"] = $this->alert;
                     $_SESSION["email"] = $email;
                     
+                    echo "email de session ". $_SESSION['email'];
                     header("location:".FRONT_ROOT."Student/RegisterForm");
                 }else{
                      $this->Index();

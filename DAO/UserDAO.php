@@ -77,8 +77,6 @@
 
                 $findedUser = $this->Mapping($result);
 
-                var_dump($findedUser);
-
                 return $findedUser[0];
             }
             catch(Exception $ex){

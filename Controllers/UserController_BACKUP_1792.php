@@ -30,13 +30,15 @@
         
         public function Add($firstName, $lastName, $dni, $filenumber, $gender, $birthDate, $email, $phoneNumber, $password, $validation, $careerId, $userId, $role, $studentId){
             $alert = new Alert("","");
+<<<<<<< HEAD
             
             if($password == $validation){
                 $hashPassword = password_hash($password,PASSWORD_DEFAULT);
 
             if(!$this->userDAO->isInDataBase($email)){
                 $user = new User($userId, $email, $hashPassword, $role);
-
+=======
+>>>>>>> main
                 try{
                     $hashPassword = password_hash($password,PASSWORD_DEFAULT);
                     $user = new User($userId, $email, $hashPassword, $role);
@@ -51,7 +53,7 @@
                     $_SESSION["alert"]=$alert;
                     header("location:".VIEWS_PATH."studentMain.php");
                 }  
-
+<<<<<<< HEAD
             }else{
                 $alert->setType("danger");
                 $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
@@ -63,7 +65,8 @@
                 $this->studentController->RegisterForm($alert);
             }
             
-
+=======
+>>>>>>> main
         }
         
         public function Index(){
