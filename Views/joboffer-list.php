@@ -25,7 +25,6 @@
                                         ?>
                                              <tr>
                                                   <td><?php echo $jobOffer->getJobOfferId(); ?></td>
-                                                  
                                                   <td><?php echo $jobOffer->getTitle(); ?></td>
                                                   <td><?php echo $jobOffer->getDescription(); ?></td>
                                                   <td><?php echo $jobOffer->getExpiryDate()?></td>
