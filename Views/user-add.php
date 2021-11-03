@@ -7,6 +7,11 @@ use Models\Alert as Alert;
 if ($alert == null) {
     $alert = new Alert(" ", " ");
 }
+
+
+    require_once(VIEWS_PATH."nav-main.php");
+
+
 ?>
 
 <body>

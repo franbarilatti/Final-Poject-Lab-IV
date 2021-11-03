@@ -1,5 +1,5 @@
 <?php
-    require_once(VIEWS_PATH."nav-student.php");
+      require_once(VIEWS_PATH."nav-main.php");
 ?>
 <div class="d-flex justify-content-center">
     <h1>Formulario de registro</h1>

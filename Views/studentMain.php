@@ -2,6 +2,10 @@
   namespace Views;
   echo $_SESSION["alert"];
   var_dump ($_SESSION["user"]);
+
+  require_once(VIEWS_PATH."nav-student");
+
+
 ?>
 
 <!DOCTYPE html>

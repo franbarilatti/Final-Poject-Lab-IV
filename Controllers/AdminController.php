@@ -30,11 +30,12 @@ class AdminController
         public function ShowAdminMainView(Alert $alert = null){
             $title= "Admin";
             require_once (VIEWS_PATH."header.php");
-            require_once (VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."admin-main.php");
         }
 
         ////////////////// FUNCTIONAL METHODS //////////////////
+
+        public function Add()
 
         public function UpdateDataBaseStudent(){
             try{

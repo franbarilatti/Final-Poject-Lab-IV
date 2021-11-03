@@ -1,7 +1,5 @@
 <?php
-     /*use Models\Business as Business;
-     $business = new Business();
-     $business= $_SESSION["business"];*/
+     require_once(VIEWS_PATH."nav-admin.php");
 ?>
 <head>
      <title>Modificar Empresa</title>

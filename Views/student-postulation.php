@@ -2,7 +2,8 @@
     namespace Views;
     use DAO\jobPositionDAO as jobPositionDAO;
     $jobPositionDao = new jobPositionDAO();
-    $jobPositionList = $jobPositionDao->GetAll(); 
+    $jobPositionList = $jobPositionDao->GetAll();
+    require_once(VIEWS_PATH."nav-student"); 
 ?>
 
 

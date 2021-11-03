@@ -2,7 +2,7 @@
 
 namespace Views;
 
-require_once "nav-admin.php";
+require_once(VIEWS_PATH."nav-admin.php");
 ?>
 
 <!DOCTYPE html>
