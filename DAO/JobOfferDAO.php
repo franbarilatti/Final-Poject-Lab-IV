@@ -1,9 +1,13 @@
 <?php
     namespace DAO;
+   
     use Exception;
     use Models\JobOffer as JobOffer;
     use DAO\CareerDAO as CareerDAO;
     use DAO\Connection as Connection;
+    use Spipu\Html2Pdf as Html2Pdf;
+	
+
 
     class JobOfferDAO implements IJobOfferDAO{
 
@@ -176,6 +180,11 @@
             }
         }
 
+        public function PrintPdf(){
+            $htmls2pdf = new Html2Pdf();
+            $htmls2pdf->writeHTML('<h1>Holis</h1>');
+            $htmls2pdf->output();
+        }
 
 
         protected function Mapping($value){

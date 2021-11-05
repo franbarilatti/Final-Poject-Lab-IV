@@ -52,7 +52,7 @@
                     <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Ofertas de Trabajo</a>
                          <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Listar ofertas de trabajo</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>JobOffer/PrintPdf">Listar ofertas de trabajo</a></li>
                          </ul>
                     </li>
                     <li class="nav-item dropdown">

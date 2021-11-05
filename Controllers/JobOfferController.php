@@ -44,6 +44,8 @@ class JobOfferController{
         }
 
 
+
+
         ////////// FUNCTIONAL FUNCTION /////////
         public function Add($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId){
             
@@ -71,6 +73,10 @@ class JobOfferController{
             }finally{
                 $this->ShowListView($this->alert);
             }
+        }
+
+        public function PrintPdf(){
+            $this->jobOfferDAO->PrintPdf("pdf_generate.pdf");
         }
 
         public function ModifyView($jobOfferId, Alert $alert=null){

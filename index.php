@@ -6,6 +6,7 @@
 	
 	require "Config/Autoload.php";
 	require "Config/Config.php";
+	require "vendor/autoload.php";
 
 	use Config\Autoload as Autoload;
 	use Config\Router 	as Router;
