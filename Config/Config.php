@@ -13,6 +13,28 @@ define("DB_NAME", "myjob");
 define("DB_USER", "root");
 define("DB_PASS", "");
 
+define("PERMISSIONS",array('admin'=>[
+],
+'company'=>[
+
+],
+'student'=>[
+
+]));
+
+const PERMISSIONS = [
+    'admin' =>[
+
+    ],
+    'company'=>[
+
+    ],
+    'student'=>[
+
+    ]
+
+];
+
 ?>
 
 

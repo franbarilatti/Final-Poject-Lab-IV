@@ -21,9 +21,23 @@
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
+                                   <label for="">Email</label>
+                                   <input type="hidden" name="userId" value="DEFAULT">
+                                   <input type="email" name="businessName"  class="form-control" size="50" Required>
+                              </div>
+                         </div>
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="">Contraseña</label>
+                                   <input type="password" name="businessName" class="form-control" size="16" Required>
+                                   <input type="hidden" name="role" value="company">
+                              </div>
+                         </div>
+                         <div class="col-lg-4">
+                              <div class="form-group">
                                    <label for="">Nombre</label>
                                    <input type="hidden" name="businessId" value="DEFAULT">
-                                   <input type="text" name="businessName" value="" class="form-control" Required>
+                                   <input type="text" name="businessName" value="" class="form-control" size="50" Required>
                               </div>
                          </div>
                          <div class="col-lg-4">
