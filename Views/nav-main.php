@@ -13,7 +13,7 @@
                               <a class="nav-link" href="<?php echo FRONT_ROOT?>Home">Inicio</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="https://mdp.utn.edu.ar/">UTN Regioal Mar del Plata</a>
+                              <a class="nav-link" href="https://mdp.utn.edu.ar/">UTN Regional Mar del Plata</a>
                          </li>
                          <li class="nav-item">
                               <a class="nav-link" href="https://campus.mdp.utn.edu.ar/">Campus UTN Regional Mar del Plata</a>
