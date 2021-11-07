@@ -8,6 +8,16 @@
        $alert->setType($_SESSION["alertType"]);
        $alert->setMessage($_SESSION["alertMessage"]);
      }
+
+     
+    if($_SESSION['userLogged']->getRole() == "student"){
+        require_once(VIEWS_PATH."nav-student.php");
+    }elseif($_SESSION['userLogged']->getRole() == "admin"){
+        require_once(VIEWS_PATH."nav-admin.php");
+    }else{
+        require_once(VIEWS_PATH."nav-business.php");
+    }
+
  ?>
 
 <!DOCTYPE html>

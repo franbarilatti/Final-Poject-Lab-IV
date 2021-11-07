@@ -96,6 +96,10 @@ class BusinessController{
             
         }
 
+        public function ShowMain(){
+            require_once(VIEWS_PATH."business-main.php");
+        }
+
 
         ////////////////// FUNCTIONAL METHODS //////////////////
 
@@ -223,6 +227,11 @@ class BusinessController{
             }
             return $findedList;
         }
+
+        public function Index(){
+            $this->ShowMain();
+        }
+
     }
 
 ?>

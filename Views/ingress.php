@@ -76,6 +76,7 @@
                                                   <a class="small text-muted" href="#!">Forgot password?</a>
                                                   <p class="mb-5 pb-lg-2" style="color: #393f81;">No tienes una cuenta? <a href="<?php echo FRONT_ROOT ?>Register" style="color: #393f81;">Crea una aqui</a></p>
                                              </form>
+                                             <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
                                         </div>
                                    </div>
 

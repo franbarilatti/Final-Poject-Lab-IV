@@ -11,6 +11,10 @@
 
 class SessionController{
 
+    public function ShowLogin(Alert $alert = null){
+        require_once(VIEWS_PATH."ingress.php");
+    }
+
     public function Login($email,$password){
         $alert = new Alert("",""); 
         $userRepository = new UserDAO();
@@ -33,6 +37,8 @@ class SessionController{
                             $_SESSION["studentId"] = $student->getStudentId();
                             
                             header("location:".FRONT_ROOT."Student");
+                        case 'company':
+                            header("location:".FRONT_ROOT."Business");
                             
                             break;
                         default:
@@ -40,11 +46,14 @@ class SessionController{
                             break;
                     }
                 }else{
-                header("location:".FRONT_ROOT."index.php");
+                $alert->setType("danger");
+                $alert->setMessage("Email o contrase;a incorrectas");
+                $this->ShowLogin($alert);
                 }
             }else{
-
-                header("location:".FRONT_ROOT."index.php");
+                $alert->setType("danger");
+                $alert->setMessage("Email o contrase;a incorrectas");
+                $this->ShowLogin($alert);
             }
         }catch(Exception $ex){
             throw $ex;
