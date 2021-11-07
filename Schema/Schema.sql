@@ -56,10 +56,6 @@ create table business(
     foreign key(userId) references users(id)
 );
 
-drop table business;
-
-alter table business add constraint fk_idUser foreign key (userId) references users (id);
-
 create table jobPositions(
 	jobPositionId int auto_increment primary key,
     careerId int not null,
@@ -93,7 +89,7 @@ create table postulation(
 
 drop table postulation;
 
-select * from postulation;
+select * from business;
 
 select * from users;
 
@@ -102,7 +98,6 @@ select * from admins;
 alter table jobPositions change businessId careerId int not null;
 
 alter table jobPositions add constraint fk_careerId foreign key(careerId) references careers (careerId);
-
 
 insert into careers values 
 (default,"Ingeniería Naval","Es la rama de la ingeniería que se ocupa del diseño, planificación, proyecto y construcción de todo material flotante, como pueden ser buques, plataformas petrolíferas e incluso campos eólicos lejos de la costa.
@@ -136,3 +131,6 @@ select * from joboffer;
 select * from postulation;
 
 delete from joboffer where jobOfferId = 2;
+
+alter table business add adress varchar(100) after businessInfo;
+alter table business add active bool after adress;
