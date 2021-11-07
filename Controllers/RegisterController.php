@@ -62,6 +62,8 @@ class RegisterController{
             }
         }
 
+        
+
         public function Index(){
             $title = "Nuevo Usuario";
             $alert = $this->alert;

@@ -1,10 +1,7 @@
 create database myjob;
 
-use myjob;
 
-drop database myjob;
 
-#drop table users;
 
 #select * from students;
 
@@ -24,7 +21,6 @@ create table careers(
 
 create table students(
 	studentId int auto_increment primary key,
-    userId int,
     careerId int not null,
 	firstName varchar(30) not null,
     lastName varchar(30) not null,
@@ -32,11 +28,12 @@ create table students(
     fileNumber int(30) not null unique,
     gender char not null,
     birthDate date not null,
-    email varchar(50) not null unique,
     phoneNumber varchar(30) not null unique,
     active bool not null,
+    userId int not null,
     constraint fk_userId foreign key (userId) references users (id),
     constraint fk_careerId foreign key (careerId) references careers (careerId)
+    
 );
 
 create table admins(
@@ -51,17 +48,18 @@ create table business(
 	businessId int auto_increment primary key,
     businessName varchar(50) not null,
     employesQuantity int not null,
-    businessInfo varchar (1000)
+    businessInfo varchar (200),
+    userId int not null,
+	foreign key (userId) references users (id)
 );
-
-
 
 create table jobPositions(
 	jobPositionId int auto_increment primary key,
-    careerId int not null,
+    businessId int not null,
+    title varchar(50) not null,
     description  varchar(200) not null,
     active bool not null,
-    foreign key (careerId) references careers (careerId)
+    foreign key (businessId) references business (businessId)
 );
 
 create table jobOffer(
@@ -71,8 +69,6 @@ create table jobOffer(
 	postingDate date,
 	expiryDate date,
     businessId int not null,
-    careerId int not null,
-    jobPositionId int not null,
 	foreign key (businessId) references business (businessId)
 );
 
@@ -80,25 +76,21 @@ create table postulation(
 	postulationId int auto_increment primary key,
 	studentId int not null,
     businessId int not null,
-    jobOfferId int not null,
+    jobPositionId int not null,
     active bool not null,
+    foreign key (studentId) references students(studentId),
     foreign key	(businessId) references business(businessId)
 );
 
+drop table careers;
 
+select * from students;
 
-drop table postulation;
+select * from students;
 
-select * from postulation;
+select * from careers;
 
-select * from users;
-
-select * from admins;
-
-alter table jobPositions change businessId careerId int not null;
-
-alter table jobPositions add constraint fk_careerId foreign key(careerId) references careers (careerId);
-
+alter table careers add column nombre varchar(30) not null unique after careerId;
 
 insert into careers values 
 (default,"Ingeniería Naval","Es la rama de la ingeniería que se ocupa del diseño, planificación, proyecto y construcción de todo material flotante, como pueden ser buques, plataformas petrolíferas e incluso campos eólicos lejos de la costa.
@@ -122,13 +114,8 @@ Las carreras cortas, en este contexto, se presentan como una alternativa valida 
 (default,"Técnico Universitario en Producción Textil","La carrera está orientada a la formación de Técnicos Superiores en Producción Textil con competencia, solvencia técnica y criterio comercial, acorde a las variantes del mercado y la realidad productiva, determinada por las particularidades locales y regionales que exigen un manejo estratégico de los recursos, para asegurar la sustentabilidad productiva.",1),
 (default,"Técnico Universitario en Procedimientos y Tecnologías Ambientales","Los problemas ambientales por su diversidad, constituyen un fenómeno complejo, cuya dinámica y manejo requieren de esfuerzos coordinados por parte de distintos actores sociales. Las instituciones de educación superior tienen en este sentido un compromiso importante: formar profesionales que sean capaces de realizar acciones que contribuyan a conferirle sustentabilidad a la gestión del ambiente y evitar su deterioro, garantizando el cumplimiento de la legislación y normatividad ambiental dirigidas a la sostenibilidad del desarrollo.",1);
 
-insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
-
-select * from business;
 select * from users;
-drop table postulation;
-select * from students;
-select * from joboffer;
+
 select * from postulation;
 
-delete from joboffer where jobOfferId = 2;
+delete from users where id = 17;
