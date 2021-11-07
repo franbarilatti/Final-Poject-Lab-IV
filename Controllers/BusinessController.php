@@ -147,18 +147,25 @@ class BusinessController
         }
         
 
-        public function Add($businessId,$businessName,$employesQuantity,$businessInfo)
+        public function Add($userId,$email,$password,$role,$businessId,$businessName,$employesQuantity,$businessInfo)
         {   
-            try{               
-                $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-                $control= $this->businessDAO->Add($business);
-                if(!$control){
-                    $this->alert->setType("success");
-                    $this->alert->setMessage("Empresa agregada con exito!");
+            try{ 
+                if(!$this->userDAO->isInDataBase($email)){
+                    $user = new User($userId,$email,$password,$role); 
+                    $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
+                    $control= $this->businessDAO->Add($business);
+                    if(!$control){
+                        $this->alert->setType("success");
+                        $this->alert->setMessage("Empresa agregada con exito!");
+                    }else{
+                        $this->alert->setType("danger");
+                        $this->alert->setMessage("La empresa ya se encuentra registrada");
+                    }
                 }else{
-                    $this->alert->setType("danger");
-                    $this->alert->setMessage("La empresa ya se encuentra registrada");
-                }
+                    $this->alert->setType("success");
+                    $this->alert->setMessage("El Email ingresado ya se encuentra registrado");
+                }             
+                
                 
             }
             catch(Exception $ex){
@@ -185,5 +192,3 @@ class BusinessController
         
 
     }
-
-?>
