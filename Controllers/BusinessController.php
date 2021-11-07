@@ -31,7 +31,7 @@ class BusinessController{
             require_once(VIEWS_PATH."business-add.php");
         }
 
-        public function ShowListViewAdmin()
+        public function ShowListViewAdmin(Alert $alert=null)
         {
             try{
                 $title = "Lista de empresas";
@@ -89,7 +89,7 @@ class BusinessController{
             try{
                 $business = $this->businessDAO->searchById($businessId);
                 require_once(VIEWS_PATH."header.php");
-                require_once(VIEWS_PATH."business-profile.php");
+                require_once(VIEWS_PATH."business-main.php");
             }catch(Exception $ex){
                 throw $ex;
             }
@@ -107,7 +107,7 @@ class BusinessController{
             try{
                 $this->businessDAO->Delete($businessId);
                 $this->alert->setType("success");
-                $this->alert->setMessage("Empresa dada de baja con exito");
+                $this->alert->setMessage("Empresa eliminada con exito");
             }catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage($ex->getMessage());
@@ -155,7 +155,7 @@ class BusinessController{
                         $user = new User($userId, $email, $password, $role);
                         $this->userDAO->Add($user);
                         $lastUser = $this->userDAO->LastRegister();
-                        $business = new Business($lastUser->getUserId(),$businessId,$businessName,$employesQuantity,$businessInfo,$adress);
+                        $business = new Business($lastUser->getUserId(),$businessId,$businessName,$employesQuantity,$businessInfo,$adress,false);
                         $this->businessDAO->Add($business);
                         $this->alert->setType("success");
                         $this->alert->setMessage("Su usuario creado correctamente");
@@ -181,6 +181,36 @@ class BusinessController{
             }
         }
         
+        public function Deregister($id){
+
+            try{
+                $this->businessDAO->Deregister($id);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Empresa dada de baja con exito");
+                $this->ShowListViewAdmin($this->alert);
+            }
+            catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+                $this->ShowListViewAdmin($this->alert);
+            }
+
+        }
+
+        public function Release($id){
+            try{
+                $this->businessDAO->Release($id);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Empresa dada de alta con exito");
+                $this->ShowListViewAdmin($this->alert);
+            }
+            catch(Exception $ex){
+                $this->alert->setType("danger");
+                $this->alert->setMessage($ex->getMessage());
+                $this->ShowListViewAdmin($this->alert);
+            }
+        }
+
 
         public function SearchByName($businessList,$name){
             $findedList = array();

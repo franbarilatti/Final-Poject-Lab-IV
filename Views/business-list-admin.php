@@ -1,4 +1,7 @@
 <?php
+
+use Models\Business;
+
 require_once(VIEWS_PATH . "nav-admin.php");
 
 ?>
@@ -11,20 +14,30 @@ require_once(VIEWS_PATH . "nav-admin.php");
                          <th>Id Empresa</th>
                          <th>Nombre</th>
                          <th>Cantidad Empleados</th>
+                         <th>Direccion</th>
                          <th>Informacion Empresa</th>
+                         <th>Estado</th>
                     </thead>
                     <tbody>
                          <?php
-                         if($businessList != null){
+                         if ($businessList != null) {
                               foreach ($businessList as $business) {
-                              ?>
+                         ?>
                                    <tr>
                                         <td><?php echo $business->getBusinessId(); ?></td>
                                         <td>
                                              <a href="<?php echo FRONT_ROOT ?>Business/ShowProfile?businessId=<?php echo $business->getBusinessId(); ?>"><?php echo $business->getBusinessName(); ?></a>
                                         </td>
                                         <td><?php echo $business->getEmployesQuantity(); ?></td>
+                                        <td><?php echo $business->getAdress(); ?></td>
                                         <td><?php echo $business->getBusinessInfo(); ?></td>
+                                        <td>
+                                             <?php if ($business->getActive() == true) {
+                                                  echo "Activo";
+                                             } else {
+                                                  echo "Inactivo";
+                                             } ?>
+                                        </td>
                                         <td>
                                              <div class="dropdown">
                                                   <button class="btn btn-primary " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
@@ -35,13 +48,21 @@ require_once(VIEWS_PATH . "nav-admin.php");
                                                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton1">
                                                        <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                        <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId(); ?>">Modificar</a></li>
-                                                       <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/AddView?$id=<?php echo $business->getBusinessId(); ?>">Agregar Nueva Oferta</a></li>
-                                                       <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
+                                                       <?php if ($business->getActive()) { ?>
+                                                            <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/Deregister?$id=<?php echo $business->getBusinessId(); ?>"">Dar de Baja</li>
+                                                       <?php ;
+                                                       } else { ?>
+                                                            <li role=" presentation"><a href="<?php echo FRONT_ROOT ?>Business/Release?$id=<?php echo $business->getBusinessId(); ?>"">Dar de Alta</li> 
+                                                       <?php ;
+                                                       } ?>
+                                                       <li role=" presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/AddView?$id=<?php echo $business->getBusinessId(); ?>">Agregar Nueva Oferta</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
+
                                                   </ul>
                                              </div>
                                         </td>
                                    </tr>
-                              <?php
+                         <?php
                               }
                          }
                          ?>
