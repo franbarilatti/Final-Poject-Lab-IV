@@ -2,6 +2,7 @@
 
     namespace Controllers;
 
+use DAO\BusinessDAO;
 use DAO\StudentAPI;
 use DAO\UserDAO;
 use Exception;
@@ -24,30 +25,48 @@ class RegisterController{
         }
 
 
-        public function Register($email){
+        public function Register($email,$role){
             $studentApi = new StudentAPI();
             $studentList = $studentApi->GetAll();
+            $businesDAO = new BusinessDAO();
+            $businesList = $businesDAO->GetAll();
             try{
-
-                if($this->userDAO->isInDataBase($email)){
-                    $this->alert->setType("danger");
-                    $this->alert->setMessage("No es posible registrar este email");
-                }elseif(!$this->CheckEmailWhitAPI($email)){
-                    $this->alert->setType("danger");
-                    $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
+                if($role == "student"){
+                    if($this->userDAO->isInDataBase($email)){
+                        $this->alert->setType("danger");
+                        $this->alert->setMessage("No es posible registrar este email");
+                    }elseif(!$this->CheckEmailWhitAPI($email)){
+                        $this->alert->setType("danger");
+                        $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
+                    }else{
+                        $this->alert->setType("success");
+                        $this->alert->setMessage("Email registrado correctamente");
+                    }
                 }else{
-                    $this->alert->setType("success");
-                    $this->alert->setMessage("Email registrado correctamente");
+                    if($this->userDAO->isInDataBase($email)){
+                        $this->alert->setType("danger");
+                        $this->alert->setMessage("No es posible registrar este email");
+                    }else{
+                        $this->alert->setType("success");
+                        $this->alert->setMessage("Email registrado correctamente");
+                    }
                 }
+                
             }catch(Exception $ex){
                 $this->alert->settype("danger");
                 $this->alert->setMessage($ex->getMessage());
             }finally{
-                if($this->alert->getType()=="success"){
+                if($this->alert->getType()=="success" ){
                     $_SESSION["alert"] = $this->alert;
                     $_SESSION["email"] = $email;
+
+                    if($role == "student"){
+                        header("location:".FRONT_ROOT."Student/RegisterForm");
+                    }else{
+                        header("location:".FRONT_ROOT."Business/ShowAddView");
+                    }
                     
-                    header("location:".FRONT_ROOT."Student/RegisterForm");
+                    
                 }else{
                      $this->Index();
                 }

@@ -6,10 +6,9 @@
     use Exception;
     use Models\Alert as Alert;
     use Models\Business as Business;
-use Models\User;
+    use Models\User;
 
-class BusinessController
-    {
+    class BusinessController{
         private $businessDAO;
         private $userDAO;
         private $alert;
@@ -117,9 +116,9 @@ class BusinessController
                     
         }
 
-        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo){
+        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo,$adress){
             try{
-                $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo);
+                $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo,$adress);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Empresa modificada con exito");
             }catch(Exception $ex){
@@ -147,36 +146,39 @@ class BusinessController
         }
         
 
-        public function Add($userId,$email,$password,$role,$businessId,$businessName,$employesQuantity,$businessInfo)
+        public function Add($userId,$email,$password,$validation,$role,$businessId,$businessName,$adress,$employesQuantity,$businessInfo)
         {   
-            try{ 
-                if(!$this->userDAO->isInDataBase($email)){
-                    $user = new User($userId,$email,$password,$role); 
-                    $business = new Business($businessId,$businessName,$employesQuantity,$businessInfo);
-                    $control= $this->businessDAO->Add($business);
-                    if(!$control){
+            if($password == $validation){
+                try{
+                    if(!$this->userDAO->isInDataBase($email)){
+                        $user = new User($userId, $email, $password, $role);
+                        $this->userDAO->Add($user);
+                        $lastUser = $this->userDAO->LastRegister();
+                        $business = new Business($lastUser->getUserId(),$businessId,$businessName,$employesQuantity,$businessInfo,$adress);
+                        $this->businessDAO->Add($business);
                         $this->alert->setType("success");
-                        $this->alert->setMessage("Empresa agregada con exito!");
+                        $this->alert->setMessage("Su usuario creado correctamente");
+                        $this->ShowProfile($this->alert);
+
                     }else{
                         $this->alert->setType("danger");
-                        $this->alert->setMessage("La empresa ya se encuentra registrada");
+                        $this->alert->setMessage("Este mail ya se encuentra registrado");
+                        $this->ShowAddView($this->alert);
                     }
-                }else{
-                    $this->alert->setType("success");
-                    $this->alert->setMessage("El Email ingresado ya se encuentra registrado");
-                }             
-                
-                
-            }
-            catch(Exception $ex){
-                
+
+
+                }catch(Exception $ex){
+                    $this->alert->setType("danger");
+                    $this->alert->setMessage($ex->getMessage());
+                }
+
+            }else{
                 $this->alert->setType("danger");
-                $this->alert->setMessage($ex->getMessage());
-            }
-            finally{
+                $this->alert->setMessage("Las contraseñas no coinciden");
                 $this->ShowAddView($this->alert);
             }
         }
+        
 
         public function SearchByName($businessList,$name){
             $findedList = array();
@@ -189,6 +191,8 @@ class BusinessController
             }
             return $findedList;
         }
-        
-
     }
+
+?>
+
+

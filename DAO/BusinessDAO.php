@@ -23,10 +23,13 @@
                 if($result != null){
                     return $result;
                 }else{
-                    $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo);";
+                    $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo, adress, active,userId) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo,:businessInfo,:adress,:userId);";
                     $parameters["businessName"] = $business->getBusinessName();
                     $parameters["employeQuantity"] = $business->getEmployesQuantity();
                     $parameters["businessInfo"] = $business->getBusinessInfo();
+                    $parameters["adress"] = $business->getAdress();
+                    $parameters["active"] = $business->getActive();
+                    $parameters["userId"] = $business->getUserId();
                     $this->connection = Connection::GetInstance();
                     $this->connection->ExecuteNonQuery($query,$parameters);
                     return null;
@@ -44,6 +47,8 @@
                 $query = "DELETE FROM ".$this->tableName." WHERE businessId = :businessId";
                 
                 $parameters['businessId'] = $businessId;
+
+                $this->connection = Connection::GetInstance();
 
                 $this->connection->ExecuteNonQuery($query,$parameters);
 
@@ -74,19 +79,23 @@
         
         
 
-        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo)
+        public function Modify($businessId, $businessName, $employesQuantity, $businessInfo,$adress)
         {
             try{
                 $query = "UPDATE ".$this->tableName.
                          " SET businessName = :businessName,
                            employesQuantity = :employesQuantity,
-                           businessInfo =  :businesInfo
+                           businessInfo =  :businesInfo,
+                           adress = :adress
                            WHERE businessId = :businessId";
                 $this->connection = Connection::GetInstance();
                 $parameters["businessName"] = $businessName;
                 $parameters["employeQuantity"] = $employesQuantity;
                 $parameters["businessInfo"] = $businessInfo;
                 $parameters["businessId"] = $businessId;
+                $parameters["adress"] = $adress;
+
+                $this->connection = Connection::GetInstance();
                 
                 $this->connection->ExecuteNonQuery($query,$parameters);
             }
@@ -136,9 +145,12 @@
 			$value = is_array($value) ? $value : [];
 
 			$resp = array_map(function($p){
-				return new Business($p['businessId'], 
+				return new Business($p['userId'],
+                                   $p['businessId'], 
                                    $p['businessName'], 
-                                   $p['employesQuantity'], 
+                                   $p['employesQuantity'],
+                                   $p['adress'], 
+                                   $p['active'], 
                                    $p['businessInfo']);
 			}, $value);
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
