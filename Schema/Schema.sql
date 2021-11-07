@@ -99,28 +99,6 @@ alter table jobPositions change businessId careerId int not null;
 
 alter table jobPositions add constraint fk_careerId foreign key(careerId) references careers (careerId);
 
-insert into careers values 
-(default,"Ingeniería Naval","Es la rama de la ingeniería que se ocupa del diseño, planificación, proyecto y construcción de todo material flotante, como pueden ser buques, plataformas petrolíferas e incluso campos eólicos lejos de la costa.
-
-La Ingeniería Naval abarca las funciones de ingeniería incluyendo el proyecto creativo del buque y artefactos flotantes, la investigación aplicada, el desarrollo técnico en los campos de diseño y construcción y la administración de los centros de producción de material flotante (astilleros), así como también del mantenimiento y reparación de estos.",1),
-(default,"Ingeniería Pesquera","Es la rama de la ingeniería que se dedica al estudio e investigación del conjunto de actividades vinculadas a la extracción, conservación, transformación, empacado, distribución, utilización, comercialización y cultivo de especies hidrobiológicas de recursos hidrobiológicos, sean de agua dulce o marina.
-
-Se trata de una carrera totalmente abocada a la problemática alimentaria de las aguas marinas.
-
-Si estás evaluando estudiar esta disciplina tendrás muchas posibilidades de trabajo, porque las empresas requieren de especialistas, pero no hay muchos técnicos ni ingenieros pesqueros.",1),
-(default,"Técnico Superior en Interiorismo","La tecnicatura en interiorismo está orientada a la formación de profesionales capaces de Identificar los distintos tipos de problemáticas, factores de intervención y las pertinentes formas de solución técnicas/estéticas y conocer los diferentes aspectos disciplinarios que intervienen para poder formular un proyecto adecuado. Planificar y materializar proyectos de diseño interior.",1),
-(default,"Técnico Universitario en Programación","Capacitar, para trabajar en toda empresa o dependencia que aplique el sistema de procesamiento de datos. Realizar programas y aplicarlos.",1);
-
-insert into careers values 
-(default,"Técnico Universitario en Sistemas Informáticos","El vertiginoso avance tecnológico ha generado nuevas necesidades laborales y ha abierto el campo a actividades especificas que requieren diferentes niveles de capacitación.
-
-Es una realidad que los egresados del nivel polimodal tienen dificultades para insertarse laboralmente, pues desde las funciones especificas del «Mercado Laboral» hay tareas que requieren un grado de capacitación mínima.
-
-Las carreras cortas, en este contexto, se presentan como una alternativa valida frente a las demandas sociales, ya que ellas cubren el espacio existente entre el nivel medio, que no prepara laboralmente, y un titulo de grado.",1),
-(default,"Técnico Universitario en Administración","La realidad económica y productiva actual propone nuevos roles a individuos y organizaciones en un contexto de globalidad que genera diversos y cambiantes mapas de lo socio- cultural y de lo socio-económico. Teniendo en cuenta el impacto de las nuevas tecnologías en el modo y distribución del trabajo, y la tendencia a la mayor demanda de capacitación en actividades intermedias de bienes y servicios con un criterio de uniformidad de estándares laborales. Es menester proporcionar herramientas que permitan abordar este proceso de transformación en las competencias laborales relacionadas con la empleabilidad y la movilidad en el mundo del trabajo.",1),
-(default,"Técnico Universitario en Producción Textil","La carrera está orientada a la formación de Técnicos Superiores en Producción Textil con competencia, solvencia técnica y criterio comercial, acorde a las variantes del mercado y la realidad productiva, determinada por las particularidades locales y regionales que exigen un manejo estratégico de los recursos, para asegurar la sustentabilidad productiva.",1),
-(default,"Técnico Universitario en Procedimientos y Tecnologías Ambientales","Los problemas ambientales por su diversidad, constituyen un fenómeno complejo, cuya dinámica y manejo requieren de esfuerzos coordinados por parte de distintos actores sociales. Las instituciones de educación superior tienen en este sentido un compromiso importante: formar profesionales que sean capaces de realizar acciones que contribuyan a conferirle sustentabilidad a la gestión del ambiente y evitar su deterioro, garantizando el cumplimiento de la legislación y normatividad ambiental dirigidas a la sostenibilidad del desarrollo.",1);
-
 insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
 
 select * from business;
