@@ -6,6 +6,7 @@
     use Models\Alert as Alert;
     use DAO\StudentAPI as StudentAPI;
     use Models\Student as Student;
+    use Models\Email as Email;
     use Exception;
 
     class UserController{
@@ -42,6 +43,9 @@
                     $this->userDAO->Add($user);
                     $alert->setType("success");
                     $alert->setMessage("Su usuario creado correctamente");
+                    $subject= "Registro en MyJob";
+                    $msg= "Muchas gracias por elegirnos a la hora de buscar ofertas laborales.";
+                    Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
                     header("location:".FRONT_ROOT."index.php");
                 }catch(Exception $ex){
                     $alert->setType("danger");

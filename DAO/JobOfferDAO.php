@@ -5,7 +5,7 @@
     use Models\JobOffer as JobOffer;
     use DAO\CareerDAO as CareerDAO;
     use DAO\Connection as Connection;
-    use Spipu\Html2Pdf as Html2Pdf;
+    use Models\Email as Email;
 	
 
 
@@ -178,6 +178,22 @@
             catch(Exception $ex){
                 throw $ex;
             }
+        }
+
+        public function CheckExpiryDate($jobOfferList){
+            try{
+                $today= date();
+                foreach($jobOfferList as $jobOffer){
+                    if($jobOffer->getExpiryDate == $today ){
+                        $id = $jobOffer->getJobOfferId();
+                        $query = "DELETE FROM ". $this->tableName. "WHERE id = '$id'";
+                        $this->connection = Connection::GetInstance();
+                        $this->connection->ExecuteNonQuery($query,$parameters);
+                    }
+
+                }
+            }
+            
         }
 
         public function PrintPdf(){
