@@ -41,13 +41,11 @@
                     $user = new User($userId, $email, $password, $role);
                     $this->userDAO->Add($user);
                     $alert->setType("success");
-                    $alert->setMessage("Su usuario creado correctamente. Revise su casilla de correos");
-                    $this->SendMail();
+                    $alert->setMessage("Su usuario creado correctamente");
                     header("location:".FRONT_ROOT."index.php");
                 }catch(Exception $ex){
                     $alert->setType("danger");
                     $alert->setMessage($ex->getMessage());
-                    $this->SendMail();
                 }  
             }else{
                 $alert->setType("danger");
@@ -59,17 +57,10 @@
                 $alert->setMessage("Las contraseñas no coinciden");
                 $this->studentController->RegisterForm($alert);
             }
+            
+
         }
         
-        public function SendMail(){
-            $to= "francoagustinbarilatti@hotmail.com";
-            $subject = "Registro exitoso";
-            $msg = "Gracias por registrase en nuestra pagina. Esperamos que le sea de utilidad a la hora de encontrar nuevas propuestas laborales";
-            $header = "From: noreply@myjob.com";
-            mail($to, $subject, $msg, $header);
-
-        }
-
         public function Index(){
             require_once(VIEWS_PATH."header.php");
         }

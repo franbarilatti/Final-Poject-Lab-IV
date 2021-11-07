@@ -180,6 +180,11 @@
             }
         }
 
+        public function PrintPdf(){
+            $htmls2pdf = new Html2Pdf();
+            $htmls2pdf->writeHTML('<h1>Holis</h1>');
+            $htmls2pdf->output();
+        }
 
 
         protected function Mapping($value){
