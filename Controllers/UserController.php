@@ -34,21 +34,18 @@
             
             if($password == $validation){
                 
-
-                if(!$this->userDAO->isInDataBase($email)){
-                    $user = new User($userId, $email, $password, $role);
-
-                    try{
+                try{
+                    if(!$this->userDAO->isInDataBase($email)){
                         $user = new User($userId, $email, $password, $role);
                         $this->userDAO->Add($user);
                         $alert->setType("success");
                         $alert->setMessage("Su usuario creado correctamente");
+                        $subject= "Registro en MyJob";
+                        $msg= "Muchas gracias por elegirnos a la hora de buscar ofertas laborales.";
+                        Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
                         header("location:".FRONT_ROOT."index.php");
-                    }catch(Exception $ex){
-                        $alert->setType("danger");
-                        $alert->setMessage($ex->getMessage());
-                    }  
-                }else{
+                    }
+                }catch(Exception $ex){
                     $alert->setType("danger");
                     $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
                     $this->ShowUserAddView($alert);

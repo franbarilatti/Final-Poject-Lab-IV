@@ -1,5 +1,6 @@
 <?php
 require_once(VIEWS_PATH . "nav-admin.php");
+
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
