@@ -7,7 +7,7 @@
         function Add(Business $business);
         function GetAll();
         function Delete($businessId);
-        function Modify($businessId,$businessName,$employesQuantity,$businessInfo);
+        function Modify($businessId,$businessName,$employesQuantity,$businessInfo,$adress);
     }
 
 ?>

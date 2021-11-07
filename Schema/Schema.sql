@@ -51,10 +51,14 @@ create table business(
 	businessId int auto_increment primary key,
     businessName varchar(50) not null,
     employesQuantity int not null,
-    businessInfo varchar (1000)
+    businessInfo varchar (1000),
+    userId int not null,
+    foreign key(userId) references users(id)
 );
 
+drop table business;
 
+alter table business add constraint fk_idUser foreign key (userId) references users (id);
 
 create table jobPositions(
 	jobPositionId int auto_increment primary key,

@@ -4,18 +4,24 @@
 
 
     class Business{
+        private $userId;
         private $businessId;
         private $businessName;
         private $employesQuantity;
+        private $adress;
+        private $active;
         private $businessInfo;
         
 
-        public function __construct($businessId,$businessName,$employesQuantity,$businessInfo)
+        public function __construct($userId,$businessId,$businessName,$employesQuantity,$businessInfo,$adress)
         {
+                $this->userId = $userId;
                 $this->businessId =$businessId;
                 $this->businessName = $businessName;
                 $this->employesQuantity = $employesQuantity;
                 $this->businessInfo = $businessInfo;
+                $this->adress = $adress;
+                $this->active = false;
         }         
     
         ////////// GETTERS METHODS //////////
@@ -44,6 +50,11 @@
         public function getBusinessInfo()
         {
                 return $this->businessInfo;
+        }
+
+        public function getAdress()
+        {
+                return $this->adress;
         }
 
         public function getActive()
@@ -89,6 +100,13 @@
 
                 return $this;
         }
+
+        public function setAdress($adress)
+        {
+                $this->adress = $adress;
+
+                return $this;
+        }
         
         public function setActive($active)
         {
@@ -96,6 +114,7 @@
 
                 return $this;
         }
-
+ 
+        
     }
 ?>

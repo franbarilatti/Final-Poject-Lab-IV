@@ -35,11 +35,9 @@
             if($password == $validation){
                 
 
-            if(!$this->userDAO->isInDataBase($email)){
-                $user = new User($userId, $email, $password, $role);
-
-                try{
+                if(!$this->userDAO->isInDataBase($email)){
                     $user = new User($userId, $email, $password, $role);
+<<<<<<< HEAD
                     $this->userDAO->Add($user);
                     $alert->setType("success");
                     $alert->setMessage("Su usuario creado correctamente");
@@ -48,14 +46,25 @@
                     Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
                     header("location:".FRONT_ROOT."index.php");
                 }catch(Exception $ex){
+=======
+
+                    try{
+                        $user = new User($userId, $email, $password, $role);
+                        $this->userDAO->Add($user);
+                        $alert->setType("success");
+                        $alert->setMessage("Su usuario creado correctamente");
+                        header("location:".FRONT_ROOT."index.php");
+                    }catch(Exception $ex){
+                        $alert->setType("danger");
+                        $alert->setMessage($ex->getMessage());
+                    }  
+                }else{
+>>>>>>> origin/main
                     $alert->setType("danger");
-                    $alert->setMessage($ex->getMessage());
-                }  
-            }else{
-                $alert->setType("danger");
-                $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
-                $this->ShowUserAddView($alert);
-            }
+                    $alert->setMessage("El email ingresado ya se encuentra registrado. Por favor intente con otro");
+                    $this->ShowUserAddView($alert);
+                }
+                
             }else{
                 $alert->setType("danger");
                 $alert->setMessage("Las contraseñas no coinciden");

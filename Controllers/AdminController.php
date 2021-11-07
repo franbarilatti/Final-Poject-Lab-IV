@@ -1,8 +1,8 @@
 <?php
     namespace Controllers;
 
-    use DAO\AdminDAO as AdminDAO;
-    use DAO\CareerAPI;
+use DAO\AdminDAO;
+use DAO\CareerAPI;
     use DAO\JobPositionAPI;
     use DAO\StudentAPI;
     use DAO\UserDAO;
@@ -73,7 +73,6 @@ class AdminController
                         $this->ShowAdminMainView($this->alert);
 
                     }else{
-                        echo "Entre al segundo else";
                         $this->alert->setType("danger");
                         $this->alert->setMessage("Este mail ya se encuentra registrado");
                         $this->ShowRegisterAdmin($this->alert);
@@ -86,7 +85,6 @@ class AdminController
                 }
 
             }else{
-                echo "Entre al primer else";
                 $this->alert->setType("danger");
                 $this->alert->setMessage("Las contraseñas no coinciden");
                 $this->ShowRegisterAdmin($this->alert);
@@ -135,5 +133,3 @@ class AdminController
         }
 
     }
-
-?>

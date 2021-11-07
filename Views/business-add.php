@@ -23,13 +23,13 @@
                               <div class="form-group">
                                    <label for="">Email</label>
                                    <input type="hidden" name="userId" value="DEFAULT">
-                                   <input type="email" name="businessName"  class="form-control" size="50" Required>
+                                   <input type="email" name="email"  class="form-control" size="50" Required>
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Contraseña</label>
-                                   <input type="password" name="businessName" class="form-control" size="16" Required>
+                                   <input type="password" name="password" class="form-control" size="16" Required>
                                    <input type="hidden" name="role" value="company">
                               </div>
                          </div>

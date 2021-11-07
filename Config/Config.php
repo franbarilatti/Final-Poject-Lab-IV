@@ -14,26 +14,15 @@ define("DB_USER", "root");
 define("DB_PASS", "");
 
 define("PERMISSIONS",array('admin'=>[
-],
-'company'=>[
+                            
+                            ],
+                            'company'=>[
 
-],
-'student'=>[
+                            ],
+                            'student'=>[
 
-]));
+                            ]));
 
-const PERMISSIONS = [
-    'admin' =>[
-
-    ],
-    'company'=>[
-
-    ],
-    'student'=>[
-
-    ]
-
-];
 
 ?>
 
