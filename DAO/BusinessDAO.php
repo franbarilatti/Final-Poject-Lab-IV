@@ -23,7 +23,7 @@
                 if($result != null){
                     return $result;
                 }else{
-                    $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo, adress, active,userId) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo,:businessInfo,:adress,:userId);";
+                    $query = "INSERT INTO ". $this->tableName."(businessId, businessName, employesQuantity, businessInfo, adress, active,userId) VALUES (DEFAULT,:businessName,:employeQuantity,:businessInfo,:adress,:active,:userId);";
                     $parameters["businessName"] = $business->getBusinessName();
                     $parameters["employeQuantity"] = $business->getEmployesQuantity();
                     $parameters["businessInfo"] = $business->getBusinessInfo();
