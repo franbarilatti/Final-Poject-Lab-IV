@@ -2,10 +2,6 @@
 
 use Models\Alert as Alert;
 
-if ($alert == null) {
-     $alert = new Alert(" ", " ");
-}
-echo $alert->getMessage();
 require_once(VIEWS_PATH . "nav-main.php");
 ?>
 

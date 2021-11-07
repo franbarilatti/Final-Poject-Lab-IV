@@ -159,7 +159,7 @@ class BusinessController{
                         $this->businessDAO->Add($business);
                         $this->alert->setType("success");
                         $this->alert->setMessage("Su usuario creado correctamente");
-                        $this->ShowProfile($this->alert);
+                        header("location:".FRONT_ROOT."index.php");
 
                     }else{
                         $this->alert->setType("danger");
