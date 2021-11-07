@@ -7,8 +7,9 @@
     use Models\Alert as Alert;
     use Models\Business as Business;
     use Models\User;
+use PDOException;
 
-    class BusinessController{
+class BusinessController{
         private $businessDAO;
         private $userDAO;
         private $alert;
@@ -167,9 +168,10 @@
                     }
 
 
-                }catch(Exception $ex){
+                }catch(PDOException $ex){
                     $this->alert->setType("danger");
                     $this->alert->setMessage($ex->getMessage());
+                    $this->ShowAddView($this->alert);
                 }
 
             }else{
