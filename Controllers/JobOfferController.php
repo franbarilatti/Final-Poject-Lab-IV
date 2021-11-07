@@ -75,9 +75,6 @@ class JobOfferController{
             }
         }
 
-        public function PrintPdf(){
-            $this->jobOfferDAO->PrintPdf("pdf_generate.pdf");
-        }
 
         public function ModifyView($jobOfferId, Alert $alert=null){
             $jobOffer = $this->jobOfferDAO->SearchById($jobOfferId);
