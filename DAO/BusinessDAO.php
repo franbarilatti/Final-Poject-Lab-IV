@@ -6,7 +6,7 @@
     use Models\Business as Business;
     use DAO\Connection as Connection;
 
-    class BusinessDAO implements IBusinessDAO
+    class BusinessDAO implements IBussinesDAO
     {
         private $connection;
         private $tableName = "business";
@@ -128,6 +128,23 @@
                 $query = "SELECT * FROM business b WHERE b.businessId = :businessId";
 
                 $parameters['businessId'] = $businessId;
+
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query,$parameters);
+                $finded = $this->Mapping($result);
+                return $finded;
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
+        public function SearchByUserId($userId){
+            try{
+                $query = "SELECT * FROM business b JOIN users u ON b.userId = :u.userId;";
+
+                $parameters['userId'] = $userId;
 
                 $this->connection = Connection::GetInstance();
 

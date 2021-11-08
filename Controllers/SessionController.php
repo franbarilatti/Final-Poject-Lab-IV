@@ -4,7 +4,8 @@
     use DAO\StudentAPI as StudentAPI;
     use Models\Student as Student;
     use Controllers\HomeController as HomeController;
-    use DAO\UserDAO;
+use DAO\BusinessDAO;
+use DAO\UserDAO;
     use EmptyIterator;
     use Exception;
     use Models\Alert as Alert;
@@ -20,7 +21,7 @@ class SessionController{
         $userRepository = new UserDAO();
         $studenRepo = new StudentAPI;
         $student = $studenRepo->SearchByEmail($email);
-        
+        $businessRepo = new BusinessDAO;
         $homeController = new HomeController();
         try{
             $user = $userRepository->searchByEmail($email);
@@ -38,8 +39,15 @@ class SessionController{
                             
                             header("location:".FRONT_ROOT."Student");
                         case 'company':
-                            header("location:".FRONT_ROOT."Business");
-                            
+                            $business = $businessRepo->SearchByUserId($user->getUserId);
+                            if($business->getActive()){
+                                header("location:".FRONT_ROOT."Business");
+                            }else{
+                                $alert->setType("danger");
+                                $alert->setMessage("El estado de la empresa se encuentra inactivo");
+                                $this->ShowLogin($alert);
+                            }
+            
                             break;
                         default:
                             echo "Entrando al default";
@@ -47,12 +55,12 @@ class SessionController{
                     }
                 }else{
                 $alert->setType("danger");
-                $alert->setMessage("Email o contrase;a incorrectas");
+                $alert->setMessage("Email o contraseña incorrectas");
                 $this->ShowLogin($alert);
                 }
             }else{
                 $alert->setType("danger");
-                $alert->setMessage("Email o contrase;a incorrectas");
+                $alert->setMessage("Email o contraseña incorrectas");
                 $this->ShowLogin($alert);
             }
         }catch(Exception $ex){
@@ -106,7 +114,3 @@ class SessionController{
         //             $homeController->Index("mail o contraseña incorrectas");
         //         }
         // }
-
-
-
-?>

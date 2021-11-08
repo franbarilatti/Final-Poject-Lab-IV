@@ -1,5 +1,11 @@
 <?php
 
+use DAO\BusinessDAO;
+
+$businessDAO = new BusinessDAO;
+
+    $user = $_SESSION['userLogged'];
+    $business = $businessDAO->SearchByUserId($user->getUserId());
 ?>
 
 <!-- NAVBAR -->
@@ -22,7 +28,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Ofertas de Trabajo</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>JobOffer/PrintPdf">Listar ofertas de trabajo</a></li>
+                        <li role=" presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/AddView?$id=<?php echo $business->getBusinessId(); ?>">Agregar Nueva Oferta</a></li>
+                        <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
