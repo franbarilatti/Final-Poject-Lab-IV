@@ -9,11 +9,12 @@
         private $businessName;
         private $employesQuantity;
         private $adress;
-        private $active;
         private $businessInfo;
+        private $active;
+        
         
 
-        public function __construct($userId,$businessId,$businessName,$employesQuantity,$businessInfo,$adress)
+        public function __construct($userId,$businessId,$businessName,$employesQuantity,$businessInfo,$adress,$active)
         {
                 $this->userId = $userId;
                 $this->businessId =$businessId;
@@ -21,7 +22,7 @@
                 $this->employesQuantity = $employesQuantity;
                 $this->businessInfo = $businessInfo;
                 $this->adress = $adress;
-                $this->active = false;
+                $this->active = $active;
         }         
     
         ////////// GETTERS METHODS //////////

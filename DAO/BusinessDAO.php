@@ -6,7 +6,7 @@
     use Models\Business as Business;
     use DAO\Connection as Connection;
 
-    class BusinessDAO implements IBusinessDAO
+    class BusinessDAO implements IBussinesDAO
     {
         private $connection;
         private $tableName = "business";
@@ -140,6 +140,54 @@
             }
         }
 
+        public function SearchByUserId($userId){
+            try{
+                $query = "SELECT * FROM business b JOIN users u ON b.userId = :u.userId;";
+
+                $parameters['userId'] = $userId;
+
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query,$parameters);
+                $finded = $this->Mapping($result);
+                return $finded;
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
+        public function Deregister($id){
+
+            try{
+                $query = "UPDATE $this->tableName SET active = :active WHERE businessId = :id;";
+
+                $parameters['id'] = $id;
+                $parameters['active'] = false; 
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query,$parameters);
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+
+        }
+
+        public function Release($id){
+            try{
+                $query = "UPDATE $this->tableName SET active = :active WHERE businessId = :id;";
+
+                $parameters['id'] = $id;
+                $parameters['active'] = true; 
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query,$parameters);
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
         protected function Mapping($value) {
 
 			$value = is_array($value) ? $value : [];
@@ -149,9 +197,9 @@
                                    $p['businessId'], 
                                    $p['businessName'], 
                                    $p['employesQuantity'],
-                                   $p['adress'], 
-                                   $p['active'], 
-                                   $p['businessInfo']);
+                                   $p['businessInfo'],
+                                   $p['adress'],
+                                   $p['active']);
 			}, $value);
             return $resp = count($resp) >= 1 ? $resp : $resp['0'];
         }
