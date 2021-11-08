@@ -32,14 +32,7 @@ $businessDAO = new BusinessDAO;
                         <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administrar Postulaciones</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseStudent">Listar Postulaciones</a></li>
-                        <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
-                        <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
-                    </ul>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo FRONT_ROOT ?>Session/Logout">Logout</a>
                 </li>

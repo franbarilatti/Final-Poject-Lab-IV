@@ -2,6 +2,22 @@
      namespace Views;
      use Models\Alert as Alert;
 
+     if(isset($_SESSION['userLogged'])){
+          $userLogged= $_SESSION['userLogged'];
+          switch($userLogged->getRole()){
+               case "student": 
+                    require_once(VIEWS_PATH."nav-student.php");
+                     break;
+               case "company": 
+                    require_once(VIEWS_PATH."nav-business.php");
+                    break;
+
+               case "admin": 
+                    require_once(VIEWS_PATH."nav-admin.php");
+                    break;
+          }
+     }
+
      if ($alert == null) {
          $alert = new Alert(" ", " ");
      }
