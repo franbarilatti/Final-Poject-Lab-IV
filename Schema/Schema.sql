@@ -22,22 +22,7 @@ create table careers(
     active bool
 );
 
-create table students(
-	studentId int auto_increment primary key,
-    userId int,
-    careerId int not null,
-	firstName varchar(30) not null,
-    lastName varchar(30) not null,
-    dni int not null unique,
-    fileNumber int(30) not null unique,
-    gender char not null,
-    birthDate date not null,
-    email varchar(50) not null unique,
-    phoneNumber varchar(30) not null unique,
-    active bool not null,
-    constraint fk_userId foreign key (userId) references users (id),
-    constraint fk_careerId foreign key (careerId) references careers (careerId)
-);
+
 
 create table admins(
 	adminId int not null auto_increment primary key,
@@ -56,13 +41,7 @@ create table business(
     foreign key(userId) references users(id)
 );
 
-create table jobPositions(
-	jobPositionId int auto_increment primary key,
-    careerId int not null,
-    description  varchar(200) not null,
-    active bool not null,
-    foreign key (careerId) references careers (careerId)
-);
+
 
 create table jobOffer(
 	jobOfferId int auto_increment primary key,
@@ -78,37 +57,54 @@ create table jobOffer(
 
 create table postulation(
 	postulationId int auto_increment primary key,
-	studentId int not null,
+	userId int not null,
     businessId int not null,
     jobOfferId int not null,
     active bool not null,
-    foreign key	(businessId) references business(businessId)
+    foreign key	(businessId) references business(businessId),
+    foreign key (userId) references users(id)
 );
 
+alter table business add adress varchar(100) after businessInfo;
+alter table business add active bool after adress;
+
+alter table postulation add constraint fk_jobofferid foreign key (jobofferid) references joboffer(jobofferid);
+
+#drop table postulation;
 
 
-drop table postulation;
-
-select * from business;
 
 select * from users;
 
 select * from admins;
 
-alter table jobPositions change businessId careerId int not null;
-
-alter table jobPositions add constraint fk_careerId foreign key(careerId) references careers (careerId);
 
 insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
 
-select * from business;
-select * from users;
-drop table postulation;
-select * from students;
+
+INSERT INTO `myjob`.`users` (`id`, `email`, `password`, `role`) VALUES ('1', 'guido@admin.com', '12345', 'admin');
+INSERT INTO `myjob`.`users` (`id`, `email`, `password`, `role`) VALUES ('2', 'franco@admin.com', '12345', 'admin');
+
+INSERT INTO `myjob`.`admins` (`adminId`, `firstName`, `lastName`, `userId`) VALUES ('1', 'Guido', 'Barilatti', '1');
+INSERT INTO `myjob`.`admins` (`adminId`, `firstName`, `lastName`, `userId`) VALUES ('2', 'Franco', 'Barilatti', '2');
+
+INSERT INTO `myjob`.`users` (`id`, `email`, `password`, `role`) VALUES ('3', 'info@accenture.com', 'Globant', 'company');
+INSERT INTO `myjob`.`users` (`id`, `email`, `password`, `role`) VALUES ('4', 'info@globant', 'Accenture', 'company');
+
+INSERT INTO `myjob`.`business` (`businessId`, `businessName`, `employesQuantity`, `businessInfo`, `userId`) VALUES ('1', 'Accenture', '5000', 'Empresa lider en desarrollo de software', '3');
+INSERT INTO `myjob`.`business` (`businessId`, `businessName`, `employesQuantity`, `businessInfo`, `userId`) VALUES ('2', 'Globant', '5001', 'Unicornio argentino en desarrollo ', '4');
+
 select * from joboffer;
+
+select * from users;
+
 select * from postulation;
 
-delete from joboffer where jobOfferId = 2;
+select * from business;
 
-alter table business add adress varchar(100) after businessInfo;
-alter table business add active bool after adress;
+select * from users;
+
+
+select userid from 
+postulation p join joboffer j
+on p.postulationid = j.jobofferid;

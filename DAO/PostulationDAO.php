@@ -106,7 +106,26 @@
             return $findedList;
         }
 
+        public static function SendGreetingsMail($idList){
+            foreach($idList as $id){
+                
+            }
+        }
 
+        public static function UserIdByJobOffer($jobOfferId){
+            try{
+                $query = "select userid from postulation p join joboffer j on p.jobofferid = '$jobOfferId'";
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($query);
+                $postulationList = $this->Mapping($result);
+
+                return $postulationList;
+            } catch (Exception $ex) {
+                throw $ex;
+            }
+            }
+        }
     
 
         protected function Mapping($value) {

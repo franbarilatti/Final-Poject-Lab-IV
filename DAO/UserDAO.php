@@ -82,6 +82,25 @@
             }
         }
 
+        public function SearchById($id){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE id = :id";
+
+                $parameters['id'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $result =  $this->connection->Execute($query,$parameters);
+
+                $findedUser = $this->Mapping($result);
+
+                return $findedUser[0];
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
         public function isInDataBase($email){
             try{
                 $query = "SELECT * FROM ".$this->tableName." WHERE email = :email";

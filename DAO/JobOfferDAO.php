@@ -5,6 +5,8 @@
     use Models\JobOffer as JobOffer;
     use DAO\CareerDAO as CareerDAO;
     use DAO\Connection as Connection;
+    use DAO\PostulationDAO as PostulationDAO;
+    use Models\Postulation as Postulation;
     use Models\Email as Email;
 	
 
@@ -40,6 +42,8 @@
         public function Delete($jobOfferId)
         {
             try{
+
+                $userIdList = $this->PostulationDAO::UserIdByJobOffer($jobOfferId);
 
                 $query = "DELETE FROM ". $this->tableName. "  WHERE jobOfferId = :jobOfferId";
 
@@ -180,27 +184,21 @@
             }
         }
 
-        public function CheckExpiryDate($jobOfferList){
+       public function CheckExpiryDate(){
             try{
                 $today= date();
+                $jobOfferList = $this->GetAll();
                 foreach($jobOfferList as $jobOffer){
-                    if($jobOffer->getExpiryDate == $today ){
-                        $id = $jobOffer->getJobOfferId();
-                        $query = "DELETE FROM ". $this->tableName. "WHERE id = '$id'";
-                        $this->connection = Connection::GetInstance();
-                        $this->connection->ExecuteNonQuery($query,$parameters);
+                    if($jobOffer->getExpiryDate() == $today ){
+                       $this->Delete($jobOffer->getJobOfferId());
                     }
-
                 }
+            }catch(Exeption $ex){
+                throw $ex;
             }
             
         }
 
-        public function PrintPdf(){
-            $htmls2pdf = new Html2Pdf();
-            $htmls2pdf->writeHTML('<h1>Holis</h1>');
-            $htmls2pdf->output();
-        }
 
 
         protected function Mapping($value){
