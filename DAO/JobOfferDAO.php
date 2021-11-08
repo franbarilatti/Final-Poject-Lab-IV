@@ -8,6 +8,7 @@
     use DAO\PostulationDAO as PostulationDAO;
     use Models\Postulation as Postulation;
     use Models\Email as Email;
+
 	
 
 
@@ -42,9 +43,12 @@
         public function Delete($jobOfferId)
         {
             try{
+                $postulationDAO = new PostulationDAO();
 
-                $userIdList = $this->PostulationDAO::UserIdByJobOffer($jobOfferId);
+                $userIdList = $postulationDAO->UserIdByJobOffer($jobOfferId);
 
+                $postulationDAO->SendGreetingsMail($userIdList[0]);
+                
                 $query = "DELETE FROM ". $this->tableName. "  WHERE jobOfferId = :jobOfferId";
 
                 $parameters["jobOfferId"] = $jobOfferId;
@@ -186,14 +190,15 @@
 
        public function CheckExpiryDate(){
             try{
-                $today= date();
+                $today= date("Y-m-d");
+                echo $today;
                 $jobOfferList = $this->GetAll();
                 foreach($jobOfferList as $jobOffer){
-                    if($jobOffer->getExpiryDate() == $today ){
+                    if($jobOffer->getExpiryDate() <= $today ){
                        $this->Delete($jobOffer->getJobOfferId());
                     }
                 }
-            }catch(Exeption $ex){
+            }catch(Exception $ex){
                 throw $ex;
             }
             

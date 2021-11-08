@@ -4,6 +4,9 @@
     use DAO\IPostulationDAO as IPostulationDAO;
     use Models\Postulation as Postulation;
     use Models\JobOffer as JobOffer;
+    use Exception;
+    use DAO\UserDAO as UserDAO;
+    use Models\Email as Email;
 
     class PostulationDAO implements IPostulationDAO
     {
@@ -107,40 +110,47 @@
         }
 
         public static function SendGreetingsMail($idList){
+            $userDAO = new UserDAO();
             foreach($idList as $id){
-                
+                var_dump($id);
+                $user = $userDAO->SearchById($id);
+                $subject= "Vencimiento de oferta";
+                $msg= "La oferta a la que se ha postulado ha caducado. Igualmente, se lo tendra en cuentra para futuras oportunidades. Muchas gracias";
+                Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
             }
         }
 
-        public static function UserIdByJobOffer($jobOfferId){
-            try{
-                $query = "select userid from postulation p join joboffer j on p.jobofferid = '$jobOfferId'";
-                $this->connection = Connection::GetInstance();
+        
 
-                $result = $this->connection->Execute($query);
-                $postulationList = $this->Mapping($result);
+            protected function Mapping($value) {
 
-                return $postulationList;
-            } catch (Exception $ex) {
-                throw $ex;
+                $value = is_array($value) ? $value : [];
+    
+                $resp = array_map(function($p){
+                    return new Postulation( $p['postulationId'],
+                                            $p['userId'],
+                                            $p['businessId'], 
+                                             $p['jobOfferId'], 
+                                            $p['active']);
+                }, $value);
+    
+                return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
             }
+
+            public function UserIdByJobOffer($jobOfferId){
+                try{
+                    
+                    $query = "SELECT userId FROM postulation WHERE jobOfferId = '$jobOfferId'";
+                    $parameters["jobOfferId"] = $jobOfferId;
+                    $this->connection = Connection::GetInstance();
+                    $result = $this->connection->Execute($query);
+                    /*var_dump($result);
+                    $idList = $this->Mapping($result);*/
+                    return $result;
+                }catch(Exception $ex){
+                    throw $ex;
+                }
             }
         }
     
-
-        protected function Mapping($value) {
-
-			$value = is_array($value) ? $value : [];
-
-			$resp = array_map(function($p){
-				return new Postulation($p['studentId'],
-                                       $p['businessId'], 
-                                       $p['jobOfferId'], 
-                                       $p['active']);
-			}, $value);
-
-            return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
-        }
-    }
-
 ?>

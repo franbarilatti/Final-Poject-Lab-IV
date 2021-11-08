@@ -62,13 +62,14 @@ create table postulation(
     jobOfferId int not null,
     active bool not null,
     foreign key	(businessId) references business(businessId),
-    foreign key (userId) references users(id)
+    foreign key (userId) references users(id),
+    foreign key (jobOfferId) references joboffer(jobOfferId) on delete cascade
 );
 
 alter table business add adress varchar(100) after businessInfo;
 alter table business add active bool after adress;
 
-alter table postulation add constraint fk_jobofferid foreign key (jobofferid) references joboffer(jobofferid);
+alter table postulation add constraint fk_jobofferid_cascade foreign key (jobofferid) references joboffer(jobofferid) on delete cascade;
 
 #drop table postulation;
 

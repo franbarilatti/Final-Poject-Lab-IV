@@ -33,7 +33,7 @@ class JobOfferController{
             require_once(VIEWS_PATH."joboffer-add.php");
         }
         public function ShowListView(Alert $alert=null){
-            $this->JobJobOfferDAO->CheckExpiryDate();
+            $this->jobOfferDAO->CheckExpiryDate();
             $jobOfferList = $this->jobOfferDAO->GetAll();
             if($_SESSION['userLogged']->getRole() == "admin"){
             require_once(VIEWS_PATH."nav-admin.php");

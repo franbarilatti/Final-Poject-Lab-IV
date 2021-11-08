@@ -86,15 +86,19 @@
             try{
                 $query = "SELECT * FROM ".$this->tableName." WHERE id = :id";
 
+                
+                echo "<br?";
+
                 $parameters['id'] = $id;
+                
                 
                 $this->connection = Connection::GetInstance();
 
                 $result =  $this->connection->Execute($query,$parameters);
 
-                $findedUser = $this->Mapping($result);
+                //$findedUser = $this->Mapping($result);
 
-                return $findedUser[0];
+                return $result;
             }
             catch(Exception $ex){
                 throw $ex;
@@ -133,7 +137,7 @@
                                 $p['role']);
 			}, $value);
 
-            return $resp = count($resp) >= 1 ? $resp : $resp['0'];
+            return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
 
     }

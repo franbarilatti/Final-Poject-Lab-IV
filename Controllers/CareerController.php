@@ -13,7 +13,7 @@ use Models\Career as Career;
         public function __construct(){
 
             $this->careerDAO = new CareerDAO();
-            $this->alert = new Alert;
+            $this->alert = new Alert("","");
         }
 
         public function ShowAddView(){
