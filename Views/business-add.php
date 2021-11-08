@@ -15,8 +15,8 @@
           <div class="container">
                <h2 class="mb-4">Agregar Empresa</h2>
                <div class="row">
-                    <div class="col-lg-8">
-                    <form action="<?php echo FRONT_ROOT ?>Business/Add" method="post" class="bg-light-alpha p-5">
+
+                    <form action="<?php echo FRONT_ROOT ?>Business/Add" method="post" class="bg-light-alpha p-5 ">
                          <div class="col">
                               <div class="col-lg-4">
                               </div>
@@ -25,11 +25,11 @@
                                         <label for="">Email</label>
                                         <input type="hidden" name="userId" value="DEFAULT">
                                         <input type="email" name="email" class="form-control" size="50" value="
-                                        <?php if(isset($_SESSION['email'])){
+                                        <?php if (isset($_SESSION['email'])) {
                                              echo $_SESSION['email'];
-                                        }else{
+                                        } else {
                                              echo " ";
-                                        } ?>" >
+                                        } ?>">
                                    </div>
                               </div>
                               <div class="col-lg-4">
@@ -63,7 +63,7 @@
                               <div class="col-lg-4">
                                    <div class="form-group">
                                         <label for="">Direccion</label>
-                                        <input type="text" name="adress"  class="form-control" size="50" Required>
+                                        <input type="text" name="adress" class="form-control" size="50" Required>
                                    </div>
                               </div>
                               <div class="col-lg-4">
@@ -82,11 +82,8 @@
                          <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>
                          <a href="<?php echo FRONT_ROOT ?>Admin">Volver al Main</a>
                     </form>
-                    </div>
-                    <div class="col-lg-4">
-                         <img src="https://derecho.udp.cl/cms/wp-content/uploads/2021/01/empresas.jpg" alt="">
-                    </div>
-                    
+
+
                </div>
 
           </div>
