@@ -41,7 +41,7 @@
                          <div class="card" style="border-radius: 1rem;">
                               <div class="row g-0">
                                    <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                        <img src="https://i.pinimg.com/originals/e1/93/72/e193727169c55d15375258eb6e591cb3.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                        <img src="https://www.computerworld.es/archivos/202003/mujer-programando.jpg" alt="login form" width="100%" height="100%" style="border-radius: 1rem 0 0 1rem;" />
                                    </div>
                                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                         <div class="card-body p-4 p-lg-5 text-black">

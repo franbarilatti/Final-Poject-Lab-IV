@@ -1,13 +1,15 @@
 <?php
 
-use Models\Alert as Alert;
+     use Models\Alert as Alert;
 
-require_once(VIEWS_PATH . "nav-main.php");
-?>
+     if(isset($_SESSION['userLogged'])){
+          require_once(VIEWS_PATH . "nav-admin.php");
+     }else{
+          require_once(VIEWS_PATH . "nav-main.php");
+     }
 
-<head>
-     <title>Nueva Empresa</title>
-</head>
+     ?>
+
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
