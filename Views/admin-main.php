@@ -1,8 +1,12 @@
 <?php
 
 namespace Views;
+if(!isset($_SESSION['userLogged'])){
+  header("location:". FRONT_ROOT."Home");
+}
+  require_once(VIEWS_PATH."nav-admin.php");
+  
 
-require_once(VIEWS_PATH."nav-admin.php");
 ?>
 
 <!DOCTYPE html>

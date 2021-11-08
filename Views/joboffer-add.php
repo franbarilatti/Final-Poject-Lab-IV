@@ -1,6 +1,10 @@
 <?php
      use Models\Alert as Alert;
+     if($_SESSION['userLogged']->getRole()== "admin"){
      require_once (VIEWS_PATH."nav-admin.php");
+     }else{
+          require_once (VIEWS_PATH."nav-business.php");
+     }
      if($alert==null){
           $alert= new Alert("","");
      }

@@ -142,7 +142,7 @@
 
         public function SearchByUserId($userId){
             try{
-                $query = "SELECT * FROM business b JOIN users u ON b.userId = :u.userId;";
+                $query = "SELECT * FROM ".$this->tableName." WHERE userId = :userId";
 
                 $parameters['userId'] = $userId;
 
@@ -201,6 +201,6 @@
                                    $p['adress'],
                                    $p['active']);
 			}, $value);
-            return $resp = count($resp) >= 1 ? $resp : $resp['0'];
+            return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }
     }

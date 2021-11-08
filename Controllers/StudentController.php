@@ -69,7 +69,7 @@ class StudentController
     {
         require_once(VIEWS_PATH . "nav-student.php");
         require_once(VIEWS_PATH . "header.php");
-        require_once(VIEWS_PATH . "studentMain.php");
+        require_once(VIEWS_PATH . "student-main.php");
     }
 
     ////////////////// FUNCTIONAL METHODS //////////////////

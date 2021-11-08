@@ -112,7 +112,7 @@
         public static function SendGreetingsMail($idList){
             $userDAO = new UserDAO();
             foreach($idList as $id){
-                var_dump($id);
+                
                 $user = $userDAO->SearchById($id);
                 $subject= "Vencimiento de oferta";
                 $msg= "La oferta a la que se ha postulado ha caducado. Igualmente, se lo tendra en cuentra para futuras oportunidades. Muchas gracias";

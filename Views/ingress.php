@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+     require_once(VIEWS_PATH."nav-main.php");
+     if(isset($_SESSION['userLogged'])){
+          $userLogged= $_SESSION['userLogged'];
+          switch($userLogged->getRole()){
+               case "student": 
+                    header("location:". FRONT_ROOT."Student");
+                     break;
+               case "company": 
+                    header("location:". FRONT_ROOT."Business");
+                    break;
 
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>MyJob</title>
-     <style>
-          .bg {
-               background-image: url(Views/img/myjob.png);
-               background-repeat: no-repeat;
-               background-position: center center;
-
+               case "admin": 
+                    header("location:". FRONT_ROOT."Admin");
+                    break;
           }
-
-          .conteiner {
-               max-width: 970px;
-          }
-     </style>
-</head>
+     }
+?>
 
 <body>
 
      <!-- NAVBAR -->
 
-     <?php
-          require_once(VIEWS_PATH."nav-main.php");
-     ?>
+     
 
      <!-- HEADER -->
      <header class="py-3 mb-4 border-bottom">

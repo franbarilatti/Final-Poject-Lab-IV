@@ -191,10 +191,9 @@
        public function CheckExpiryDate(){
             try{
                 $today= date("Y-m-d");
-                echo $today;
                 $jobOfferList = $this->GetAll();
                 foreach($jobOfferList as $jobOffer){
-                    if($jobOffer->getExpiryDate() <= $today ){
+                    if($jobOffer->getExpiryDate() < $today ){
                        $this->Delete($jobOffer->getJobOfferId());
                     }
                 }

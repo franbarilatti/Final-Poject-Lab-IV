@@ -2,6 +2,9 @@
   namespace Views;
   use Models\Alert as Alert;
 
+  if(!isset($_SESSION['userLogged'])){
+    header("location:". FRONT_ROOT."Home");
+  }
      if ($alert == null) {
          $alert = new Alert(" ", " ");
      }else{

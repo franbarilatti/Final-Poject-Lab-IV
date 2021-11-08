@@ -89,7 +89,7 @@ class BusinessController{
             try{
                 $business = $this->businessDAO->searchById($businessId);
                 require_once(VIEWS_PATH."header.php");
-                require_once(VIEWS_PATH."business-main.php");
+                require_once(VIEWS_PATH."company-main.php");
             }catch(Exception $ex){
                 throw $ex;
             }
@@ -97,7 +97,7 @@ class BusinessController{
         }
 
         public function ShowMain(){
-            require_once(VIEWS_PATH."business-main.php");
+            require_once(VIEWS_PATH."company-main.php");
         }
 
 
@@ -157,6 +157,7 @@ class BusinessController{
                 try{
                     if(!$this->userDAO->isInDataBase($email)){
                         $user = new User($userId, $email, $password, $role);
+                        var_dump($user);
                         $this->userDAO->Add($user);
                         $lastUser = $this->userDAO->LastRegister();
                         $business = new Business($lastUser->getUserId(),$businessId,$businessName,$employesQuantity,$businessInfo,$adress,false);

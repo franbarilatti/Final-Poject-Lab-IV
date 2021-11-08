@@ -22,7 +22,12 @@ require_once(VIEWS_PATH . "nav-main.php");
                                    <div class="form-group">
                                         <label for="">Email</label>
                                         <input type="hidden" name="userId" value="DEFAULT">
-                                        <input type="email" name="email" class="form-control" size="50" value="<?php echo $_SESSION["email"] ?>" readonly>
+                                        <input type="email" name="email" class="form-control" size="50" value="
+                                        <?php if(isset($_SESSION['email'])){
+                                             echo $_SESSION['email'];
+                                        }else{
+                                             echo " ";
+                                        } ?>" >
                                    </div>
                               </div>
                               <div class="col-lg-4">

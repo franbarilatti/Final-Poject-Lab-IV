@@ -39,7 +39,7 @@ class SessionController{
                             
                             header("location:".FRONT_ROOT."Student");
                         case 'company':
-                            $business = $businessRepo->SearchByUserId($user->getUserId);
+                            $business = $businessRepo->SearchByUserId($user->getUserId());
                             if($business->getActive()){
                                 header("location:".FRONT_ROOT."Business");
                             }else{
