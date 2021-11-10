@@ -1,5 +1,5 @@
 <?php
-
+  $studentId = $_SESSION["studentId"];
 ?>
 
 <!-- NAVBAR -->

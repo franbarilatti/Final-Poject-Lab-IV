@@ -8,6 +8,7 @@ use DAO\UserDAO as UserDAO;
 use DAO\StudentAPI as StudentAPI;
 use Exception;
 use Models\Alert as Alert;
+use PDF\FPDF as FPDF;
 use Models\Student as Student;
 use Models\User as User;
 
@@ -80,7 +81,13 @@ class StudentController
         return $this->studentAPI->SearchByEmail($email);
     }
 
-
+    public function PrintPDF(){
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B',16);
+        $pdf->Cell(40,10,'¡Hola, Mundo!');
+        $pdf->Output();
+    }
 
     public function Index()
     {

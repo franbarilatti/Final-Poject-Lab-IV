@@ -45,14 +45,14 @@
                     $this->postulationDAO->Add($postulation);
                     $this->alert->setType("success");
                     $this->alert->setMessage("Se ha postulado con exito");
-                    echo "si";
+                    
                 }else{
-                    echo "putp";
+                    
                 }
             }catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage("No se ha podido postular");
-                echo "no";
+                
             }finally{
                 $_SESSION["alertType"] = $this->alert->getType();
                 $_SESSION["alertMessage"] = $this->alert->getMessage();
@@ -64,7 +64,7 @@
         public function CheckPostulations($studentId){
         
             $postulationList = $this->postulationDAO->GetAll();
-            var_dump($postulationList);
+            
             $i=0;
             while($i<count($postulationList) && $postulationList[$i]->getStudentId() != $studentId){
                 echo $postulationList[$i]->getStudentId() . "<br>";
