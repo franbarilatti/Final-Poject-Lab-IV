@@ -86,9 +86,6 @@
             try{
                 $query = "SELECT * FROM ".$this->tableName." WHERE id = :id";
 
-                
-                echo "<br?";
-
                 $parameters['id'] = $id;
                 
                 

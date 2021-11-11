@@ -52,61 +52,17 @@
             }
         }
 
-        public function delete($postulationId){
-            $this->RetrieveData();
-            $newList = array();
-            foreach($this->postulationList as $postulation){
-                if($postulation->getPostulationId() != $postulationId){
-                    array_push($newList,$postulation);
-                }
+        public function FilterByJobOffer($jobOfferId){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE jobOfferId = '$jobOfferId'";
+                $parameters['jobOfferId'] = $jobOfferId;
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                $postulationList = $this->Mapping($result);
+                return $postulationList;
+            }catch(Exception $ex){
+                throw $ex;
             }
-            $this->postulationList = $newList;
-            $this->SaveData();
-        }
-
-
-        public function FilterById($postulationId){
-            $this->RetrieveData();
-            $findedList = array();
-            foreach($this->postulationList as $postulation){
-                if($postulation->getPostulationId() == $postulationId){
-                    array_push($findedList,$postulation);
-                }
-            }
-            return $findedList;
-        }
-
-        public function FilterByStudent($studenId){
-            $this->RetrieveData();
-            $findedList = array();
-            foreach($this->postulationList as $postulation){
-                if($postulation->getStudentId() == $studenId){
-                    array_push($findedList,$postulation);
-                }
-            }
-            return $findedList;
-        }
-
-        public function FilterByBusiness($businessId){
-            $this->RetrieveData();
-            $findedList = array();
-            foreach($this->postulationList as $postulation){
-                if($postulation->getBusinessId() == $businessId){
-                    array_push($findedList,$postulation);
-                }
-            }
-            return $findedList;
-        }
-
-        public function FilterByJobPosition($jobPositionId){
-            $this->RetrieveData();
-            $findedList = array();
-            foreach($this->postulationList as $postulation){
-                if($postulation->getPostulationId() == $jobPositionId){
-                    array_push($findedList,$postulation);
-                }
-            }
-            return $findedList;
         }
 
         public static function SendGreetingsMail($idList){

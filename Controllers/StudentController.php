@@ -84,8 +84,8 @@ class StudentController
     public function PrintPDF(){
         $pdf = new FPDF();
         $pdf->AddPage();
-        $pdf->SetFont('Arial','B',16);
-        $pdf->Cell(40,10,'¡Hola, Mundo!');
+        $pdf->SetFont('Arial','I',72);
+        $pdf->Cell(40,10, utf8_decode('¡Hola, Mundo!'));
         $pdf->Output();
     }
 

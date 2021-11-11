@@ -1,6 +1,12 @@
-<?php
-    require_once('nav-admin.php');
+
+<?php 
+
+    var_dump($postulationList);
+
 ?>
+
+
+
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
