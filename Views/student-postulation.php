@@ -1,9 +1,8 @@
 <?php 
     namespace Views;
-    use DAO\jobPositionDAO as jobPositionDAO;
-    $jobPositionDao = new jobPositionDAO();
-    $jobPositionList = $jobPositionDao->GetAll();
-    require_once(VIEWS_PATH."nav-student"); 
+    use DAO\JobOfferDAO as JobOfferDAO;
+    $jobOfferDAO = new JobOfferDAO();
+     $JobOfferList = $jobOfferDAO->GetAll();
 ?>
 
 
@@ -20,21 +19,23 @@
                     </thead>
                     <tbody>
                          <?php
+                         if($postulationList){
                               foreach($postulationList as $postulation)
                               {
                                 
-                                  foreach($jobPositionList as $jobPosition){
+                                  foreach($JobOfferList as $JobOffer){
 
-                                      if($postulation->getJobPositionId() == $jobPosition->getJobPositionId()){
+                                      if($postulation->getJobOfferId() == $JobOffer->getJobOfferId()){
                                    ?>
                                         <tr>
-                                             <td><?php echo $jobPosition->getTitle();?></td>
-                                             <td><?php echo $jobPosition->getDescription(); ?></td>
+                                             <td><?php echo $JobOffer->getTitle();?></td>
+                                             <td><?php echo $JobOffer->getDescription(); ?></td>
                                         </tr>
                                    <?php  
                                       }
                                   }
                               }
+                         }
                          ?>
                          </tr>
                     </tbody>

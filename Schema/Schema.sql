@@ -15,13 +15,6 @@ create table users(
     role varchar(10) not null
 );
 
-create table careers(
-	careerId int auto_increment primary key,
-    nombre varchar(30) not null unique,
-    description varchar(200),
-    active bool
-);
-
 
 
 create table admins(
@@ -57,13 +50,14 @@ create table jobOffer(
 
 create table postulation(
 	postulationId int auto_increment primary key,
-	userId int not null,
+    userId int not null,
+	studentId int not null,
     businessId int not null,
     jobOfferId int not null,
     active bool not null,
     foreign key	(businessId) references business(businessId),
-    foreign key (userId) references users(id),
-    foreign key (jobOfferId) references joboffer(jobOfferId) on delete cascade
+    foreign key (jobOfferId) references joboffer(jobOfferId) on delete cascade,
+    foreign key (userId) references users(id)
 );
 
 alter table business add adress varchar(100) after businessInfo;

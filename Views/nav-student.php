@@ -1,5 +1,5 @@
 <?php
-  $studentId = $_SESSION["studentId"];
+  $userId = $_SESSION["userLogged"]->getUserId();
 ?>
 
 <!-- NAVBAR -->
@@ -20,7 +20,7 @@
           <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT ?>Student">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Postulation/ShowPostulatiobByStudent?studentId=<?php echo $studentId; ?>">Ver Postulaciones</a>
+          <a class="nav-link" href="<?php echo FRONT_ROOT ?>Postulation/ShowPostulatiobByStudent?userId=<?php echo $userId; ?>">Ver Postulaciones</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver Ofertas laborales</a>

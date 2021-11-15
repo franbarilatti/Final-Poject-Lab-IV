@@ -19,10 +19,11 @@
 
         public function Add(Postulation $Postulation)
         {
-            $careerDAO = new CareerDAO();
+
             try{
                 
-                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:studentId,:businessId,:jobOfferId,:active)";
+                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:userId,:studentId,:businessId,:jobOfferId,:active)";
+                $parameters['userId'] = $Postulation->getUserId();
                 $parameters['studentId'] = $Postulation->getStudentId();
                 $parameters['businessId'] = $Postulation->getBusinessId();
                 $parameters['jobOfferId'] = $Postulation->getJobOfferId();
@@ -65,15 +66,36 @@
             }
         }
 
-        public static function SendGreetingsMail($idList){
+        public function FilterByUserId($userId){
+            try{
+                $query = "SELECT * FROM ". $this->tableName. " WHERE userId = '$userId'";
+                $parameters['userId']= $userId;
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                $postulationList = $this->Mapping($result);
+                return $postulationList;
+            }catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
+        public static function DeleteMessage($idList){
             $userDAO = new UserDAO();
             foreach($idList as $id){
                 
                 $user = $userDAO->SearchById($id);
-                $subject= "Vencimiento de oferta";
+                $subject= "Postulacion";
                 $msg= "La oferta a la que se ha postulado ha caducado. Igualmente, se lo tendra en cuentra para futuras oportunidades. Muchas gracias";
                 Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
             }
+        }
+
+        public static function GreetingsMail(){
+            $subject= "Vencimiento de oferta";
+            $msg= "Gracias por postularse a nuestra oferta de trabajo. Pronto estara recibiendo un mail a su casilla de correo electronico con mas informacion respecto a su postulacion. 
+            <br>
+            De parte de todo el equipo le damos las gracias.";
+            Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
         }
 
         
@@ -85,6 +107,7 @@
                 $resp = array_map(function($p){
                     return new Postulation( $p['postulationId'],
                                             $p['userId'],
+                                            $p['studentId'],
                                             $p['businessId'], 
                                              $p['jobOfferId'], 
                                             $p['active']);

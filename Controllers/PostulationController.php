@@ -27,10 +27,12 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function ShowPostulatiobByStudent($studentId){
+        public function ShowPostulatiobByStudent($userId){
             $title = "Mis postulaciones";
-            $postulationList = $this->postulationDAO->FilterByStudent($studentId);
+            
             require_once (VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."nav-student.php");
+            $postulationList = $this->postulationDAO->FilterByUserId($userId);
             require_once(VIEWS_PATH."student-postulation.php");
         }
         
@@ -44,35 +46,35 @@
         public function Add($businessId, $jobPositionId)
         {
             $studentId = $_SESSION["studentId"];
+            $userId= $_SESSION['userLogged']->getUserId();
+            echo $userId;
             try{
-                $postulation = new Postulation($studentId,$businessId,$jobPositionId,true);
-                if(! $this->CheckPostulations($studentId)){
+                $postulation = new Postulation("DeFAULT",$userId,$studentId,$businessId,$jobPositionId,true);
+                if(!$this->CheckPostulations($studentId)){
+                   
                     $this->postulationDAO->Add($postulation);
                     $this->alert->setType("success");
                     $this->alert->setMessage("Se ha postulado con exito");
-                    
-                }else{
-                    
+                    $this->postulationDAO->GreetingsMail();
                 }
             }catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage("No se ha podido postular");
+                echo $ex;
                 
             }finally{
                 $_SESSION["alertType"] = $this->alert->getType();
                 $_SESSION["alertMessage"] = $this->alert->getMessage();
                 header("location:".FRONT_ROOT."Student");
             }
-            
+    
         }
 
         public function CheckPostulations($studentId){
         
-            $postulationList = $this->postulationDAO->GetAll();
-            
+            $postulationList = $this->postulationDAO->GetAll();        
             $i=0;
             while($i<count($postulationList) && $postulationList[$i]->getStudentId() != $studentId){
-                echo $postulationList[$i]->getStudentId() . "<br>";
                 $i++;
             }
             if($i<count($postulationList)){

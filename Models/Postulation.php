@@ -4,13 +4,16 @@
     class Postulation{
 
         private $postulationId;
+        private $userId;
         private $studentId;
         private $businessId;
         private $jobOfferId;
         private $active;
 
-        public function __construct( $studentId, $businessId, $jobOfferId, $active)
+        public function __construct($postulationId, $userId, $studentId, $businessId, $jobOfferId, $active)
         {
+                $this->postulationId = $postulationId;
+                $this->userId = $userId;
                 $this->studentId =$studentId;
                 $this->businessId =$businessId;
                 $this->jobOfferId =$jobOfferId;
@@ -47,6 +50,11 @@
         public function getActive()
         {
                 return $this->active;
+        }
+
+        public function getUserId()
+        {
+                return $this->userId;
         }
 
         ////////// GETTERS METHODS //////////
@@ -89,6 +97,15 @@
         public function setActive($active)
         {
                 $this->active = $active;
+
+                return $this;
+        }
+
+
+
+        public function setUserId($userId)
+        {
+                $this->userId = $userId;
 
                 return $this;
         }

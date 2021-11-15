@@ -47,7 +47,7 @@
 
                 $userIdList = $postulationDAO->UserIdByJobOffer($jobOfferId);
 
-                $postulationDAO->SendGreetingsMail($userIdList[0]);
+                $postulationDAO->DeleteMessage($userIdList[0]);
                 
                 $query = "DELETE FROM ". $this->tableName. "  WHERE jobOfferId = :jobOfferId";
 
@@ -193,7 +193,7 @@
                 $today= date("Y-m-d");
                 $jobOfferList = $this->GetAll();
                 foreach($jobOfferList as $jobOffer){
-                    if($jobOffer->getExpiryDate() < $today ){
+                    if($jobOffer->getExpiryDate() <= $today ){
                        $this->Delete($jobOffer->getJobOfferId());
                     }
                 }

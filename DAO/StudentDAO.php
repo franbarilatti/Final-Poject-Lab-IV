@@ -6,25 +6,33 @@ use Models\Student;
 
 class StudentDAO implements IStudentDAO{
 
-        private $connection;
-        private $tableName = "students";
 
+        private $studentList = array();
+        private $fileName;
+        private $connection;
+
+        public function __construct()
+        {
+            $this->fileName = dirname(__DIR__)."/Data/students.json";
+        }
         
 
         public function GetAll()
         {
-            try {
-                $studentList = array();
+            $this->RetrieveData();
+            return $this->studentList;   
+        }
 
-                $query = "SELECT * FROM ".$this->tableName;
-                $this->connection = Connection::GetInstance();
+        public function RetrieveData(){
 
-                $result = $this->connection->Execute($query);
-                $studentList = $this->Mapping($result);
+            if(file_exists($this->fileName)){
+                $jsonContent = file_get_contents($this->fileName);
+                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+                foreach($arrayToDecode as $value){
 
-                return $studentList;
-            } catch (Exception $ex) {
-                throw $ex = "No se pudo cargar la lista";
+                    $student = new Student($value['studentId'],$value['careerId'],$value['firstName'],$value['lastName'],$value['dni'],$value['fileNumber'],$value['gender'],$value['birthDate'],$value['email'],$value['phoneNumber'],$value['active']);
+                    array_push($this->studentList,$student);
+                }
             }
         }
             
@@ -45,8 +53,6 @@ class StudentDAO implements IStudentDAO{
                                    $p['phoneNumber'],
                                    $p['active']);
 			}, $value);
-
-            var_dump($resp);
 
             return $resp = count($resp) > 1 ? $resp : $resp['0'];
         }

@@ -15,6 +15,7 @@ use Models\User as User;
 class StudentController
 {
     private $studentDAO;
+    private $studentList = array();
     private $careerAPI;
     private $studentAPI;
     private $userDAO;
@@ -58,6 +59,7 @@ class StudentController
         try {
             $title = "Lista de alumnos";
             $studentList = $this->studentAPI->GetAll();
+           // var_dump($studentList);
             require_once(VIEWS_PATH . "header.php");
             require_once(VIEWS_PATH . "student-list.php");
         } catch (Exception $ex) {
