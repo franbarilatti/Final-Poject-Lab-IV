@@ -67,11 +67,11 @@ alter table postulation add constraint fk_jobofferid_cascade foreign key (joboff
 
 #drop table postulation;
 
+alter table jobOffer add flyer varchar(200) after expiryDate;
 
+select * from jobOffer;
 
 select * from users;
-
-select * from admins;
 
 
 insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
@@ -97,9 +97,17 @@ select * from postulation;
 
 select * from business;
 
-select * from users;
+select * from users
 
 
-select userid from 
-postulation p join joboffer j
-on p.postulationid = j.jobofferid;
+delimiter $$
+create procedure getBusinessNameByJobOffer(in vid int)
+begin
+	SELECT businessName
+    from business b 
+    where b.businessId = vid;
+end $$  
+
+drop procedure getBusinessNameByJobOffer;
+
+call getBusinessNameByJobOffer(1);

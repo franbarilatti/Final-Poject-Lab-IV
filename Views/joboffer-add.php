@@ -55,7 +55,7 @@
                          </div>
                          <div>
                               <label> Flyer Promocional</label> <br>
-                              <input type="url" name="flyer" placeholder="Ingrese la URL de su Flyer"> 
+                              <input type="text" name="flyer" placeholder="Ingrese la URL de su Flyer"> 
                          </div>
                          <button type="submit" class="btn btn-primary">Agregar oferta</button>
                     </form>

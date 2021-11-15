@@ -25,7 +25,9 @@
             $careerDAO = new CareerDAO();
             try{
                 
-                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId,:flyer)";
+                $query = "INSERT INTO " . $this->tableName . "(jobOfferId,title,description,postingDate,expiryDate,businessId,careerId,jobPositionId,flyer) VALUES (:jobOfferId,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId,:flyer)";
+                
+                $parameters['jobOfferId'] = $jobOffer->getJobOfferId();
                 $parameters['title'] = $jobOffer->getTitle();
                 $parameters['description'] = $jobOffer->getDescription();
                 $parameters['postingDate'] = $jobOffer->getPostingDate();
@@ -187,6 +189,23 @@
             catch(Exception $ex){
                 throw $ex;
             }
+        }
+
+        public function GetBusinessNameByJobOfferId($id){
+            try{
+                $query = "CALL getBusinessNameByJobOffer(:id);";
+                $parameters['id'] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->ExecuteNonQuery($query,$parameters);
+
+                return $result;
+
+            }catch(Exception $ex){
+                throw $ex;
+            }
+
         }
 
        public function CheckExpiryDate(){

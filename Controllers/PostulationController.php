@@ -5,15 +5,18 @@
     use Exception;
     use Models\JobOffer as JobOffer;
     use DAO\JobOfferDAO as JobOfferDAO;
-    use Models\Alert as Alert;
+use DAO\StudentAPI;
+use Models\Alert as Alert;
     class PostulationController
     {
         private $postulationDAO;
+        private $studentDAO;
         private $alert;
 
         public function __construct()
         {
             $this->postulationDAO = new PostulationDAO();
+            $this->studentDAO = new StudentAPI;
             $this->alert = new Alert("","");
         }
 
@@ -38,6 +41,7 @@
         
         public function PostulatedList($jobOfferId){
             $postulationList = $this->postulationDAO->FilterByJobOffer($jobOfferId);
+            $studentList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."postulated-student-list.php");
         }
 

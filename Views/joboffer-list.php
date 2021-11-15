@@ -39,6 +39,7 @@ if ($alert == null) {
                               <th>Id Oferta</th>
                          <?php
                          } ?>
+                         <th>Empresa</th>
                          <th>Titulo</th>
                          <th>Descripcion</th>
                          <th>Vencimiento</th>
@@ -54,7 +55,15 @@ if ($alert == null) {
                                              <td><?php echo $jobOffer->getJobOfferId(); ?></td>
                                         <?php
                                         } ?>
-                                        <td><?php echo $jobOffer->getTitle(); ?></td>
+                                        <td><?php echo $jobOfferRepo->GetBusinessNameByJobOfferId($jobOffer->getBusinessId())?></td>
+                                        <?php
+                                        if ($jobOffer->getFlyer() == "false") { ?>
+                                             <td><?php echo $jobOffer->getTitle(); ?></td>
+                                        <?php
+                                        } else { ?>
+                                             <td><a href="<?php echo $jobOffer->getFlyer() ?>"><?php echo $jobOffer->getTitle(); ?></a></td>
+                                        <?php
+                                        } ?>
                                         <td><?php echo $jobOffer->getDescription(); ?></td>
                                         <td><?php echo $jobOffer->getExpiryDate() ?></td>
                                         <td>
