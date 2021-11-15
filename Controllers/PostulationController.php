@@ -27,7 +27,7 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function ShowPostulatiobByStudent($userId){
+        public function ShowPostulatiobByStudent($userId,Alert $alert=null){
             $title = "Mis postulaciones";
             
             require_once (VIEWS_PATH."header.php");
@@ -81,6 +81,18 @@
                 return true;
             }else{
                 return false;
+            }
+        }
+
+        public function Delete($id,$userId){
+            try{
+                $this->postulationDAO->Delete($id);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Se ha dado de baja su postulacion.");
+
+                $this->ShowPostulatiobByStudent($userId,$this->alert);
+            }catch(Exception $ex){
+                throw $ex;
             }
         }
 

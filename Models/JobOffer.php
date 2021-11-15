@@ -11,8 +11,9 @@
         private $description;
         private $postingDate;
         private $expiryDate;
+        private $flyer;
          
-        public function __construct($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId)
+        public function __construct($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId,$flyer)
         {
             $this->jobOfferId = $jobOfferId;    
             $this->title = $title;
@@ -22,7 +23,7 @@
             $this->businessId = $businessId;
             $this->careerId = $careerId;
             $this->jobPositionId = $jobPositionId;
-            
+            $this->flyer = $flyer;
         }
 
 
@@ -68,6 +69,10 @@
                 return $this->expiryDate;
         }
 
+        public function getFlyer()
+        {
+                return $this->flyer;
+        }
 
         ////////// SETTERS METHODS //////////
 
@@ -133,7 +138,13 @@
                 return $this;
         }
  
+        public function setFlyer($flyer)
+        {
+                $this->flyer = $flyer;
 
+                return $this;
+        }
+        
     }
 
 

@@ -1,6 +1,5 @@
 <?php
     require_once('nav-admin.php');
-    var_dump($studentList);
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">

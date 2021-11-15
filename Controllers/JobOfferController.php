@@ -42,10 +42,11 @@ class JobOfferController{
 
 
         ////////// FUNCTIONAL FUNCTION /////////
-        public function Add($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId){
+        public function Add($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId,$flyer){
             
             try{
-                $jobOffer = new JobOffer($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId);
+                $jobOffer = new JobOffer($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId,$flyer);
+                var_dump($jobOffer);
                 $this->jobOfferDAO->Add($jobOffer);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Oferta cargada con exito");

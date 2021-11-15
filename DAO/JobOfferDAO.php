@@ -25,7 +25,7 @@
             $careerDAO = new CareerDAO();
             try{
                 
-                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId)";
+                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId,:flyer)";
                 $parameters['title'] = $jobOffer->getTitle();
                 $parameters['description'] = $jobOffer->getDescription();
                 $parameters['postingDate'] = $jobOffer->getPostingDate();
@@ -33,6 +33,7 @@
                 $parameters['businessId'] = $jobOffer->getBusinessId();
                 $parameters['careerId'] = $jobOffer->getCareerId();
                 $parameters['jobPositionId'] = $jobOffer->getJobPositionId();
+                $parameters['flyer'] = $jobOffer->getFlyer();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);
             }catch(Exception $ex){
@@ -217,7 +218,8 @@
                                 $p['expiryDate'],
                                 $p['businessId'], 
                                 $p['careerId'], 
-                                $p['jobPositionId']);
+                                $p['jobPositionId'],
+                                $p['flyer']);
                                
             }, $value);
 

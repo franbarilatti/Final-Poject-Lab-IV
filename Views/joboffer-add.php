@@ -43,7 +43,7 @@
                          </table>
                          <div>
                               <label >Fecha de inicio</label> <br>
-                              <input type="date" name="postingDate" value="<?php date("d-m-Y");?>" >
+                              <input type="date" name="postingDate" min="<?php echo time(); ?>" value="<?php date("d-m-Y");?>" >
                          </div>
                          <div>
                               <label for="">Fecha de expiracion</label> <br>
@@ -52,6 +52,10 @@
                          <div>
                               <label> description</label> <br>
                               <textarea name="description" id="" cols="30" rows="10"></textarea required>
+                         </div>
+                         <div>
+                              <label> Flyer Promocional</label> <br>
+                              <input type="url" name="flyer" placeholder="Ingrese la URL de su Flyer"> 
                          </div>
                          <button type="submit" class="btn btn-primary">Agregar oferta</button>
                     </form>
