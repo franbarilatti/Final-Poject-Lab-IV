@@ -101,6 +101,16 @@
             }
         }
 
+        public static function Deregister(){
+            
+            $subject= "Postulacion";
+            $msg= "Muchas gracias por tenernos en cuenta a la hora de buscar nuevas experiencias laborales.
+            Lamentablemente en esta oportunidad no seguiremos con la seleccion de tu postulacion.
+            Igualmente, se lo tendra en cuentra para futuras oportunidades. Muchas gracias";
+            Email::SendMail("barilattiguidoa@hotmail.com",$subject,$msg);
+            
+        }
+
         public static function GreetingsMail(){
             $subject= "Postulacion";
             $msg= "Gracias por postularse a nuestra oferta de trabajo. Pronto estara recibiendo un mail a su casilla de correo electronico con mas informacion respecto a su postulacion. 

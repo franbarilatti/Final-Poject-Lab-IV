@@ -47,6 +47,9 @@
                                              <td><?php echo $student->getEmail(); ?></td>
                                              <td><?php echo $student->getPhoneNumber(); ?></td>
                                              <td><?php echo $student->getActive(); ?></td>
+                                             <td>
+                                                  <a href="<?php echo FRONT_ROOT?>Postulation/DeleteAdmin?$id=<?php echo $postulation->getPostulationId()?>&$jobOfferId=<?php echo $jobOfferId?>" class="btn btn-primary">Dar de baja</a>
+                                             </td>
                                         </tr>
                                    <?php
                                         array_push($postulatedList,$student);
@@ -57,6 +60,7 @@
                          </tr>
                     </tbody>
                </table>
+               <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
           </div>
      </section>
 </main>
