@@ -2,6 +2,7 @@
     namespace Controllers;
     use DAO\PostulationDAO as PostulationDAO;
     use Models\Postulation as Postulation;
+    use DAO\StudentDAO as StudentDAO;
     use Exception;
     use Models\JobOffer as JobOffer;
     use DAO\JobOfferDAO as JobOfferDAO;
@@ -9,11 +10,13 @@
     class PostulationController
     {
         private $postulationDAO;
+        private $studentDAO;
         private $alert;
 
         public function __construct()
         {
             $this->postulationDAO = new PostulationDAO();
+            $this->studentDAO = new StudentDAO();
             $this->alert = new Alert("","");
         }
 
@@ -36,8 +39,9 @@
             require_once(VIEWS_PATH."student-postulation.php");
         }
         
-        public function PostulatedList($jobOfferId){
-            $postulationList = $this->postulationDAO->FilterByJobOffer($jobOfferId);
+        public function PostulatedList(){
+            $postulationList = $this->postulationDAO->GetAll();
+            $studentList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."postulated-student-list.php");
         }
 

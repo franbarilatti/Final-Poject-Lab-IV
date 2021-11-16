@@ -1,7 +1,7 @@
 
 <?php 
 
-    var_dump($postulationList);
+     var_dump($postulationList);
 
 ?>
 
@@ -28,8 +28,11 @@
                     </thead>
                     <tbody>
                          <?php
+                         foreach($postulationList as $postulation){
+                         
                               foreach($studentList as $student)
                               {
+                                   if($postulation->getStudentId() == $student->getStudentId()){
                                    ?>
                                         <tr>
                                              <td><?php echo $student->getStudentId(); ?></td>
@@ -45,7 +48,9 @@
                                              <td><?php echo $student->getActive(); ?></td>
                                         </tr>
                                    <?php
+                                   }
                               }
+                         }
                          ?>
                          </tr>
                     </tbody>
