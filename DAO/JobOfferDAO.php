@@ -25,7 +25,9 @@
             $careerDAO = new CareerDAO();
             try{
                 
-                $query = "INSERT INTO " . $this->tableName . " VALUES (DEFAULT,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId)";
+                $query = "INSERT INTO " . $this->tableName . "(jobOfferId,title,description,postingDate,expiryDate,businessId,careerId,jobPositionId,flyer) VALUES (:jobOfferId,:title,:description,:postingDate,:expiryDate,:businessId,:careerId,:jobPositionId,:flyer)";
+                
+                $parameters['jobOfferId'] = $jobOffer->getJobOfferId();
                 $parameters['title'] = $jobOffer->getTitle();
                 $parameters['description'] = $jobOffer->getDescription();
                 $parameters['postingDate'] = $jobOffer->getPostingDate();
@@ -33,6 +35,7 @@
                 $parameters['businessId'] = $jobOffer->getBusinessId();
                 $parameters['careerId'] = $jobOffer->getCareerId();
                 $parameters['jobPositionId'] = $jobOffer->getJobPositionId();
+                $parameters['flyer'] = $jobOffer->getFlyer();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query,$parameters);
             }catch(Exception $ex){
@@ -188,6 +191,23 @@
             }
         }
 
+        public function GetBusinessNameByJobOfferId($id){
+            try{
+                $query = "CALL getBusinessNameByJobOffer(:id);";
+                $parameters['id'] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->ExecuteNonQuery($query,$parameters);
+
+                return $result;
+
+            }catch(Exception $ex){
+                throw $ex;
+            }
+
+        }
+
        public function CheckExpiryDate(){
             try{
                 $today= date("Y-m-d");
@@ -217,7 +237,8 @@
                                 $p['expiryDate'],
                                 $p['businessId'], 
                                 $p['careerId'], 
-                                $p['jobPositionId']);
+                                $p['jobPositionId'],
+                                $p['flyer']);
                                
             }, $value);
 

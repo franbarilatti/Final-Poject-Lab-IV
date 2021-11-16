@@ -1,7 +1,9 @@
 
-<?php 
+<?php
 
-     var_dump($postulationList);
+use Models\Postulation;
+
+var_dump($postulationList);
 
 ?>
 
@@ -32,7 +34,9 @@
                          
                               foreach($studentList as $student)
                               {
-                                   if($postulation->getStudentId() == $student->getStudentId()){
+                                   foreach($postulationList as $postulation){
+                                        if($student->getStudentId() == $postulation->getStudentId()){
+                                   
                                    ?>
                                         <tr>
                                              <td><?php echo $student->getStudentId(); ?></td>
@@ -48,6 +52,7 @@
                                              <td><?php echo $student->getActive(); ?></td>
                                         </tr>
                                    <?php
+                                        }
                                    }
                               }
                          }

@@ -53,6 +53,17 @@
             }
         }
 
+        public function Delete($id){
+            try{
+                $query =  "DELETE FROM ".$this->tableName." WHERE postulationId = :id;";
+                $parameters['id'] = $id;
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query,$parameters);
+            }catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
         public function FilterByJobOffer($jobOfferId){
             try{
                 $query = "SELECT * FROM ".$this->tableName." WHERE jobOfferId = '$jobOfferId'";

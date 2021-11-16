@@ -33,6 +33,7 @@ class JobOfferController{
         }
         public function ShowListView(Alert $alert=null){
             $this->jobOfferDAO->CheckExpiryDate();
+            $jobOfferRepo = $this->jobOfferDAO;
             $jobOfferList = $this->jobOfferDAO->GetAll();
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-list.php");
@@ -42,17 +43,20 @@ class JobOfferController{
 
 
         ////////// FUNCTIONAL FUNCTION /////////
-        public function Add($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId){
+        public function Add($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId,$flyer){
+           if(!$flyer){
+               $flyer = "false";
+           }
             
             try{
-                $jobOffer = new JobOffer($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId);
+                $jobOffer = new JobOffer($jobOfferId,$title,$description,$postingDate,$expiryDate,$businessId,$careerId,$jobPositionId,$flyer);
                 $this->jobOfferDAO->Add($jobOffer);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Oferta cargada con exito");
 
             }catch(Exception $ex){
                 $this->alert->setType("danger");
-                $this->alert->setMessage("Error al cagar la oferta");
+                $this->alert->setMessage($ex->getMessage());
             }finally{
                 $this->AddView($businessId,$this->alert);
             }

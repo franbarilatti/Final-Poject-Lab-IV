@@ -30,6 +30,9 @@
                                         <tr>
                                              <td><?php echo $JobOffer->getTitle();?></td>
                                              <td><?php echo $JobOffer->getDescription(); ?></td>
+                                             <td>
+                                                  <a href="<?php echo FRONT_ROOT?>Postulation/Delete?$id=<?php echo $postulation->getPostulationId()?>&$userId=<?php echo $userId?>" class="btn btn-primary">Dar de baja</a>
+                                             </td>
                                         </tr>
                                    <?php  
                                       }
@@ -41,6 +44,7 @@
                     </tbody>
                     
                </table>
+               <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
           </div>
 
      </section>

@@ -6,7 +6,8 @@
     use Exception;
     use Models\JobOffer as JobOffer;
     use DAO\JobOfferDAO as JobOfferDAO;
-    use Models\Alert as Alert;
+use DAO\StudentAPI;
+use Models\Alert as Alert;
     class PostulationController
     {
         private $postulationDAO;
@@ -16,7 +17,7 @@
         public function __construct()
         {
             $this->postulationDAO = new PostulationDAO();
-            $this->studentDAO = new StudentDAO();
+            $this->studentDAO = new StudentAPI;
             $this->alert = new Alert("","");
         }
 
@@ -30,7 +31,7 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function ShowPostulatiobByStudent($userId){
+        public function ShowPostulatiobByStudent($userId,Alert $alert=null){
             $title = "Mis postulaciones";
             
             require_once (VIEWS_PATH."header.php");
@@ -39,8 +40,8 @@
             require_once(VIEWS_PATH."student-postulation.php");
         }
         
-        public function PostulatedList(){
-            $postulationList = $this->postulationDAO->GetAll();
+        public function PostulatedList($jobOfferId){
+            $postulationList = $this->postulationDAO->FilterByJobOffer($jobOfferId);
             $studentList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."postulated-student-list.php");
         }
@@ -85,6 +86,18 @@
                 return true;
             }else{
                 return false;
+            }
+        }
+
+        public function Delete($id,$userId){
+            try{
+                $this->postulationDAO->Delete($id);
+                $this->alert->setType("success");
+                $this->alert->setMessage("Se ha dado de baja su postulacion.");
+
+                $this->ShowPostulatiobByStudent($userId,$this->alert);
+            }catch(Exception $ex){
+                throw $ex;
             }
         }
 
