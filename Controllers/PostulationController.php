@@ -41,8 +41,10 @@ use Models\Alert as Alert;
         }
         
         public function PostulatedList($jobOfferId){
+            
             $postulationList = $this->postulationDAO->FilterByJobOffer($jobOfferId);
             $studentList = $this->studentDAO->GetAll();
+            require_once(VIEWS_PATH."nav-admin.php");
             require_once(VIEWS_PATH."postulated-student-list.php");
         }
 

@@ -34,7 +34,7 @@
                          <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Admin/UpdateDataBaseStudent">Actualizar Base de Datos</a></li>
                               <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumno</a></li>
-                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Postulation/PostulatedList">Listar Alumnos</a></li>
+                              <li><a class="dropdown-item" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a></li>
                          </ul>
                     </li>
                     <li class="nav-item dropdown">

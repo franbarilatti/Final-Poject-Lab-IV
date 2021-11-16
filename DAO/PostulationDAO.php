@@ -102,7 +102,7 @@
         }
 
         public static function GreetingsMail(){
-            $subject= "Vencimiento de oferta";
+            $subject= "Postulacion";
             $msg= "Gracias por postularse a nuestra oferta de trabajo. Pronto estara recibiendo un mail a su casilla de correo electronico con mas informacion respecto a su postulacion. 
             <br>
             De parte de todo el equipo le damos las gracias.";

@@ -1,9 +1,7 @@
 
 <?php
-
-use Models\Postulation;
-
-var_dump($postulationList);
+     $postulatedList = array();
+     $_SESSION['studentList'] = $studentList;
 
 ?>
 
@@ -34,7 +32,6 @@ var_dump($postulationList);
                          
                               foreach($studentList as $student)
                               {
-                                   foreach($postulationList as $postulation){
                                         if($student->getStudentId() == $postulation->getStudentId()){
                                    
                                    ?>
@@ -52,10 +49,10 @@ var_dump($postulationList);
                                              <td><?php echo $student->getActive(); ?></td>
                                         </tr>
                                    <?php
+                                        array_push($postulatedList,$student);
                                         }
                                    }
                               }
-                         }
                          ?>
                          </tr>
                     </tbody>
