@@ -3,8 +3,9 @@
 namespace Views;
 
 use Models\Alert as Alert;
-if(!isset($_SESSION['userLogged'])){
-     header("location:". FRONT_ROOT."Home");
+
+if (!isset($_SESSION['userLogged'])) {
+     header("location:" . FRONT_ROOT . "Home");
 }
 if (isset($_SESSION['userLogged'])) {
      $userLogged = $_SESSION['userLogged'];
@@ -59,7 +60,7 @@ if ($alert == null) {
                                              <td><?php echo $jobOffer->getJobOfferId(); ?></td>
                                         <?php
                                         } ?>
-                                        <td><?php echo $jobOfferRepo->GetBusinessNameByJobOfferId($jobOffer->getBusinessId())?></td>
+                                        <td><?php echo $jobOfferRepo->GetBusinessNameByJobOfferId($jobOffer->getBusinessId()) ?></td>
                                         <td><img src="<?php echo $jobOffer->getFlyer() ?>" width="50px" height="50" alt="Sin imagen cargada"></td>
                                         <?php
                                         if ($jobOffer->getFlyer() == "false") { ?>

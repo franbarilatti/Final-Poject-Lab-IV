@@ -1,27 +1,27 @@
 <?php
-     require_once(VIEWS_PATH."nav-main.php");
-     if(isset($_SESSION['userLogged'])){
-          $userLogged= $_SESSION['userLogged'];
-          switch($userLogged->getRole()){
-               case "student": 
-                    header("location:". FRONT_ROOT."Student");
-                     break;
-               case "company": 
-                    header("location:". FRONT_ROOT."Business");
-                    break;
+require_once(VIEWS_PATH . "nav-main.php");
+if (isset($_SESSION['userLogged'])) {
+     $userLogged = $_SESSION['userLogged'];
+     switch ($userLogged->getRole()) {
+          case "student":
+               header("location:" . FRONT_ROOT . "Student");
+               break;
+          case "company":
+               header("location:" . FRONT_ROOT . "Business");
+               break;
 
-               case "admin": 
-                    header("location:". FRONT_ROOT."Admin");
-                    break;
-          }
+          case "admin":
+               header("location:" . FRONT_ROOT . "Admin");
+               break;
      }
+}
 ?>
 
 <body>
 
      <!-- NAVBAR -->
 
-     
+
 
      <!-- HEADER -->
      <header class="py-3 mb-4 border-bottom">
@@ -41,7 +41,7 @@
                          <div class="card" style="border-radius: 1rem;">
                               <div class="row g-0">
                                    <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                        <img src="https://www.computerworld.es/archivos/202003/mujer-programando.jpg" alt="login form" width="100%" height="100%" style="border-radius: 1rem 0 0 1rem;" />
+                                        <img src="https://campus.mdp.utn.edu.ar/pluginfile.php/2/course/section/456/Fachada.jpg" alt="login form" width="100%" height="100%" style="border-radius: 1rem 0 0 1rem;" />
                                    </div>
                                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                         <div class="card-body p-4 p-lg-5 text-black">

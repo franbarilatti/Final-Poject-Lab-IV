@@ -36,7 +36,7 @@
                                                        </svg>
                                                   </button>
                                                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton1">
-                                                       <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
+                                                       <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListViewByBusiness?businessId=<?php echo $business->getBusinessId();?>">Ver ofertas</a></li>
                                                   </ul>
                                              </div>
                                         </td>
