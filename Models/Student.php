@@ -38,7 +38,7 @@
                 $this->birthDate =$birthDate;
                 $this->email =$email;
                 $this->phoneNumber =$phoneNumber;
-                $this->active = true;
+                $this->active;
         }
 
         ////////// GETTERS METHODS //////////

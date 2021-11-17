@@ -70,6 +70,7 @@ class StudentController
 
     public function ShowStudentMain(Alert $alert=null)
     {
+        $student = $_SESSION['std'];
         require_once(VIEWS_PATH . "nav-student.php");
         require_once(VIEWS_PATH . "header.php");
         require_once(VIEWS_PATH . "student-main.php");

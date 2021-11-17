@@ -38,7 +38,12 @@ class RegisterController{
                     }elseif(!$this->CheckEmailWhitAPI($email)){
                         $this->alert->setType("danger");
                         $this->alert->setMessage("El correo no pertenece a un alumno de la UTN");
-                    }else{
+                    }elseif(!$this->studentController->SearchInAPIByEmail($email)->getActive())
+                    {
+                        $this->alert->setType("danger");
+                        $this->alert->setMessage("El alumno no pertenece actualmente a la UTN");
+                    }
+                    else{
                         $this->alert->setType("success");
                         $this->alert->setMessage("Email registrado correctamente");
                     }
@@ -74,7 +79,8 @@ class RegisterController{
         }
 
         public function CheckEmailWhitAPI($email){
-            if($this->studentController->SearchInAPIByEmail($email)){
+            $student = $this->studentController->SearchInAPIByEmail($email);
+            if($student != null ){
                 return true;
             }else{
                 return false;

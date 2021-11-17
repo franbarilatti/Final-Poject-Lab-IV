@@ -36,6 +36,7 @@ class SessionController{
                         case 'student':
                             
                             $_SESSION["studentId"] = $student->getStudentId();
+                            $_SESSION['std'] = $student;
                             
                             header("location:".FRONT_ROOT."Student");
                         case 'company':
