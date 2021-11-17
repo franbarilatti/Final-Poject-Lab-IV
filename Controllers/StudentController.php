@@ -84,27 +84,28 @@ class StudentController
     }
 
     public function PrintPDF(){
-        $studentList = $_SESSION['studentList'];
-        //var_dump($studentList);
+        $postulatedList = $_SESSION['postulatedList'];
+        //var_dump($postulatedList);
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial','',12);
         $pdf->Cell(0,10, utf8_decode('Lista de postulantes'),0,0,'C');
         $pdf->Ln(10);
-        $pdf->Cell(26,10, utf8_decode('Id Estudiante'),1,0,'C');
-        $pdf->Cell(20,10, utf8_decode('Id Carrera'),1,0,'C');
         $pdf->Cell(30,10, utf8_decode('Nombre'),1,0,'C');
         $pdf->Cell(30,10, utf8_decode('Apellido'),1,0,'C');
-        $pdf->Cell(20,10, utf8_decode('DNI'),1,0,'C');
-        $pdf->Cell(20,10, utf8_decode('Legajo'),1,0,'C');
-        $pdf->Cell(20,10, utf8_decode('Email'),1,0,'C');
-        $pdf->Cell(20,10, utf8_decode('Telefono'),1,0,'C');
+        $pdf->Cell(30,10, utf8_decode('DNI'),1,0,'C');
+        $pdf->Cell(35,10, utf8_decode('Legajo'),1,0,'C');
+        $pdf->Cell(55,10, utf8_decode('Email'),1,0,'C');
         $pdf->ln();
-        foreach($studentList as $student){
+        foreach($postulatedList as $postulated){
 
-           
-            $pdf->Cell(26,10, utf8_decode($student->getStudentId()),1,0,'C');
-            
+            $pdf->Cell(30,10, utf8_decode($postulated->getFirstName()),1,0,'C');
+            $pdf->Cell(30,10, utf8_decode($postulated->getLastName()),1,0,'C');
+            $pdf->Cell(30,10, utf8_decode($postulated->getDni()),1,0,'C');
+            $pdf->Cell(35,10, utf8_decode($postulated->getFileNumber()),1,0,'C');
+            $pdf->Cell(55,10, utf8_decode($postulated->getEmail()),1,0,'C');
+
+            $pdf->Ln();
         }
        
         $pdf->Output();

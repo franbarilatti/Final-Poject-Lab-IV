@@ -53,6 +53,9 @@
                                         }
                                    }
                               }
+                              $_SESSION['postulatedList'] = $postulatedList;
+                              //var_dump($_SESSION['postulatedList']);
+
                          ?>
                          </tr>
                     </tbody>
