@@ -61,7 +61,7 @@ require_once(VIEWS_PATH . "nav-admin.php");
                                                        <?php ;
                                                        } ?>
                                                        <li role=" presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/AddView?$id=<?php echo $business->getBusinessId(); ?>">Agregar Nueva Oferta</a></li>
-                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListView">Ver ofertas</a></li>
+                                                            <li role="presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/ShowListViewByBusiness?$id=<?php echo $business->getBusinessId(); ?>">Ver ofertas</a></li>
 
                                                   </ul>
                                              </div>

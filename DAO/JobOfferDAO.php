@@ -142,9 +142,7 @@
 
         public function FilterByBusiness($businessId){
             try{
-                $query = "SELECT * FROM ".$this->tableName." j WHERE j.businessId = :businessId";
-
-                $parameters['businessId'] = $businessId;
+                $query = "SELECT * FROM ".$this->tableName."  WHERE businessId = '$businessId'";
 
                 $this->connection = Connection::GetInstance();
 
@@ -214,7 +212,7 @@
                 $today= date("Y-m-d");
                 $jobOfferList = $this->GetAll();
                 foreach($jobOfferList as $jobOffer){
-                    if($jobOffer->getExpiryDate() < $today ){
+                    if($jobOffer->getExpiryDate() <= $today ){
                        $this->Delete($jobOffer->getJobOfferId());
                     }
                 }

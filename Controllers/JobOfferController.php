@@ -39,6 +39,14 @@ class JobOfferController{
             require_once(VIEWS_PATH."joboffer-list.php");
         }
 
+        public function ShowListViewByBusiness($businessId, Alert $alert = null){
+            $this->jobOfferDAO->CheckExpiryDate();
+            $jobOfferRepo = $this->jobOfferDAO;
+            $jobOfferList = $this->jobOfferDAO->FilterByBusiness($businessId);
+            require_once(VIEWS_PATH."header.php");
+            require_once(VIEWS_PATH."joboffer-list.php");
+        }
+
 
 
 
