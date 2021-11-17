@@ -1,6 +1,8 @@
 <?php
      use Models\Alert as Alert;
-     if($_SESSION['userLogged']->getRole()== "admin"){
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }elseif($_SESSION['userLogged']->getRole()== "admin"){
      require_once (VIEWS_PATH."nav-admin.php");
      }else{
           require_once (VIEWS_PATH."nav-business.php");

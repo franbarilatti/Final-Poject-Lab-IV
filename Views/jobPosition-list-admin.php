@@ -1,4 +1,7 @@
 <?php 
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }
     require_once(VIEWS_PATH."nav-admin.php");
 ?>
 <!-- <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">

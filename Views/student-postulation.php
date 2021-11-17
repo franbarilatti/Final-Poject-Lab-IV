@@ -1,7 +1,10 @@
 <?php 
-    namespace Views;
-    use DAO\JobOfferDAO as JobOfferDAO;
-    $jobOfferDAO = new JobOfferDAO();
+     namespace Views;
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }
+     use DAO\JobOfferDAO as JobOfferDAO;
+     $jobOfferDAO = new JobOfferDAO();
      $JobOfferList = $jobOfferDAO->GetAll();
 ?>
 

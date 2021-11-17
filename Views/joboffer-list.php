@@ -3,7 +3,9 @@
 namespace Views;
 
 use Models\Alert as Alert;
-
+if(!isset($_SESSION['userLogged'])){
+     header("location:". FRONT_ROOT."Home");
+}
 if (isset($_SESSION['userLogged'])) {
      $userLogged = $_SESSION['userLogged'];
      switch ($userLogged->getRole()) {
@@ -40,6 +42,8 @@ if ($alert == null) {
                          <?php
                          } ?>
                          <th>Empresa</th>
+                         <th></th>
+
                          <th>Titulo</th>
                          <th>Descripcion</th>
                          <th>Vencimiento</th>
@@ -56,6 +60,7 @@ if ($alert == null) {
                                         <?php
                                         } ?>
                                         <td><?php echo $jobOfferRepo->GetBusinessNameByJobOfferId($jobOffer->getBusinessId())?></td>
+                                        <td><img src="<?php echo $jobOffer->getFlyer() ?>" width="50px" height="50" alt="Sin imagen cargada"></td>
                                         <?php
                                         if ($jobOffer->getFlyer() == "false") { ?>
                                              <td><?php echo $jobOffer->getTitle(); ?></td>
@@ -81,7 +86,7 @@ if ($alert == null) {
                                                             <li role="presentation"><a href="<?php echo FRONT_ROOT ?>JobOffer/ModifyView?$jobOfferId=<?php echo $jobOffer->getJobOfferId(); ?>">Modificar</a></li>
                                                             <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Postulation/PostulatedList?$jobOfferId=<?php echo $jobOffer->getJobOfferId(); ?>">Listado de postulantes</a></li>
                                                        <?php  } else { ?>
-                                                            <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Postulation/Add?$businessId=<?php echo $jobOffer->getBusinessId() ?>&$jobPositionId=<?php echo $jobOffer->getJobOfferId() ?>">Postularse</a></li>
+                                                            <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Postulation/Add?$businessId=<?php echo $jobOffer->getBusinessId() ?>&$jobOfferId=<?php echo $jobOffer->getJobOfferId() ?>">Postularse</a></li>
                                                        <?php  }
                                                        ?>
 
@@ -99,6 +104,7 @@ if ($alert == null) {
 
                </table>
           </div>
+          <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
 
      </section>
 </main>

@@ -192,15 +192,16 @@
         }
 
         public function GetBusinessNameByJobOfferId($id){
+            $businessName="";
             try{
-                $query = "CALL getBusinessNameByJobOffer(:id);";
-                $parameters['id'] = $id;
+                $query = "CALL getBusinessNameByJobOffer( '$id', @name )";
 
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->ExecuteNonQuery($query,$parameters);
+                $result = $this->connection->Execute($query);
+      
 
-                return $result;
+                return $result[0]['pBusinessName'];
 
             }catch(Exception $ex){
                 throw $ex;
@@ -213,7 +214,7 @@
                 $today= date("Y-m-d");
                 $jobOfferList = $this->GetAll();
                 foreach($jobOfferList as $jobOffer){
-                    if($jobOffer->getExpiryDate() <= $today ){
+                    if($jobOffer->getExpiryDate() < $today ){
                        $this->Delete($jobOffer->getJobOfferId());
                     }
                 }

@@ -91,7 +91,7 @@ class JobOfferController{
                 $this->alert->setType("danger");
                 $this->alert->setMessage("No se pudo modificar la oferta");
             }finally{
-                $this->ModifyView($jobOfferId,$this->alert);
+                $this->ShowListView($this->alert);
             }
 
         }

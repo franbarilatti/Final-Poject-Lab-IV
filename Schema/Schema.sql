@@ -31,7 +31,7 @@ create table business(
     employesQuantity int not null,
     businessInfo varchar (1000),
     userId int not null,
-    foreign key(userId) references users(id)
+    foreign key(userId) references users(id) on delete cascade
 );
 
 
@@ -73,6 +73,7 @@ select * from jobOffer;
 
 select * from users;
 
+drop table business;
 
 insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
 
@@ -95,19 +96,27 @@ select * from users;
 
 select * from postulation;
 
+select * from admins;
+
 select * from business;
 
 select * from users
 
 
 delimiter $$
-create procedure getBusinessNameByJobOffer(in vid int)
+create procedure getBusinessNameByJobOffer(in vid int, out pBusinessName varchar(50))
 begin
-	SELECT businessName
+	set pBusinessName =
+	(SELECT businessName
     from business b 
-    where b.businessId = vid;
+    where b.businessId = vid);
+    SELECT pBusinessName;
 end $$  
 
 drop procedure getBusinessNameByJobOffer;
 
-call getBusinessNameByJobOffer(1);
+select * from 
+business b join jobOffer j
+on b.businessId = j.businessId;
+
+call getBusinessNameByJobOffer(1, @name);

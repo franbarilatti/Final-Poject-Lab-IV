@@ -1,5 +1,8 @@
 <?php
-    require_once('nav-admin.php');
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+        }
+     require_once('nav-admin.php');
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">

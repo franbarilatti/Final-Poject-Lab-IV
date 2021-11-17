@@ -52,11 +52,9 @@
 
                 $this->connection->ExecuteNonQuery($query,$parameters);
 
-                return "Empresa eliminada con exito!";
-
             }
             catch(Exception $ex){
-                throw $ex = "La empresa no ha podido ser eliminada";
+                throw $ex ;
             }
         }
 
@@ -70,7 +68,7 @@
 
                 $result = $this->connection->Execute($query);
                 $businessList = $this->Mapping($result);
-
+                
                 return $businessList;
             } catch (Exception $ex) {
                 throw $ex;
@@ -83,21 +81,16 @@
         {
             try{
                 $query = "UPDATE ".$this->tableName.
-                         " SET businessName = :businessName,
-                           employesQuantity = :employesQuantity,
-                           businessInfo =  :businesInfo,
-                           adress = :adress
-                           WHERE businessId = :businessId";
+                         " SET businessName = '$businessName',
+                           employesQuantity = '$employesQuantity',
+                           businessInfo =  '$businessInfo',
+                           adress = '$adress'
+                           WHERE businessId = $businessId";
                 $this->connection = Connection::GetInstance();
-                $parameters["businessName"] = $businessName;
-                $parameters["employeQuantity"] = $employesQuantity;
-                $parameters["businessInfo"] = $businessInfo;
-                $parameters["businessId"] = $businessId;
-                $parameters["adress"] = $adress;
 
                 $this->connection = Connection::GetInstance();
                 
-                $this->connection->ExecuteNonQuery($query,$parameters);
+                $this->connection->ExecuteNonQuery($query);
             }
             catch(Exception $ex){
                 throw $ex;
@@ -108,7 +101,7 @@
 
         public function SearchByName($businessName){
             try{
-                $query = "SELECT * FROM business b WHERE b.businessName = :businessName";
+                $query = "SELECT * FROM business  WHERE businessName = :businessName";
                 
                 $parameters['businessName'] = $businessName;
 
@@ -125,7 +118,7 @@
 
         public function SearchById($businessId){
             try{
-                $query = "SELECT * FROM business b WHERE b.businessId = :businessId";
+                $query = "SELECT * FROM business  WHERE businessId = :businessId";
 
                 $parameters['businessId'] = $businessId;
 

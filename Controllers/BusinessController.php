@@ -74,13 +74,11 @@ class BusinessController{
         public function ShowModifyView($businessId){
             try{
                 $business = $this->businessDAO->SearchById($businessId);
-                $title = "Modificar ".$business->getBusinessName();
+               // $title = "Modificar ".$business->getBusinessName();
                 require_once (VIEWS_PATH."header.php");
                 require_once(VIEWS_PATH."business-modify.php");
             }catch(Exception $ex){
                 throw $ex;
-            }finally{
-                $this->ShowModifyView($businessId);
             }
             
         }
@@ -112,9 +110,11 @@ class BusinessController{
                 $this->businessDAO->Delete($businessId);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Empresa eliminada con exito");
+
             }catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage($ex->getMessage());
+
             }finally{
                 $this->ShowListViewAdmin();
             }
@@ -126,11 +126,13 @@ class BusinessController{
                 $this->businessDAO->Modify($businessId, $businessName, $employesQuantity, $businessInfo,$adress);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Empresa modificada con exito");
+
             }catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage($ex->getMessage());
+                echo $ex;
             }finally{
-                $this->ShowListViewAdmin();
+                $this->ShowListViewAdmin($this->alert);
             }
             
         }

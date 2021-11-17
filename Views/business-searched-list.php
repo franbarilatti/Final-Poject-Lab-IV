@@ -1,5 +1,7 @@
 <?php
-    if($_SESSION['userLogged']->getRole() == "student"){
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }elseif($_SESSION['userLogged']->getRole() == "student"){
         require_once(VIEWS_PATH."nav-student.php");
     }elseif($_SESSION['userLogged']->getRole() == "admin"){
         require_once(VIEWS_PATH."nav-admin.php");

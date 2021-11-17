@@ -1,11 +1,13 @@
 <?php
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }
     require_once('nav-admin.php');
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
                <h2 class="mb-4">Listado de alumnos</h2>
-               <a href="<?php echo FRONT_ROOT?>Student/PrintPDF" target="blanck"> Mostrar PDF</a>
                <table class="table bg-light-alpha">
                     <thead>
                          <th>Id de estudiante</th>

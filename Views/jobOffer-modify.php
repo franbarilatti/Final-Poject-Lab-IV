@@ -1,5 +1,8 @@
 <?php
      use Models\Alert as Alert;
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }
      require_once "nav-admin.php";
      if($alert==null){
           $alert= new Alert("","");

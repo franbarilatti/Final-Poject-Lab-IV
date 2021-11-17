@@ -4,7 +4,7 @@
     use Models\Postulation as Postulation;
     use DAO\StudentDAO as StudentDAO;
     use Exception;
-    use Models\JobOffer as JobOffer;
+    use Controllers\JobOfferController as JobOfferController;
     use DAO\JobOfferDAO as JobOfferDAO;
 use DAO\StudentAPI;
 use Models\Alert as Alert;
@@ -13,12 +13,14 @@ use Models\Alert as Alert;
         private $postulationDAO;
         private $studentDAO;
         private $alert;
+        private $jobOfferController;
 
         public function __construct()
         {
             $this->postulationDAO = new PostulationDAO();
             $this->studentDAO = new StudentAPI;
             $this->alert = new Alert("","");
+            $this->jobOfferController = new JobOfferController();
         }
 
         ////////////////// VIEWS METHODS //////////////////
@@ -50,38 +52,36 @@ use Models\Alert as Alert;
 
         ////////////////// FUNCTIONAL METHODS //////////////////
 
-        public function Add($businessId, $jobPositionId)
+        public function Add($businessId, $jobOfferId)
         {
             $studentId = $_SESSION["studentId"];
             $userId= $_SESSION['userLogged']->getUserId();
-            echo $userId;
+
             try{
-                $postulation = new Postulation("DeFAULT",$userId,$studentId,$businessId,$jobPositionId,true);
-                if(!$this->CheckPostulations($studentId)){
-                   
+                $postulation = new Postulation("DEFAULT",$userId,$studentId,$businessId,$jobOfferId,true);
+                if(!$this->CheckPostulations($jobOfferId)){
                     $this->postulationDAO->Add($postulation);
                     $this->alert->setType("success");
                     $this->alert->setMessage("Se ha postulado con exito");
                     $this->postulationDAO->GreetingsMail();
                 }
+            
             }catch(Exception $ex){
                 $this->alert->setType("danger");
                 $this->alert->setMessage("No se ha podido postular");
-                echo $ex;
-                
             }finally{
-                $_SESSION["alertType"] = $this->alert->getType();
-                $_SESSION["alertMessage"] = $this->alert->getMessage();
-                header("location:".FRONT_ROOT."Student");
+               
+                $this->ShowPostulatiobByStudent($userId,$this->alert);
+
             }
     
         }
 
-        public function CheckPostulations($studentId){
+        public function CheckPostulations($jobOfferId){
         
             $postulationList = $this->postulationDAO->GetAll();        
             $i=0;
-            while($i<count($postulationList) && $postulationList[$i]->getStudentId() != $studentId){
+            while($i<count($postulationList) && $postulationList[$i]->getJobOfferId() != $jobOfferId){
                 $i++;
             }
             if($i<count($postulationList)){

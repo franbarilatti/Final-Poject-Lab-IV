@@ -1,7 +1,6 @@
 <?php
 
      use Models\Alert as Alert;
-
      if(isset($_SESSION['userLogged'])){
           require_once(VIEWS_PATH . "nav-admin.php");
      }else{

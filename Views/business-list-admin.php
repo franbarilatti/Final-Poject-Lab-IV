@@ -1,7 +1,12 @@
 <?php
 
-use Models\Business;
-
+use Models\Alert as Alert;
+if(!isset($_SESSION['userLogged'])){
+     header("location:". FRONT_ROOT."Home");
+   }
+   if($alert==null){
+     $alert= new Alert("","");
+}
 require_once(VIEWS_PATH . "nav-admin.php");
 
 ?>
@@ -49,10 +54,10 @@ require_once(VIEWS_PATH . "nav-admin.php");
                                                        <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/DeleteBusiness?$id=<?php echo $business->getBusinessId(); ?>">Eliminar</a></li>
                                                        <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/ShowModifyView?$id=<?php echo $business->getBusinessId(); ?>">Modificar</a></li>
                                                        <?php if ($business->getActive()) { ?>
-                                                            <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/Deregister?$id=<?php echo $business->getBusinessId(); ?>"">Dar de Baja</li>
+                                                            <li role="presentation"><a href="<?php echo FRONT_ROOT ?>Business/Deregister?$id=<?php echo $business->getBusinessId(); ?>">Dar de Baja</li>
                                                        <?php ;
                                                        } else { ?>
-                                                            <li role=" presentation"><a href="<?php echo FRONT_ROOT ?>Business/Release?$id=<?php echo $business->getBusinessId(); ?>"">Dar de Alta</li> 
+                                                            <li role=" presentation"><a href="<?php echo FRONT_ROOT ?>Business/Release?$id=<?php echo $business->getBusinessId(); ?>">Dar de Alta</li> 
                                                        <?php ;
                                                        } ?>
                                                        <li role=" presentation"> <a href="<?php echo FRONT_ROOT ?>JobOffer/AddView?$id=<?php echo $business->getBusinessId(); ?>">Agregar Nueva Oferta</a></li>
@@ -71,6 +76,7 @@ require_once(VIEWS_PATH . "nav-admin.php");
 
                </table>
           </div>
+          <div class="alert alert-<?php echo $alert->getType() ?>"><?php echo $alert->getMessage() ?></div>
 
      </section>
 </main>

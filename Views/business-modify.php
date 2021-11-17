@@ -1,5 +1,7 @@
 <?php
-    if($_SESSION['userLogged']->getRole() == "student"){
+     if(!isset($_SESSION['userLogged'])){
+          header("location:". FRONT_ROOT."Home");
+     }elseif($_SESSION['userLogged']->getRole() == "student"){
         require_once(VIEWS_PATH."nav-student.php");
     }elseif($_SESSION['userLogged']->getRole() == "admin"){
         require_once(VIEWS_PATH."nav-admin.php");
@@ -23,14 +25,20 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="businessName">Nombre</label>
-                                   <input type="hidden" name="businessId" value="DEFAULT">
-                                   <input type="text" name="businessName" value="<?php echo $business->getBusinessName();?>" class="form-control" Required>
+                                   <input type="hidden" name="businessId" value="<?php echo $business->getBusinessId() ?>">
+                                   <input type="text" name="businessName" value="<?php echo $business->getBusinessName();?>" class="form-control" >
+                              </div>
+                         </div>
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="adress">Direccion</label>
+                                   <input type="text" name="adress" value= "<?php echo $business->getAdress() ?>" min= "1" class="form-control" >
                               </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="employesQuantity">Cantidad de empleados</label>
-                                   <input type="number" name="employesQuantity" min= "1" class="form-control" Required>
+                                   <input type="number" name="employesQuantity" value= "<?php echo $business->getEmployesQuantity() ?>" min= "1" class="form-control" >
                               </div>
                          </div>
                          <div class="col-lg-4">
