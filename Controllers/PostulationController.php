@@ -40,7 +40,7 @@ use Models\Alert as Alert;
             require_once(VIEWS_PATH."student-postulation.php");
         }
         
-        public function PostulatedList($jobOfferId){
+        public function PostulatedList($jobOfferId,Alert $alert=null){
             
             $postulationList = $this->postulationDAO->FilterByJobOffer($jobOfferId);
             $studentList = $this->studentDAO->GetAll();
@@ -98,6 +98,19 @@ use Models\Alert as Alert;
                 $this->alert->setMessage("Se ha dado de baja su postulacion.");
 
                 $this->ShowPostulatiobByStudent($userId,$this->alert);
+            }catch(Exception $ex){
+                throw $ex;
+            }
+        }
+
+        public function DeleteAdmin($id,$jobOfferId){
+            try{
+                $this->postulationDAO->Delete($id);
+                $this->postulationDAO->Deregister();
+                $this->alert->setType("success");
+                $this->alert->setMessage("Postulacion dada de baja sactifactoriamente.");
+
+                $this->PostulatedList($jobOfferId,$this->alert);
             }catch(Exception $ex){
                 throw $ex;
             }
