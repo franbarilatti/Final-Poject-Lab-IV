@@ -28,7 +28,6 @@
 
 <body>
     
-    <h1><?php echo $student->getFirstName()." ".$student->getLastName(); ?></h1>
 
     <form class="was-validated">
     <div class="row d-flex justify-content-center">

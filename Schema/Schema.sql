@@ -73,7 +73,11 @@ select * from jobOffer;
 
 select * from users;
 
-drop table business;
+select * from business;
+
+select * from postulation;
+
+select * from admins;
 
 insert into users values (default,"barilattiguidoa@hotmail.com","GabO9821","admin");
 
@@ -113,10 +117,11 @@ begin
     SELECT pBusinessName;
 end $$  
 
-drop procedure getBusinessNameByJobOffer;
 
 select * from 
 business b join jobOffer j
 on b.businessId = j.businessId;
 
 call getBusinessNameByJobOffer(1, @name);
+
+select @name;

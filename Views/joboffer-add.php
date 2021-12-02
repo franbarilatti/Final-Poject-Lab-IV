@@ -12,6 +12,7 @@ if (!isset($_SESSION['userLogged'])) {
 if ($alert == null) {
      $alert = new Alert("", "");
 }
+
 ?>
 
 <main class="py-5">

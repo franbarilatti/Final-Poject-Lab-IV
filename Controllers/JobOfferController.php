@@ -27,7 +27,6 @@ class JobOfferController{
 
         public function AddView($businessId,Alert $alert=null){
             $jobPositionList = $this->jobPositionAPI->GetAll();
-
             require_once(VIEWS_PATH."header.php");
             require_once(VIEWS_PATH."joboffer-add.php");
         }

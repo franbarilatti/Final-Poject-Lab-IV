@@ -61,15 +61,20 @@ use Models\Career as Career;
         private function RetrieveData()
         {
             $resp = curl_exec($this->ch);
-            $this->careerList = array();
-            $arrayToDecode = json_decode($resp, true);
+            $this->jobPositionList = array();
 
-            if($resp != null)
-            {
-                $arrayToDecode = json_decode($resp, true);
+            if($resp){
+                $arrayToDecode = json_decode($resp,true);
 
-                $this->careerList = $this->Mapping($arrayToDecode);
+                if(!$arrayToDecode){
+                    $filePath = $this->GetJsonFilePath();
+                    if(file_exists($filePath)){
+                        $jsonContent = file_get_contents($filePath);
+                        $arrayToDecode = ($jsonContent) ? json_decode($jsonContent,true) : array();
+                    }
+                }
             }
+            $this->careerList = $this->Mapping($arrayToDecode);
         }
 
         public function SearchByID($id){
@@ -109,6 +114,19 @@ use Models\Career as Career;
 			}, $value);
 
             return $resp /*count($resp) > 1 ? $resp : $resp['0']*/;
+        }
+
+        function GetJsonFilePath(){
+
+            $initialPath = "Data/careers.json";
+            
+            if(file_exists($initialPath)){
+                $jsonFilePath = $initialPath;
+            }else{
+                $jsonFilePath = "../".$initialPath;
+            }
+    
+            return $jsonFilePath;
         }
 }
 ?>
