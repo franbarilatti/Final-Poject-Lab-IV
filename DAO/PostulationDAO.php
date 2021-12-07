@@ -97,7 +97,7 @@
                 $user = $userDAO->SearchById($id);
                 $subject= "Postulacion";
                 $msg= "La oferta a la que se ha postulado ha caducado. Igualmente, se lo tendra en cuentra para futuras oportunidades. Muchas gracias";
-                Email::SendMail("frankito_996@hotmail.com",$subject,$msg);
+                Email::SendMail("francoagustinbarilatti@hotmail.com",$subject,$msg);
             }
         }
 
@@ -107,7 +107,7 @@
             $msg= "Muchas gracias por tenernos en cuenta a la hora de buscar nuevas experiencias laborales.
             Lamentablemente en esta oportunidad no seguiremos con la seleccion de tu postulacion.
             Igualmente, se lo tendra en cuentra para futuras oportunidades. Muchas gracias";
-            Email::SendMail("frankito_996@hotmail.com",$subject,$msg);
+            Email::SendMail("francoagustinbarilatti@hotmail.com",$subject,$msg);
             
         }
 
@@ -116,7 +116,7 @@
             $msg= "Gracias por postularse a nuestra oferta de trabajo. Pronto estara recibiendo un mail a su casilla de correo electronico con mas informacion respecto a su postulacion. 
             <br>
             De parte de todo el equipo le damos las gracias.";
-            Email::SendMail("frankito_996@hotmail.com",$subject,$msg);
+            Email::SendMail("francoagustinbarilatti@hotmail.com",$subject,$msg);
         }
 
         

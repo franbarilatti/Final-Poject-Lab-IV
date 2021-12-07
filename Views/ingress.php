@@ -49,10 +49,8 @@ if (isset($_SESSION['userLogged'])) {
                                              <form action="<?php echo FRONT_ROOT ?>Session/Login" method="post">
                                                   <div class="d-flex align-items-center mb-3 pb-1">
                                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                                       <span class="h1 fw-bold mb-0">Logo</span>
+                                                       <span class="h1 fw-bold mb-0">Iniciar Sesion</span>
                                                   </div>
-
-                                                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Iniciar Sesion</h5>
 
                                                   <div class="form-outline mb-4">
                                                        <input type="email" name="email" class="form-control form-control-lg" />

@@ -194,12 +194,19 @@
             try{
                 $query = "CALL getBusinessNameByJobOffer( '$id', @name )";
 
+                $queryReturn = "SELECT @name";
+
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->Execute($query);
-      
+                $this->connection->Execute($query);
 
-                return $result[0]['pBusinessName'];
+                $this->connection = Connection::GetInstance();
+
+                $result = $this->connection->Execute($queryReturn);
+                
+                $findedName = $result[0]['@name'];
+
+                return $findedName;
 
             }catch(Exception $ex){
                 throw $ex;

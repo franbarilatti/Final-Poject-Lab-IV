@@ -42,7 +42,7 @@
                         $alert->setMessage("Su usuario creado correctamente");
                         $subject= "Registro en MyJob";
                         $msg= "Muchas gracias por elegirnos a la hora de buscar ofertas laborales.";
-                        Email::SendMail("frankito_996@hotmail.com",$subject,$msg);
+                        Email::SendMail("francoagustinbarilatti@hotmail.com",$subject,$msg);
                         header("location:".FRONT_ROOT."index.php");
                     }
                 }catch(Exception $ex){
