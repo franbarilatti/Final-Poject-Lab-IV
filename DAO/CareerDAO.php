@@ -38,7 +38,7 @@
 
                 $this->connection = Connection::GetInstance();
 
-                $this->connection->ExcecuteNonQuery($query,$parameters);
+                $this->connection->ExecuteNonQuery($query,$parameters);
 
                 return "Carrera ingresada con exito";
             }
@@ -62,7 +62,7 @@
                 return $career;
             }
             catch(Exception $ex){
-                throw $ex = "Email ingresado no encontrado. Por favor verifique que se encuentre bien escrito";
+                throw $ex;
             }
         }
 

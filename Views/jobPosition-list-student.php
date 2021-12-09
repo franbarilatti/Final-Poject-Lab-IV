@@ -24,7 +24,7 @@
                                              <td><?php echo $jobPosition->getTitle();?></td>
                                              <td><?php echo $jobPosition->getDescription(); ?></td>
                                              <td>
-                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Postulation/Add?$idStudent=<?php echo $studentId;?>&$idBusiness=<?php echo $jobPosition->getBusinessId();?> &jobPositionId=<?php echo $jobPosition->getJobPositionId();?>">Postularse</a> 
+                                                 <a class="btn btn-primary" href="<?php echo FRONT_ROOT?>Postulation/Add?$idBusiness=<?php echo $jobPosition->getBusinessId();?> &jobPositionId=<?php echo $jobPosition->getJobPositionId();?>">Postularse</a> 
                                              </td>
                                         </tr>
                                    <?php

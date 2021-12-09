@@ -59,12 +59,15 @@ use Models\Alert as Alert;
 
             try{
                 $postulation = new Postulation("DEFAULT",$userId,$studentId,$businessId,$jobOfferId,true);
-    
+                if(! $this->CheckPostulations($jobOfferId)){
                 $this->postulationDAO->Add($postulation);
                 $this->alert->setType("success");
                 $this->alert->setMessage("Se ha postulado con exito");
                 $this->postulationDAO->GreetingsMail();
-    
+                }else{
+                    $this->alert->setType("danger");
+                $this->alert->setMessage("Usted ya se encuentra postulado a esta oferta");
+                }
             
             }catch(Exception $ex){
                 $this->alert->setType("danger");
@@ -76,6 +79,8 @@ use Models\Alert as Alert;
             }
     
         }
+
+
 
         public function CheckPostulations($jobOfferId){
         
